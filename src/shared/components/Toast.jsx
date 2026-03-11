@@ -1,7 +1,6 @@
-import { createContext, useCallback, useContext, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const ToastContext = createContext(null);
+import { ToastContext } from './toastContext';
 
 let toastId = 0;
 
@@ -52,12 +51,6 @@ export const ToastProvider = ({ children }) => {
       </div>
     </ToastContext.Provider>
   );
-};
-
-export const useToast = () => {
-  const ctx = useContext(ToastContext);
-  if (!ctx) throw new Error('useToast must be used within ToastProvider');
-  return ctx;
 };
 
 export default ToastProvider;

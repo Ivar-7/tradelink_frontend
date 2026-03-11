@@ -2,16 +2,17 @@
 
 ## Architecture
 
-Feature-based modular structure — each feature manages its own `api/`, `hooks/`, `components/`, and `pages/`. Shared utilities live in `src/shared/`.
+Feature-based modular structure where each feature is self-contained. Shared logic and global assets live in `src/shared/`.
 
-* **src/shared/**: constants, types, hooks, components, theme, utils, context providers
-* **src/features/<feature>/** - `api/`: fetcher functions, axios instances, query keys
-* `hooks/`: feature-specific logic and state (usecases)
-* `components/`: local UI components
-* `pages/`: feature entry points/screens
+* **src/shared/**: Constants, types, hooks, components, theme, utils, and providers.
+* **src/features/<feature>/**:
+* `api/`: Fetcher functions, axios instances, and query keys.
+* `hooks/`: Feature-specific logic, state, and use cases.
+* `components/`: Local UI components.
+* `pages/`: Feature entry points and screens.
+* `styles/`: Feature-specific styles (if not using Tailwind).
 
-
-* **root files**: `App.jsx`, `main.jsx`, `routes.jsx`
+* **Root Files**: `App.jsx`, `main.jsx`, `routes.jsx`.
 
 ---
 

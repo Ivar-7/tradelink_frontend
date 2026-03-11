@@ -8,6 +8,7 @@ export const ROUTES = {
   ORDER_DETAIL: '/orders/:id',
   PROFILE: '/profile',
   FEEDBACK: '/feedback',
+  REVIEWS: '/reviews',
   AUTH: {
     LOGIN: '/auth/login',
     SIGNUP: '/auth/signup',

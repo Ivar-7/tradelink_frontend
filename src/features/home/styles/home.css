@@ -1,0 +1,64 @@
+/* ── Home page scoped styles ──────────────────────────────────────── */
+
+.home-page {
+  font-family: 'Outfit', sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+}
+
+.home-page .hero-overlay {
+  background:
+    radial-gradient(ellipse at top right, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom left, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+}
+
+.home-page .text-gradient {
+  background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.home-page .btn-cta {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  transition: all 0.3s ease;
+}
+
+.home-page .btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+}
+
+.home-page .card-glow:hover {
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.15);
+}
+
+.home-page .floating {
+  animation: homeFloat 6s ease-in-out infinite;
+}
+
+.home-page .floating-delayed {
+  animation: homeFloat 6s ease-in-out infinite;
+  animation-delay: -3s;
+}
+
+@keyframes homeFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.home-page .fade-in {
+  animation: homeFadeIn 0.8s ease-out forwards;
+}
+
+@keyframes homeFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.home-page .category-card {
+  transition: all 0.3s ease;
+}
+
+.home-page .category-card:hover {
+  transform: translateY(-8px);
+}

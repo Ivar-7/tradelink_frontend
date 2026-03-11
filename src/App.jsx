@@ -1,5 +1,5 @@
 import { RouterProvider } from 'react-router-dom';
-import ContextProvider from './context_provider';
+import ContextProvider from './shared/providers/ContextProvider';
 import router from './routes';
 
 function App() {
