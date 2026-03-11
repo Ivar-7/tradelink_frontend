@@ -1,6 +1,6 @@
 import { ThemeProvider } from '../theme/ThemeProvider';
 import { ToastProvider } from '../components/Toast';
-import AuthProvider from '../../features/auth/AuthProvider';
+import AuthProvider from './AuthProvider';
 
 const ContextProvider = ({ children }) => {
   return (
