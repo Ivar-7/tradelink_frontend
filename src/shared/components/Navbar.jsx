@@ -32,7 +32,7 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-surface shadow-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+      <div className="mx-auto flex max-w-screen-2xl items-center justify-between px-4 py-3">
         <Link to={ROUTES.HOME} className="text-xl font-bold text-primary-600">
           {APP_NAME}
         </Link>

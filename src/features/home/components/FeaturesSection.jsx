@@ -46,7 +46,7 @@ const FEATURES = [
 
 const FeaturesSection = () => (
   <section id="how-it-works" className="w-full px-6 py-16 lg:px-12">
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-screen-2xl mx-auto">
       <div className="grid md:grid-cols-3 gap-8">
         {FEATURES.map(({ title, description, iconBg, icon }) => (
           <div key={title} className="p-8 rounded-2xl bg-white/5 border border-white/10">

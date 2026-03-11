@@ -17,7 +17,7 @@ const colorMap = {
 
 const CategoriesSection = () => (
   <section id="features" className="w-full px-6 py-16 lg:px-12">
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-screen-2xl mx-auto">
       <div className="text-center mb-12">
         <h2 className="text-3xl sm:text-4xl font-bold mb-4">Popular Categories</h2>
         <p className="text-slate-400 max-w-2xl mx-auto">

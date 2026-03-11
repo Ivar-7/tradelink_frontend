@@ -5,7 +5,7 @@ import { ROUTES } from '../constants/routes';
 const Footer = () => {
   return (
     <footer className="border-t border-border bg-surface px-4 py-8 text-sm text-muted">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-screen-2xl">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           <div>
             <h3 className="mb-3 font-semibold text-foreground">{APP_NAME}</h3>
