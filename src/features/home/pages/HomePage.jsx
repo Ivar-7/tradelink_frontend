@@ -5,7 +5,7 @@ import CTASection from '../components/CTASection';
 import '../styles/home.css';
 
 const HomePage = () => (
-  <div className="home-page w-full text-white">
+  <div className="home-page w-full text-foreground dark:text-white">
     <div className="hero-overlay">
       <HeroSection />
       <CategoriesSection />
