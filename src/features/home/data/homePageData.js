@@ -27,6 +27,8 @@ export const heroPerks = {
 export const superDeals = [
   {
     id: 'deal-1',
+    catalogProductId: 'prod-014',
+    brand: 'Lunar',
     name: 'Noise Canceling Headphones',
     price: 149,
     originalPrice: 299,
@@ -37,6 +39,8 @@ export const superDeals = [
   },
   {
     id: 'deal-2',
+    catalogProductId: 'prod-002',
+    brand: 'Studio',
     name: 'Minimalist Digital Watch',
     price: 59.99,
     originalPrice: 99.99,
@@ -47,6 +51,8 @@ export const superDeals = [
   },
   {
     id: 'deal-3',
+    catalogProductId: 'prod-001',
+    brand: 'Lunar',
     name: 'Running Sneakers',
     price: 84.5,
     originalPrice: 130,
@@ -57,6 +63,8 @@ export const superDeals = [
   },
   {
     id: 'deal-4',
+    catalogProductId: 'prod-015',
+    brand: 'Sony',
     name: 'Professional DSLR Camera',
     price: 899,
     originalPrice: 1120,
@@ -67,6 +75,8 @@ export const superDeals = [
   },
   {
     id: 'deal-5',
+    catalogProductId: 'prod-009',
+    brand: 'Pixel',
     name: 'Portable Photo Printer',
     price: 39,
     originalPrice: 99,
@@ -80,6 +90,7 @@ export const superDeals = [
 export const productDiscoveryItems = [
   {
     id: 'prod-1',
+    catalogProductId: 'prod-010',
     brand: 'Apple',
     name: 'MacBook Pro M3 Max 14"',
     price: 1999,
@@ -91,6 +102,7 @@ export const productDiscoveryItems = [
   },
   {
     id: 'prod-2',
+    catalogProductId: 'prod-012',
     brand: 'Dell',
     name: 'XPS 15 Touch Laptop',
     price: 1449,
@@ -102,6 +114,7 @@ export const productDiscoveryItems = [
   },
   {
     id: 'prod-3',
+    catalogProductId: 'prod-018',
     brand: 'Lenovo',
     name: 'ThinkPad X1 Carbon Gen 11',
     price: 1729.99,
@@ -113,6 +126,7 @@ export const productDiscoveryItems = [
   },
   {
     id: 'prod-4',
+    catalogProductId: 'prod-002',
     brand: 'Apple',
     name: 'Watch Series 8 Gold',
     price: 399,
@@ -124,6 +138,7 @@ export const productDiscoveryItems = [
   },
   {
     id: 'prod-5',
+    catalogProductId: 'prod-014',
     brand: 'Sony',
     name: 'WH-1000XM5 Wireless',
     price: 348,
@@ -135,6 +150,7 @@ export const productDiscoveryItems = [
   },
   {
     id: 'prod-6',
+    catalogProductId: 'prod-011',
     brand: 'Samsung',
     name: 'Odyssey G9 OLED 49"',
     price: 1269,
@@ -146,6 +162,7 @@ export const productDiscoveryItems = [
   },
   {
     id: 'prod-7',
+    catalogProductId: 'prod-015',
     brand: 'Asus',
     name: 'ROG Zephyrus G16',
     price: 1849,
@@ -157,6 +174,7 @@ export const productDiscoveryItems = [
   },
   {
     id: 'prod-8',
+    catalogProductId: 'prod-001',
     brand: 'HP',
     name: 'Spectre x360 14',
     price: 1399,
@@ -168,6 +186,7 @@ export const productDiscoveryItems = [
   },
   {
     id: 'prod-9',
+    catalogProductId: 'prod-003',
     brand: 'Microsoft',
     name: 'Surface Laptop Studio 2',
     price: 2099,
@@ -214,6 +233,8 @@ export const quickViewProduct = {
 export const moreToLove = [
   {
     id: 'love-1',
+    catalogProductId: 'prod-013',
+    brand: 'Apple',
     name: 'ProX Max 5G Unlocked 256GB',
     rating: 4.8,
     sold: '10,000+ sold',
@@ -224,6 +245,8 @@ export const moreToLove = [
   },
   {
     id: 'love-2',
+    catalogProductId: 'prod-005',
+    brand: 'Echo',
     name: 'Essential Organic Cotton T-Shirt',
     rating: 4.9,
     sold: '5,000+ sold',
@@ -234,6 +257,8 @@ export const moreToLove = [
   },
   {
     id: 'love-3',
+    catalogProductId: 'prod-015',
+    brand: 'Sony',
     name: 'SkyMaster V3 Drone with 4K Camera',
     rating: 4.7,
     sold: '2,400+ sold',
@@ -244,6 +269,8 @@ export const moreToLove = [
   },
   {
     id: 'love-4',
+    catalogProductId: 'prod-001',
+    brand: 'Lunar',
     name: 'HyperGlide Ultra Sneakers',
     rating: 4.8,
     sold: '12,500+ sold',
@@ -254,6 +281,8 @@ export const moreToLove = [
   },
   {
     id: 'love-5',
+    catalogProductId: 'prod-009',
+    brand: 'Pixel',
     name: 'Barista Elite Espresso Station',
     rating: 4.9,
     sold: '800+ sold',

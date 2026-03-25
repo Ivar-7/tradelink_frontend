@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
   createPayment,
   getPaymentMethods,
@@ -14,7 +14,7 @@ const usePaymentsHook = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchMethods = async () => {
+  const fetchMethods = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -28,9 +28,9 @@ const usePaymentsHook = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const addMethod = async (payload) => {
+  const addMethod = useCallback(async (payload) => {
     setLoading(true);
     setError(null);
     try {
@@ -45,9 +45,9 @@ const usePaymentsHook = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const setDefaultMethod = async (id) => {
+  const setDefaultMethod = useCallback(async (id) => {
     setLoading(true);
     setError(null);
     try {
@@ -62,9 +62,9 @@ const usePaymentsHook = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const removeMethod = async (id) => {
+  const removeMethod = useCallback(async (id) => {
     setLoading(true);
     setError(null);
     try {
@@ -79,9 +79,9 @@ const usePaymentsHook = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const initiate = async (payload) => {
+  const initiate = useCallback(async (payload) => {
     setLoading(true);
     setError(null);
     try {
@@ -95,7 +95,7 @@ const usePaymentsHook = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   return {
     payment,
