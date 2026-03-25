@@ -1,30 +1,95 @@
+// components/StkPush.jsx
+import { useState, useEffect } from 'react';
+
 const StkPush = ({ phoneNumber, amount, onCancel }) => {
-  const maskedPhone = phoneNumber.replace(/(\d{3})\d{4}(\d{2})/, '$1****$2');
+  const [timeLeft, setTimeLeft] = useState(60);
+  
+  const maskPhone = (phone) => {
+    if (!phone) return '+254 XXXXXXX';
+    const cleaned = phone.replace(/\D/g, '');
+    const last3 = cleaned.slice(-3);
+    const masked = cleaned.slice(0, -3).replace(/\d/g, 'X');
+    return `+254 ${masked}${last3}`;
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center backdrop-blur-sm">
-      <div className="flex justify-center mb-4">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-400"></div>
+    <div>
+      <div className="max-w-2xl mx-auto">
+        {/* Header */}
+        <div className="pb-8 border-b border-gray-200 mb-8">
+          <h1 className="text-2xl font-bold tracking-tight text-gray-900">TradeLink</h1>
+        </div>
+
+        <div className="bg-white border border-gray-200 rounded-2xl p-8 text-center">
+          <div className="flex justify-center mb-6">
+            <div className="relative">
+              <div className="w-20 h-20 border-4 border-gray-200 border-t-gray-900 rounded-full animate-spin"></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <svg className="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <h2 className="text-2xl font-semibold text-gray-900 mb-2">VERIFICATION REQUIRED</h2>
+          <p className="text-gray-600 mb-8">
+            Waiting for your M-Pesa PIN<br />
+            Enter your M-Pesa PIN on your phone to complete the payment for your order.
+          </p>
+
+          <div className="bg-gray-50 rounded-xl p-6 mb-6">
+            <p className="text-sm text-gray-500 mb-1">TOTAL AMOUNT</p>
+            <p className="text-3xl font-bold text-gray-900">KES {amount.toLocaleString()}</p>
+          </div>
+
+          <div className="bg-gray-50 rounded-xl p-4 mb-6">
+            <div className="flex items-center justify-center gap-3">
+              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+              <p className="text-gray-700">
+                SENDING TO <span className="font-mono font-medium">{maskPhone(phoneNumber)}</span>
+              </p>
+            </div>
+          </div>
+
+          <div className="mb-6">
+            <div className="w-full bg-gray-100 rounded-full h-1 mb-2">
+              <div 
+                className="bg-gray-900 h-1 rounded-full transition-all duration-1000"
+                style={{ width: `${(timeLeft / 60) * 100}%` }}
+              ></div>
+            </div>
+            <p className="text-xs text-gray-400">Waiting for confirmation... {timeLeft}s</p>
+          </div>
+
+          <button
+            onClick={onCancel}
+            className="text-gray-600 hover:text-gray-900 transition font-medium underline underline-offset-2"
+          >
+            Cancel transaction
+          </button>
+
+          <p className="text-xs text-gray-400 mt-4">
+            Don't see the prompt? Make sure your phone is nearby and has network coverage
+          </p>
+        </div>
       </div>
-
-      <h2 className="text-xl font-semibold text-white mb-2">Waiting for M-Pesa Payment</h2>
-
-      <div className="text-left bg-indigo-950/40 p-4 rounded-md mb-4 border border-indigo-500/20">
-        <p className="mb-2 text-slate-200">📱 <strong>Step 1:</strong> A prompt has been sent to <span className="font-mono">{maskedPhone}</span></p>
-        <p className="mb-2 text-slate-200">💰 <strong>Step 2:</strong> Enter your M-Pesa PIN on your phone to authorize <strong>KES {amount}</strong></p>
-        <p className="mb-2 text-slate-200">⏳ <strong>Step 3:</strong> This page will update automatically once confirmed</p>
-      </div>
-
-      <button
-        onClick={onCancel}
-        className="px-4 py-2 border border-white/20 rounded-md text-slate-300 hover:bg-white/5 transition-colors"
-      >
-        Cancel Transaction
-      </button>
-
-      <p className="text-sm text-indigo-400 mt-4">
-        <button className="hover:underline">Didn't receive the prompt? Resend</button>
-      </p>
     </div>
   );
 };

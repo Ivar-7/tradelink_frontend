@@ -5,20 +5,19 @@ import PaymentConfirm from '../components/PaymentConfirm';
 import PaymentFailure from '../components/PaymentFailure';
 import StkPush from '../components/StkPush';
 import usePaymentsHook from '../hooks/usePaymentsHook';
-// If the global CSS already applies the gradient everywhere, you can skip this wrapper.
-// Otherwise, add the same classes as HomePage:
-import '../../../features/home/styles/home.css'; // ensure the styles are loaded
 
 const PaymentPage = () => {
   const [step, setStep] = useState('form');
   const [paymentDetails, setPaymentDetails] = useState({
     orderId: '123e4567-e89b-12d3-a456-426614174000',
-    amount: 1500,
+    amount: 64900,
     phoneNumber: '',
     customerName: '',
+    email: '',
+    pickupLocation: ''
   });
   const [transactionId, setTransactionId] = useState(null);
-  const { error, initiate } = usePaymentsHook();
+  const { error, initiate, loading } = usePaymentsHook();
 
   const handleFormSubmit = async (data) => {
     setPaymentDetails(prev => ({ ...prev, ...data }));
@@ -31,7 +30,9 @@ const PaymentPage = () => {
       };
       const result = await initiate(payload);
       setTransactionId(result.id);
-      setStep('success'); // simplified; in reality check status
+      setTimeout(() => {
+        setStep('success');
+      }, 5000);
     } catch (err) {
       console.error(err);
       setStep('failure');
@@ -42,40 +43,43 @@ const PaymentPage = () => {
   const handleCancel = () => setStep('form');
 
   return (
-    <div className="home-page w-full text-white min-h-screen">
-      <div className="hero-overlay px-4 py-10">
-        <div className="mx-auto max-w-lg">
-          <h1 className="text-2xl font-bold text-foreground mb-6">Payment</h1>
-
-          {step === 'form' && (
-            <PaymentForm
-              initialPhone={paymentDetails.phoneNumber}
-              initialName={paymentDetails.customerName}
-              amount={paymentDetails.amount}
-              onSubmit={handleFormSubmit}
-            />
-          )}
-          {step === 'waiting' && (
-            <StkPush
-              phoneNumber={paymentDetails.phoneNumber}
-              amount={paymentDetails.amount}
-              onCancel={handleCancel}
-            />
-          )}
-          {step === 'success' && (
-            <PaymentConfirm
-              transactionId={transactionId}
-              amount={paymentDetails.amount}
-              phoneNumber={paymentDetails.phoneNumber}
-            />
-          )}
-          {step === 'failure' && (
-            <PaymentFailure
-              error={error || 'Payment failed. Please try again.'}
-              onRetry={handleRetry}
-            />
-          )}
-        </div>
+    <div className="min-h-screen bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {step === 'form' && (
+          <PaymentForm
+            initialPhone={paymentDetails.phoneNumber}
+            initialName={paymentDetails.customerName}
+            initialEmail={paymentDetails.email}
+            amount={paymentDetails.amount}
+            onSubmit={handleFormSubmit}
+            loading={loading}
+          />
+        )}
+        {step === 'waiting' && (
+          <StkPush
+            phoneNumber={paymentDetails.phoneNumber}
+            amount={paymentDetails.amount}
+            onCancel={handleCancel}
+          />
+        )}
+        {step === 'success' && (
+          <PaymentConfirm
+            transactionId={transactionId}
+            amount={paymentDetails.amount}
+            phoneNumber={paymentDetails.phoneNumber}
+            customerName={paymentDetails.customerName}
+            customerEmail={paymentDetails.email}
+            pickupLocation={paymentDetails.pickupLocation}
+          />
+        )}
+        {step === 'failure' && (
+          <PaymentFailure
+            error={error || 'Transaction timeout — we didn\'t receive confirmation from your phone.'}
+            onRetry={handleRetry}
+            amount={paymentDetails.amount}
+            phoneNumber={paymentDetails.phoneNumber}
+          />
+        )}
       </div>
     </div>
   );
