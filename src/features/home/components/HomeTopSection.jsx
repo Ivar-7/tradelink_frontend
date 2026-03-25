@@ -42,7 +42,18 @@ const HomeTopSection = ({ topCategories, heroFeature, heroPerks }) => {
 
       <aside className="flex flex-col gap-6 lg:col-span-2">
         <div className="rounded-2xl border border-border bg-surface p-5 text-center shadow-sm">
-          <div className="mx-auto mb-4 h-16 w-16 overflow-hidden rounded-full border-2 border-primary-200 bg-slate-200" />
+          <div className="mx-auto mb-4 h-16 w-16 overflow-hidden rounded-full border-2 border-primary-200 bg-slate-200">
+            {heroPerks.avatarImage ? (
+              <img
+                src={heroPerks.avatarImage}
+                alt="Atelier profile"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            ) : (
+              <div className="flex h-full w-full items-center justify-center text-2xl">🛍</div>
+            )}
+          </div>
           <p className="mb-5 text-sm font-semibold italic text-foreground">{heroPerks.welcomeText}</p>
           <div className="grid grid-cols-2 gap-2">
             <button type="button" className="rounded-lg bg-primary-600 py-2 text-xs font-bold text-white">

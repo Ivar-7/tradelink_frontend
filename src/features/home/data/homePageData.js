@@ -19,6 +19,7 @@ export const heroFeature = {
 
 export const heroPerks = {
   welcomeText: 'Welcome to the Atelier, Guest',
+  avatarImage: '/user.png',
   promoTitle: 'New User Perks',
   promoPrice: '$0.01',
   promoLabel: 'First Item',
