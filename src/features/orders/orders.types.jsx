@@ -17,9 +17,9 @@ export const ShippingMethodSchema = z.enum([
 
 // ── Order Item ─────────────────────────────────────────────────────────────
 export const OrderItemSchema = z.object({
-  product_id: z.string().uuid(),
+  product_id: z.string().min(1),
   product_name: z.string(),
-  product_image: z.string().url(),
+  product_image: z.string().min(1),
   quantity: z.number().int().positive(),
   unit_price: z.number().positive(),
   subtotal: z.number().positive(),
@@ -27,13 +27,39 @@ export const OrderItemSchema = z.object({
 
 // ── Order ──────────────────────────────────────────────────────────────────
 export const OrderSchema = z.object({
-  id: z.string().uuid(),
-  user_id: z.string().uuid(),
+  id: z.string().min(1),
+  user_id: z.string().min(1),
   order_date: z.string().datetime(),
   order_amount: z.number().positive(),
   products: z.array(OrderItemSchema),
   status: OrderStatusSchema,
   shipping_method: ShippingMethodSchema,
+  tracking_number: z.string().nullable().optional(),
+  delivered_at: z.string().datetime().optional(),
+  cancelled_at: z.string().datetime().optional(),
+  cancellation_reason: z.string().optional(),
+  issue_report: z
+    .object({
+      type: z.string(),
+      details: z.string(),
+      reported_at: z.string().datetime(),
+    })
+    .optional(),
+  return_request: z
+    .object({
+      id: z.string().min(1),
+      created_at: z.string().datetime(),
+      status: z.enum(['requested', 'approved', 'shipped_back', 'refunded']),
+      reason: z.string(),
+      notes: z.string(),
+      timeline: z.object({
+        requested_at: z.string().datetime().nullable(),
+        approved_at: z.string().datetime().nullable(),
+        shipped_back_at: z.string().datetime().nullable(),
+        refunded_at: z.string().datetime().nullable(),
+      }),
+    })
+    .optional(),
   delivery_address: z.object({
     county: z.string(),
     city: z.string(),

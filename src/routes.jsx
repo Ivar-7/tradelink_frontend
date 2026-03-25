@@ -20,6 +20,8 @@ const HomePage = lazy(() => import('./features/home/pages/HomePage'));
 // ── Auth ──────────────────────────────────────────────────
 const LoginPage = lazy(() => import('./features/auth/pages/LoginPage'));
 const SignupPage = lazy(() => import('./features/auth/pages/SignupPage'));
+const ForgotPasswordPage = lazy(() => import('./features/auth/pages/ForgotPasswordPage'));
+const UnsubscribeConfirmationPage = lazy(() => import('./features/auth/pages/UnsubscribeConfirmationPage'));
 
 // ── Products ──────────────────────────────────────────────
 const ProductsPage = lazy(() => import('./features/products/pages/ProductsPage'));
@@ -52,14 +54,14 @@ const ReviewsPage = lazy(() => import('./features/reviews/pages/ReviewsPage'));
 const FeedbackPage = lazy(() => import('./features/feedback/pages/FeedbackPage'));
 
 const router = createBrowserRouter([
-  // Auth pages — standalone (no shared Layout)
-  { path: ROUTES.AUTH.LOGIN, element: withSuspense(LoginPage) },
-  { path: ROUTES.AUTH.SIGNUP, element: withSuspense(SignupPage) },
-
-  // All app pages — one shared Layout with one Navbar
+  // All pages — one shared Layout with global Navbar and Footer
   {
     element: <Layout />,
     children: [
+      { path: ROUTES.AUTH.LOGIN, element: withSuspense(LoginPage) },
+      { path: ROUTES.AUTH.SIGNUP, element: withSuspense(SignupPage) },
+      { path: ROUTES.AUTH.FORGOT_PASSWORD, element: withSuspense(ForgotPasswordPage) },
+      { path: ROUTES.AUTH.UNSUBSCRIBE_CONFIRMATION, element: withSuspense(UnsubscribeConfirmationPage) },
       { path: ROUTES.HOME, element: withSuspense(HomePage) },
       { path: ROUTES.PRODUCTS, element: withSuspense(ProductsPage) },
       { path: ROUTES.PRODUCT_DETAIL, element: withSuspense(ProductDetailPage) },

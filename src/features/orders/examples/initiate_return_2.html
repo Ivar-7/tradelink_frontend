@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Initiate Return | TradeLink</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "secondary": "#445aa6",
+                "inverse-on-surface": "#f1f1f1",
+                "outline-variant": "#c3c5d9",
+                "on-primary-container": "#e5e8ff",
+                "on-error": "#ffffff",
+                "surface-dim": "#dadada",
+                "on-secondary-fixed-variant": "#2a418d",
+                "inverse-surface": "#303030",
+                "surface-container": "#eeeeee",
+                "inverse-primary": "#b6c4ff",
+                "on-tertiary": "#ffffff",
+                "surface-bright": "#f9f9f9",
+                "on-primary": "#ffffff",
+                "surface-container-highest": "#e2e2e2",
+                "on-tertiary-fixed-variant": "#862300",
+                "primary-fixed-dim": "#b6c4ff",
+                "on-tertiary-fixed": "#3a0a00",
+                "on-tertiary-container": "#ffe3db",
+                "error": "#ba1a1a",
+                "surface": "#f9f9f9",
+                "primary-container": "#0057ff",
+                "on-primary-fixed": "#001550",
+                "on-background": "#1b1b1b",
+                "surface-container-high": "#e8e8e8",
+                "on-surface": "#1b1b1b",
+                "on-secondary-container": "#263e89",
+                "on-secondary": "#ffffff",
+                "tertiary": "#972800",
+                "surface-container-lowest": "#ffffff",
+                "tertiary-fixed": "#ffdbd1",
+                "error-container": "#ffdad6",
+                "tertiary-container": "#c13600",
+                "on-secondary-fixed": "#001550",
+                "surface-variant": "#e2e2e2",
+                "surface-tint": "#004ee7",
+                "secondary-fixed": "#dce1ff",
+                "on-error-container": "#93000a",
+                "secondary-container": "#97adff",
+                "on-primary-fixed-variant": "#003ab2",
+                "background": "#f9f9f9",
+                "on-surface-variant": "#434656",
+                "surface-container-low": "#f3f3f3",
+                "outline": "#737688",
+                "primary-fixed": "#dce1ff",
+                "primary": "#0043c8",
+                "tertiary-fixed-dim": "#ffb59f",
+                "secondary-fixed-dim": "#b6c4ff"
+              },
+              fontFamily: {
+                "headline": ["Inter"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-black tracking-tighter text-slate-900 dark:text-white">TradeLink</div>
+<div class="hidden md:flex space-x-8 items-center">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors font-['Inter'] tracking-tight" href="#">Categories</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors font-['Inter'] tracking-tight" href="#">Wishlist</a>
+<a class="text-blue-700 dark:text-blue-400 font-bold border-b-2 border-blue-700 dark:border-blue-400 pb-1 font-['Inter'] tracking-tight" href="#">Account</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors font-['Inter'] tracking-tight" href="#">Cart</a>
+</div>
+<div class="flex items-center space-x-6">
+<button class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-200 p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-200 p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</div>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800 h-[1px] w-full"></div>
+</nav>
+<main class="pt-24 pb-20 max-w-7xl mx-auto px-8">
+<div class="flex flex-col md:flex-row gap-12">
+<!-- SideNavBar -->
+<aside class="flex flex-col w-full md:w-64 h-fit p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg space-y-2">
+<div class="mb-6 px-4">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Account</h2>
+<p class="text-xs text-slate-500 dark:text-slate-400">Manage your trade profile</p>
+</div>
+<nav class="flex flex-col space-y-1">
+<a class="text-slate-600 dark:text-slate-400 px-4 py-2 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-sm font-medium" href="#">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-[20px]" data-icon="person">person</span>
+<span>Profile</span>
+</div>
+</a>
+<a class="bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 rounded-md px-4 py-2 text-sm font-bold" href="#">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-[20px]" data-icon="package">package</span>
+<span>Orders</span>
+</div>
+</a>
+<a class="text-slate-600 dark:text-slate-400 px-4 py-2 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-sm font-medium" href="#">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-[20px]" data-icon="assignment_return">assignment_return</span>
+<span>Returns</span>
+</div>
+</a>
+<a class="text-slate-600 dark:text-slate-400 px-4 py-2 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-sm font-medium" href="#">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-[20px]" data-icon="payments">payments</span>
+<span>Payments</span>
+</div>
+</a>
+<a class="text-slate-600 dark:text-slate-400 px-4 py-2 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-sm font-medium" href="#">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span>Settings</span>
+</div>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<section class="flex-1">
+<!-- Breadcrumb -->
+<nav class="flex items-center space-x-2 text-xs font-['Inter'] uppercase tracking-widest text-on-surface-variant mb-6">
+<a class="hover:text-primary transition-colors" href="#">My Orders</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Order #TRL-99201</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Return</span>
+</nav>
+<h1 class="text-4xl font-black tracking-tighter text-on-surface mb-8">Initiate Return</h1>
+<!-- Order Summary -->
+<div class="bg-surface-container-low p-6 rounded-xl mb-12 flex flex-wrap gap-8 items-center">
+<div>
+<p class="text-[10px] font-['Inter'] uppercase tracking-widest text-on-surface-variant mb-1">Order Number</p>
+<p class="font-bold text-on-surface">#TRL-99201</p>
+</div>
+<div>
+<p class="text-[10px] font-['Inter'] uppercase tracking-widest text-on-surface-variant mb-1">Placed On</p>
+<p class="font-bold text-on-surface">Oct 24, 2024</p>
+</div>
+<div>
+<p class="text-[10px] font-['Inter'] uppercase tracking-widest text-on-surface-variant mb-1">Total Amount</p>
+<p class="font-bold text-on-surface">$1,240.00</p>
+</div>
+</div>
+<!-- Return Form -->
+<form class="space-y-12">
+<!-- Items Section -->
+<div class="space-y-6">
+<h3 class="text-lg font-bold text-on-surface">Select Items to Return</h3>
+<!-- Item 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center">
+<div class="flex items-center gap-4">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<div class="w-20 h-20 bg-surface-variant rounded-lg overflow-hidden flex-shrink-0">
+<img alt="" class="w-full h-full object-cover" data-alt="High-end studio headphones in black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE3xv9Ock2GlAbKMvn-XTk-b59HG1RiS-5BfgJje8iIYGi5sKXYNZFCF2Sf9GQf9z6O56dt8AK53Duo_5zIxsEQFYEf322o8r7Lmc5twSO9070m7abi-OmN91TaU5rPX9Ldz7npqgQxXCvqYjzf5fijO3fuomX4XzANdvjCYCpW1E6aLtTR0PjzKuHPATDT5zjwlN1OQXhzDmWKrBawaEWprzbRyak_44NgIpUxmxAE36rk1t9pyGECNfolDfhQj2sO-WBZD08n4A"/>
+</div>
+</div>
+<div class="flex-1">
+<p class="font-bold text-on-surface">Pro Audio Master Headphones</p>
+<p class="text-xs text-on-surface-variant">Serial: TL-88291-A</p>
+</div>
+<div class="w-full md:w-48">
+<label class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1 block">Reason</label>
+<select class="w-full bg-surface-container-high border-none text-sm rounded-lg focus:ring-2 focus:ring-primary">
+<option>Select Reason</option>
+<option>Performance Issue</option>
+<option>Changed My Mind</option>
+<option>Wrong Item Received</option>
+<option>Damaged on Arrival</option>
+</select>
+</div>
+<div class="w-24">
+<label class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1 block">Qty</label>
+<select class="w-full bg-surface-container-high border-none text-sm rounded-lg focus:ring-2 focus:ring-primary text-center">
+<option>1</option>
+</select>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center">
+<div class="flex items-center gap-4">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<div class="w-20 h-20 bg-surface-variant rounded-lg overflow-hidden flex-shrink-0">
+<img alt="" class="w-full h-full object-cover" data-alt="Minimalist silver mechanical watch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZrv7FoZnEta1TIEHuoqcoxdJ4Es6gHpo5paCjVjK_ExbcLoI4Ec4OZqAo6ayVswg7SGaABgtpHR0DRuz3cQ2UnzjU9dG_39HluysSaCXySi52ZQa_ZzPTGUNmLBsq8V21LxKAIadQ-d1A_zOc00ZaU9IuVBzjVcMCAPi6HwRuBdnkR2_O0CQx8M6sd55QTOjYkl97W084454Q-a9eaKVgGKl6N2U2xk5iJonF96SOa15KBb6560504qse26xXP800d_ru8tD_LfU"/>
+</div>
+</div>
+<div class="flex-1">
+<p class="font-bold text-on-surface">Precision Timepiece 04</p>
+<p class="text-xs text-on-surface-variant">Serial: TL-1192-S</p>
+</div>
+<div class="w-full md:w-48">
+<label class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1 block">Reason</label>
+<select class="w-full bg-surface-container-high border-none text-sm rounded-lg focus:ring-2 focus:ring-primary">
+<option>Select Reason</option>
+<option>Performance Issue</option>
+<option>Changed My Mind</option>
+<option>Wrong Item Received</option>
+<option>Damaged on Arrival</option>
+</select>
+</div>
+<div class="w-24">
+<label class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1 block">Qty</label>
+<select class="w-full bg-surface-container-high border-none text-sm rounded-lg focus:ring-2 focus:ring-primary text-center">
+<option>1</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Details Section -->
+<div class="grid md:grid-cols-2 gap-12">
+<div>
+<h3 class="text-lg font-bold text-on-surface mb-6">Additional Notes <span class="text-xs font-normal text-on-surface-variant">(Optional)</span></h3>
+<textarea class="w-full h-40 bg-surface-container-high border-none rounded-xl p-4 focus:ring-2 focus:ring-primary placeholder:text-on-surface-variant/50" placeholder="Tell us more about the reason for your return..."></textarea>
+</div>
+<div>
+<h3 class="text-lg font-bold text-on-surface mb-6">Upload Photos <span class="text-xs font-normal text-on-surface-variant">(Required for damaged items)</span></h3>
+<div class="w-full h-40 border-2 border-dashed border-outline-variant rounded-xl flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-4xl mb-2 group-hover:scale-110 transition-transform" data-icon="photo_camera">photo_camera</span>
+<p class="text-sm font-medium">Drag and drop or click to upload</p>
+<p class="text-[10px] uppercase tracking-wider mt-1">PNG, JPG up to 10MB</p>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="pt-8 flex items-center space-x-8">
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-10 py-4 rounded-lg font-bold shadow-lg hover:brightness-110 active:scale-95 transition-all duration-200" type="submit">
+                            Submit Return Request
+                        </button>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Cancel</a>
+</div>
+</form>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-900 dark:bg-black w-full mt-20">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 px-12 py-16 max-w-7xl mx-auto">
+<div class="space-y-6">
+<div class="text-xl font-black text-white">TradeLink</div>
+<p class="text-slate-400 text-xs tracking-wide leading-relaxed">Defining the next era of digital trade through precision and editorial excellence.</p>
+</div>
+<div class="space-y-6">
+<h4 class="text-white font-bold text-xs uppercase tracking-widest">Customer Service</h4>
+<ul class="space-y-3">
+<li><a class="text-slate-400 hover:text-blue-400 transition-colors text-xs uppercase tracking-widest" href="#">Contact Support</a></li>
+<li><a class="text-slate-400 hover:text-blue-400 transition-colors text-xs uppercase tracking-widest" href="#">Shipping Info</a></li>
+<li><a class="text-slate-400 hover:text-blue-400 transition-colors text-xs uppercase tracking-widest" href="#">Returns Policy</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="text-white font-bold text-xs uppercase tracking-widest">Company</h4>
+<ul class="space-y-3">
+<li><a class="text-slate-400 hover:text-blue-400 transition-colors text-xs uppercase tracking-widest" href="#">About Us</a></li>
+<li><a class="text-slate-400 hover:text-blue-400 transition-colors text-xs uppercase tracking-widest" href="#">Careers</a></li>
+<li><a class="text-slate-400 hover:text-blue-400 transition-colors text-xs uppercase tracking-widest" href="#">Sustainability</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="text-white font-bold text-xs uppercase tracking-widest">Legal</h4>
+<ul class="space-y-3">
+<li><a class="text-slate-400 hover:text-blue-400 transition-colors text-xs uppercase tracking-widest" href="#">Terms of Service</a></li>
+<li><a class="text-slate-400 hover:text-blue-400 transition-colors text-xs uppercase tracking-widest" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-400 hover:text-blue-400 transition-colors text-xs uppercase tracking-widest" href="#">Cookie Settings</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-slate-800 py-8 px-12 max-w-7xl mx-auto">
+<p class="text-slate-500 text-[10px] uppercase tracking-[0.2em]">© 2024 TradeLink Digital Atelier. All rights reserved.</p>
+</div>
+</footer>
+</body></html>

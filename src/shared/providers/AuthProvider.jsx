@@ -1,6 +1,11 @@
 import { useCallback, useState } from 'react';
 import { AuthContext } from '../../features/auth/context/authContext';
-import { login as loginApi, signup as signupApi, logout as logoutApi } from '../../features/auth/api/authApi';
+import {
+  login as loginApi,
+  signup as signupApi,
+  logout as logoutApi,
+  requestPasswordReset as requestPasswordResetApi,
+} from '../../features/auth/api/authApi';
 import { mapError } from '../utils/errorHandler';
 
 const AuthProvider = ({ children }) => {
@@ -62,8 +67,37 @@ const AuthProvider = ({ children }) => {
     }
   }, []);
 
+  const requestPasswordReset = useCallback(async (payload) => {
+    setLoading(true);
+    setError(null);
+    try {
+      return await requestPasswordResetApi(payload);
+    } catch (err) {
+      const message = mapError(err);
+      setError(message);
+      throw new Error(message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  const clearError = useCallback(() => {
+    setError(null);
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ user, loading, error, login, signup, logout }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        loading,
+        error,
+        login,
+        signup,
+        logout,
+        requestPasswordReset,
+        clearError,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

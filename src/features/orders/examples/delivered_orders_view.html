@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeLink | My Orders</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#e8e8e8",
+              "on-tertiary-fixed": "#3a0a00",
+              "tertiary-fixed": "#ffdbd1",
+              "inverse-primary": "#b6c4ff",
+              "secondary-fixed-dim": "#b6c4ff",
+              "on-surface": "#1b1b1b",
+              "primary": "#0043c8",
+              "on-primary-container": "#e5e8ff",
+              "outline-variant": "#c3c5d9",
+              "secondary": "#445aa6",
+              "on-secondary-fixed": "#001550",
+              "surface-container-low": "#f3f3f3",
+              "on-primary-fixed": "#001550",
+              "on-tertiary-fixed-variant": "#862300",
+              "on-tertiary": "#ffffff",
+              "on-primary-fixed-variant": "#003ab2",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed-dim": "#ffb59f",
+              "surface-dim": "#dadada",
+              "on-secondary-fixed-variant": "#2a418d",
+              "secondary-container": "#97adff",
+              "error": "#ba1a1a",
+              "surface-tint": "#004ee7",
+              "on-error-container": "#93000a",
+              "on-background": "#1b1b1b",
+              "inverse-surface": "#303030",
+              "tertiary-container": "#c13600",
+              "surface-variant": "#e2e2e2",
+              "on-secondary": "#ffffff",
+              "primary-fixed": "#dce1ff",
+              "on-tertiary-container": "#ffe3db",
+              "tertiary": "#972800",
+              "surface": "#f9f9f9",
+              "surface-container": "#eeeeee",
+              "surface-container-highest": "#e2e2e2",
+              "primary-container": "#0057ff",
+              "background": "#f9f9f9",
+              "outline": "#737688",
+              "on-secondary-container": "#263e89",
+              "on-surface-variant": "#434656",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "secondary-fixed": "#dce1ff",
+              "on-primary": "#ffffff",
+              "inverse-on-surface": "#f1f1f1",
+              "surface-bright": "#f9f9f9",
+              "primary-fixed-dim": "#b6c4ff"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl shadow-sm">
+<div class="flex justify-between items-center px-8 py-4 max-w-[1440px] mx-auto w-full">
+<div class="text-2xl font-black tracking-tighter text-blue-700">TradeLink</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Categories</a>
+<a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Wishlist</a>
+<a class="text-blue-700 font-bold border-b-2 border-blue-700 pb-1" href="#">Account</a>
+<a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Cart</a>
+</nav>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-slate-500 hover:text-blue-700 transition-transform active:scale-90" data-icon="search">search</button>
+<button class="material-symbols-outlined text-slate-500 hover:text-blue-700 transition-transform active:scale-90" data-icon="person">person</button>
+<div class="relative">
+<button class="material-symbols-outlined text-slate-500 hover:text-blue-700 transition-transform active:scale-90" data-icon="shopping_cart">shopping_cart</button>
+<span class="absolute -top-2 -right-2 bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span>
+</div>
+</div>
+</div>
+</header>
+<div class="max-w-[1440px] mx-auto flex pt-24 px-8 min-h-screen">
+<!-- SideNavBar -->
+<aside class="w-64 fixed left-8 top-24 hidden lg:block">
+<div class="mb-8">
+<h2 class="text-sm font-medium tracking-wide uppercase text-slate-500">Account Central</h2>
+<p class="text-xs text-slate-400">Manage your profile</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="text-slate-600 p-3 hover:bg-slate-100 transition-all rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+<a class="bg-white text-blue-700 shadow-sm rounded-lg p-3 font-semibold flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="package">package</span>
+                    My Orders
+                </a>
+<a class="text-slate-600 p-3 hover:bg-slate-100 transition-all rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="home_pin">home_pin</span>
+                    Address Book
+                </a>
+<a class="text-slate-600 p-3 hover:bg-slate-100 transition-all rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="credit_card">credit_card</span>
+                    Payment Methods
+                </a>
+<a class="text-slate-600 p-3 hover:bg-slate-100 transition-all rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+                    Wishlist
+                </a>
+<a class="text-slate-600 p-3 hover:bg-slate-100 transition-all rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="history">history</span>
+                    Recently Viewed
+                </a>
+<a class="text-slate-600 p-3 hover:bg-slate-100 transition-all rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+                    Account Settings
+                </a>
+<div class="mt-8 border-t border-slate-200 pt-4">
+<a class="text-error p-3 hover:bg-error-container/20 transition-all rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="logout">logout</span>
+                        Log Out
+                    </a>
+</div>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 lg:ml-80 pb-20">
+<header class="mb-12">
+<h1 class="text-4xl font-bold tracking-tight text-on-surface mb-2">My Orders</h1>
+<p class="text-on-surface-variant">View and manage all your recent purchases and returns.</p>
+</header>
+<!-- Filter Tabs -->
+<div class="flex flex-wrap gap-8 border-b border-outline-variant/20 mb-10 overflow-x-auto pb-px">
+<button class="pb-4 text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap">All Orders</button>
+<button class="pb-4 text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap">Pending</button>
+<button class="pb-4 text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap">Processing</button>
+<button class="pb-4 text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap">Shipped</button>
+<button class="pb-4 text-primary font-bold border-b-2 border-primary whitespace-nowrap">Delivered</button>
+<button class="pb-4 text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap">Cancelled</button>
+<button class="pb-4 text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap">Returns</button>
+</div>
+<!-- Orders List Stack -->
+<div class="space-y-8">
+<!-- Order Card 1 -->
+<div class="bg-surface-container-lowest overflow-hidden">
+<div class="p-6 md:p-8 flex flex-col md:flex-row justify-between gap-6 border border-outline-variant/10">
+<div class="space-y-1">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Order Number</span>
+<h3 class="text-lg font-bold text-on-surface">#TRL-88392</h3>
+</div>
+<div class="space-y-1">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Placed On</span>
+<p class="text-on-surface font-medium">Oct 12, 2024</p>
+</div>
+<div class="space-y-1">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Total Amount</span>
+<p class="text-on-surface font-bold text-xl">$450.50</p>
+</div>
+<div class="flex items-start">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-100">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                Delivered
+                            </span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 md:p-8 space-y-8">
+<!-- Status Alert -->
+<div class="flex items-center gap-4 bg-white p-4 rounded-xl border border-outline-variant/10">
+<div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+</div>
+<div>
+<p class="text-on-surface font-semibold text-sm">Delivered on Oct 12, 2024</p>
+<p class="text-on-surface-variant text-xs">Handed directly to resident.</p>
+</div>
+</div>
+<!-- Items Grid/Table -->
+<div class="space-y-4">
+<h4 class="text-xs uppercase tracking-widest font-bold text-on-surface-variant">Order Items (2)</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Item 1 -->
+<div class="flex items-center gap-4 p-4 bg-white rounded-xl">
+<div class="w-20 h-20 bg-surface-variant flex-shrink-0 flex items-center justify-center rounded-lg overflow-hidden">
+<img alt="Product Image" class="mix-blend-multiply w-full h-full object-contain" data-alt="High-end minimalist athletic sneaker in white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiHMEx7h8e4wJjC6r_pX3X7ZSEycHaV-QytmnnPohC91Repc21VnFzFyExa38QA90n7cvP8iELQHs5zT9yYSOYVyxDivUMzzRup3rLUMkt4nF4-Z8yxU1vaJViOD0Ze7Nur_jJ7s_KeVaA2hBjq6JMCwS2eU7CYLBYQPeBsWddIi_hf1anDMmXEYE6atqy8hjrTRQEdyfqP-duvtousMy3qpmDQT017xJzHKTPzQDE6mvkOXBuuNlVIALMjj6pAxvBW_lytLApLOk"/>
+</div>
+<div>
+<p class="font-bold text-on-surface leading-tight mb-1">Elite Runner X-1</p>
+<p class="text-xs text-on-surface-variant mb-2">Cloud White • Size 10</p>
+<p class="text-sm font-bold text-primary">$210.00</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-4 p-4 bg-white rounded-xl">
+<div class="w-20 h-20 bg-surface-variant flex-shrink-0 flex items-center justify-center rounded-lg overflow-hidden">
+<img alt="Product Image" class="mix-blend-multiply w-full h-full object-contain" data-alt="Minimalist modern wrist watch in silver and black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLXiJJQmAK6yqq1rsfZ24QCUh3XwlUmY8f5dh5weL75x5MRvGYbf2dC1L_-vaKGOk_YpTerb36CORFm2_na3cUu-vwdaJQ6bCvd_auUVb6nzY1G97zAghfd32UODUzFG_K27h0KQoBaPdwHNMYd_lXf6B8xGTygzEUp3y1BnSkKhmM7afwCT1aUUWYWKF7oLYho7eot8pggsKuLIY6tnLHsVoY8yaimKJp-pbhfJqo80jY0tvdcpOBeuVEj7mVCIj3iYbV0_9RTe8"/>
+</div>
+<div>
+<p class="font-bold text-on-surface leading-tight mb-1">Precision Chronograph</p>
+<p class="text-xs text-on-surface-variant mb-2">Silver Mesh • 42mm</p>
+<p class="text-sm font-bold text-primary">$240.50</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="flex flex-col sm:flex-row items-center justify-between pt-6 border-t border-outline-variant/20 gap-4">
+<div class="flex items-center gap-4">
+<button class="px-6 py-2.5 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold text-sm rounded-md transition-transform active:scale-95 shadow-lg shadow-primary/20">
+                                    Buy Again
+                                </button>
+<button class="px-6 py-2.5 bg-surface-container-highest text-on-surface font-bold text-sm rounded-md hover:bg-surface-dim transition-colors">
+                                    Return Items
+                                </button>
+</div>
+<button class="text-primary font-bold text-sm hover:underline underline-offset-4 decoration-2">
+                                Write a Review
+                            </button>
+</div>
+</div>
+</div>
+<!-- Secondary Order Card (Mockup) -->
+<div class="bg-white border border-outline-variant/10 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+<div class="p-6 md:p-8 flex flex-col md:flex-row justify-between gap-6">
+<div class="space-y-1">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Order Number</span>
+<h3 class="text-lg font-bold text-on-surface">#TRL-87114</h3>
+</div>
+<div class="space-y-1">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Placed On</span>
+<p class="text-on-surface font-medium">Sep 28, 2024</p>
+</div>
+<div class="space-y-1">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Total Amount</span>
+<p class="text-on-surface font-bold text-xl">$125.00</p>
+</div>
+<div class="flex items-start">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-100">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                Delivered
+                            </span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-slate-900 text-slate-400 w-full mt-20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 md:px-20 py-16 max-w-[1440px] mx-auto w-full">
+<div class="space-y-6">
+<div class="text-lg font-bold text-white">TradeLink</div>
+<p class="text-xs leading-relaxed max-w-xs">
+                    Curating the world's most intentional digital goods. Crafting a seamless commerce experience for the modern atelier.
+                </p>
+</div>
+<div class="space-y-4">
+<h4 class="text-white text-sm font-bold">Customer Service</h4>
+<ul class="space-y-2 text-xs">
+<li><a class="hover:text-white transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Track Your Order</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Shipping Policy</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Returns &amp; Refunds</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="text-white text-sm font-bold">Company</h4>
+<ul class="space-y-2 text-xs">
+<li><a class="hover:text-white transition-colors" href="#">About Atelier</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Sustainability</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="text-white text-sm font-bold">Legal</h4>
+<ul class="space-y-2 text-xs">
+<li><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Cookie Settings</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-[1440px] mx-auto px-8 md:px-20 py-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="text-[10px] tracking-widest uppercase">© 2024 TradeLink Digital Atelier. All rights reserved.</div>
+<div class="flex gap-6">
+<span class="material-symbols-outlined hover:text-white cursor-pointer" data-icon="public">public</span>
+<span class="material-symbols-outlined hover:text-white cursor-pointer" data-icon="security">security</span>
+<span class="material-symbols-outlined hover:text-white cursor-pointer" data-icon="payments">payments</span>
+</div>
+</div>
+</footer>
+</body></html>

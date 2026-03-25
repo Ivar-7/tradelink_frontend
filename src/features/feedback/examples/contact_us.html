@@ -1,0 +1,479 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+        vertical-align: middle;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'surface-container-highest': '#e2e2e2',
+              'on-secondary-fixed-variant': '#2a418d',
+              'on-tertiary-fixed-variant': '#862300',
+              'tertiary-fixed-dim': '#ffb59f',
+              'on-primary': '#ffffff',
+              'outline-variant': '#c3c5d9',
+              'tertiary-fixed': '#ffdbd1',
+              'on-primary-fixed': '#001550',
+              'on-error-container': '#93000a',
+              'on-background': '#1b1b1b',
+              'on-primary-fixed-variant': '#003ab2',
+              'surface-dim': '#dadada',
+              'on-secondary-fixed': '#001550',
+              'on-primary-container': '#e5e8ff',
+              'on-tertiary': '#ffffff',
+              'primary-fixed': '#dce1ff',
+              'secondary-fixed': '#dce1ff',
+              'secondary-container': '#97adff',
+              'surface-tint': '#004ee7',
+              'inverse-primary': '#b6c4ff',
+              background: '#f9f9f9',
+              outline: '#737688',
+              tertiary: '#972800',
+              'on-tertiary-container': '#ffe3db',
+              'on-secondary': '#ffffff',
+              'primary-container': '#0057ff',
+              'surface-container-low': '#f3f3f3',
+              'surface-container-high': '#e8e8e8',
+              'on-tertiary-fixed': '#3a0a00',
+              'on-surface-variant': '#434656',
+              'error-container': '#ffdad6',
+              'surface-container': '#eeeeee',
+              'primary-fixed-dim': '#b6c4ff',
+              'secondary-fixed-dim': '#b6c4ff',
+              surface: '#f9f9f9',
+              'surface-container-lowest': '#ffffff',
+              'surface-bright': '#f9f9f9',
+              primary: '#0043c8',
+              'on-surface': '#1b1b1b',
+              'surface-variant': '#e2e2e2',
+              error: '#ba1a1a',
+              'tertiary-container': '#c13600',
+              secondary: '#445aa6',
+              'inverse-on-surface': '#f1f1f1',
+              'inverse-surface': '#303030',
+              'on-secondary-container': '#263e89',
+              'on-error': '#ffffff',
+            },
+            fontFamily: {
+              headline: ['Inter'],
+              body: ['Inter'],
+              label: ['Inter'],
+            },
+            borderRadius: { DEFAULT: '0.125rem', lg: '0.25rem', xl: '0.5rem', full: '0.75rem' },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-surface text-on-surface selection:bg-primary-fixed">
+    <!-- TopNavBar Shell -->
+    <nav
+      class="bg-surface/80 backdrop-blur-xl docked full-width top-0 sticky z-50 shadow-sm transition-all duration-300"
+    >
+      <div
+        class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto font-inter tracking-tight"
+      >
+        <!-- Brand Logo -->
+        <div class="text-2xl font-black tracking-tighter text-slate-900">TradeLink</div>
+        <!-- Navigation Links -->
+        <div class="hidden md:flex items-center gap-10">
+          <a class="text-slate-600 font-medium hover:text-slate-900 transition-colors" href="#"
+            >Categories</a
+          >
+          <a class="text-slate-600 font-medium hover:text-slate-900 transition-colors" href="#"
+            >Wishlist</a
+          >
+          <a class="text-slate-600 font-medium hover:text-slate-900 transition-colors" href="#"
+            >Account</a
+          >
+          <a class="text-slate-600 font-medium hover:text-slate-900 transition-colors" href="#"
+            >Cart</a
+          >
+        </div>
+        <!-- Trailing Icons -->
+        <div class="flex items-center gap-6">
+          <button
+            class="text-slate-600 hover:bg-slate-100/50 p-2 rounded-lg transition-all scale-95 active:duration-75"
+          >
+            <span class="material-symbols-outlined" data-icon="search">search</span>
+          </button>
+          <button
+            class="text-slate-600 hover:bg-slate-100/50 p-2 rounded-lg transition-all scale-95 active:duration-75"
+          >
+            <span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+          </button>
+          <button
+            class="text-slate-600 hover:bg-slate-100/50 p-2 rounded-lg transition-all scale-95 active:duration-75"
+          >
+            <span class="material-symbols-outlined" data-icon="person">person</span>
+          </button>
+          <button
+            class="text-slate-600 hover:bg-slate-100/50 p-2 rounded-lg transition-all scale-95 active:duration-75"
+          >
+            <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <main class="min-h-screen pb-32">
+      <!-- Header Section -->
+      <header class="pt-24 pb-16 text-center max-w-3xl mx-auto px-6">
+        <h1 class="text-5xl font-extrabold tracking-tight text-on-surface mb-6">Contact Us</h1>
+        <p class="text-on-surface-variant text-lg leading-relaxed mb-12">
+          We're here to help. Reach out to our team via the form below or our direct channels.
+        </p>
+        <div class="w-24 h-px bg-outline-variant/30 mx-auto"></div>
+      </header>
+      <!-- Main Content Layout -->
+      <section class="max-w-screen-xl mx-auto px-8">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-20">
+          <!-- Left Column: Contact Info (40%) -->
+          <div class="md:col-span-5 space-y-16 py-8">
+            <div>
+              <h2 class="text-label-md uppercase tracking-[0.05em] font-bold text-primary mb-8">
+                Get in Touch
+              </h2>
+              <div class="space-y-10">
+                <!-- Email -->
+                <div class="flex gap-6 group">
+                  <div
+                    class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-primary transition-colors group-hover:bg-primary group-hover:text-on-primary"
+                  >
+                    <span class="material-symbols-outlined" data-icon="mail">mail</span>
+                  </div>
+                  <div>
+                    <h3
+                      class="text-sm font-bold uppercase tracking-wider text-on-surface-variant mb-1"
+                    >
+                      Email Support
+                    </h3>
+                    <p class="text-lg font-medium text-on-surface">support@tradelink.com</p>
+                  </div>
+                </div>
+                <!-- Phone -->
+                <div class="flex gap-6 group">
+                  <div
+                    class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-primary transition-colors group-hover:bg-primary group-hover:text-on-primary"
+                  >
+                    <span class="material-symbols-outlined" data-icon="call">call</span>
+                  </div>
+                  <div>
+                    <h3
+                      class="text-sm font-bold uppercase tracking-wider text-on-surface-variant mb-1"
+                    >
+                      Call Us
+                    </h3>
+                    <p class="text-lg font-medium text-on-surface">+1 (800) 123-4567</p>
+                    <p class="text-sm text-on-surface-variant mt-1">Mon-Fri: 9am - 6pm EST</p>
+                  </div>
+                </div>
+                <!-- Live Chat -->
+                <div class="flex gap-6 group">
+                  <div
+                    class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-primary transition-colors group-hover:bg-primary group-hover:text-on-primary"
+                  >
+                    <span class="material-symbols-outlined" data-icon="chat_bubble"
+                      >chat_bubble</span
+                    >
+                  </div>
+                  <div>
+                    <h3
+                      class="text-sm font-bold uppercase tracking-wider text-on-surface-variant mb-1"
+                    >
+                      Live Chat
+                    </h3>
+                    <p class="text-lg font-medium text-on-surface">Chat with an Expert</p>
+                    <a
+                      class="inline-block mt-2 text-primary-container font-bold hover:underline underline-offset-4 decoration-2 transition-all"
+                      href="#"
+                      >Start Chat</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Ambient Decoration -->
+            <div
+              class="relative w-full aspect-square bg-surface-container-low rounded-xl overflow-hidden p-8 flex items-end"
+            >
+              <div
+                class="absolute inset-0 opacity-20 mix-blend-multiply"
+                style="background: radial-gradient(circle at 20% 20%, #0043c8 0%, transparent 50%)"
+              ></div>
+              <img
+                alt="Office Interior"
+                class="absolute inset-0 w-full h-full object-cover grayscale opacity-40"
+                data-alt="Modern minimalist office space with clean lines"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBylr4EEeXjAxEeY172qnjI-FfhzSY2g7Wedpss9_9_FH20IWMkfKOh6wXoUGBqYGd1_4oiiEmV49don1SdHMZS_LHd1JlVkUyIdhzcGAAQ5FjSbeU1pLpetPtDgRDCoS5HHNbEfCeGI7EFopTQWWi3u4dQRT03xJoBAOO9nAqeUSuWkH0L26t1SH4s1mTqPGIaQVMcPItBEpXNaMf1YQkyQd-RChVscFV7wSq8d7l_z98eWqdeOUccmyXAlDSZjzWL4BXZ0Dyd-_I"
+              />
+              <div class="relative z-10 text-on-surface">
+                <p class="text-xs font-bold uppercase tracking-widest opacity-60 mb-2">
+                  Our Atelier
+                </p>
+                <p class="text-xl font-headline italic tracking-tight">
+                  Dedicated to precision in every interaction.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Right Column: Contact Form (60%) -->
+          <div class="md:col-span-7">
+            <div
+              class="bg-surface-container-lowest p-10 md:p-14 shadow-[0_40px_80px_-40px_rgba(27,27,27,0.04)] rounded-xl relative border border-outline-variant/10"
+            >
+              <form class="space-y-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div class="space-y-2">
+                    <label
+                      class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1"
+                      >First Name</label
+                    >
+                    <input
+                      class="w-full bg-surface-container-high border-none px-5 py-4 rounded-lg focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 transition-all outline-none text-on-surface placeholder:text-outline/50"
+                      placeholder="Jane"
+                      type="text"
+                    />
+                  </div>
+                  <div class="space-y-2">
+                    <label
+                      class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1"
+                      >Last Name</label
+                    >
+                    <input
+                      class="w-full bg-surface-container-high border-none px-5 py-4 rounded-lg focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 transition-all outline-none text-on-surface placeholder:text-outline/50"
+                      placeholder="Doe"
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div class="space-y-2">
+                  <label
+                    class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1"
+                    >Email Address</label
+                  >
+                  <input
+                    class="w-full bg-surface-container-high border-none px-5 py-4 rounded-lg focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 transition-all outline-none text-on-surface placeholder:text-outline/50"
+                    placeholder="jane@example.com"
+                    type="email"
+                  />
+                </div>
+                <div class="space-y-2">
+                  <label
+                    class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1"
+                    >Order Number (Optional)</label
+                  >
+                  <input
+                    class="w-full bg-surface-container-high border-none px-5 py-4 rounded-lg focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 transition-all outline-none text-on-surface placeholder:text-outline/50"
+                    placeholder="#TL-00000"
+                    type="text"
+                  />
+                </div>
+                <div class="space-y-2">
+                  <label
+                    class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1"
+                    >Subject</label
+                  >
+                  <div class="relative">
+                    <select
+                      class="w-full bg-surface-container-high border-none px-5 py-4 rounded-lg focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 transition-all outline-none text-on-surface appearance-none cursor-pointer"
+                    >
+                      <option disabled="" selected="" value="">Select a category</option>
+                      <option value="shipping">Shipping Issue</option>
+                      <option value="product">Product Inquiry</option>
+                      <option value="billing">Billing &amp; Payments</option>
+                      <option value="returns">Returns &amp; Exchanges</option>
+                    </select>
+                    <div
+                      class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant"
+                    >
+                      <span class="material-symbols-outlined" data-icon="expand_more"
+                        >expand_more</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="space-y-2">
+                  <label
+                    class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1"
+                    >Message</label
+                  >
+                  <textarea
+                    class="w-full bg-surface-container-high border-none px-5 py-4 rounded-lg focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 transition-all outline-none text-on-surface placeholder:text-outline/50 resize-none"
+                    placeholder="How can we help you?"
+                    rows="6"
+                  ></textarea>
+                </div>
+                <button
+                  class="w-full py-6 rounded-lg bg-gradient-to-tr from-primary to-primary-container text-on-primary font-bold text-lg tracking-tight shadow-xl shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1 active:translate-y-0 active:scale-[0.98] transition-all duration-300"
+                  type="submit"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer Shell -->
+    <footer class="bg-slate-950 border-t border-slate-800">
+      <div
+        class="grid grid-cols-1 md:grid-cols-4 gap-12 w-full px-16 py-20 max-w-screen-2xl mx-auto font-inter text-sm"
+      >
+        <!-- Brand Column -->
+        <div class="col-span-1">
+          <div class="text-xl font-bold text-white mb-4">TradeLink</div>
+          <p class="text-slate-400 leading-relaxed mb-8">
+            Elevating commerce through intentional design and precision engineering.
+          </p>
+          <div class="flex gap-4">
+            <a
+              class="w-8 h-8 rounded-full border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:border-white transition-all"
+              href="#"
+            >
+              <span class="material-symbols-outlined text-[18px]" data-icon="public">public</span>
+            </a>
+            <a
+              class="w-8 h-8 rounded-full border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:border-white transition-all"
+              href="#"
+            >
+              <span class="material-symbols-outlined text-[18px]" data-icon="share">share</span>
+            </a>
+          </div>
+        </div>
+        <!-- Customer Service -->
+        <div>
+          <h4 class="text-white font-semibold mb-6">Customer Service</h4>
+          <ul class="space-y-4">
+            <li>
+              <a
+                class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transform duration-200"
+                href="#"
+                >Track Order</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transform duration-200"
+                href="#"
+                >Returns</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transform duration-200"
+                href="#"
+                >Shipping Info</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transform duration-200"
+                href="#"
+                >Help Center</a
+              >
+            </li>
+          </ul>
+        </div>
+        <!-- Company -->
+        <div>
+          <h4 class="text-white font-semibold mb-6">Company</h4>
+          <ul class="space-y-4">
+            <li>
+              <a
+                class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transform duration-200"
+                href="#"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transform duration-200"
+                href="#"
+                >Careers</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transform duration-200"
+                href="#"
+                >Sustainability</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transform duration-200"
+                href="#"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+        <!-- Legal -->
+        <div>
+          <h4 class="text-white font-semibold mb-6">Legal</h4>
+          <ul class="space-y-4">
+            <li>
+              <a
+                class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transform duration-200"
+                href="#"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transform duration-200"
+                href="#"
+                >Terms of Service</a
+              >
+            </li>
+            <li>
+              <a
+                class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transform duration-200"
+                href="#"
+                >Cookie Policy</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Bottom Bar -->
+      <div
+        class="max-w-screen-2xl mx-auto px-16 py-8 border-t border-slate-900 flex justify-between items-center text-slate-500 text-xs"
+      >
+        <div>© 2024 TradeLink Digital Atelier. All rights reserved.</div>
+        <div class="flex gap-8">
+          <span>Accessibility</span>
+          <span>System Status</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -17,24 +17,41 @@ export const PaymentStatusSchema = z.enum([
 
 export const TransactionTypeSchema = z.enum(['purchase', 'refund']);
 
+export const PaymentMethodSchema = z.object({
+  id: z.string().min(1),
+  brand: z.string().min(1),
+  last4: z.string().length(4),
+  expiry_month: z.string().min(1),
+  expiry_year: z.string().min(1),
+  holder_name: z.string().min(1),
+  is_default: z.boolean(),
+});
+
+export const PaymentMethodListSchema = z.object({
+  methods: z.array(PaymentMethodSchema),
+});
+
 // ── Payment ────────────────────────────────────────────────────────────────
 export const PaymentSchema = z.object({
-  id: z.string().uuid(),
-  user_id: z.string().uuid(),
-  order_id: z.string().uuid(),
+  id: z.string().min(1),
+  user_id: z.string().min(1),
+  order_id: z.string().min(1),
   amount: z.number().positive(),
   payment_provider: PaymentProviderSchema,
   status: PaymentStatusSchema,
   transaction_type: TransactionTypeSchema,
   created_at: z.string().datetime().optional(),
   phone_number: z.string().optional(),
+  payment_method_id: z.string().min(1).optional(),
 });
 
 // ── Create Payment Input ───────────────────────────────────────────────────
 export const CreatePaymentInputSchema = z.object({
-  order_id: z.string().uuid(),
+  order_id: z.string().min(1),
   payment_provider: PaymentProviderSchema,
   phone_number: z.string().optional(),
+  payment_method_id: z.string().optional(),
+  amount: z.number().positive(),
 }).refine(
   (data) => data.payment_provider !== 'mpesa' || !!data.phone_number,
   { message: 'Phone number is required for M-Pesa', path: ['phone_number'] }

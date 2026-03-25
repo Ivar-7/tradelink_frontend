@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Recently Viewed - TradeLink</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-highest": "#e2e2e2",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-fixed": "#001550",
+                        "tertiary-fixed-dim": "#ffb59f",
+                        "surface-container-low": "#f3f3f3",
+                        "on-secondary-fixed-variant": "#2a418d",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#dce1ff",
+                        "outline-variant": "#c3c5d9",
+                        "on-background": "#1b1b1b",
+                        "on-tertiary-fixed-variant": "#862300",
+                        "surface-dim": "#dadada",
+                        "outline": "#737688",
+                        "background": "#f9f9f9",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-bright": "#f9f9f9",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-secondary-container": "#263e89",
+                        "on-surface-variant": "#434656",
+                        "secondary": "#445aa6",
+                        "on-primary-fixed": "#001550",
+                        "surface": "#f9f9f9",
+                        "secondary-fixed-dim": "#b6c4ff",
+                        "on-primary-fixed-variant": "#003ab2",
+                        "on-primary-container": "#e5e8ff",
+                        "inverse-surface": "#303030",
+                        "inverse-primary": "#b6c4ff",
+                        "tertiary": "#972800",
+                        "tertiary-container": "#c13600",
+                        "surface-tint": "#004ee7",
+                        "tertiary-fixed": "#ffdbd1",
+                        "primary": "#0043c8",
+                        "inverse-on-surface": "#f1f1f1",
+                        "primary-fixed": "#dce1ff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#3a0a00",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#0057ff",
+                        "on-tertiary-container": "#ffe3db",
+                        "on-surface": "#1b1b1b"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar from Shared Components JSON -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl shadow-sm dark:shadow-none font-sans tracking-tight antialiased">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-zinc-900 dark:text-white">TradeLink</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-zinc-500 dark:text-zinc-400 font-medium hover:text-blue-600 dark:hover:text-blue-300 transition-colors duration-200" href="#">Categories</a>
+<!-- Active State: Since we are in Recently Viewed, no direct match in nav links, but we maintain the shell -->
+<a class="text-zinc-500 dark:text-zinc-400 font-medium hover:text-blue-600 dark:hover:text-blue-300 transition-colors duration-200" href="#">Wishlist</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-medium hover:text-blue-600 dark:hover:text-blue-300 transition-colors duration-200" href="#">Account</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative flex items-center bg-surface-container-low px-4 py-2 rounded-full w-64">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="search">search</span>
+<span class="ml-2 text-on-surface-variant text-sm font-medium">Search...</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-zinc-500" data-icon="shopping_cart">shopping_cart</span>
+<span class="text-zinc-500 dark:text-zinc-400 font-medium hover:text-blue-600">Cart</span>
+</div>
+</div>
+</div>
+<div class="bg-zinc-100 dark:bg-zinc-800 h-px w-full"></div>
+</header>
+<main class="flex-grow pt-32 pb-20">
+<div class="max-w-7xl mx-auto px-6">
+<!-- Header Section -->
+<div class="mb-20">
+<h1 class="text-4xl md:text-5xl font-extrabold text-on-surface tracking-tighter">Recently Viewed</h1>
+</div>
+<!-- Empty State Canvas -->
+<div class="flex flex-col items-center justify-center min-h-[500px] bg-surface-container-lowest rounded-xl p-12 text-center">
+<!-- Precision Editorial Illustration -->
+<div class="relative mb-12 flex items-center justify-center">
+<div class="w-32 h-32 rounded-full bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-6xl opacity-40" data-icon="visibility">visibility</span>
+</div>
+<!-- Absolute positioned accent for depth -->
+<div class="absolute -top-4 -right-4 w-16 h-16 bg-primary-fixed-dim rounded-full opacity-20 blur-xl"></div>
+</div>
+<!-- Messaging -->
+<div class="max-w-md space-y-4">
+<h2 class="text-3xl font-bold text-on-surface tracking-tight">You haven't viewed any items yet.</h2>
+<p class="text-lg text-on-surface-variant leading-relaxed">Your browsing history will appear here so you can easily find things again.</p>
+</div>
+<!-- Action -->
+<div class="mt-12">
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-10 py-4 rounded-md font-semibold text-lg shadow-xl shadow-primary/10 hover:shadow-primary/20 transition-all duration-300 flex items-center gap-3">
+                        Start Shopping
+                        <span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Suggested Items Grid (Implicit Editorial Quality) -->
+<div class="mt-24">
+<div class="flex items-baseline justify-between mb-10">
+<h3 class="text-2xl font-bold tracking-tight text-on-surface">Curated Picks for You</h3>
+<a class="text-primary font-medium flex items-center gap-1 hover:underline" href="#">Explore all <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<!-- Tech Specs/Precision Card 1 -->
+<div class="group bg-surface-container-lowest p-4 rounded-xl transition-all duration-300">
+<div class="aspect-square bg-surface-variant rounded-lg mb-4 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High-end noise cancelling wireless headphones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmPeNBvFWSGGdM9HOw65glAEjsxEpD7NOUHr6ooT94b4kEvJwbvJoOz3D8NRcaLPSEQy_Zk3UOeD_G-qpnKgKzXeSb4lctWzXeR4gcUN_DvirAIUqMS_88TerGrKDt0qDt_Y9osaWeUUGjEwMbEteFtlvvqZNIJyBRA7WOzzHZZy-PUkMF-CLb8b4BIrMStIBJVPFfqLMMPYkC7CFKGn5T7Edgnx43NujOF7LKKUocJtYaJJ9_aanIiYIQY3AmpkPy4xhiWUmwckg"/>
+</div>
+<span class="label-md uppercase tracking-widest text-[10px] text-primary font-bold">New Arrival</span>
+<h4 class="text-lg font-bold text-on-surface mt-1">Linear Audio Max</h4>
+<p class="text-on-surface-variant text-sm mt-1">Studio-grade acoustics.</p>
+<p class="text-primary font-bold mt-4">$349.00</p>
+</div>
+<!-- Tech Specs/Precision Card 2 -->
+<div class="group bg-surface-container-lowest p-4 rounded-xl transition-all duration-300">
+<div class="aspect-square bg-surface-variant rounded-lg mb-4 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Minimalist luxury white wristwatch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqI_xq0rZ-XvpTx5BH-7-bH_OLvIq3PkbPcP7yjs4P_8awMEETFz5eeJj8iTe1-jdkgSTbiJe-y9j13xYhHG5fdgPEhuppLk9TfHUx7g4b0ZQ54zRDwIsV25PojOqx0puHtdlALcfPd36sSjSiS9HUCZ__lmksTRMb_sovE98iIEJOWow1vrhiss-fEfHzynIYMgoJjWQSImInjMtoF03-Her7jjzpoex75PCyZ-9o57rkyiLdPHBPLuZdZKH6SLTZJs2OigNmW0E"/>
+</div>
+<span class="label-md uppercase tracking-widest text-[10px] text-on-surface-variant font-bold">Limited Edition</span>
+<h4 class="text-lg font-bold text-on-surface mt-1">Chronos Ivory</h4>
+<p class="text-on-surface-variant text-sm mt-1">Swiss movement precision.</p>
+<p class="text-primary font-bold mt-4">$1,200.00</p>
+</div>
+<!-- Tech Specs/Precision Card 3 -->
+<div class="group bg-surface-container-lowest p-4 rounded-xl transition-all duration-300">
+<div class="aspect-square bg-surface-variant rounded-lg mb-4 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Sleek silver portable laptop stand" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChaM19YFqw-NYxg4ke9T9t2PCxWocS41SznRRRTjnk8-zLqcmaweBugyAZhVdYqO73_TATxS5YuvL14161GwFGjn37tDYCPu9umpYGQNyv7F-Z0l4jcxDtnbsog11IRXtYdCqjdPKn1J7DqRncgbVkH5GvJUiXZZR-IDPogpYIlz6bw83c7F1BvehkuDyzgIizaEvOKf4FnYGbS4grjLhi6oWtywkxAKxQ6Jwd0BCGCKbdPLp3PzR75H37urikM48N88XH-J96N8w"/>
+</div>
+<span class="label-md uppercase tracking-widest text-[10px] text-on-surface-variant font-bold">Accessory</span>
+<h4 class="text-lg font-bold text-on-surface mt-1">Apex Stand Pro</h4>
+<p class="text-on-surface-variant text-sm mt-1">Anodized aluminum build.</p>
+<p class="text-primary font-bold mt-4">$89.00</p>
+</div>
+<!-- Tech Specs/Precision Card 4 -->
+<div class="group bg-surface-container-lowest p-4 rounded-xl transition-all duration-300">
+<div class="aspect-square bg-surface-variant rounded-lg mb-4 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern tablet with digital pencil" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC26nWWUBRnXokpWQ6I2wXEy3xnHoXbBN0l2ebuCEpsFQpnG2yuMCqrsljvWihyprbvTFXli7MGJDftEntqlJgEc9rYdXLLPqIrCnbvgpr9Q3mjPuUQQ00Jx1XFdU0yjMpWJ0DuJsW2A781LeBdEz2ih3vltEOLdhTVzasQmzpeA_Cy7C9D10jn3cB31AAx1UcJOPTPBJUJTr8lW13GabO7E6LVw_Ao0Sh6RK-TYod1hQBOSDXSnGtlcMQmjjTozXZiyDCJcpYu1Yc"/>
+</div>
+<span class="label-md uppercase tracking-widest text-[10px] text-on-surface-variant font-bold">Workplace</span>
+<h4 class="text-lg font-bold text-on-surface mt-1">Canvas Pad 12</h4>
+<p class="text-on-surface-variant text-sm mt-1">Retina liquid display.</p>
+<p class="text-primary font-bold mt-4">$799.00</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer from Shared Components JSON -->
+<footer class="w-full pt-20 pb-10 bg-zinc-950 dark:bg-black border-t border-zinc-800 dark:border-zinc-900 font-light tracking-wide Inter">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-8">
+<div class="space-y-6">
+<span class="text-xl font-black text-white">TradeLink</span>
+<p class="text-zinc-400 text-sm max-w-xs leading-relaxed">Defining the digital atelier experience through precision curated commerce and tech-forward design.</p>
+</div>
+<div class="space-y-4">
+<h4 class="text-white font-bold text-sm uppercase tracking-widest">Brand Info</h4>
+<ul class="space-y-2">
+<li><a class="text-zinc-400 hover:text-white transition-all duration-300" href="#">Our Story</a></li>
+<li><a class="text-zinc-400 hover:text-white transition-all duration-300" href="#">Sustainability</a></li>
+<li><a class="text-zinc-400 hover:text-white transition-all duration-300" href="#">Press</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="text-white font-bold text-sm uppercase tracking-widest">Support</h4>
+<ul class="space-y-2">
+<li><a class="text-zinc-400 hover:text-white transition-all duration-300" href="#">Help Center</a></li>
+<li><a class="text-zinc-400 hover:text-white transition-all duration-300" href="#">Returns</a></li>
+<li><a class="text-zinc-400 hover:text-white transition-all duration-300" href="#">Shipping Info</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="text-white font-bold text-sm uppercase tracking-widest">Newsletter</h4>
+<p class="text-zinc-400 text-sm">Join the atelier for exclusive updates.</p>
+<div class="flex gap-2">
+<input class="bg-zinc-900 border-none rounded-md text-sm w-full focus:ring-1 focus:ring-blue-500" placeholder="Email" type="email"/>
+<button class="bg-blue-500 text-white px-4 py-2 rounded-md text-sm font-bold hover:bg-blue-600 transition-colors">Join</button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-20 pt-8 border-t border-zinc-800/50 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-zinc-500 text-xs">© 2024 TradeLink Digital Atelier. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-zinc-500 hover:text-white text-xs" href="#">Legal</a>
+<a class="text-zinc-500 hover:text-white text-xs" href="#">Privacy</a>
+<a class="text-zinc-500 hover:text-white text-xs" href="#">Cookies</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -7,7 +7,7 @@ export const UserGenderSchema = z.enum(['male', 'female', 'other']);
 
 // ── Core User ──────────────────────────────────────────────────────────────
 export const UserSchema = z.object({
-  user_id: z.string().uuid(),
+  user_id: z.string().min(1),
   username: z.string().min(3).max(30),
   user_fname: z.string().min(1),
   user_lname: z.string().min(1),
@@ -15,7 +15,7 @@ export const UserSchema = z.object({
   user_gender: UserGenderSchema.optional(),
   user_dob: z.string().datetime().optional(),
   user_role: UserRoleSchema,
-  user_cart: z.string().uuid().optional(),
+  user_cart: z.string().min(1).optional(),
 });
 
 /** User shape safe for the UI (no password). */

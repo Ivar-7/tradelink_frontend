@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shopping Cart | TradeLink</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-container": "#97adff",
+              "outline-variant": "#c3c5d9",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-low": "#f3f3f3",
+              "on-tertiary-fixed-variant": "#862300",
+              "on-secondary-container": "#263e89",
+              "inverse-primary": "#b6c4ff",
+              "tertiary-container": "#c13600",
+              "on-surface-variant": "#434656",
+              "on-secondary": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-error": "#ffffff",
+              "surface-container-high": "#e8e8e8",
+              "surface-container": "#eeeeee",
+              "primary-container": "#0057ff",
+              "on-primary-fixed-variant": "#003ab2",
+              "inverse-on-surface": "#f1f1f1",
+              "primary-fixed": "#dce1ff",
+              "on-background": "#1b1b1b",
+              "on-tertiary-container": "#ffe3db",
+              "inverse-surface": "#303030",
+              "on-tertiary": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-container-highest": "#e2e2e2",
+              "secondary-fixed": "#dce1ff",
+              "outline": "#737688",
+              "secondary-fixed-dim": "#b6c4ff",
+              "surface-bright": "#f9f9f9",
+              "tertiary": "#972800",
+              "background": "#f9f9f9",
+              "on-tertiary-fixed": "#3a0a00",
+              "on-primary-fixed": "#001550",
+              "surface-dim": "#dadada",
+              "on-primary-container": "#e5e8ff",
+              "tertiary-fixed-dim": "#ffb59f",
+              "surface-tint": "#004ee7",
+              "on-secondary-fixed-variant": "#2a418d",
+              "primary": "#0043c8",
+              "surface": "#f9f9f9",
+              "surface-variant": "#e2e2e2",
+              "on-surface": "#1b1b1b",
+              "secondary": "#445aa6",
+              "tertiary-fixed": "#ffdbd1",
+              "primary-fixed-dim": "#b6c4ff",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed": "#001550",
+              "error": "#ba1a1a"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body { font-family: 'Inter', sans-serif; }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl tonal-shift bg-zinc-100">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-black tracking-tighter text-blue-700">TradeLink</span>
+<div class="hidden md:flex gap-8">
+<a class="text-zinc-500 font-medium hover:text-blue-600 transition-colors" href="#">Shop</a>
+<a class="text-zinc-500 font-medium hover:text-blue-600 transition-colors" href="#">Categories</a>
+<a class="text-zinc-500 font-medium hover:text-blue-600 transition-colors" href="#">Deals</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative flex items-center bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant/10">
+<span class="material-symbols-outlined text-zinc-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 font-medium" placeholder="Search products..." type="text"/>
+</div>
+<div class="flex items-center gap-5 text-on-surface-variant">
+<button class="hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+<button class="relative hover:text-primary transition-all active:scale-95 text-blue-700">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute -top-1 -right-1 w-4 h-4 bg-primary text-white text-[10px] flex items-center justify-center rounded-full font-bold">2</span>
+</button>
+<button class="hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-32 pb-24 max-w-7xl mx-auto px-8">
+<!-- Header -->
+<header class="mb-12">
+<h1 class="text-5xl font-extrabold tracking-tight text-on-surface">Shopping Cart</h1>
+<p class="text-on-surface-variant mt-3 font-medium">You have 2 items in your cart</p>
+</header>
+<div class="grid grid-cols-12 gap-16">
+<!-- Left Column: Cart Items (65%) -->
+<div class="col-span-8">
+<div class="w-full">
+<!-- Table Header -->
+<div class="grid grid-cols-12 pb-6 text-xs font-bold uppercase tracking-widest text-on-surface-variant/60 border-b border-outline-variant/10">
+<div class="col-span-6">Product</div>
+<div class="col-span-2 text-center">Price</div>
+<div class="col-span-2 text-center">Quantity</div>
+<div class="col-span-2 text-right">Subtotal</div>
+</div>
+<!-- Cart Item 1 -->
+<div class="grid grid-cols-12 py-10 items-center border-b border-outline-variant/10 group">
+<div class="col-span-6 flex gap-6">
+<div class="w-28 h-28 bg-surface-variant rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Wireless Headphones" class="w-full h-full object-cover mix-blend-multiply opacity-90" data-alt="Minimalist black wireless over-ear studio headphones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxOcHfReplo15IYyw7D6S2EiFssW2tuQziUBHv7oLGLEeqbzjo9yvYfX1EIMRo_e2QBQ6EKGd1xPOzQF2S10wHcDJgfhGrjWNHqtQfTueppIvl8kEJMY8JSZkOSNaDnZrLlTLoIUfB4UhcvJ5t5bFj4EJt8y5XXXwwAsXK3tzxXT1gO7L5t0ibXqIvK26PRz6YlVZQezq6pvJ8wCN5Wj_ruCot_Zu_V7UgW3my_wexwIu3aCtecFYgcxP4WAtwEcv4pgyEQzhhKnw"/>
+</div>
+<div class="flex flex-col justify-center">
+<h3 class="text-xl font-bold text-on-surface tracking-tight">Studio X1 Wireless Headphones</h3>
+<p class="text-on-surface-variant text-sm mt-1">Color: Black</p>
+<button class="flex items-center gap-1 mt-4 text-error text-xs font-bold hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined text-base">close</span>
+                                    REMOVE
+                                </button>
+</div>
+</div>
+<div class="col-span-2 text-center font-medium text-on-surface">$299.00</div>
+<div class="col-span-2 flex justify-center">
+<div class="flex items-center bg-surface-container-high rounded-lg p-1">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-lowest rounded transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="px-4 font-bold text-sm">1</span>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-lowest rounded transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<div class="col-span-2 text-right font-bold text-lg text-on-surface">$299.00</div>
+</div>
+<!-- Cart Item 2 -->
+<div class="grid grid-cols-12 py-10 items-center border-b border-outline-variant/10">
+<div class="col-span-6 flex gap-6">
+<div class="w-28 h-28 bg-surface-variant rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Smartwatch" class="w-full h-full object-cover mix-blend-multiply opacity-90" data-alt="Sleek black smartwatch with circular face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoanQT8RkE0VPH2ROJYq8GPH3xanvdyW5nqJBuIiIpTAIEhpt0MTO_QHnl96ESaF7-OMvZ0l9_PBj5hnBT3i1YLZ0POY4Dq09GJk5MYwuWAZbzj8PoQyTOV4kiz6jUruBl6CFpdseqFQaLIo4MQScb7Lz1bddS3CbCOL4gcW3pijcEwMXwB7OvCKcxdiyL5Q708vxqs53qvMneZCUTj_aDkHkzs1FHCYm18GQNgcJ-97XZisz1VkVxJQdfCZn2_lOqo9piH8zWRtA"/>
+</div>
+<div class="flex flex-col justify-center">
+<h3 class="text-xl font-bold text-on-surface tracking-tight">Lunar Series 04 Smartwatch</h3>
+<p class="text-on-surface-variant text-sm mt-1">Color: Black</p>
+<button class="flex items-center gap-1 mt-4 text-error text-xs font-bold hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined text-base">close</span>
+                                    REMOVE
+                                </button>
+</div>
+</div>
+<div class="col-span-2 text-center font-medium text-on-surface">$185.00</div>
+<div class="col-span-2 flex justify-center">
+<div class="flex items-center bg-surface-container-high rounded-lg p-1">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-lowest rounded transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="px-4 font-bold text-sm">1</span>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-lowest rounded transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<div class="col-span-2 text-right font-bold text-lg text-on-surface">$185.00</div>
+</div>
+</div>
+<!-- Promo Code Section -->
+<div class="mt-12 flex flex-col gap-4">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant/60">Promo Code</label>
+<div class="flex gap-4">
+<input class="bg-surface-container-high border-none px-6 py-4 rounded-lg w-64 focus:ring-2 focus:ring-primary/20 transition-all font-medium" placeholder="Enter code" type="text"/>
+<button class="bg-surface-container-highest px-8 py-4 rounded-lg font-bold text-on-surface hover:bg-surface-dim transition-colors">Apply</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Order Summary (35%) -->
+<div class="col-span-4">
+<div class="bg-surface-container-low rounded-xl p-10 sticky top-32">
+<h2 class="text-2xl font-bold text-on-surface mb-8 tracking-tight">Order Summary</h2>
+<div class="space-y-6">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-medium">Subtotal</span>
+<span class="text-on-surface font-bold">$484.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-medium">Estimated Shipping</span>
+<button class="text-primary text-sm font-bold underline underline-offset-4 hover:opacity-80 transition-opacity">Calculate</button>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-medium">Estimated Tax</span>
+<span class="text-on-surface font-bold">—</span>
+</div>
+<div class="pt-6 mt-6 border-t border-outline-variant/20 flex justify-between items-end">
+<span class="text-lg font-bold text-on-surface">Total</span>
+<span class="text-3xl font-black text-on-surface tracking-tighter">$484.00</span>
+</div>
+</div>
+<div class="mt-10 flex flex-col gap-6">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-5 rounded-lg font-bold text-lg shadow-xl shadow-primary/10 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                            Proceed to Checkout
+                        </button>
+<button class="w-full text-on-surface-variant font-bold text-sm hover:text-on-surface transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+                            Continue Shopping
+                        </button>
+</div>
+<!-- Trust Elements -->
+<div class="mt-10 pt-10 border-t border-outline-variant/10 flex flex-col gap-4">
+<div class="flex items-center gap-4 text-xs font-bold text-on-surface-variant/70">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+                            SECURE CHECKOUT GUARANTEED
+                        </div>
+<div class="flex items-center gap-4 text-xs font-bold text-on-surface-variant/70">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+                            FREE SHIPPING ON ORDERS OVER $500
+                        </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-zinc-950 border-t border-zinc-800">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 max-w-7xl mx-auto">
+<!-- Col 1: Brand -->
+<div>
+<span class="text-xl font-bold text-white mb-6 block">TradeLink</span>
+<p class="text-zinc-400 text-sm leading-relaxed mb-6">Crafting a new standard in digital atelier experiences. Precision-engineered products for the modern lifestyle.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-zinc-500 hover:text-white cursor-pointer transition-colors">public</span>
+<span class="material-symbols-outlined text-zinc-500 hover:text-white cursor-pointer transition-colors">language</span>
+<span class="material-symbols-outlined text-zinc-500 hover:text-white cursor-pointer transition-colors">share</span>
+</div>
+</div>
+<!-- Col 2: Support -->
+<div class="flex flex-col gap-4">
+<span class="text-white font-bold text-sm uppercase tracking-widest mb-2">Support</span>
+<a class="text-zinc-500 text-sm hover:text-blue-400 transition-colors" href="#">Help Center</a>
+<a class="text-zinc-500 text-sm hover:text-blue-400 transition-colors" href="#">Shipping</a>
+<a class="text-zinc-500 text-sm hover:text-blue-400 transition-colors" href="#">Returns</a>
+<a class="text-zinc-500 text-sm hover:text-blue-400 transition-colors" href="#">Contact Us</a>
+</div>
+<!-- Col 3: Legal -->
+<div class="flex flex-col gap-4">
+<span class="text-white font-bold text-sm uppercase tracking-widest mb-2">Legal</span>
+<a class="text-zinc-500 text-sm hover:text-blue-400 transition-colors" href="#">Privacy Policy</a>
+<a class="text-zinc-500 text-sm hover:text-blue-400 transition-colors" href="#">Terms of Service</a>
+<a class="text-zinc-500 text-sm hover:text-blue-400 transition-colors" href="#">Sustainability</a>
+<a class="text-zinc-500 text-sm hover:text-blue-400 transition-colors" href="#">Cookie Settings</a>
+</div>
+<!-- Col 4: Newsletter -->
+<div>
+<span class="text-white font-bold text-sm uppercase tracking-widest mb-4 block">Newsletter</span>
+<p class="text-zinc-500 text-sm mb-6">Join our atelier for exclusive previews and editorial content.</p>
+<div class="flex flex-col gap-3">
+<input class="bg-zinc-900 border-none text-white px-4 py-3 rounded text-sm focus:ring-1 focus:ring-blue-500 transition-all" placeholder="Email Address" type="email"/>
+<button class="bg-white text-zinc-950 font-bold py-3 rounded text-sm hover:bg-blue-500 hover:text-white transition-all">Subscribe</button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-12 py-10 border-t border-zinc-900 flex justify-between items-center">
+<span class="text-zinc-600 text-xs">© 2024 TradeLink Digital Atelier. All rights reserved.</span>
+<div class="flex gap-6">
+<span class="text-zinc-600 text-xs hover:text-zinc-400 cursor-pointer">Brand Story</span>
+<span class="text-zinc-600 text-xs hover:text-zinc-400 cursor-pointer">Press</span>
+</div>
+</div>
+</footer>
+</body></html>

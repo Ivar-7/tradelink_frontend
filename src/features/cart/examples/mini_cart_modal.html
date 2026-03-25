@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary": "#ffffff",
+              "on-primary-fixed-variant": "#003ab2",
+              "on-secondary-container": "#263e89",
+              "outline-variant": "#c3c5d9",
+              "secondary": "#445aa6",
+              "surface-container": "#eeeeee",
+              "secondary-container": "#97adff",
+              "surface-container-low": "#f3f3f3",
+              "surface-container-high": "#e8e8e8",
+              "on-tertiary-fixed": "#3a0a00",
+              "tertiary-container": "#c13600",
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-error-container": "#93000a",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#1b1b1b",
+              "on-secondary-fixed": "#001550",
+              "on-tertiary-container": "#ffe3db",
+              "on-surface-variant": "#434656",
+              "surface-dim": "#dadada",
+              "inverse-surface": "#303030",
+              "primary-fixed-dim": "#b6c4ff",
+              "tertiary-fixed-dim": "#ffb59f",
+              "surface": "#f9f9f9",
+              "background": "#f9f9f9",
+              "surface-tint": "#004ee7",
+              "error": "#ba1a1a",
+              "primary-container": "#0057ff",
+              "inverse-primary": "#b6c4ff",
+              "outline": "#737688",
+              "on-primary": "#ffffff",
+              "on-tertiary-fixed-variant": "#862300",
+              "on-background": "#1b1b1b",
+              "on-error": "#ffffff",
+              "on-primary-container": "#e5e8ff",
+              "primary": "#0043c8",
+              "secondary-fixed-dim": "#b6c4ff",
+              "primary-fixed": "#dce1ff",
+              "surface-container-highest": "#e2e2e2",
+              "tertiary": "#972800",
+              "on-secondary-fixed-variant": "#2a418d",
+              "inverse-on-surface": "#f1f1f1",
+              "surface-variant": "#e2e2e2",
+              "secondary-fixed": "#dce1ff",
+              "tertiary-fixed": "#ffdbd1",
+              "on-primary-fixed": "#001550",
+              "surface-bright": "#f9f9f9"
+            },
+            fontFamily: {
+              "headline": ["Inter", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .glass-header { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-hidden">
+<!-- Blurred Background Webpage -->
+<main class="fixed inset-0 z-0 flex flex-col filter blur-md pointer-events-none scale-105">
+<!-- Shared Component: TopAppBar -->
+<header class="bg-white/80 backdrop-blur-xl flex justify-between items-center px-8 py-4 max-w-full mx-auto fixed top-0 w-full z-50">
+<div class="text-xl font-bold tracking-tighter text-zinc-900">The Atelier</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-zinc-500 hover:text-zinc-900 font-inter tracking-tight" href="#">Shop</a>
+<a class="text-zinc-500 hover:text-zinc-900 font-inter tracking-tight" href="#">Collections</a>
+<a class="text-zinc-500 hover:text-zinc-900 font-inter tracking-tight" href="#">About</a>
+</nav>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-zinc-900">shopping_bag</span>
+<span class="material-symbols-outlined text-zinc-900">person</span>
+</div>
+</header>
+<!-- Mock Background Content -->
+<section class="pt-32 px-12 grid grid-cols-12 gap-8 max-w-7xl mx-auto w-full">
+<div class="col-span-8">
+<div class="h-[500px] bg-surface-container-highest rounded-xl mb-8 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up of premium wireless headphones on studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr-H9V6seGK532uNhGs554myAR84O04X4Qe0g9Vxz4se6p_ZuPG3qWrvopKliqRMEhvucPtarHXmuXRHb7mFGT7-SP_qZrl2a3RsZMuSa-itQ27oMT48cIiLFAUValhN-hndIQfAYQyDHQMPXbMn3QFRaN7OGQHCn_j-SeQLbtZVXHMcItqjmI6HlNDFmrupUC44P1ZRuDarx67pqCngXBm2rTHAU7RRwqpnx1-gC3JhEcalRR1uMAUKzENbKcjPTbRzRYRNrQ6Sc"/>
+</div>
+<h1 class="text-6xl font-black tracking-tighter mb-4">Studio X1 Wireless</h1>
+<p class="text-xl text-on-surface-variant max-w-xl">Experience sound in its purest form with the all-new Studio X1 Series.</p>
+</div>
+<div class="col-span-4 space-y-6">
+<div class="h-64 bg-surface-container-low rounded-xl"></div>
+<div class="h-64 bg-surface-container-low rounded-xl"></div>
+</div>
+</section>
+</main>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 bg-on-surface/40 backdrop-blur-sm z-[90]"></div>
+<!-- SideNavBar (Used as Cart Sidebar) -->
+<aside class="fixed right-0 h-full w-[30%] min-w-[400px] z-[100] bg-white shadow-2xl shadow-zinc-950/20 flex flex-col">
+<!-- Header -->
+<div class="px-8 py-8 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-2xl font-bold tracking-tight text-on-surface">My Cart (2 items)</h2>
+<button class="p-2 hover:bg-surface-container transition-colors rounded-full">
+<span class="material-symbols-outlined text-on-surface" data-icon="close">close</span>
+</button>
+</div>
+<div class="h-px bg-surface-container-high w-full"></div>
+</div>
+<!-- Cart Items (Scrollable Area) -->
+<div class="flex-1 overflow-y-auto px-8 space-y-10 py-2">
+<!-- Item 1 -->
+<div class="flex gap-6 group">
+<div class="w-24 h-24 bg-surface-container-highest rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Studio X1 Wireless Headphones in Black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKmxSSc_JfG-jqBKV_M7VwoKMU8px-EmFZUHfaPxhekd6EyOD3TTA_fA-3PjG-VPuxJUE6b3gDSwjBk_ReGk7M3d7kKsgrOUuDTfyJOva6dNZKouehPX06mfaHTm5Lzp8Gj3XjpM1v5oTHEcITBKFVj_BW6WKgGXu-z_RpMcZcjyvdd6Gs8DFPP5LKkTQSDilnFAxain31R6vyrovGt9rnYf-q9oygvKPzS3B93HeQyIy1mwBw0UU-Idx-BvCHBcCo_jYN6xwD6Js"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-on-surface tracking-tight">Studio X1 Wireless Headphones</h3>
+<button class="text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+<p class="text-sm text-on-surface-variant mt-1 font-medium">Color: Black</p>
+</div>
+<div class="flex justify-between items-end">
+<div class="flex items-center bg-surface-container-low rounded-lg p-1">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high transition-colors rounded-md">
+<span class="material-symbols-outlined text-xs" data-icon="remove">remove</span>
+</button>
+<span class="px-4 text-sm font-bold">1</span>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high transition-colors rounded-md">
+<span class="material-symbols-outlined text-xs" data-icon="add">add</span>
+</button>
+</div>
+<span class="font-bold text-lg">$299.00</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-6 group">
+<div class="w-24 h-24 bg-surface-container-highest rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Lunar Series 04 Smartwatch in Black" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChgLVB20YO8h477wS7PVc_iBluCfOmEcEeL8AtCRvS7Kl_WxMCel5U7Vbv681QdgOtvXiFZxAzJpkxdIkvAcxCet5UbGAKIN40XVWsCwNcQv6MsHEibunSKjC6B76nwjM92HRo-b9gWbG60FjBeP03y8D-jl5sgra2ABCxz1K6gFrc26bq-shVGZKbzQm3li9LFatT55YvoMod5PCbOQSYN9ztvW4SuFiMBlu2FIyETkNs3L_SJmkcc_uyq0t4nkeX0mwAGLtgIY8"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-on-surface tracking-tight">Lunar Series 04 Smartwatch</h3>
+<button class="text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+<p class="text-sm text-on-surface-variant mt-1 font-medium">Color: Black</p>
+</div>
+<div class="flex justify-between items-end">
+<div class="flex items-center bg-surface-container-low rounded-lg p-1">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high transition-colors rounded-md">
+<span class="material-symbols-outlined text-xs" data-icon="remove">remove</span>
+</button>
+<span class="px-4 text-sm font-bold">1</span>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high transition-colors rounded-md">
+<span class="material-symbols-outlined text-xs" data-icon="add">add</span>
+</button>
+</div>
+<span class="font-bold text-lg">$185.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Area (Sticky) -->
+<div class="p-8 bg-surface-container-lowest space-y-4">
+<div class="flex justify-between items-center mb-6">
+<span class="text-lg text-on-surface-variant font-medium">Subtotal</span>
+<span class="text-2xl font-black text-on-surface tracking-tighter">$484.00</span>
+</div>
+<button class="w-full py-4 bg-surface-container-highest text-on-surface font-bold rounded-lg hover:bg-surface-container-high transition-all active:scale-[0.98]">
+                View Cart
+            </button>
+<button class="w-full py-6 bg-gradient-to-br from-primary to-primary-container text-white font-black text-lg rounded-lg shadow-xl shadow-primary/20 hover:opacity-90 transition-all active:scale-[0.98]">
+                Checkout Now
+            </button>
+<div class="text-center pt-2">
+<a class="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">
+                    Continue Shopping
+                </a>
+</div>
+</div>
+</aside>
+</body></html>

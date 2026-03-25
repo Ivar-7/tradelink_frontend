@@ -10,8 +10,8 @@ export const FeedbackTypeSchema = z.enum([
 
 // ── User Feedback ──────────────────────────────────────────────────────────
 export const UserFeedbackSchema = z.object({
-  id: z.string().uuid(),
-  user_id: z.string().uuid(),
+  id: z.string().min(1),
+  user_id: z.string().min(1),
   type: FeedbackTypeSchema,
   message: z.string().min(10).max(1000),
   created_at: z.string().datetime().optional(),

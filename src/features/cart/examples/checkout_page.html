@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout | TradeLink</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed-dim": "#ffb59f",
+              "surface-dim": "#dadada",
+              "secondary-container": "#97adff",
+              "on-secondary-fixed-variant": "#2a418d",
+              "error": "#ba1a1a",
+              "surface-tint": "#004ee7",
+              "on-error-container": "#93000a",
+              "on-tertiary-fixed": "#3a0a00",
+              "surface-container-high": "#e8e8e8",
+              "secondary-fixed-dim": "#b6c4ff",
+              "on-surface": "#1b1b1b",
+              "tertiary-fixed": "#ffdbd1",
+              "inverse-primary": "#b6c4ff",
+              "outline-variant": "#c3c5d9",
+              "primary": "#0043c8",
+              "on-primary-container": "#e5e8ff",
+              "on-secondary-fixed": "#001550",
+              "secondary": "#445aa6",
+              "surface-container-low": "#f3f3f3",
+              "on-primary-fixed": "#001550",
+              "on-tertiary-fixed-variant": "#862300",
+              "on-tertiary": "#ffffff",
+              "on-primary-fixed-variant": "#003ab2",
+              "primary-container": "#0057ff",
+              "background": "#f9f9f9",
+              "outline": "#737688",
+              "on-secondary-container": "#263e89",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-surface-variant": "#434656",
+              "secondary-fixed": "#dce1ff",
+              "on-primary": "#ffffff",
+              "inverse-on-surface": "#f1f1f1",
+              "surface-bright": "#f9f9f9",
+              "primary-fixed-dim": "#b6c4ff",
+              "tertiary-container": "#c13600",
+              "surface-variant": "#e2e2e2",
+              "on-background": "#1b1b1b",
+              "inverse-surface": "#303030",
+              "on-secondary": "#ffffff",
+              "primary-fixed": "#dce1ff",
+              "on-tertiary-container": "#ffe3db",
+              "surface": "#f9f9f9",
+              "tertiary": "#972800",
+              "surface-container": "#eeeeee",
+              "surface-container-highest": "#e2e2e2"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-xl">
+<div class="flex justify-center items-center w-full px-8 py-6 max-w-7xl mx-auto">
+<span class="text-2xl font-black tracking-tighter text-gray-900 dark:text-gray-50 font-['Inter']">TradeLink</span>
+</div>
+</nav>
+<main class="pt-32 pb-20 px-8 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+<!-- Left Column: Checkout Forms -->
+<div class="lg:col-span-7 space-y-16">
+<!-- Section 1: Shipping Address -->
+<section>
+<div class="mb-8">
+<span class="text-xs font-bold uppercase tracking-widest text-primary mb-2 block">01</span>
+<h2 class="text-3xl font-bold tracking-tight text-on-surface">Shipping Address</h2>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="col-span-1">
+<label class="block text-sm font-medium text-on-surface-variant mb-2">First Name</label>
+<input class="w-full px-4 py-3 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="John" type="text"/>
+</div>
+<div class="col-span-1">
+<label class="block text-sm font-medium text-on-surface-variant mb-2">Last Name</label>
+<input class="w-full px-4 py-3 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="Doe" type="text"/>
+</div>
+<div class="col-span-2">
+<label class="block text-sm font-medium text-on-surface-variant mb-2">Address</label>
+<input class="w-full px-4 py-3 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="123 Atelier Way" type="text"/>
+</div>
+<div class="col-span-2 md:col-span-1">
+<label class="block text-sm font-medium text-on-surface-variant mb-2">City</label>
+<input class="w-full px-4 py-3 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="San Francisco" type="text"/>
+</div>
+<div class="col-span-1 md:col-span-1/2">
+<label class="block text-sm font-medium text-on-surface-variant mb-2">State</label>
+<input class="w-full px-4 py-3 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="CA" type="text"/>
+</div>
+<div class="col-span-1 md:col-span-1/2">
+<label class="block text-sm font-medium text-on-surface-variant mb-2">Zip Code</label>
+<input class="w-full px-4 py-3 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="94103" type="text"/>
+</div>
+</div>
+<div class="mt-6 flex items-center gap-3">
+<input class="w-5 h-5 text-primary rounded border-none bg-surface-container-high focus:ring-primary" id="save-address" type="checkbox"/>
+<label class="text-sm text-on-surface-variant" for="save-address">Save this address for future purchases</label>
+</div>
+</section>
+<!-- Section 2: Shipping Method -->
+<section>
+<div class="mb-8">
+<span class="text-xs font-bold uppercase tracking-widest text-primary mb-2 block">02</span>
+<h2 class="text-3xl font-bold tracking-tight text-on-surface">Shipping Method</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="relative flex items-center p-6 bg-surface-container-lowest rounded-xl cursor-pointer group hover:bg-surface-bright transition-all">
+<input checked="" class="sr-only peer" name="shipping" type="radio" value="free"/>
+<div class="absolute inset-0 border-2 border-transparent peer-checked:border-primary rounded-xl transition-all"></div>
+<div class="flex-1">
+<span class="block text-lg font-bold text-on-surface">Standard</span>
+<span class="block text-sm text-on-surface-variant">5-7 business days</span>
+</div>
+<span class="text-lg font-bold text-on-surface">Free</span>
+</label>
+<label class="relative flex items-center p-6 bg-surface-container-lowest rounded-xl cursor-pointer group hover:bg-surface-bright transition-all">
+<input class="sr-only peer" name="shipping" type="radio" value="express"/>
+<div class="absolute inset-0 border-2 border-transparent peer-checked:border-primary rounded-xl transition-all"></div>
+<div class="flex-1">
+<span class="block text-lg font-bold text-on-surface">Express</span>
+<span class="block text-sm text-on-surface-variant">2-3 business days</span>
+</div>
+<span class="text-lg font-bold text-on-surface">$15.00</span>
+</label>
+</div>
+</section>
+<!-- Section 3: Payment Method -->
+<section>
+<div class="mb-8 flex justify-between items-end">
+<div>
+<span class="text-xs font-bold uppercase tracking-widest text-primary mb-2 block">03</span>
+<h2 class="text-3xl font-bold tracking-tight text-on-surface">Payment Method</h2>
+</div>
+<div class="flex gap-2 mb-1">
+<div class="w-10 h-6 bg-surface-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">credit_card</span>
+</div>
+<div class="w-10 h-6 bg-surface-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">payments</span>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<div class="relative">
+<label class="block text-sm font-medium text-on-surface-variant mb-2">Card Number</label>
+<input class="w-full px-4 py-3 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="0000 0000 0000 0000" type="text"/>
+<div class="absolute right-4 top-10 flex gap-2">
+<span class="material-symbols-outlined text-on-surface-variant opacity-40">contactless</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-on-surface-variant mb-2">Expiry Date</label>
+<input class="w-full px-4 py-3 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="MM / YY" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-on-surface-variant mb-2">CVC</label>
+<input class="w-full px-4 py-3 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="123" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-on-surface-variant mb-2">Cardholder Name</label>
+<input class="w-full px-4 py-3 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all uppercase tracking-wider" placeholder="JOHN DOE" type="text"/>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Order Review (Sticky) -->
+<div class="lg:col-span-5">
+<div class="sticky top-32 bg-surface-container-low p-8 rounded-2xl">
+<h3 class="text-xl font-bold mb-8 text-on-surface">Order Summary</h3>
+<!-- Item List -->
+<div class="space-y-6 mb-10">
+<div class="flex items-center gap-4">
+<div class="w-20 h-24 bg-surface-variant rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Red studio performance shoe close up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC4WrfHdcIDYyBQyZSjJmjN94mFXYnJnmqCsziHnBS08jxULGqngMGvUkF-I9SdkCqDyqhI-dquycaVSqe9L5yuO-vQLIWimiXTytJxWKGHaN0vz1V4bLzeDNOBmNZiSXeQiVzE80PlmOlR8LiPPQcjLP9AoS7I7rNBDY2ctDSV3ohxf-zSxHMk2DGqUAPa6ENXrWvrjeIn43h0yF2lCtqkXUqbeEDtBx_CyUtW7X46SxytzQAer-2i3HhvMEIIGT-BrbMNBG2PFM"/>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface">Studio X1</h4>
+<p class="text-sm text-on-surface-variant">Qty: 1</p>
+</div>
+<span class="font-medium text-on-surface">$249.00</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-20 h-24 bg-surface-variant rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Minimalist lunar series white designer watch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUbHqFfxIweRvFzI5_pJEsWxbImQOWCHZINDXAFClRM5oCVHWqcq6pONe61kwvCbYBmjn_XMldQjDHD9yex7zJ7k_-HJp94ousylVpFr50UlvfDlYuWE236YBvYP8aRmGiy7xqQ4IeWyLmM2Jb4yaCUkzMP7DJM-Rr_tzVhuLtPt40OXCzRi4UDOfWX4wrAA-IWaHqVbps33Q6_hKCJoC0FGI2RuHs8yd28r96jpdZT9EDHqMdBxGtmarWhU1cwzX7Jc4MkG_vXEs"/>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface">Lunar Series</h4>
+<p class="text-sm text-on-surface-variant">Qty: 1</p>
+</div>
+<span class="font-medium text-on-surface">$189.00</span>
+</div>
+</div>
+<!-- Summary -->
+<div class="space-y-4 pt-8 border-t border-outline-variant/20 mb-10">
+<div class="flex justify-between text-on-surface-variant">
+<span>Subtotal</span>
+<span>$438.00</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Shipping</span>
+<span class="text-primary font-medium">Free</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Tax</span>
+<span>$35.04</span>
+</div>
+<div class="flex justify-between text-2xl font-black text-on-surface pt-4">
+<span>Total</span>
+<span>$473.04</span>
+</div>
+</div>
+<!-- CTA -->
+<button class="w-full py-5 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-xl text-lg hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-primary/20">
+                        Place Order
+                    </button>
+<div class="mt-6 flex items-center justify-center gap-2 text-on-surface-variant opacity-60">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span class="text-xs font-medium tracking-tight">Secure Checkout. 256-bit encryption.</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-gray-50 dark:bg-gray-900 border-t border-outline-variant/10">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-12 py-16 max-w-7xl mx-auto">
+<div class="mb-6 md:mb-0">
+<span class="text-lg font-bold text-gray-900 dark:text-gray-50">TradeLink</span>
+</div>
+<p class="text-sm font-['Inter'] text-gray-500 dark:text-gray-400 mb-6 md:mb-0">
+                © 2024 TradeLink Digital Atelier. All rights reserved.
+            </p>
+<div class="flex gap-8">
+<a class="text-sm font-['Inter'] text-gray-500 hover:text-gray-900 transition-all" href="#">Privacy Policy</a>
+<a class="text-sm font-['Inter'] text-gray-500 hover:text-gray-900 transition-all" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</body></html>

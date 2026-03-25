@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#f9f9f9",
+              "surface-container-highest": "#e2e2e2",
+              "on-error": "#ffffff",
+              "surface-variant": "#e2e2e2",
+              "background": "#f9f9f9",
+              "tertiary-fixed-dim": "#ffb59f",
+              "secondary-fixed-dim": "#b6c4ff",
+              "outline": "#737688",
+              "on-secondary-container": "#263e89",
+              "on-surface-variant": "#434656",
+              "surface-container-high": "#e8e8e8",
+              "on-background": "#1b1b1b",
+              "surface-container-low": "#f3f3f3",
+              "primary-container": "#0057ff",
+              "error": "#ba1a1a",
+              "on-primary-fixed": "#001550",
+              "on-secondary": "#ffffff",
+              "tertiary-container": "#c13600",
+              "on-primary-container": "#e5e8ff",
+              "primary-fixed": "#dce1ff",
+              "outline-variant": "#c3c5d9",
+              "on-error-container": "#93000a",
+              "tertiary": "#972800",
+              "on-tertiary-fixed": "#3a0a00",
+              "on-tertiary": "#ffffff",
+              "on-primary-fixed-variant": "#003ab2",
+              "inverse-primary": "#b6c4ff",
+              "on-secondary-fixed-variant": "#2a418d",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed": "#dce1ff",
+              "surface-tint": "#004ee7",
+              "surface": "#f9f9f9",
+              "on-secondary-fixed": "#001550",
+              "error-container": "#ffdad6",
+              "tertiary-fixed": "#ffdbd1",
+              "surface-container": "#eeeeee",
+              "primary-fixed-dim": "#b6c4ff",
+              "surface-dim": "#dadada",
+              "inverse-surface": "#303030",
+              "secondary": "#445aa6",
+              "on-surface": "#1b1b1b",
+              "inverse-on-surface": "#f1f1f1",
+              "secondary-container": "#97adff",
+              "on-tertiary-fixed-variant": "#862300",
+              "on-tertiary-container": "#ffe3db",
+              "on-primary": "#ffffff",
+              "primary": "#0043c8"
+            },
+            fontFamily: {
+              "headline": ["Inter", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex items-center justify-between px-6 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-blue-700 dark:text-blue-500 cursor-pointer">TradeLink</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 font-sans tracking-tight" href="#">Categories</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<button class="p-2 text-neutral-500 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors duration-200 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+<button class="p-2 text-neutral-500 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors duration-200 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+<button class="p-2 text-neutral-500 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors duration-200 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-neutral-100/50 dark:bg-neutral-800/50 h-px w-full"></div>
+</nav>
+<!-- Main Content: No Results Empty State -->
+<main class="min-h-screen flex flex-col items-center justify-center pt-24 pb-12 px-6">
+<div class="max-w-2xl w-full text-center space-y-12">
+<!-- Empty State Illustration/Icon -->
+<div class="relative flex justify-center">
+<div class="w-48 h-48 bg-surface-container-low rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-8xl text-outline-variant select-none" style="font-variation-settings: 'wght' 200;">
+                        search_off
+                    </span>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-10">
+<span class="material-symbols-outlined text-[160px]" style="font-variation-settings: 'wght' 100;">help</span>
+</div>
+</div>
+</div>
+<!-- Content Header -->
+<div class="space-y-4">
+<h1 class="text-4xl md:text-5xl font-bold tracking-tight text-on-surface">We couldn't find any matches.</h1>
+<p class="text-lg text-on-surface-variant max-w-lg mx-auto leading-relaxed">
+                    Try checking your spelling or searching for a different term.
+                </p>
+</div>
+<!-- Action Area: Centered Search Bar -->
+<div class="w-full max-w-xl mx-auto group">
+<div class="relative flex items-center p-1 bg-surface-container-high rounded-xl focus-within:bg-surface-container-lowest focus-within:ring-2 focus-within:ring-primary transition-all duration-300">
+<span class="material-symbols-outlined absolute left-5 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 py-5 pl-14 pr-6 text-lg font-medium placeholder:text-outline text-on-surface" placeholder="Search for something else..." type="text"/>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 rounded-lg font-semibold shadow-lg hover:brightness-110 active:scale-[0.98] transition-all">
+                        Search
+                    </button>
+</div>
+</div>
+<!-- Suggestions -->
+<div class="space-y-6 pt-4">
+<p class="text-sm font-label uppercase tracking-widest text-outline">Or browse our popular categories:</p>
+<div class="flex flex-wrap justify-center gap-3">
+<button class="px-6 py-3 bg-primary-fixed text-on-primary-fixed rounded-full font-medium hover:bg-primary hover:text-on-primary transition-all active:scale-95 duration-200">
+                        Electronics
+                    </button>
+<button class="px-6 py-3 bg-secondary-fixed text-on-secondary-fixed rounded-full font-medium hover:bg-secondary hover:text-on-secondary transition-all active:scale-95 duration-200">
+                        Fashion
+                    </button>
+<button class="px-6 py-3 bg-surface-container-highest text-on-surface rounded-full font-medium hover:bg-on-surface hover:text-surface transition-all active:scale-95 duration-200">
+                        Appliances
+                    </button>
+<button class="px-6 py-3 bg-surface-container-highest text-on-surface rounded-full font-medium hover:bg-on-surface hover:text-surface transition-all active:scale-95 duration-200">
+                        Home
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-neutral-900 dark:bg-black w-full pt-16 pb-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 max-w-screen-2xl mx-auto">
+<div class="md:col-span-1">
+<h3 class="text-xl font-bold text-white mb-4">TradeLink</h3>
+<p class="text-neutral-400 text-sm leading-relaxed">Crafting the future of precision editorial commerce with intentional design and curated excellence.</p>
+</div>
+<div class="space-y-4">
+<h4 class="text-white font-medium">Resources</h4>
+<ul class="space-y-2">
+<li><a class="text-neutral-400 hover:text-white transition-colors text-sm" href="#">Help</a></li>
+<li><a class="text-neutral-400 hover:text-white transition-colors text-sm" href="#">Contact</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="text-white font-medium">Customer Service</h4>
+<ul class="space-y-2">
+<li><a class="text-neutral-400 hover:text-white transition-colors text-sm" href="#">Returns</a></li>
+<li><a class="text-neutral-400 hover:text-white transition-colors text-sm" href="#">Privacy</a></li>
+<li><a class="text-neutral-400 hover:text-white transition-colors text-sm" href="#">Terms</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="text-white font-medium">Connect</h4>
+<div class="flex gap-4">
+<button class="w-10 h-10 rounded-full border border-neutral-800 flex items-center justify-center text-neutral-400 hover:text-blue-500 hover:border-blue-500 transition-all">
+<span class="material-symbols-outlined text-lg">share</span>
+</button>
+<button class="w-10 h-10 rounded-full border border-neutral-800 flex items-center justify-center text-neutral-400 hover:text-blue-500 hover:border-blue-500 transition-all">
+<span class="material-symbols-outlined text-lg">public</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-16 px-8 max-w-screen-2xl mx-auto">
+<div class="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-sans text-sm text-neutral-400">© 2024 TradeLink. Precision Editorial Commerce.</p>
+<div class="flex gap-6">
+<span class="text-xs text-neutral-500 uppercase tracking-widest">Global Master Styles</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

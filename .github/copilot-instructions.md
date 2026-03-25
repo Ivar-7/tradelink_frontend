@@ -11,6 +11,7 @@ Feature-based modular structure where each feature is self-contained. Shared log
 * `components/`: Local UI components.
 * `pages/`: Feature entry points and screens.
 * `styles/`: Feature-specific styles (if not using Tailwind).
+* `data/`: Mock data, fixtures, or test data related to the feature.
 
 * **Root Files**: `App.jsx`, `main.jsx`, `routes.jsx`.
 
@@ -57,7 +58,8 @@ npm run lint    # Runs ESLint to fix/report issues
 npm run format  # Runs Prettier
 ```
 
-
 Fix all warnings/errors; do not use `eslint-disable`.
+
+
 3. **Finish completely**: Ensure the feature is fully responsive, types are strict, and the build succeeds (`npm run build`) before marking complete.
 

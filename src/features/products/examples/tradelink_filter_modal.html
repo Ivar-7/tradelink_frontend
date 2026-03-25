@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed": "#3a0a00",
+              "surface-container-high": "#e8e8e8",
+              "secondary-fixed-dim": "#b6c4ff",
+              "on-surface": "#1b1b1b",
+              "tertiary-fixed": "#ffdbd1",
+              "inverse-primary": "#b6c4ff",
+              "outline-variant": "#c3c5d9",
+              "primary": "#0043c8",
+              "on-primary-container": "#e5e8ff",
+              "on-secondary-fixed": "#001550",
+              "secondary": "#445aa6",
+              "surface-container-low": "#f3f3f3",
+              "on-primary-fixed": "#001550",
+              "on-tertiary-fixed-variant": "#862300",
+              "on-tertiary": "#ffffff",
+              "on-primary-fixed-variant": "#003ab2",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed-dim": "#ffb59f",
+              "surface-dim": "#dadada",
+              "secondary-container": "#97adff",
+              "on-secondary-fixed-variant": "#2a418d",
+              "error": "#ba1a1a",
+              "surface-tint": "#004ee7",
+              "on-error-container": "#93000a",
+              "tertiary-container": "#c13600",
+              "surface-variant": "#e2e2e2",
+              "on-background": "#1b1b1b",
+              "inverse-surface": "#303030",
+              "on-secondary": "#ffffff",
+              "primary-fixed": "#dce1ff",
+              "on-tertiary-container": "#ffe3db",
+              "surface": "#f9f9f9",
+              "tertiary": "#972800",
+              "surface-container": "#eeeeee",
+              "surface-container-highest": "#e2e2e2",
+              "primary-container": "#0057ff",
+              "background": "#f9f9f9",
+              "outline": "#737688",
+              "on-secondary-container": "#263e89",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-surface-variant": "#434656",
+              "secondary-fixed": "#dce1ff",
+              "on-primary": "#ffffff",
+              "inverse-on-surface": "#f1f1f1",
+              "surface-bright": "#f9f9f9",
+              "primary-fixed-dim": "#b6c4ff"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .bg-glass {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+      }
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #e2e2e2; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body overflow-hidden">
+<!-- Background Layer (Blurred Category Page Content) -->
+<div class="fixed inset-0 z-0 blur-xl scale-105 opacity-60">
+<!-- Reusing TopAppBar for Background context -->
+<header class="bg-white/80 fixed top-0 w-full flex justify-between items-center px-12 py-4">
+<span class="text-2xl font-bold tracking-tighter text-slate-900">TradeLink</span>
+<div class="flex gap-8 text-slate-500 font-medium">
+<span>Shop</span><span>Categories</span><span>Deals</span>
+</div>
+</header>
+<main class="pt-24 px-12 grid grid-cols-4 gap-8">
+<div class="col-span-1 h-screen bg-surface-container-low rounded-xl"></div>
+<div class="col-span-3 grid grid-cols-3 gap-6">
+<div class="h-80 bg-surface-container-lowest rounded-xl"></div>
+<div class="h-80 bg-surface-container-lowest rounded-xl"></div>
+<div class="h-80 bg-surface-container-lowest rounded-xl"></div>
+<div class="h-80 bg-surface-container-lowest rounded-xl"></div>
+<div class="h-80 bg-surface-container-lowest rounded-xl"></div>
+<div class="h-80 bg-surface-container-lowest rounded-xl"></div>
+</div>
+</main>
+</div>
+<!-- Overlay -->
+<div class="fixed inset-0 bg-on-surface/40 backdrop-blur-sm z-40"></div>
+<!-- Modal Container -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-6 md:p-12">
+<section class="bg-surface-container-lowest w-full max-w-4xl max-h-[921px] flex flex-col shadow-[0_40px_100px_-20px_rgba(0,0,0,0.2)] rounded-xl overflow-hidden animate-in fade-in zoom-in duration-300">
+<!-- Modal Header -->
+<header class="flex items-center justify-between px-10 py-8">
+<h1 class="text-3xl font-black tracking-tight text-on-surface">Filter</h1>
+<button class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant group">
+<span class="material-symbols-outlined text-2xl group-active:scale-90 transition-transform" data-icon="close">close</span>
+</button>
+</header>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto px-10 py-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+<!-- Price Range Section -->
+<div class="space-y-6">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Price Range</label>
+<div class="relative h-1 w-full bg-surface-container-highest rounded-full mt-8">
+<div class="absolute h-full bg-primary left-1/4 right-1/4 rounded-full"></div>
+<div class="absolute -top-2 left-1/4 w-5 h-5 bg-primary border-4 border-surface-container-lowest rounded-full shadow-md cursor-pointer"></div>
+<div class="absolute -top-2 right-1/4 w-5 h-5 bg-primary border-4 border-surface-container-lowest rounded-full shadow-md cursor-pointer"></div>
+</div>
+<div class="flex items-center gap-4 pt-4">
+<div class="flex-1">
+<span class="text-[10px] font-bold text-outline uppercase block mb-1">Min Price</span>
+<div class="bg-surface-container-high px-4 py-3 rounded text-on-surface font-semibold flex items-center">
+<span class="text-on-surface-variant mr-2">$</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 w-full text-sm" type="text" value="500"/>
+</div>
+</div>
+<div class="w-4 h-px bg-outline-variant mt-4"></div>
+<div class="flex-1">
+<span class="text-[10px] font-bold text-outline uppercase block mb-1">Max Price</span>
+<div class="bg-surface-container-high px-4 py-3 rounded text-on-surface font-semibold flex items-center">
+<span class="text-on-surface-variant mr-2">$</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 w-full text-sm" type="text" value="2500"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Brand Section -->
+<div class="space-y-6">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Brand</label>
+<div class="grid grid-cols-1 gap-4">
+<label class="flex items-center group cursor-pointer">
+<div class="relative flex items-center justify-center">
+<input checked="" class="peer appearance-none w-5 h-5 rounded border-2 border-outline-variant checked:bg-primary checked:border-primary transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-white text-xs opacity-0 peer-checked:opacity-100 pointer-events-none" data-icon="check" style="font-size: 14px; font-weight: 800;">check</span>
+</div>
+<span class="ml-4 text-sm font-medium text-on-surface group-hover:text-primary transition-colors">Apple</span>
+</label>
+<label class="flex items-center group cursor-pointer">
+<div class="relative flex items-center justify-center">
+<input class="peer appearance-none w-5 h-5 rounded border-2 border-outline-variant checked:bg-primary checked:border-primary transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-white text-xs opacity-0 peer-checked:opacity-100 pointer-events-none" data-icon="check" style="font-size: 14px; font-weight: 800;">check</span>
+</div>
+<span class="ml-4 text-sm font-medium text-on-surface group-hover:text-primary transition-colors">Samsung</span>
+</label>
+<label class="flex items-center group cursor-pointer">
+<div class="relative flex items-center justify-center">
+<input checked="" class="peer appearance-none w-5 h-5 rounded border-2 border-outline-variant checked:bg-primary checked:border-primary transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-white text-xs opacity-0 peer-checked:opacity-100 pointer-events-none" data-icon="check" style="font-size: 14px; font-weight: 800;">check</span>
+</div>
+<span class="ml-4 text-sm font-medium text-on-surface group-hover:text-primary transition-colors">Sony</span>
+</label>
+<label class="flex items-center group cursor-pointer">
+<div class="relative flex items-center justify-center">
+<input class="peer appearance-none w-5 h-5 rounded border-2 border-outline-variant checked:bg-primary checked:border-primary transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-white text-xs opacity-0 peer-checked:opacity-100 pointer-events-none" data-icon="check" style="font-size: 14px; font-weight: 800;">check</span>
+</div>
+<span class="ml-4 text-sm font-medium text-on-surface group-hover:text-primary transition-colors">Dell</span>
+</label>
+</div>
+</div>
+<!-- Rating Section -->
+<div class="space-y-6">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Customer Rating</label>
+<div class="space-y-4">
+<label class="flex items-center group cursor-pointer">
+<div class="relative flex items-center justify-center">
+<input class="peer appearance-none w-5 h-5 rounded border-2 border-outline-variant checked:bg-primary checked:border-primary transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-white text-xs opacity-0 peer-checked:opacity-100 pointer-events-none" data-icon="check" style="font-size: 14px; font-weight: 800;">check</span>
+</div>
+<div class="ml-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-secondary-container" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-secondary-container" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-secondary-container" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-secondary-container" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-secondary-container" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="ml-2 text-xs font-bold text-on-surface-variant">&amp; Up</span>
+</div>
+</label>
+<label class="flex items-center group cursor-pointer">
+<div class="relative flex items-center justify-center">
+<input class="peer appearance-none w-5 h-5 rounded border-2 border-outline-variant checked:bg-primary checked:border-primary transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-white text-xs opacity-0 peer-checked:opacity-100 pointer-events-none" data-icon="check" style="font-size: 14px; font-weight: 800;">check</span>
+</div>
+<div class="ml-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-secondary-container" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-secondary-container" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-secondary-container" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-secondary-container" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-outline-variant" data-icon="star">star</span>
+<span class="ml-2 text-xs font-bold text-on-surface-variant">&amp; Up</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Availability Section -->
+<div class="space-y-6">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Availability</label>
+<div class="flex items-center justify-between bg-surface-container-low p-4 rounded-lg">
+<div>
+<span class="block text-sm font-bold text-on-surface">In Stock Only</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider">Fastest delivery first</span>
+</div>
+<button aria-checked="true" class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-primary" role="switch">
+<span aria-hidden="true" class="pointer-events-none inline-block h-5 w-5 translate-x-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal Footer -->
+<footer class="px-10 py-8 border-t border-outline-variant/10 flex items-center justify-between">
+<button class="text-xs font-black uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-2">
+                    Clear All
+                </button>
+<div class="flex gap-4">
+<button class="px-8 py-4 bg-primary text-on-primary font-bold rounded-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+                        Apply Filters
+                    </button>
+</div>
+</footer>
+</section>
+</div>
+<!-- Hidden Footer Branding (Anchor) -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[60] pointer-events-none opacity-20">
+<span class="text-sm font-black uppercase tracking-[0.4em] text-on-surface">TradeLink Precision</span>
+</div>
+</body></html>

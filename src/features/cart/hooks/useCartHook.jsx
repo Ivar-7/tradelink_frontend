@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { addToCart, removeCartItem, updateCartItem, clearCart } from '../api/cartApi';
+import { addToCart, removeCartItem, updateCartItem, clearCart, getCart } from '../api/cartApi';
 import { mapError } from '../../../shared/utils/errorHandler';
 
 const useCartHook = create(
@@ -11,6 +11,18 @@ const useCartHook = create(
       error: null,
 
       setCart: (cart) => set({ cart }),
+
+      fetchCart: async () => {
+        set({ loading: true, error: null });
+        try {
+          const cart = await getCart();
+          set({ cart });
+        } catch (err) {
+          set({ error: mapError(err) });
+        } finally {
+          set({ loading: false });
+        }
+      },
 
       addItem: async (payload) => {
         set({ loading: true, error: null });
@@ -52,7 +64,8 @@ const useCartHook = create(
         set({ loading: true, error: null });
         try {
           await clearCart();
-          set({ cart: null });
+          const cart = await getCart();
+          set({ cart });
         } catch (err) {
           set({ error: mapError(err) });
         } finally {

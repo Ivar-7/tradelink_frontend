@@ -1,178 +1,71 @@
-import camera from '../../../assets/images/camera.jpg';
-import cctv from '../../../assets/images/cctv.jpg';
-import smartwatch from '../../../assets/images/smartwatch.jpg';
-import headphone from '../../../assets/images/headphone.jpg';
-import cameraa from '../../../assets/images/cameraa.jpg';
-import laptopPro from '../../../assets/images/laptop pro.jpg';
-import tablet from '../../../assets/images/tablet.jpg';
-import iphone from '../../../assets/images/iphone.jpg';
-import speaker from '../../../assets/images/speaker.jpg';
-import headPhoneee from '../../../assets/images/headphoneee.jpg';
-import VRheadset from '../../../assets/images/VR headset.jpg';
-import iphone12 from '../../../assets/images/iphone12.jpg';
-import photo from '../../../assets/images/photo.jpg';
-import macbook from '../../../assets/images/macbook .jpg';
+import { useNavigate } from 'react-router-dom';
+import { productCatalog } from '../data/productCatalog';
+import useCartHook from '../../cart/hooks/useCartHook';
+import { formatCurrency } from '../../../shared/utils/formatters';
+import { ROUTES } from '../../../shared/constants/routes';
 
-const products = [
-  {
-    id: 1,
-    name: 'Wireless Headphones',
-    image: VRheadset,
-    price: 79.99,
-    description: 'High-quality wireless headphones for immersive sound.',
-  },
-  {
-    id: 2,
-    name: 'Smart Watch',
-    image: smartwatch,
-    price: 129.99,
-    description: 'Keep track of your health and notifications on the go.',
-  },
-  {
-    id: 3,
-    name: 'Bluetooth Speaker',
-    image: speaker,
-    price: 59.99,
-    description: 'Portable speaker with powerful Bluetooth audio.',
-  },
-  {
-    id: 4,
-    name: 'iPhone',
-    image: iphone,
-    price: 39.99,
-    description: 'Sleek smartphone with advanced features.',
-  },
-  {
-    id: 5,
-    name: 'Headphone',
-    image: headPhoneee,
-    price: 29.99,
-    description: 'Affordable headphones for everyday listening.',
-  },
-  {
-    id: 6,
-    name: 'Headphone',
-    image: headPhoneee,
-    price: 89.99,
-    description: 'Premium headphones with clear sound quality.',
-  },
-  {
-    id: 7,
-    name: 'Camera',
-    image: cameraa,
-    price: 24.99,
-    description: 'Compact camera perfect for casual photography.',
-  },
-  {
-    id: 8,
-    name: 'Tablet',
-    image: tablet,
-    price: 34.99,
-    description: 'Lightweight tablet ideal for browsing and media.',
-  },
-  {
-    id: 9,
-    name: 'Photo',
-    image: photo,
-    price: 49.99,
-    description: 'High-resolution photo prints or digital storage.',
-  },
-  {
-    id: 10,
-    name: 'Macbook',
-    image: macbook,
-    price: 99.99,
-    description: 'Powerful laptop for work and creative projects.',
-  },
-  {
-    id: 11,
-    name: 'Laptop',
-    image: laptopPro,
-    price: 19.99,
-    description: 'Reliable laptop for everyday tasks.',
-  },
-  {
-    id: 12,
-    name: 'Laptop Pro',
-    image: laptopPro,
-    price: 27.99,
-    description: 'Enhanced laptop with better performance and features.',
-  },
-  {
-    id: 13,
-    name: 'iPhone',
-    image: iphone,
-    price: 149.99,
-    description: 'Latest iPhone model with advanced camera.',
-  },
-  {
-    id: 14,
-    name: 'Headphones',
-    image: headphone,
-    price: 69.99,
-    description: 'Comfortable headphones with rich sound.',
-  },
-  {
-    id: 15,
-    name: 'Action Camera',
-    image: camera,
-    price: 199.99,
-    description: 'Durable camera for outdoor and action sports.',
-  },
-  {
-    id: 16,
-    name: 'iPhone 12',
-    image: iphone12,
-    price: 22.99,
-    description: 'Classic iPhone 12 model with sleek design.',
-  },
-  {
-    id: 17,
-    name: 'CCTV Camera',
-    image: cctv,
-    price: 15.8,
-    description: 'Security camera for home or monitoring.',
-  },
-  {
-    id: 18,
-    name: 'Laptop',
-    image: laptopPro,
-    price: 32.99,
-    description: 'Compact laptop suitable for work and study.',
-  },
-];
+const ProductsPage = () => {
+  const addItem = useCartHook((state) => state.addItem);
+  const navigate = useNavigate();
 
-const ProductsPage = () => (
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
-    {products.map((product) => (
-      <div
-        key={product.id}
-        className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden"
-      >
-        <div className="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="h-full w-full object-cover hover:scale-110 transition duration-300"
-          />
+  const handleAddToCart = async (productId) => {
+    await addItem({ product_id: productId, quantity: 1 });
+  };
+
+  return (
+    <div className="mx-auto w-full max-w-[1280px] px-4 py-8 lg:px-6">
+      <div className="mb-8 flex flex-wrap items-end justify-between gap-4 border-b border-border pb-5">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-primary-600">Products</p>
+          <h1 className="mt-2 text-4xl font-black tracking-tight text-foreground">Shop Tech Essentials</h1>
         </div>
-
-        <div className="p-4">
-          <h3 className="text-lg font-semibold text-gray-800">{product.name}</h3>
-
-          <p className="text-gray-500 text-sm mt-1">{product.description}</p>
-
-          <div className="flex items-center justify-between mt-4">
-            <span className="text-xl font-bold text-black">${product.price}</span>
-
-            <button className="bg-yellow-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-800 transition">
-              Add
-            </button>
-          </div>
-        </div>
+        <button
+          type="button"
+          onClick={() => navigate(ROUTES.CART)}
+          className="rounded-lg bg-primary-600 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-primary-700"
+        >
+          View Cart
+        </button>
       </div>
-    ))}
-  </div>
-);
+
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {productCatalog.map((product) => (
+          <article
+            key={product.id}
+            className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition duration-300 hover:shadow-xl"
+          >
+            <div className="h-52 overflow-hidden bg-slate-100 dark:bg-slate-900">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="h-full w-full object-cover transition duration-300 hover:scale-110"
+              />
+            </div>
+
+            <div className="p-4">
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary-600">
+                {product.brand}
+              </p>
+              <h3 className="mt-1 text-lg font-semibold text-foreground">{product.name}</h3>
+              <p className="mt-1 text-sm text-muted">{product.description}</p>
+
+              <div className="mt-4 flex items-center justify-between">
+                <span className="text-xl font-black text-foreground">{formatCurrency(product.price)}</span>
+
+                <button
+                  type="button"
+                  onClick={() => handleAddToCart(product.id)}
+                  className="rounded-lg bg-primary-600 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-primary-700"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default ProductsPage;

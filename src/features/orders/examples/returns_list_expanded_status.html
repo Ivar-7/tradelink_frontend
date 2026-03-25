@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-error": "#ffffff",
+              "surface-container-high": "#e8e8e8",
+              "surface-container": "#eeeeee",
+              "primary-container": "#0057ff",
+              "on-primary-fixed-variant": "#003ab2",
+              "inverse-on-surface": "#f1f1f1",
+              "primary-fixed": "#dce1ff",
+              "on-background": "#1b1b1b",
+              "on-tertiary-container": "#ffe3db",
+              "inverse-surface": "#303030",
+              "secondary-container": "#97adff",
+              "outline-variant": "#c3c5d9",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-low": "#f3f3f3",
+              "on-tertiary-fixed-variant": "#862300",
+              "on-secondary-container": "#263e89",
+              "inverse-primary": "#b6c4ff",
+              "tertiary-container": "#c13600",
+              "on-surface-variant": "#434656",
+              "on-secondary-fixed-variant": "#2a418d",
+              "primary": "#0043c8",
+              "surface": "#f9f9f9",
+              "surface-variant": "#e2e2e2",
+              "on-surface": "#1b1b1b",
+              "secondary": "#445aa6",
+              "tertiary-fixed": "#ffdbd1",
+              "primary-fixed-dim": "#b6c4ff",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed": "#001550",
+              "error": "#ba1a1a",
+              "on-tertiary": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-container-highest": "#e2e2e2",
+              "secondary-fixed": "#dce1ff",
+              "outline": "#737688",
+              "secondary-fixed-dim": "#b6c4ff",
+              "surface-bright": "#f9f9f9",
+              "tertiary": "#972800",
+              "background": "#f9f9f9",
+              "on-tertiary-fixed": "#3a0a00",
+              "on-primary-fixed": "#001550",
+              "surface-dim": "#dadada",
+              "on-primary-container": "#e5e8ff",
+              "tertiary-fixed-dim": "#ffb59f",
+              "surface-tint": "#004ee7"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar Shared Component -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl transition-all">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-black tracking-tighter text-blue-700 dark:text-blue-500">TradeLink</div>
+<div class="hidden md:flex items-center space-gap-8 gap-8">
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Categories</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Wishlist</a>
+<a class="text-blue-700 dark:text-blue-400 font-bold border-b-2 border-blue-700 dark:border-blue-400 pb-1" href="#">Account</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Cart</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="hover:opacity-80 transition-opacity duration-200 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-on-surface">search</span>
+</button>
+<button class="hover:opacity-80 transition-opacity duration-200 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-on-surface">person</span>
+</button>
+<button class="hover:opacity-80 transition-opacity duration-200 scale-95 active:scale-90 transition-transform relative">
+<span class="material-symbols-outlined text-on-surface">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-primary text-[10px] text-white w-4 h-4 flex items-center justify-center rounded-full">2</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-20 px-8 max-w-7xl mx-auto min-h-screen">
+<div class="flex gap-16">
+<!-- Left Sidebar: Account Menu -->
+<aside class="w-64 flex-shrink-0">
+<h2 class="text-xs font-bold tracking-[0.1em] text-on-surface-variant uppercase mb-8">Account Menu</h2>
+<nav class="flex flex-col space-y-2">
+<a class="px-4 py-2.5 text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span> Dashboard
+                    </a>
+<a class="px-4 py-2.5 text-sm font-bold text-primary bg-primary-fixed/30 rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">package_2</span> My Orders
+                    </a>
+<a class="px-4 py-2.5 text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-lg">location_on</span> Address Book
+                    </a>
+<a class="px-4 py-2.5 text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-lg">payments</span> Payment Methods
+                    </a>
+<a class="px-4 py-2.5 text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-lg">favorite</span> Wishlist
+                    </a>
+<a class="px-4 py-2.5 text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-lg">history</span> Recently Viewed
+                    </a>
+<a class="px-4 py-2.5 text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-lg">settings</span> Account Settings
+                    </a>
+<div class="pt-4 mt-4 border-t border-outline-variant/10">
+<a class="px-4 py-2.5 text-sm font-medium text-error hover:bg-error-container/20 transition-colors rounded-lg flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-lg">logout</span> Log Out
+                        </a>
+</div>
+</nav>
+</aside>
+<!-- Right Column: Returns List -->
+<section class="flex-1">
+<header class="mb-12">
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-8">My Orders</h1>
+<div class="flex items-center gap-8 overflow-x-auto no-scrollbar pb-2 relative">
+<a class="text-sm font-medium text-on-surface-variant whitespace-nowrap hover:text-on-surface transition-colors" href="#">All Orders</a>
+<a class="text-sm font-medium text-on-surface-variant whitespace-nowrap hover:text-on-surface transition-colors" href="#">Pending</a>
+<a class="text-sm font-medium text-on-surface-variant whitespace-nowrap hover:text-on-surface transition-colors" href="#">Processing</a>
+<a class="text-sm font-medium text-on-surface-variant whitespace-nowrap hover:text-on-surface transition-colors" href="#">Shipped</a>
+<a class="text-sm font-medium text-on-surface-variant whitespace-nowrap hover:text-on-surface transition-colors" href="#">Delivered</a>
+<a class="text-sm font-medium text-on-surface-variant whitespace-nowrap hover:text-on-surface transition-colors" href="#">Cancelled</a>
+<a class="text-sm font-bold text-primary whitespace-nowrap border-b-2 border-primary pb-4" href="#">Returns</a>
+</div>
+<div class="w-full h-px bg-outline-variant/20 -mt-px"></div>
+</header>
+<div class="space-y-8">
+<!-- Expanded Status View Return Card -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden ring-1 ring-outline-variant/10 shadow-sm transition-all hover:ring-outline-variant/30">
+<div class="p-6 bg-surface-container-low flex flex-wrap justify-between items-center gap-4">
+<div class="flex gap-8">
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Return ID</p>
+<p class="text-sm font-semibold">#RET-5521</p>
+</div>
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Original Order</p>
+<p class="text-sm font-semibold">#TRL-99201</p>
+</div>
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Return Date</p>
+<p class="text-sm font-semibold">Oct 24, 2023</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-[#FFF8E1] text-[#795548] text-[11px] font-bold uppercase tracking-wider rounded-full flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-[#FFB300]"></span>
+                                Pending Approval
+                            </span>
+</div>
+<div class="p-8">
+<!-- Progress Tracker -->
+<div class="mb-12 px-4">
+<div class="relative flex justify-between items-center w-full">
+<!-- Line Background -->
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-surface-container-high"></div>
+<!-- Active Line Segment -->
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-1/3 h-[2px] bg-primary"></div>
+<!-- Step 1: Requested -->
+<div class="relative z-10 flex flex-col items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-xl">check</span>
+</div>
+<p class="text-xs font-bold text-on-surface">Requested</p>
+</div>
+<!-- Step 2: Approved (Highlighted) -->
+<div class="relative z-10 flex flex-col items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary ring-4 ring-primary/20 flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl">check_circle</span>
+</div>
+<p class="text-xs font-bold text-primary">Approved</p>
+</div>
+<!-- Step 3: Shipped Back -->
+<div class="relative z-10 flex flex-col items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-xl">local_shipping</span>
+</div>
+<p class="text-xs font-medium text-outline">Shipped Back</p>
+</div>
+<!-- Step 4: Refunded -->
+<div class="relative z-10 flex flex-col items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+</div>
+<p class="text-xs font-medium text-outline">Refunded</p>
+</div>
+</div>
+</div>
+<!-- Returned Items List -->
+<div class="space-y-6 mb-8 border-t border-outline-variant/10 pt-8">
+<div class="flex items-center gap-6">
+<div class="w-20 h-20 bg-surface-variant rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Product" class="w-full h-full object-cover" data-alt="Red performance running shoes close up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe-IkSCGre7T8tCSx3LknvhuX-jcWflajgPHQ-_H9-BI7z28ocDnliV_h8X5TNfVKyU-NRa7DAoWkiKcsDw1vx3yqyOIiTNtQquC45yeOHRIEa4tShKaVIQABeN-yHxcOsKoM37A7x7OFLe6lzNOaL1VZi_iwS3uZNMw1Buik5bNAcNw324iRg29zXf71_78lnWJqC24FI18KZLgo9Dq7G_fBKvkB9yaEhPbZOp4FSWORjzqrVKDbOi4iQ_68CsTUNkgP6YPHjgbs"/>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold text-on-surface">Ultra-Light Performance Runners</h4>
+<p class="text-xs text-on-surface-variant mt-1">Size: 10.5 | Color: Crimson Red</p>
+<p class="text-xs font-medium text-on-surface mt-2">$124.00</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Qty: 1</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="w-20 h-20 bg-surface-variant rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Product" class="w-full h-full object-cover" data-alt="Minimalist black cotton t-shirt flat lay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLvR4bfWkrb_QjoGqOE-JE0Xh-ycaLo-mrs0wwkI-x4hH1hRCG6jBM3-gvTwj2B_4PMr1Q8RKrydtESmHLhUwc2X-Jk2Nhc0IujHMRGToye9_QOXrGYyH7bEV9nHxADUcT3hIN15kdOTdOaLg9434FwJ-mP8eVnYa29CPWgLy-6ejvLOCYO3RkuKSjtPjQj5ZZFbzeAaiLRBuiwT7jvJmVXvPmqffbn1Y8fgrWp3FBxlooanFBj6TF4M1IcoJQp_eOO-FaGChBzgM"/>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold text-on-surface">Essential Heavyweight Tee</h4>
+<p class="text-xs text-on-surface-variant mt-1">Size: L | Color: Obsidian Black</p>
+<p class="text-xs font-medium text-on-surface mt-2">$45.00</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Qty: 1</p>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant/10">
+<button class="px-6 py-3 bg-surface-container-highest text-on-surface text-sm font-bold rounded-lg hover:bg-surface-container-high transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">print</span> Print Return Label
+                                </button>
+<a class="text-primary text-sm font-bold hover:underline transition-all" href="#">Contact Support</a>
+</div>
+</div>
+</div>
+<!-- Second Card (Collapsed/Simple View) -->
+<div class="bg-surface-container-lowest rounded-xl p-6 ring-1 ring-outline-variant/10 flex items-center justify-between hover:ring-primary/20 transition-all cursor-pointer">
+<div class="flex gap-12">
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Return ID</p>
+<p class="text-sm font-semibold">#RET-5488</p>
+</div>
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Status</p>
+<p class="text-sm font-semibold flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span> Shipped Back
+                                </p>
+</div>
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Items</p>
+<p class="text-sm font-semibold">1 Item</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer Shared Component -->
+<footer class="bg-slate-900 dark:bg-black w-full pt-16 pb-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 px-8 max-w-7xl mx-auto">
+<div>
+<div class="text-xl font-bold text-white mb-4">TradeLink</div>
+<p class="text-slate-400 text-sm leading-relaxed max-w-[200px]">The digital atelier for precision editorial commerce.</p>
+</div>
+<div>
+<h4 class="text-white font-semibold mb-6">Customer Service</h4>
+<nav class="flex flex-col space-y-4">
+<a class="text-slate-400 hover:text-white transition-colors text-sm" href="#">Track Order</a>
+<a class="text-white font-semibold text-sm" href="#">Returns &amp; Exchanges</a>
+<a class="text-slate-400 hover:text-white transition-colors text-sm" href="#">Shipping Info</a>
+<a class="text-slate-400 hover:text-white transition-colors text-sm" href="#">Contact Us</a>
+</nav>
+</div>
+<div>
+<h4 class="text-white font-semibold mb-6">Company</h4>
+<nav class="flex flex-col space-y-4">
+<a class="text-slate-400 hover:text-white transition-colors text-sm" href="#">Our Story</a>
+<a class="text-slate-400 hover:text-white transition-colors text-sm" href="#">Sustainability</a>
+<a class="text-slate-400 hover:text-white transition-colors text-sm" href="#">Careers</a>
+<a class="text-slate-400 hover:text-white transition-colors text-sm" href="#">Stores</a>
+</nav>
+</div>
+<div>
+<h4 class="text-white font-semibold mb-6">Legal</h4>
+<nav class="flex flex-col space-y-4">
+<a class="text-slate-400 hover:text-white transition-colors text-sm" href="#">Privacy Policy</a>
+<a class="text-slate-400 hover:text-white transition-colors text-sm" href="#">Terms of Service</a>
+<a class="text-slate-400 hover:text-white transition-colors text-sm" href="#">Cookie Policy</a>
+</nav>
+</div>
+</div>
+<div class="mt-16 px-8 max-w-7xl mx-auto border-t border-slate-800 pt-8 flex justify-between items-center">
+<p class="font-sans text-sm text-slate-400">© 2024 TradeLink. Precision Editorial Commerce.</p>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-blue-400 transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-slate-400 hover:text-blue-400 transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
+</div>
+</div>
+</footer>
+</body></html>

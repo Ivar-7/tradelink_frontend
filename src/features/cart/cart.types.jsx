@@ -2,9 +2,9 @@ import { z } from 'zod';
 
 // ── Cart Item ──────────────────────────────────────────────────────────────
 export const CartItemSchema = z.object({
-  product_id: z.string().uuid(),
+  product_id: z.string().min(1),
   product_name: z.string(),
-  product_image: z.string().url(),
+  product_image: z.string().min(1),
   quantity: z.number().int().positive(),
   unit_price: z.number().positive(),
   subtotal: z.number().positive(),
@@ -12,8 +12,8 @@ export const CartItemSchema = z.object({
 
 // ── Cart ───────────────────────────────────────────────────────────────────
 export const CartSchema = z.object({
-  id: z.string().uuid(),
-  user_id: z.string().uuid(),
+  id: z.string().min(1),
+  user_id: z.string().min(1),
   date_created: z.string().datetime(),
   total_price: z.number().min(0),
   products: z.array(CartItemSchema),
@@ -21,7 +21,7 @@ export const CartSchema = z.object({
 
 // ── Add to Cart Input ──────────────────────────────────────────────────────
 export const AddToCartInputSchema = z.object({
-  product_id: z.string().uuid(),
+  product_id: z.string().min(1),
   quantity: z.number().int().min(1).default(1),
 });
 

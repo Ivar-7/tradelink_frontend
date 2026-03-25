@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Report Order Issue - TradeLink</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-lowest": "#ffffff",
+              "surface-container": "#eeeeee",
+              "on-tertiary": "#ffffff",
+              "tertiary": "#972800",
+              "secondary-container": "#97adff",
+              "surface": "#f9f9f9",
+              "on-error-container": "#93000a",
+              "inverse-on-surface": "#f1f1f1",
+              "primary-fixed-dim": "#b6c4ff",
+              "on-tertiary-fixed": "#3a0a00",
+              "tertiary-container": "#c13600",
+              "error": "#ba1a1a",
+              "primary-container": "#0057ff",
+              "surface-dim": "#dadada",
+              "surface-tint": "#004ee7",
+              "surface-container-high": "#e8e8e8",
+              "secondary-fixed-dim": "#b6c4ff",
+              "surface-container-low": "#f3f3f3",
+              "primary": "#0043c8",
+              "on-surface": "#1b1b1b",
+              "on-background": "#1b1b1b",
+              "on-secondary-fixed-variant": "#2a418d",
+              "surface-bright": "#f9f9f9",
+              "surface-variant": "#e2e2e2",
+              "on-tertiary-fixed-variant": "#862300",
+              "error-container": "#ffdad6",
+              "on-primary-container": "#e5e8ff",
+              "inverse-primary": "#b6c4ff",
+              "primary-fixed": "#dce1ff",
+              "inverse-surface": "#303030",
+              "outline": "#737688",
+              "tertiary-fixed": "#ffdbd1",
+              "on-surface-variant": "#434656",
+              "background": "#f9f9f9",
+              "on-secondary-fixed": "#001550",
+              "on-error": "#ffffff",
+              "secondary-fixed": "#dce1ff",
+              "on-primary-fixed-variant": "#003ab2",
+              "secondary": "#445aa6",
+              "outline-variant": "#c3c5d9",
+              "on-primary-fixed": "#001550",
+              "on-secondary-container": "#263e89",
+              "surface-container-highest": "#e2e2e2",
+              "on-tertiary-container": "#ffe3db",
+              "tertiary-fixed-dim": "#ffb59f",
+              "on-primary": "#ffffff",
+              "on-secondary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-[0_40px_40px_rgba(27,27,27,0.04)]">
+<div class="flex justify-between items-center px-12 py-6 w-full max-w-[1440px] mx-auto">
+<div class="text-2xl font-black tracking-tighter text-[#0043c8] dark:text-[#0057ff]">
+                TradeLink
+            </div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Categories</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Wishlist</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Account</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Cart</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:bg-slate-100/50 dark:hover:bg-slate-800/50 p-2 rounded-lg transition-all scale-98 active:opacity-80">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="text-on-surface-variant hover:bg-slate-100/50 dark:hover:bg-slate-800/50 p-2 rounded-lg transition-all scale-98 active:opacity-80">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+<button class="text-on-surface-variant hover:bg-slate-100/50 dark:hover:bg-slate-800/50 p-2 rounded-lg transition-all scale-98 active:opacity-80">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-32 pb-24 px-6 md:px-12 max-w-[1440px] mx-auto min-h-screen">
+<!-- Breadcrumb & Header -->
+<div class="mb-12">
+<nav aria-label="Breadcrumb" class="flex mb-4">
+<ol class="inline-flex items-center space-x-1 md:space-x-3 text-sm font-medium tracking-wide text-on-surface-variant/60">
+<li>Help Center</li>
+<li class="flex items-center">
+<span class="mx-2">/</span>
+                        Orders
+                    </li>
+<li class="flex items-center">
+<span class="mx-2">/</span>
+<span class="text-primary font-semibold">Report Issue</span>
+</li>
+</ol>
+</nav>
+<h1 class="text-4xl md:text-5xl font-black tracking-tighter text-on-surface leading-tight">
+                Report a Problem with Your Order
+            </h1>
+</div>
+<!-- Layout Grid for Content -->
+<div class="max-w-[800px] mx-auto">
+<div class="bg-surface-container-lowest p-8 md:p-12 rounded-xl shadow-[0_40px_40px_rgba(27,27,27,0.02)]">
+<form class="space-y-10">
+<!-- Order Selection -->
+<div class="space-y-3">
+<label class="block text-sm font-bold uppercase tracking-widest text-on-surface-variant/80">Select Order</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-high border-none py-4 px-5 rounded-lg text-on-surface font-medium focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all">
+<option>Order #TRL-99201 (Delivered Oct 12)</option>
+<option>Order #TRL-98442 (Delivered Sep 28)</option>
+</select>
+<div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Issue Type -->
+<div class="space-y-6">
+<h2 class="text-xl font-bold tracking-tight text-on-surface">What went wrong?</h2>
+<div class="space-y-4">
+<label class="group flex items-center gap-4 cursor-pointer p-4 rounded-lg bg-surface-container-low hover:bg-surface-variant transition-colors">
+<input checked="" class="w-5 h-5 text-primary border-outline focus:ring-primary focus:ring-offset-0" name="issue" type="radio"/>
+<span class="text-on-surface font-medium">Damaged item</span>
+</label>
+<label class="group flex items-center gap-4 cursor-pointer p-4 rounded-lg bg-surface-container-low hover:bg-surface-variant transition-colors">
+<input class="w-5 h-5 text-primary border-outline focus:ring-primary focus:ring-offset-0" name="issue" type="radio"/>
+<span class="text-on-surface font-medium">Missing item</span>
+</label>
+<label class="group flex items-center gap-4 cursor-pointer p-4 rounded-lg bg-surface-container-low hover:bg-surface-variant transition-colors">
+<input class="w-5 h-5 text-primary border-outline focus:ring-primary focus:ring-offset-0" name="issue" type="radio"/>
+<span class="text-on-surface font-medium">Wrong item received</span>
+</label>
+<label class="group flex items-center gap-4 cursor-pointer p-4 rounded-lg bg-surface-container-low hover:bg-surface-variant transition-colors">
+<input class="w-5 h-5 text-primary border-outline focus:ring-primary focus:ring-offset-0" name="issue" type="radio"/>
+<span class="text-on-surface font-medium">Delayed shipping</span>
+</label>
+<label class="group flex items-center gap-4 cursor-pointer p-4 rounded-lg bg-surface-container-low hover:bg-surface-variant transition-colors">
+<input class="w-5 h-5 text-primary border-outline focus:ring-primary focus:ring-offset-0" name="issue" type="radio"/>
+<span class="text-on-surface font-medium">Other</span>
+</label>
+</div>
+</div>
+<!-- Details Area -->
+<div class="space-y-3">
+<label class="block text-sm font-bold uppercase tracking-widest text-on-surface-variant/80">Please provide more details</label>
+<textarea class="w-full bg-surface-container-high border-none py-4 px-5 rounded-lg text-on-surface placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="Describe the issue in detail..." rows="5"></textarea>
+</div>
+<!-- Photo Upload -->
+<div class="space-y-3">
+<label class="block text-sm font-bold uppercase tracking-widest text-on-surface-variant/80">Supporting Photos</label>
+<div class="border-2 border-dashed border-outline-variant/50 rounded-xl p-12 text-center group hover:border-primary/50 hover:bg-primary/5 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary transition-colors mb-4" data-icon="camera">camera</span>
+<p class="text-on-surface font-semibold">Click to upload or drag and drop</p>
+<p class="text-on-surface-variant text-sm mt-1">PNG, JPG up to 10MB</p>
+</div>
+</div>
+<!-- Action Row -->
+<div class="pt-6 flex flex-col md:flex-row items-center gap-8">
+<button class="w-full md:w-auto px-10 py-4 bg-gradient-to-br from-primary to-primary-container text-white font-bold rounded-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all" type="submit">
+                            Submit Report
+                        </button>
+<a class="text-primary font-semibold hover:text-primary-container flex items-center gap-2 group" href="#">
+<span class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                            Back to Help Center
+                        </a>
+</div>
+</form>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-950 dark:bg-black w-full pt-20 pb-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-16 px-16 max-w-[1440px] mx-auto">
+<div class="space-y-6">
+<div class="text-xl font-bold tracking-tighter text-white">TradeLink</div>
+<p class="font-['Inter'] text-sm tracking-wide text-slate-400 max-w-[240px]">
+                    Defining the future of digital trade with precision editorial and high-performance logistics.
+                </p>
+</div>
+<div class="space-y-6">
+<h4 class="text-white font-bold uppercase tracking-widest text-xs">Customer Service</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transition-transform duration-300" href="#">Track Order</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transition-transform duration-300" href="#">Shipping Policy</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transition-transform duration-300 font-bold text-white" href="#">Help Center</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transition-transform duration-300" href="#">Returns</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="text-white font-bold uppercase tracking-widest text-xs">Company</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transition-transform duration-300" href="#">Our Story</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transition-transform duration-300" href="#">Ateliers</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transition-transform duration-300" href="#">Sustainability</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transition-transform duration-300" href="#">Careers</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="text-white font-bold uppercase tracking-widest text-xs">Legal</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transition-transform duration-300" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transition-transform duration-300" href="#">Terms of Use</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block transition-transform duration-300" href="#">Accessibility</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-20 px-16 max-w-[1440px] mx-auto">
+<div class="pt-8 border-t border-slate-800/50 flex flex-col md:flex-row justify-between gap-6">
+<p class="font-['Inter'] text-sm tracking-wide text-slate-400">
+                    © 2024 TradeLink Digital Atelier. All rights reserved.
+                </p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-slate-400 hover:text-white cursor-pointer transition-colors" data-icon="facebook">social_leaderboard</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-white cursor-pointer transition-colors" data-icon="language">language</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-white cursor-pointer transition-colors" data-icon="share">share</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
