@@ -1,27 +1,115 @@
 export const topCategories = [
-  { icon: 'devices', label: 'Consumer Tech' },
-  { icon: 'apparel', label: 'Fashion & Style' },
-  { icon: 'home_iot_device', label: 'Smart Home' },
-  { icon: 'sports_esports', label: 'Gaming Gear' },
-  { icon: 'fitness_center', label: 'Sports & Fitness' },
-  { icon: 'more_horiz', label: 'View All' },
+  {
+    icon: '💻',
+    label: 'Consumer Tech',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&q=80',
+    imageAlt: 'Consumer electronics and gadgets',
+  },
+  {
+    icon: '👗',
+    label: 'Fashion',
+    image: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400&q=80',
+    imageAlt: 'Fashion and clothing',
+  },
+  {
+    icon: '💄',
+    label: 'Beauty',
+    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=80',
+    imageAlt: 'Beauty and skincare products',
+  },
+
+  {
+    icon: '🏡',
+    label: 'Smart Home',
+    image: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=400&q=80',
+    imageAlt: 'Smart home devices and automation',
+  },
+  {
+    icon: '🎧',
+    label: 'Gaming Gear',
+    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&q=80',
+    imageAlt: 'Gaming peripherals and gear',
+  },
+  {
+    icon: '⚽',
+    label: 'Sports & Fitness',
+    image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&q=80',
+    imageAlt: 'Sports equipment and fitness gear',
+  },
+  {
+    icon: '',
+    label: 'View All',
+    image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400&q=80',
+    imageAlt: 'Browse all categories',
+  },
 ];
 
-export const heroFeature = {
-  badge: 'Limited Event',
-  title: 'TECH WEEK: UP TO 50% OFF',
-  subtitle:
-    'The most anticipated upgrade cycle is here. Experience precision engineering at warehouse prices.',
-  cta: 'Shop Now',
-  image:
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuD0h9bgz4FdLN4vnYUynSmEFSTenUDBEJx5xSa36XK6KGTf0HWpL5g48ZmHADsPpBoqU_hbbxp_CEskU0wTtm0ccWn8hHnimtyaFKsYLmA-HGooiCJ0asrdwv1w-QDOZh5gR-X4cS9nhdBTgYTfN-vjIm6pCh6arOei3tNfKEbY1M9nvQ2NC2RpYZWlCdyQvr4_ycJmUBTAkDDBhBlRuNjuv1oZZ4ci_cBfFJajiNKXAkU9B91znEK8ldf9yojRaX9E-7QMqDrJAWs',
-};
+export const heroFeature = [
+  {
+    tag: 'Limited Event',
+    title: 'TECH WEEK: UP TO 50% OFF',
+    subtitle:
+      'The most anticipated upgrade cycle is here. Experience precision engineering at warehouse prices.',
+    cta: 'Shop Now',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuD0h9bgz4FdLN4vnYUynSmEFSTenUDBEJx5xSa36XK6KGTf0HWpL5g48ZmHADsPpBoqU_hbbxp_CEskU0wTtm0ccWn8hHnimtyaFKsYLmA-HGooiCJ0asrdwv1w-QDOZh5gR-X4cS9nhdBTgYTfN-vjIm6pCh6arOei3tNfKEbY1M9nvQ2NC2RpYZWlCdyQvr4_ycJmUBTAkDDBhBlRuNjuv1oZZ4ci_cBfFJajiNKXAkU9B91znEK8ldf9yojRaX9E-7QMqDrJAWs',
+  },
+  {
+    tag: 'LIMITED DEALS',
+    title: 'Consumer Tech:\nNext‑Gen Gear',
+    subtitle: 'Latest smartphones, laptops, and wearables – at prices that make sense.',
+    cta: 'Shop Tech',
+    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=900&q=80',
+    
+  },
+  {
+    tag: 'NEW ARRIVALS',
+    title: 'Fashion Forward\nEvery Day',
+    subtitle: 'Curated styles from streetwear to formal – fresh drops weekly.',
+    cta: 'Shop Fashion',
+    image: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=900&q=80',
+    
+  },
+  {
+    tag: 'BEAUTY EXCLUSIVE',
+    title: 'Glow Up\nWith Premium Care',
+    subtitle: 'Skincare, makeup, and fragrances – salon quality at home.',
+    cta: 'Shop Beauty',
+    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=900&q=80',
+    
+  },
+  {
+    tag: 'GAMING ZONE',
+    title: 'Level Up\nYour Setup',
+    subtitle: 'High‑performance consoles, peripherals, and immersive accessories.',
+    cta: 'Shop Gaming',
+    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=900&q=80',
+    
+  },
+  {
+    tag: 'SPORTS & FITNESS',
+    title: 'Move Better\nTrain Harder',
+    subtitle: 'Gear for every workout – from yoga mats to smart watches.',
+    cta: 'Shop Sports',
+    image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=900&q=80',
+    
+  },
+
+  {
+    tag: 'SMART HOME',
+    title: 'Living Smarter\nEvery Day',
+    subtitle: 'Automate your home with smart lights, speakers, and security.',
+    cta: 'Shop Smart Home',
+    image: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=900&q=80',
+    
+  },
+];
 
 export const heroPerks = {
-  welcomeText: 'Welcome to the Atelier, Guest',
+  welcomeText: 'Welcome to TradeLink, Guest',
   avatarImage: '/user.png',
   promoTitle: 'New User Perks',
-  promoPrice: '$0.01',
+  promoPrice: '$0.01 ',
   promoLabel: 'First Item',
 };
 
@@ -31,8 +119,8 @@ export const superDeals = [
     catalogProductId: 'prod-014',
     brand: 'Lunar',
     name: 'Noise Canceling Headphones',
-    price: 149,
-    originalPrice: 299,
+    price: 1450,
+    originalPrice: 2990,
     soldPct: 85,
     discountLabel: '-50% OFF',
     image:
@@ -304,4 +392,25 @@ export const searchDefaults = {
   inStockOnly: true,
 };
 
-export const emptyStateSuggestions = ['Electronics', 'Fashion', 'Appliances', 'Home'];
+export const emptyStateSuggestions = [
+  {
+    label: 'Electronics',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=300&q=80',
+    imageAlt: 'Electronics and gadgets',
+  },
+  {
+    label: 'Fashion',
+    image: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=300&q=80',
+    imageAlt: 'Fashion and clothing',
+  },
+  {
+    label: 'Appliances',
+    image: 'https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=300&q=80',
+    imageAlt: 'Home appliances',
+  },
+  {
+    label: 'Home',
+    image: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=300&q=80',
+    imageAlt: 'Home and living',
+  },
+];
