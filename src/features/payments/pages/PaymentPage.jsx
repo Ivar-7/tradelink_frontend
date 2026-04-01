@@ -30,6 +30,7 @@ const PaymentPage = () => {
       };
       const result = await initiate(payload);
       setTransactionId(result.id);
+      // Simulate payment processing
       setTimeout(() => {
         setStep('success');
       }, 5000);
