@@ -50,6 +50,9 @@ const PaymentForm = ({
     if (name.trim().length < 3) {
       return 'Full name must be at least 3 characters';
     }
+    if (name.trim().length > 50) {
+      return 'Full name must be less than 50 characters';
+    }
     if (!/^[a-zA-Z\s]+$/.test(name.trim())) {
       return 'Full name should only contain letters and spaces';
     }
@@ -60,10 +63,35 @@ const PaymentForm = ({
     if (!email || email.trim() === '') {
       return 'Email address is required';
     }
-    const emailRegex = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
-    if (!emailRegex.test(email.trim())) {
-      return 'Enter a valid email address (e.g., name@example.com)';
+    
+    const trimmedEmail = email.trim().toLowerCase();
+    
+    // Strict email validation
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    
+    if (!emailRegex.test(trimmedEmail)) {
+      return 'Enter a valid email address (e.g., name@gmail.com, name@company.co.ke)';
     }
+    
+    const [localPart, domain] = trimmedEmail.split('@');
+    
+    // Local part should be at least 2 characters
+    if (localPart.length < 2) {
+      return 'Email username must be at least 2 characters';
+    }
+    
+    // Domain should have at least one dot and be valid length
+    if (!domain.includes('.') || domain.length < 5) {
+      return 'Enter a valid domain (e.g., gmail.com, yahoo.com)';
+    }
+    
+    // Check for common Kenyan email providers (optional - can remove if not needed)
+    const validTlds = ['com', 'co.ke', 'ke', 'org', 'net', 'ac.ke', 'go.ke'];
+    const tld = domain.split('.').slice(-2).join('.');
+    
+    // Optional: Suggest common domains for Kenya
+    const commonKenyanDomains = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'icloud.com'];
+    
     return '';
   };
 
@@ -71,9 +99,7 @@ const PaymentForm = ({
     if (!phone || phone.trim() === '') {
       return 'Phone number is required';
     }
-    // Remove any spaces, dashes, or parentheses
     const cleaned = phone.replace(/[\s\-\(\)]/g, '');
-    // Check for Kenyan phone number formats: 2547XXXXXX, 071XXXXXXX, +2547XXXXXX, 01XXXXXXXX
     const kenyanRegex = /^(254|0|\+254)(7|1)\d{8}$/;
     if (!kenyanRegex.test(cleaned)) {
       return 'Enter a valid Kenyan phone number (e.g., 254712345678, 0712345678, or +254712345678)';
@@ -114,12 +140,10 @@ const PaymentForm = ({
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors({ ...errors, [name]: '' });
     }
     
-    // Clear promo error when user types
     if (promoError) {
       setPromoError('');
     }
@@ -148,7 +172,6 @@ const PaymentForm = ({
     e.preventDefault();
     
     if (!validateForm()) {
-      // Scroll to first error
       const firstError = document.querySelector('.border-red-500');
       if (firstError) {
         firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -156,7 +179,6 @@ const PaymentForm = ({
       return;
     }
     
-    // Format phone number to international format
     let formattedPhone = formData.phoneNumber.replace(/[\s\-\(\)]/g, '');
     if (formattedPhone.startsWith('0')) {
       formattedPhone = '254' + formattedPhone.substring(1);
@@ -245,7 +267,7 @@ const PaymentForm = ({
                 )}
               </div>
               
-              {/* Email */}
+              {/* Email - Updated with strict validation */}
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Email Address <span className="text-red-500">*</span>
@@ -256,7 +278,7 @@ const PaymentForm = ({
                   value={formData.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  placeholder="name@example.com"
+                  placeholder="name@gmail.com"
                   className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent text-gray-900 transition ${
                     touched.email && errors.email 
                       ? 'border-red-500 bg-red-50' 
@@ -278,7 +300,7 @@ const PaymentForm = ({
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    Valid email
+                    Valid email address
                   </p>
                 )}
               </div>
