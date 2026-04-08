@@ -14,14 +14,16 @@ const SignupPage = () => {
     try {
       await signup({
         username: formData.get('username'),
-        user_fname: formData.get('user_fname'),
-        user_lname: formData.get('user_lname'),
-        user_email: formData.get('user_email'),
-        user_password: formData.get('user_password'),
-        confirm_password: formData.get('confirm_password'),
-        user_role: formData.get('user_role'),
+        first_name: formData.get('first_name'),
+        last_name: formData.get('last_name'),
+        email: formData.get('user_email'),
+        password: formData.get('user_password'),
+        password_confirm: formData.get('confirm_password'),
+        phone_number: formData.get('phone_number'),
+        gender: formData.get('gender') || undefined,
+        role: formData.get('user_role'),
       });
-      navigate(ROUTES.PRODUCTS);
+      navigate(ROUTES.AUTH.LOGIN);
     } catch {
       // error state handled in hook
     }
@@ -37,23 +39,28 @@ const SignupPage = () => {
         </header>
 
         <form onSubmit={handleSubmit} className="space-y-5">
-          <div className="space-y-2">
-            <label htmlFor="user_fname" className="ml-1 block text-[10px] font-bold uppercase tracking-[0.2em] text-muted">
-              Full Name
-            </label>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="space-y-2">
+              <label htmlFor="first_name" className="ml-1 block text-[10px] font-bold uppercase tracking-[0.2em] text-muted">
+                First Name
+              </label>
               <input
-                id="user_fname"
-                name="user_fname"
+                id="first_name"
+                name="first_name"
                 type="text"
                 required
                 onChange={clearError}
                 placeholder="First name"
                 className="w-full rounded-xl border border-border bg-slate-100 px-4 py-3.5 text-sm text-foreground placeholder:text-muted focus:border-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-200 dark:bg-slate-900"
               />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="last_name" className="ml-1 block text-[10px] font-bold uppercase tracking-[0.2em] text-muted">
+                Last Name
+              </label>
               <input
-                id="user_lname"
-                name="user_lname"
+                id="last_name"
+                name="last_name"
                 type="text"
                 required
                 onChange={clearError}
@@ -94,6 +101,40 @@ const SignupPage = () => {
           </div>
 
           <div className="space-y-2">
+            <label htmlFor="phone_number" className="ml-1 block text-[10px] font-bold uppercase tracking-[0.2em] text-muted">
+              Phone Number
+            </label>
+            <input
+              id="phone_number"
+              name="phone_number"
+              type="tel"
+              required
+              onChange={clearError}
+              placeholder="+254700000000"
+              className="w-full rounded-xl border border-border bg-slate-100 px-4 py-3.5 text-sm text-foreground placeholder:text-muted focus:border-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-200 dark:bg-slate-900"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label htmlFor="gender" className="ml-1 block text-[10px] font-bold uppercase tracking-[0.2em] text-muted">
+              Gender
+            </label>
+            <select
+              id="gender"
+              name="gender"
+              required
+              defaultValue=""
+              onChange={clearError}
+              className="w-full rounded-xl border border-border bg-slate-100 px-4 py-3.5 text-sm text-foreground focus:border-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-200 dark:bg-slate-900"
+            >
+              <option value="">Select gender</option>
+              <option value="F">Female</option>
+              <option value="M">Male</option>
+              <option value="O">Other</option>
+            </select>
+          </div>
+
+          <div className="space-y-2">
             <label htmlFor="user_role" className="ml-1 block text-[10px] font-bold uppercase tracking-[0.2em] text-muted">
               Account Type
             </label>
@@ -106,6 +147,7 @@ const SignupPage = () => {
             >
               <option value="buyer">Buyer</option>
               <option value="vendor">Vendor</option>
+              <option value="admin">Admin</option>
             </select>
           </div>
 

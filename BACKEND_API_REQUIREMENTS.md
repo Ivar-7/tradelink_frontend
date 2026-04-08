@@ -1,759 +1,740 @@
-# Tradelink Frontend -> Backend API Requirements (Exhaustive)
+# Tradelink Backend API Integration Guide (Frontend)
 
-This document defines the API contract required for the current frontend to run full end-to-end.
+This document is the frontend handoff for integrating with the Tradelink backend.
 
-Status legend:
-- Required now: directly used by current UI and logic.
-- Required soon: present in shared endpoint constants or flows, but not fully wired in all screens yet.
+## 1. Base URLs
 
-## 1) Global API Requirements
+- Base API prefix: `/api/v1/`
+- Swagger UI: `/api/docs/`
+- OpenAPI schema JSON: `/api/schema/`
 
-### Base URL
-- Use env-driven base URL compatible with frontend setting: `VITE_API_BASE_URL`.
-- Local fallback currently points to: `http://localhost:8000/api`.
+Examples:
+- Local backend: `http://127.0.0.1:8000/api/v1/`
+- Docs: `http://127.0.0.1:8000/api/docs/`
 
-### Content Type
-- Request and response content type: `application/json`.
+## 2. Authentication
 
-### Authentication
-- Use Bearer token auth for protected routes.
-- Header format:
-  - `Authorization: Bearer <access_token>`
+JWT Bearer auth is required for protected endpoints.
 
-### Token Refresh Behavior
-- On `401`, frontend attempts refresh using:
-  - `POST /auth/refresh`
-  - Body: `{ "refresh_token": "<token>" }`
-- Refresh response must return:
-  - `access_token` (required)
-- If refresh fails, frontend clears tokens and redirects to login.
+Header format:
 
-### Date/Time Format
-- All datetime fields should be ISO-8601 strings parseable by JS `Date` and Zod `.datetime()`.
+```http
+Authorization: Bearer <access_token>
+```
 
-### Error Format
-- Frontend reads `response.data.message` first, then `response.data.detail`.
-- Standardize error body as:
-  - `{ "message": "Human readable message" }`
-  - Optional: `{ "detail": "..." }`
+Token lifecycle:
+1. Call `POST /api/v1/auth/login/`
+2. Store `tokens.access` and `tokens.refresh`
+3. Use `tokens.access` for API calls
+4. Refresh with `POST /api/v1/auth/token/refresh/` when access token expires
+5. Logout with `POST /api/v1/auth/logout/` (send refresh token)
 
-## 2) Canonical Enum Values
+## 3. Standard Error Format
 
-### User roles
-- `buyer`
-- `vendor`
-- `admin`
+Most errors return one of:
 
-### User gender
-- `male`
-- `female`
-- `other`
+```json
+{ "detail": "Error message" }
+```
 
-### Order status
-- `pending`
-- `confirmed`
-- `shipped`
-- `delivered`
-- `cancelled`
+or validation map:
 
-### Shipping method
-- `pickup`
-- `delivery`
+```json
+{
+  "field_name": ["Validation message"]
+}
+```
 
-### Payment provider
-- `mpesa`
-- `card`
-- `bank_transfer`
+## 4. Auth and User Endpoints
 
-### Payment status
-- `pending`
-- `completed`
-- `failed`
-- `refunded`
+### 4.1 Register
+- Method: `POST`
+- URL: `/api/v1/auth/register/`
+- Auth: Public
 
-### Transaction type
-- `purchase`
-- `refund`
-
-### Return status
-- `requested`
-- `approved`
-- `shipped_back`
-- `refunded`
-
-### Feedback type
-- `bug_report`
-- `feature_request`
-- `general`
-- `complaint`
-
-### Kenya counties (for profile address county)
-- Nairobi
-- Mombasa
-- Kisumu
-- Nakuru
-- Eldoret
-- Kiambu
-- Machakos
-- Kajiado
-- Murang'a
-- Nyeri
-- Meru
-- Embu
-- Garissa
-- Kwale
-- Kilifi
-- Taita Taveta
-- Kakamega
-- Bungoma
-- Vihiga
-- Trans Nzoia
-- Uasin Gishu
-- Nandi
-- Kericho
-- Bomet
-- Narok
-- Kisii
-- Nyamira
-- Homa Bay
-- Migori
-- Siaya
-- Busia
-- Other
-
-## 3) Core Data Contracts (Required Variables)
-
-All fields below are required unless marked optional.
-
-### 3.1 User (public)
-- `user_id`: string
-- `username`: string (min 3)
-- `user_fname`: string
-- `user_lname`: string
-- `user_email`: valid email
-- `user_role`: one of user roles
-- `user_gender`: optional enum
-- `user_dob`: optional datetime string
-- `user_cart`: optional string
-
-### 3.2 Auth response
-- `access_token`: string
-- `refresh_token`: string
-- `user`: User object
-
-### 3.3 Category
-- `id`: string
-- `name`: string
-- `description`: optional string
-- `image_url`: optional string
-
-### 3.4 Product
-- `id`: string
-- `name`: string
-- `price`: number > 0
-- `description`: string
-- `stock_quantity`: integer >= 0
-- `image_url`: string
-- `category_id`: optional string
-- `category`: optional Category
-- `vendor_id`: optional string
-- `vendor_name`: optional string
-- `average_rating`: optional number [0..5]
-- `review_count`: optional integer >= 0
-- `created_at`: optional datetime
-
-### 3.5 Product list response
-- `products`: Product[]
-- `total`: integer
-- `page`: integer
-- `limit`: integer
-
-### 3.6 Cart item
-- `product_id`: string
-- `product_name`: string
-- `product_image`: string
-- `quantity`: integer > 0
-- `unit_price`: number > 0
-- `subtotal`: number > 0
-
-### 3.7 Cart
-- `id`: string
-- `user_id`: string
-- `date_created`: datetime
-- `total_price`: number >= 0
-- `products`: Cart item[]
-
-### 3.8 Delivery address (order)
-- `county`: string
-- `city`: string
-- `postal_address`: string
-- `user_contact`: string
-
-### 3.9 Order issue report
-- `type`: string
-- `details`: string
-- `reported_at`: datetime
-
-### 3.10 Return request
-- `id`: string
-- `created_at`: datetime
-- `status`: return status enum
-- `reason`: string
-- `notes`: string
-- `timeline`:
-  - `requested_at`: datetime or null
-  - `approved_at`: datetime or null
-  - `shipped_back_at`: datetime or null
-  - `refunded_at`: datetime or null
-
-### 3.11 Order
-- `id`: string
-- `user_id`: string
-- `order_date`: datetime
-- `order_amount`: number > 0
-- `products`: Order item[] (same shape as cart item)
-- `status`: order status enum
-- `shipping_method`: shipping method enum
-- `tracking_number`: optional string or null
-- `delivered_at`: optional datetime
-- `cancelled_at`: optional datetime
-- `cancellation_reason`: optional string
-- `issue_report`: optional object (see issue report)
-- `return_request`: optional object (see return request)
-- `delivery_address`: optional object (see delivery address)
-
-### 3.12 Order list response
-- `orders`: Order[]
-- `total`: integer
-
-### 3.13 Payment method
-- `id`: string
-- `brand`: string
-- `last4`: string length 4
-- `expiry_month`: string
-- `expiry_year`: string
-- `holder_name`: string
-- `is_default`: boolean
-
-### 3.14 Payment
-- `id`: string
-- `user_id`: string
-- `order_id`: string
-- `amount`: number > 0
-- `payment_provider`: enum
-- `status`: enum
-- `transaction_type`: enum
-- `created_at`: optional datetime
-- `phone_number`: optional string
-- `payment_method_id`: optional string
-
-### 3.15 Review
-- `id`: string
-- `user_id`: string
-- `username`: optional string
-- `product_id`: string
-- `rating_value`: integer [1..5]
-- `comment`: optional string (max 500)
-- `verified_purchase`: optional boolean
-- `helpful_count`: optional integer >= 0
-- `date`: datetime
-
-### 3.16 Review list response
-- `reviews`: Review[]
-- `total`: integer
-- `average_rating`: number [0..5]
-
-### 3.17 Feedback
-- `id`: string
-- `user_id`: string
-- `type`: feedback type enum
-- `message`: string (10..1000 chars)
-- `created_at`: optional datetime
-
-### 3.18 Profile address
-- `id`: optional string (present on stored addresses)
-- `label`: optional string
-- `country`: string (default Kenya)
-- `county`: one of Kenya counties
-- `city`: string
-- `line1`: optional string
-- `postal_address`: string
-- `user_email`: valid email
-- `user_contact`: string (min length 10)
-- `is_default`: optional boolean
-
-### 3.19 Notification preferences
-- `order_updates`: boolean
-- `marketing_emails`: boolean
-- `price_drop_alerts`: boolean
-
-### 3.20 Privacy preferences
-- `analytics`: boolean
-- `marketing`: boolean
-
-### 3.21 Profile
-- `user_id`: string
-- `username`: string
-- `user_fname`: string
-- `user_lname`: string
-- `user_email`: email
-- `user_phone`: optional string
-- `user_role`: enum
-- `addresses`: Profile address[]
-- `notification_preferences`: object
-- `privacy_preferences`: object
-
-### 3.22 Vendor dashboard
-- `total_revenue`: number >= 0
-- `total_orders`: integer >= 0
-- `pending_orders`: integer >= 0
-- `active_products`: integer >= 0
-- `recent_orders`: array of
-  - `id`: string
-  - `order_date`: datetime
-  - `order_amount`: number > 0
-  - `status`: string
-
-### 3.23 Admin dashboard stats
-- `total_users`: integer >= 0
-- `total_vendors`: integer >= 0
-- `total_buyers`: integer >= 0
-- `total_products`: integer >= 0
-- `total_orders`: integer >= 0
-- `total_revenue`: number >= 0
-- `pending_orders`: integer >= 0
-- `new_users_today`: integer >= 0
-
-### 3.24 Admin user summary
-- `user_id`: uuid string (strict)
-- `username`: string
-- `user_email`: email
-- `user_role`: enum
-- `created_at`: optional datetime
-- `is_active`: boolean
-
-### 3.25 Admin users response
-- `users`: Admin user summary[]
-- `total`: integer
-
-## 4) Endpoint Catalog
-
-## 4.1 Auth APIs
-
-### POST /auth/login (Required now)
 Request:
-- `email` (required, email)
-- `password` (required, min 8)
 
-Response:
-- Auth response object
+```json
+{
+  "email": "jane@example.com",
+  "username": "jane",
+  "password": "StrongPass123!",
+  "password_confirm": "StrongPass123!",
+  "first_name": "Jane",
+  "last_name": "Doe",
+  "phone_number": "+254700000000",
+  "gender": "F",
+  "role": "buyer"
+}
+```
 
-### POST /auth/register (Required now)
+Response `201`:
+
+```json
+{
+  "user": {
+    "id": "uuid",
+    "email": "jane@example.com",
+    "username": "jane",
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "full_name": "Jane Doe",
+    "phone_number": "+254700000000",
+    "gender": "F",
+    "date_of_birth": null,
+    "role": "buyer",
+    "date_joined": "2026-04-01T12:00:00Z"
+  }
+}
+```
+
+### 4.2 Login
+- Method: `POST`
+- URL: `/api/v1/auth/login/`
+- Auth: Public
+
 Request:
-- `username` (required)
-- `user_fname` (required)
-- `user_lname` (required)
-- `user_email` (required, email)
-- `user_password` (required, min 8)
-- `confirm_password` (required, must equal `user_password`)
-- `user_role` (optional, default `buyer`)
-- `user_gender` (optional)
-- `user_dob` (optional)
 
-Response:
-- Auth response object
+```json
+{
+  "email": "jane@example.com",
+  "password": "StrongPass123!"
+}
+```
 
-### POST /auth/logout (Required now)
+Response `200`:
+
+```json
+{
+  "user": {
+    "id": "uuid",
+    "email": "jane@example.com",
+    "username": "jane",
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "full_name": "Jane Doe",
+    "phone_number": "+254700000000",
+    "gender": "F",
+    "date_of_birth": null,
+    "role": "buyer",
+    "date_joined": "2026-04-01T12:00:00Z"
+  },
+  "tokens": {
+    "refresh": "jwt_refresh",
+    "access": "jwt_access"
+  }
+}
+```
+
+### 4.3 Refresh Access Token
+- Method: `POST`
+- URL: `/api/v1/auth/token/refresh/`
+- Auth: Public
+
 Request:
-- Auth header required
-- Body optional
 
-Response:
-- 200 with success message/object
+```json
+{
+  "refresh": "jwt_refresh"
+}
+```
 
-### POST /auth/refresh (Required now)
+Response `200`:
+
+```json
+{
+  "access": "new_access_token"
+}
+```
+
+### 4.4 Logout
+- Method: `POST`
+- URL: `/api/v1/auth/logout/`
+- Auth: Bearer
+
 Request:
-- `refresh_token` (required)
 
-Response:
-- `access_token` (required)
-- `refresh_token` (optional but recommended to rotate)
+```json
+{
+  "refresh": "jwt_refresh"
+}
+```
 
-### POST /auth/forgot-password (Required now, currently mapped by auth flow)
+Response `200`:
+
+```json
+{ "detail": "Successfully logged out." }
+```
+
+### 4.5 Get Current User
+- Method: `GET`
+- URL: `/api/v1/users/me/`
+- Auth: Bearer
+
+Response `200`: same `user` shape as login/register.
+
+### 4.6 Update Current User
+- Method: `PATCH`
+- URL: `/api/v1/users/me/`
+- Auth: Bearer
+
+Request (partial):
+
+```json
+{
+  "first_name": "Janet",
+  "phone_number": "+254711111111"
+}
+```
+
+Response `200`: updated user profile.
+
+### 4.7 Change Password
+- Method: `POST`
+- URL: `/api/v1/users/me/change-password/`
+- Auth: Bearer
+
 Request:
-- `email` (required)
-
-Response:
-- `{ "message": "Reset link sent." }`
-
-## 4.2 User/Profile APIs
-
-Shared constants already include `/users/me` for read/update.
-
-### GET /users/me (Required now)
-Response:
-- Profile object
-
-### PATCH /users/me (Required now)
-Request body (all optional, partial update):
-- `user_fname`
-- `user_lname`
-- `username`
-- `user_email`
-- `user_phone`
-- `user_gender`
-- `user_dob`
-- `notification_preferences`
-- `privacy_preferences`
-- `delivery_address` (optional address object if server supports inline)
-
-Response:
-- Profile object
-
-### POST /users/me/addresses (Required now)
-Request body:
-- `label` (required)
-- `country` (required)
-- `county` (required enum)
-- `city` (required)
-- `line1` (frontend sends this as required in address form)
-- `postal_address` (required)
-- `user_email` (required)
-- `user_contact` (required)
-
-Response:
-- Profile object (or updated `addresses`; frontend currently expects full profile)
-
-### DELETE /users/me/addresses/{addressId} (Required now)
-Response:
-- Profile object
-
-### PATCH /users/me/addresses/{addressId}/default (Required now)
-Response:
-- Profile object
-
-### PATCH /users/me/notifications (Required now)
-Request body:
-- `order_updates` (required)
-- `marketing_emails` (required)
-- `price_drop_alerts` (required)
-
-Response:
-- Profile object
-
-### PATCH /users/me/privacy (Required now)
-Request body:
-- `analytics` (required)
-- `marketing` (required)
-
-Response:
-- Profile object
-
-### POST /users/me/export (Required now)
-Response:
-- `{ "message": "Your export request has been received. ..." }`
-
-## 4.3 Product APIs
-
-### GET /products (Required now)
-Query params supported by frontend schema:
-- `search` (optional)
-- `category_id` (optional)
-- `min_price` (optional number)
-- `max_price` (optional number)
-- `in_stock` (optional boolean)
-- `page` (optional, default 1)
-- `limit` (optional, default 20, max 100)
-
-Response:
-- Product list response
-
-### GET /products/{id} (Required now)
-Response:
-- Product object
-
-### GET /products/search (Required soon)
-Response:
-- Product list response (same shape)
-
-### POST /products (Required soon)
-Request:
-- product create payload compatible with Product schema
-
-Response:
-- Product object
-
-### PATCH /products/{id} (Required soon)
-Request:
-- partial product fields
-
-Response:
-- Product object
-
-### DELETE /products/{id} (Required soon)
-Response:
-- success object
-
-## 4.4 Cart APIs
-
-### GET /cart (Required now)
-Response:
-- Cart object
-
-### POST /cart/items (Required now)
-Request body:
-- `product_id` (required)
-- `quantity` (required, integer >= 1)
-
-Response:
-- Cart object
-
-### PATCH /cart/items/{itemId} (Required now)
-Request body:
-- `quantity` (required, integer >= 1)
-
-Response:
-- Cart object
-
-### DELETE /cart/items/{itemId} (Required now)
-Response:
-- Cart object
-
-### POST /cart/clear (Required now)
-Response:
-- success object
-
-## 4.5 Order APIs
-
-### GET /orders (Required now)
-Query:
-- `status` optional values used by UI:
-  - `all`
-  - `pending`
-  - `processing` (UI alias for `confirmed`)
-  - `shipped`
-  - `delivered`
-  - `cancelled`
-  - `returns`
-
-Response:
-- Order list response
-
-### GET /orders/{id} (Required now)
-Response:
-- Order object
-
-### POST /orders (Required now)
-Request body:
-- `shipping_method` (required enum)
-- `products` (required in actual checkout flow; array of cart/order items)
-- `delivery_address` (optional by schema, but provided by checkout for delivery)
-
-Response:
-- Order object
-
-### POST /orders/{id}/confirm (Required now)
-Response:
-- Updated Order object (status should become `delivered` in current UI flow)
-
-### POST /orders/{id}/cancel (Required now)
-Request body:
-- `reason` (required string in practical flow)
-
-Response:
-- Updated Order object with:
-  - `status = cancelled`
-  - `cancelled_at`
-  - `cancellation_reason`
-
-### POST /orders/{id}/issue (Required now)
-Request body:
-- `type` (required string, UI values currently from these labels):
-  - Damaged item
-  - Missing item
-  - Wrong item received
-  - Delayed shipping
-  - Other
-- `details` (required)
-
-Response:
-- Updated Order object with `issue_report`
-
-### POST /orders/{id}/return (Required now)
-Request body:
-- `reason` (required string)
-- `notes` (required string in practical UI flow)
-
-Response:
-- Updated Order object with `return_request`
-
-### PATCH /orders/{id}/status (Required soon)
-Request body:
-- `status` (required enum)
-
-Response:
-- Updated Order object
-
-## 4.6 Payment APIs
-
-### GET /payments/methods (Required now)
-Response:
-- `{ "methods": PaymentMethod[] }`
-
-### POST /payments/methods (Required now)
-Request body:
-- `brand` (required)
-- `card_number` (required; frontend derives `last4` from this)
-- `expiry_month` (required)
-- `expiry_year` (required)
-- `holder_name` (required)
-
-Response:
-- PaymentMethod object
-
-### PATCH /payments/methods/{id}/default (Required now)
-Response:
-- PaymentMethod object (or full method list)
-
-### DELETE /payments/methods/{id} (Required now)
-Response:
-- `{ "methods": PaymentMethod[] }` or success object
-
-### POST /payments (Required now)
-Request body:
-- `order_id` (required)
-- `payment_provider` (required enum)
-- `amount` (required > 0)
-- `payment_method_id` (required when `payment_provider = card`)
-- `phone_number` (required when `payment_provider = mpesa`)
-
-Response:
-- Payment object
-
-### GET /payments/{id}/verify (Required soon)
-Response:
-- Payment object
-
-## 4.7 Review APIs
-
-### GET /products/{productId}/reviews (Required now)
-Response:
-- Review list response
-
-### POST /products/{productId}/reviews (Required now)
-Request body:
-- `rating_value` (required integer 1..5)
-- `comment` (optional, max 500)
-
-Response:
-- Review object
-
-### DELETE /reviews/{id} (Required soon)
-Response:
-- success object
-
-## 4.8 Feedback APIs
-
-### POST /feedback (Required now)
-Request body:
-- `type` (required enum)
-- `message` (required, 10..1000 chars)
-
-Response:
-- Preferred shape currently consumed:
-  - `{ "success": true, "item": <FeedbackObject> }`
-
-## 4.9 Vendor APIs
-
-### GET /vendor/dashboard (Required now)
-Response:
-- Vendor dashboard object
-
-### GET /vendor/products (Required now)
-Response:
-- `{ "products": Product[] }`
-
-### POST /vendor/products (Required now)
-Request body:
-- `name` (required)
-- `price` (required > 0)
-- `description` (required, min 10)
-- `category_id` (required)
-- `stock_quantity` (required int >= 0)
-- `image_url` (required valid URL)
-
-Response:
-- Created Product object
-
-### PATCH /vendor/products/{id} (Required now)
-Request body:
-- any updatable vendor product fields
-
-Response:
-- Updated Product object
-
-### DELETE /vendor/products/{id} (Required now)
-Response:
-- success object
-
-## 4.10 Admin APIs
-
-### GET /admin/dashboard (Required now)
-Response:
-- Admin dashboard stats object
-
-### GET /admin/users (Required now)
-Query params (recommended):
+
+```json
+{
+  "current_password": "OldPass123!",
+  "new_password": "NewPass123!",
+  "new_password_confirm": "NewPass123!"
+}
+```
+
+Response `200`:
+
+```json
+{ "detail": "Password changed successfully." }
+```
+
+## 5. Product Categories
+
+Base: `/api/v1/categories/`
+
+### 5.1 List Categories
+- Method: `GET`
+- URL: `/api/v1/categories/`
+- Auth: Public
+
+Response `200`:
+
+```json
+[
+  {
+    "id": "category_uuid",
+    "name": "Electronics",
+    "description": "Phones, laptops, accessories",
+    "image_url": "https://..."
+  }
+]
+```
+
+### 5.2 Retrieve Category
+- Method: `GET`
+- URL: `/api/v1/categories/{id}/`
+- Auth: Public
+
+### 5.3 Create Category
+- Method: `POST`
+- URL: `/api/v1/categories/`
+- Auth: Public (current implementation)
+
+### 5.4 Update Category
+- Method: `PUT/PATCH`
+- URL: `/api/v1/categories/{id}/`
+- Auth: Public (current implementation)
+
+### 5.5 Delete Category
+- Method: `DELETE`
+- URL: `/api/v1/categories/{id}/`
+- Auth: Public (current implementation)
+
+## 6. Products
+
+Base: `/api/v1/products/`
+
+### 6.1 List Products
+- Method: `GET`
+- URL: `/api/v1/products/`
+- Auth: Public
+
+Query params:
+- `search`
+- `category_id`
+- `min_price`
+- `max_price`
+- `in_stock=true|false`
 - `page`
 - `limit`
-- `search`
-- `role`
-- `is_active`
 
-Response:
-- Admin users response
+Response `200`:
 
-### GET /admin/users/{id} (Required soon)
-Response:
-- detailed admin user object (at least compatible with summary fields)
+```json
+{
+  "products": [
+    {
+      "id": "product_uuid",
+      "name": "iPhone 14",
+      "price": 120000,
+      "description": "...",
+      "stock_quantity": 4,
+      "image_url": "https://...",
+      "category_id": "category_uuid",
+      "vendor_id": "vendor_uuid",
+      "vendor_name": "vendor_username",
+      "average_rating": 4.5,
+      "review_count": 11,
+      "created_at": "2026-04-01T12:00:00Z"
+    }
+  ],
+  "total": 1,
+  "page": "1",
+  "limit": "20"
+}
+```
 
-### GET /admin/orders (Required soon)
-Response:
-- order list for admin dashboard tooling
+### 6.2 Search Products Alias
+- Method: `GET`
+- URL: `/api/v1/products/search/`
+- Auth: Public
+- Behavior: same as list with query params.
 
-## 5) Frontend Behavioral Expectations
+### 6.3 Retrieve Product
+- Method: `GET`
+- URL: `/api/v1/products/{id}/`
+- Auth: Public
 
-### Response shape style
-- Frontend currently expects direct typed objects, not deeply nested envelopes.
-- Example: for product list, return `{ products, total, page, limit }` directly.
+### 6.4 Create Product
+- Method: `POST`
+- URL: `/api/v1/products/`
+- Auth: Public (current implementation)
 
-### Validation strictness
-- Frontend validates many responses with Zod schemas.
-- Missing required fields or wrong enum values will fail rendering flows.
+Request:
 
-### ID handling
-- Most IDs are treated as opaque strings.
-- Exception: admin user summary currently expects `user_id` as UUID.
+```json
+{
+  "name": "MacBook Pro",
+  "price": 250000,
+  "description": "16-inch",
+  "stock_quantity": 8,
+  "image_url": "https://...",
+  "category": "category_uuid"
+}
+```
 
-## 6) Recommended Delivery Order (Backend)
+### 6.5 Update Product
+- Method: `PUT/PATCH`
+- URL: `/api/v1/products/{id}/`
+- Auth: Public (current implementation)
 
-1. Auth + refresh + forgot-password
-2. Products + cart
-3. Orders + payments (including payment methods)
-4. Reviews + feedback
-5. Profile endpoints under `/users/me`
-6. Vendor endpoints
-7. Admin endpoints
+### 6.6 Delete Product
+- Method: `DELETE`
+- URL: `/api/v1/products/{id}/`
+- Auth: Public (current implementation)
 
-## 7) Minimal Smoke Test Checklist
+## 7. Cart
 
-1. Login returns tokens and user profile.
-2. GET /products returns list with pagination keys.
-3. Cart add/update/remove/clear roundtrip returns valid cart object.
-4. Checkout can create order then payment, then read order detail.
-5. Order actions (cancel, report issue, return, confirm delivery) mutate expected fields.
-6. Review creation updates product review list.
-7. Feedback submission returns success payload.
-8. Profile read/update/address/privacy/notification/export all return valid profile or message shapes.
-9. Vendor dashboard/products endpoints return contract shapes.
-10. Admin dashboard/users endpoints return contract shapes.
+All cart endpoints require Bearer auth.
+
+### 7.1 Get Cart
+- Method: `GET`
+- URL: `/api/v1/cart/`
+
+Response `200`:
+
+```json
+{
+  "id": "cart_uuid",
+  "user_id": "user_uuid",
+  "date_created": "2026-04-01T12:00:00Z",
+  "total_price": 3500,
+  "products": [
+    {
+      "product_id": "product_uuid",
+      "product_name": "Product name",
+      "product_image": "https://...",
+      "quantity": 2,
+      "unit_price": 1750,
+      "subtotal": 3500,
+      "cart_item_id": "cart_item_uuid"
+    }
+  ]
+}
+```
+
+### 7.2 Add Item
+- Method: `POST`
+- URL: `/api/v1/cart/items/`
+
+Request:
+
+```json
+{
+  "product_id": "product_uuid",
+  "quantity": 2
+}
+```
+
+Response `200`: full cart payload.
+
+### 7.3 Update Item Quantity
+- Method: `PATCH`
+- URL: `/api/v1/cart/items/{item_id}/`
+
+Request:
+
+```json
+{
+  "product_id": "product_uuid",
+  "quantity": 3
+}
+```
+
+Response `200`: full cart payload.
+
+Note: `product_id` is currently validated even on quantity update, so include it.
+
+### 7.4 Delete Item
+- Method: `DELETE`
+- URL: `/api/v1/cart/items/{item_id}/delete/`
+
+Response `200`: full cart payload.
+
+### 7.5 Clear Cart
+- Method: `POST`
+- URL: `/api/v1/cart/clear/`
+
+Response `200`: empty cart payload.
+
+## 8. Orders
+
+All order endpoints require Bearer auth.
+
+Base: `/api/v1/orders/`
+
+### 8.1 List Orders
+- Method: `GET`
+- URL: `/api/v1/orders/`
+- Optional query: `status`
+
+Response `200`:
+
+```json
+{
+  "orders": [
+    {
+      "id": "order_uuid",
+      "user_id": "user_uuid",
+      "order_date": "2026-04-01T12:00:00Z",
+      "order_amount": 3500,
+      "products": [
+        {
+          "product_id": "product_uuid",
+          "quantity": 2,
+          "unit_price": 1750,
+          "subtotal": 3500
+        }
+      ],
+      "status": "pending",
+      "shipping_method": "delivery",
+      "tracking_number": null,
+      "delivered_at": null,
+      "cancelled_at": null,
+      "cancellation_reason": "",
+      "issue_report": null,
+      "return_request": null,
+      "delivery_address": {
+        "county": "Nairobi",
+        "city": "Nairobi",
+        "postal_address": "00100",
+        "user_contact": "+254700000000"
+      }
+    }
+  ],
+  "total": 1
+}
+```
+
+### 8.2 Retrieve Order
+- Method: `GET`
+- URL: `/api/v1/orders/{id}/`
+
+### 8.3 Create Order
+- Method: `POST`
+- URL: `/api/v1/orders/`
+
+Request (from explicit products):
+
+```json
+{
+  "shipping_method": "delivery",
+  "products": [
+    { "product_id": "product_uuid", "quantity": 2 }
+  ],
+  "delivery_address": {
+    "county": "Nairobi",
+    "city": "Nairobi",
+    "postal_address": "00100",
+    "user_contact": "+254700000000"
+  }
+}
+```
+
+Request (cart checkout):
+
+```json
+{
+  "shipping_method": "pickup"
+}
+```
+
+### 8.4 Confirm Delivery
+- Method: `POST`
+- URL: `/api/v1/orders/{id}/confirm/`
+
+### 8.5 Cancel Order
+- Method: `POST`
+- URL: `/api/v1/orders/{id}/cancel/`
+
+Request:
+
+```json
+{ "reason": "Changed my mind" }
+```
+
+### 8.6 Report Issue (Not Yet Backed by Table)
+- Method: `POST`
+- URL: `/api/v1/orders/{id}/issue/`
+- Current response: `501 Not Implemented`
+
+Request:
+
+```json
+{
+  "type": "damaged_item",
+  "details": "Screen cracked"
+}
+```
+
+### 8.7 Request Return (Not Yet Backed by Table)
+- Method: `POST`
+- URL: `/api/v1/orders/{id}/request_return/`
+- Current response: `501 Not Implemented`
+
+Request:
+
+```json
+{
+  "reason": "Wrong size",
+  "notes": "Need replacement"
+}
+```
+
+## 9. Reviews
+
+### 9.1 List Product Reviews
+- Method: `GET`
+- URL: `/api/v1/reviews/products/{product_id}/reviews/`
+- Auth: Public
+
+Response `200`:
+
+```json
+{
+  "reviews": [
+    {
+      "id": "review_uuid",
+      "user_id": "user_uuid",
+      "username": "jane",
+      "product_id": "product_uuid",
+      "rating_value": 5,
+      "comment": "Great product",
+      "verified_purchase": false,
+      "helpful_count": 0,
+      "date": "2026-04-01T12:00:00Z"
+    }
+  ],
+  "total": 1,
+  "average_rating": 5.0
+}
+```
+
+### 9.2 Create Product Review
+- Method: `POST`
+- URL: `/api/v1/reviews/products/{product_id}/reviews/`
+- Auth: Bearer
+
+Request:
+
+```json
+{
+  "rating_value": 4,
+  "comment": "Very good"
+}
+```
+
+### 9.3 Delete Review
+- Method: `DELETE`
+- URL: `/api/v1/reviews/reviews/{review_id}/`
+- Auth: Bearer
+
+## 10. Payments
+
+All payment endpoints require Bearer auth.
+
+### 10.1 Payment Methods (In-memory per process)
+
+These are temporary and reset when server restarts.
+
+- `GET /api/v1/payments/methods/`
+- `POST /api/v1/payments/methods/`
+- `PATCH /api/v1/payments/methods/{method_id}/default/`
+- `DELETE /api/v1/payments/methods/{method_id}/`
+
+Create method request:
+
+```json
+{
+  "brand": "visa",
+  "card_number": "4242 4242 4242 4242",
+  "expiry_month": "12",
+  "expiry_year": "28",
+  "holder_name": "Jane Doe"
+}
+```
+
+### 10.2 Create Payment
+- Method: `POST`
+- URL: `/api/v1/payments/`
+
+Request:
+
+```json
+{
+  "order_id": "order_uuid",
+  "payment_provider": "mpesa",
+  "amount": 3500,
+  "phone_number": "+254700000000"
+}
+```
+
+Card example:
+
+```json
+{
+  "order_id": "order_uuid",
+  "payment_provider": "card",
+  "amount": 3500,
+  "payment_method_id": "method_uuid"
+}
+```
+
+Response `201`:
+
+```json
+{
+  "id": "payment_uuid",
+  "user_id": "user_uuid",
+  "order_id": "order_uuid",
+  "amount": 3500,
+  "payment_provider": "mpesa",
+  "status": "pending",
+  "created_at": "2026-04-01T12:00:00Z",
+  "phone_number": "+254700000000",
+  "payment_method_id": ""
+}
+```
+
+### 10.3 Verify Payment
+- Method: `GET`
+- URL: `/api/v1/payments/{payment_id}/verify/`
+
+Response: payment object with current status.
+
+## 11. Feedback
+
+### 11.1 Submit Feedback
+- Method: `POST`
+- URL: `/api/v1/feedback/`
+- Auth: Bearer
+
+Request:
+
+```json
+{
+  "type": "feature_request",
+  "message": "Please add product wishlists"
+}
+```
+
+Response `201`:
+
+```json
+{
+  "success": true,
+  "item": {
+    "id": "feedback_uuid",
+    "user_id": "user_uuid",
+    "type": "feature_request",
+    "message": "Please add product wishlists",
+    "created_at": "2026-04-01T12:00:00Z"
+  }
+}
+```
+
+## 12. Frontend Integration Checklist
+
+1. Set a shared API client with base `/api/v1/`.
+2. Add Bearer token interceptor.
+3. On `401`, call token refresh once and retry original request.
+4. If refresh fails, clear session and redirect to login.
+5. Handle `detail` and field-level validation errors in UI.
+6. Treat order issue/return endpoints as unavailable (`501`) for now.
+7. Do not rely on persistence of payment methods until DB-backed.
+
+## 13. Quick Endpoint Map
+
+- Auth:
+  - `POST /auth/register/`
+  - `POST /auth/login/`
+  - `POST /auth/logout/`
+  - `POST /auth/token/refresh/`
+- User:
+  - `GET /users/me/`
+  - `PATCH /users/me/`
+  - `POST /users/me/change-password/`
+- Categories:
+  - `GET/POST /categories/`
+  - `GET/PUT/PATCH/DELETE /categories/{id}/`
+- Products:
+  - `GET/POST /products/`
+  - `GET /products/search/`
+  - `GET/PUT/PATCH/DELETE /products/{id}/`
+- Cart:r
+  - `GET /cart/`
+  - `POST /cart/items/`
+  - `PATCH /cart/items/{item_id}/`
+  - `DELETE /cart/items/{item_id}/delete/`
+  - `POST /cart/clear/`
+- Orders:
+  - `GET/POST /orders/`
+  - `GET /orders/{id}/`
+  - `POST /orders/{id}/confirm/`
+  - `POST /orders/{id}/cancel/`
+  - `POST /orders/{id}/issue/` (501)
+  - `POST /orders/{id}/request_return/` (501)
+- Reviews:
+  - `GET /reviews/products/{product_id}/reviews/`
+  - `POST /reviews/products/{product_id}/reviews/`
+  - `DELETE /reviews/reviews/{review_id}/`
+- Payments:
+  - `GET/POST /payments/methods/`
+  - `PATCH /payments/methods/{method_id}/default/`
+  - `DELETE /payments/methods/{method_id}/`
+  - `POST /payments/`
+  - `GET /payments/{payment_id}/verify/`
+- Feedback:
+  - `POST /feedback/`

@@ -4,6 +4,12 @@ import { APP_NAME } from '../../../shared/constants/app';
 import { useAuthHook } from '../hooks/useAuthHook';
 import { authBrandSignals, authTrustPartners } from '../data/authPageData';
 
+const resolveRoleDestination = (role) => {
+  if (role === 'vendor') return ROUTES.VENDOR.DASHBOARD;
+  if (role === 'admin') return ROUTES.ADMIN.DASHBOARD;
+  return ROUTES.PRODUCTS;
+};
+
 const LoginPage = () => {
   const { login, loading, error, clearError } = useAuthHook();
   const navigate = useNavigate();
@@ -12,11 +18,11 @@ const LoginPage = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     try {
-      await login({
+      const loggedInUser = await login({
         email: formData.get('email'),
         password: formData.get('password'),
       });
-      navigate(ROUTES.PRODUCTS);
+      navigate(resolveRoleDestination(loggedInUser?.role));
     } catch {
       // error state handled in hook
     }
