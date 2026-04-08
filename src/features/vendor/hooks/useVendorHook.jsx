@@ -1,5 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
-import { getVendorDashboard, getVendorProducts, deleteVendorProduct } from '../api/vendorApi';
+import {
+  getVendorDashboard,
+  getVendorProducts,
+  createVendorProduct,
+  deleteVendorProduct,
+} from '../api/vendorApi';
 import { mapError } from '../../../shared/utils/errorHandler';
 
 export const useVendorDashboardHook = () => {
@@ -45,6 +50,18 @@ export const useVendorProductsHook = () => {
 
   useEffect(() => { fetchProducts(); }, [fetchProducts]);
 
+  const create = useCallback(async (payload) => {
+    try {
+      const created = await createVendorProduct(payload);
+      setProducts((prev) => [created, ...prev]);
+      return created;
+    } catch (err) {
+      const message = mapError(err);
+      setError(message);
+      throw new Error(message);
+    }
+  }, []);
+
   const remove = useCallback(async (id) => {
     try {
       await deleteVendorProduct(id);
@@ -54,7 +71,7 @@ export const useVendorProductsHook = () => {
     }
   }, []);
 
-  return { products, loading, error, refetch: fetchProducts, remove };
+  return { products, loading, error, refetch: fetchProducts, create, remove };
 };
 
 export default useVendorDashboardHook;

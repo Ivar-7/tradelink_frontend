@@ -1,52 +1,61 @@
 import { z } from 'zod';
 
-// ── Enums ──────────────────────────────────────────────────────────────────
 export const UserRoleSchema = z.enum(['buyer', 'vendor', 'admin']);
 
-export const UserGenderSchema = z.enum(['male', 'female', 'other']);
+export const UserGenderSchema = z.enum(['M', 'F', 'O', 'male', 'female', 'other']);
 
-// ── Core User ──────────────────────────────────────────────────────────────
 export const UserSchema = z.object({
-  user_id: z.string().uuid(),
-  username: z.string().min(3).max(30),
-  user_fname: z.string().min(1),
-  user_lname: z.string().min(1),
-  user_email: z.string().email(),
-  user_gender: UserGenderSchema.optional(),
-  user_dob: z.string().datetime().optional(),
-  user_role: UserRoleSchema,
-  user_cart: z.string().uuid().optional(),
+  id: z.string().min(1),
+  email: z.string().email(),
+  username: z.string().min(1),
+  first_name: z.string().min(1),
+  last_name: z.string().min(1),
+  full_name: z.string().min(1).optional(),
+  phone_number: z.string().min(1).optional(),
+  gender: UserGenderSchema.optional(),
+  date_of_birth: z.string().nullable().optional(),
+  role: UserRoleSchema,
+  date_joined: z.string().datetime().optional(),
 });
 
-/** User shape safe for the UI (no password). */
-export const UserPublicSchema = UserSchema;
-
-// ── Auth Inputs ────────────────────────────────────────────────────────────
 export const LoginInputSchema = z.object({
   email: z.string().email('Enter a valid email address'),
   password: z.string().min(8, 'Password must be at least 8 characters'),
 });
 
-export const SignupInputSchema = z.object({
-  username: z.string().min(3, 'Username must be at least 3 characters').max(30),
-  user_fname: z.string().min(1, 'First name is required'),
-  user_lname: z.string().min(1, 'Last name is required'),
-  user_email: z.string().email('Enter a valid email address'),
-  user_password: z.string().min(8, 'Password must be at least 8 characters'),
-  confirm_password: z.string(),
-  user_gender: UserGenderSchema.optional(),
-  user_dob: z.string().optional(),
-  user_role: UserRoleSchema.default('buyer'),
-}).refine((data) => data.user_password === data.confirm_password, {
-  message: 'Passwords do not match',
-  path: ['confirm_password'],
+export const SignupInputSchema = z
+  .object({
+    username: z.string().min(3, 'Username must be at least 3 characters').max(30),
+    first_name: z.string().min(1, 'First name is required'),
+    last_name: z.string().min(1, 'Last name is required'),
+    email: z.string().email('Enter a valid email address'),
+    password: z.string().min(8, 'Password must be at least 8 characters'),
+    password_confirm: z.string(),
+    phone_number: z.string().min(7, 'Phone number is required'),
+    gender: UserGenderSchema.optional(),
+    role: UserRoleSchema.default('buyer'),
+    date_of_birth: z.string().optional(),
+  })
+  .refine((data) => data.password === data.password_confirm, {
+    message: 'Passwords do not match',
+    path: ['password_confirm'],
+  });
+
+export const AuthResponseSchema = z.object({
+  user: UserSchema,
+  tokens: z.object({
+    access: z.string(),
+    refresh: z.string(),
+  }),
 });
 
-// ── Auth Response ──────────────────────────────────────────────────────────
-export const AuthResponseSchema = z.object({
-  access_token: z.string(),
-  refresh_token: z.string(),
-  user: UserPublicSchema,
+export const ChangePasswordInputSchema = z.object({
+  current_password: z.string().min(1, 'Current password is required'),
+  new_password: z.string().min(8, 'Password must be at least 8 characters'),
+  new_password_confirm: z.string(),
+}).refine((data) => data.new_password === data.new_password_confirm, {
+  message: 'Passwords do not match',
+  path: ['new_password_confirm'],
 });
 
 /**

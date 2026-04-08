@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Account Data &amp; Privacy | TradeLink</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-fixed": "#dce1ff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#b6c4ff",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e8e8e8",
+                        "on-tertiary-fixed-variant": "#862300",
+                        "surface-variant": "#e2e2e2",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#434656",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#001550",
+                        "secondary": "#445aa6",
+                        "surface-tint": "#004ee7",
+                        "secondary-fixed-dim": "#b6c4ff",
+                        "surface-container-low": "#f3f3f3",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-tertiary-fixed": "#3a0a00",
+                        "on-secondary-fixed-variant": "#2a418d",
+                        "tertiary-fixed": "#ffdbd1",
+                        "on-primary-container": "#e5e8ff",
+                        "primary": "#0043c8",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "outline": "#737688",
+                        "tertiary-container": "#c13600",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "primary-container": "#0057ff",
+                        "on-secondary-container": "#263e89",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#303030",
+                        "surface": "#f9f9f9",
+                        "tertiary": "#972800",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary-container": "#ffe3db",
+                        "outline-variant": "#c3c5d9",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#1b1b1b",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#dce1ff",
+                        "background": "#f9f9f9",
+                        "tertiary-fixed-dim": "#ffb59f",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-primary-fixed": "#001550",
+                        "surface-dim": "#dadada",
+                        "secondary-container": "#97adff",
+                        "on-background": "#1b1b1b",
+                        "on-primary-fixed-variant": "#003ab2"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .no-line-border { border: none !important; }
+        .background-shift-low { background-color: rgba(243, 243, 243, 0.8); }
+        .tonal-layering { background-color: #f3f3f3; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl shadow-sm dark:shadow-none font-['Inter'] antialiased tracking-tight">
+<div class="flex justify-between items-center px-8 h-16 max-w-screen-2xl mx-auto w-full">
+<div class="text-xl font-bold tracking-tighter text-zinc-900 dark:text-zinc-50">TradeLink</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors" href="#">Categories</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors" href="#">Wishlist</a>
+<a class="text-blue-700 dark:text-blue-500 font-semibold border-b-2 border-blue-700 pb-1" href="#">Account</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors" href="#">Cart</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="p-2 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="person_outline">person_outline</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="max-w-screen-2xl mx-auto px-8 pt-32 pb-20 flex gap-12">
+<!-- SideNavBar (Account Menu) -->
+<aside class="w-64 flex flex-col gap-2 p-4 bg-zinc-50 dark:bg-zinc-900 rounded-xl h-fit sticky top-24 tonal-layering">
+<div class="mb-6 px-4">
+<h2 class="text-lg font-bold text-zinc-900 dark:text-zinc-50">Account Menu</h2>
+<p class="text-xs text-zinc-500">Manage your preferences</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg px-4 py-3 flex items-center gap-3 transition-all hover:translate-x-1 duration-200 text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+<a class="text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg px-4 py-3 flex items-center gap-3 transition-all hover:translate-x-1 duration-200 text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+                    My Orders
+                </a>
+<a class="text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg px-4 py-3 flex items-center gap-3 transition-all hover:translate-x-1 duration-200 text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+                    Address Book
+                </a>
+<a class="text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg px-4 py-3 flex items-center gap-3 transition-all hover:translate-x-1 duration-200 text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+                    Payment Methods
+                </a>
+<a class="text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg px-4 py-3 flex items-center gap-3 transition-all hover:translate-x-1 duration-200 text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+                    Wishlist
+                </a>
+<a class="text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg px-4 py-3 flex items-center gap-3 transition-all hover:translate-x-1 duration-200 text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                    Recently Viewed
+                </a>
+<a class="bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 rounded-lg px-4 py-3 flex items-center gap-3 text-sm font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+                    Account Settings
+                </a>
+<div class="my-4 h-px bg-zinc-200 dark:bg-zinc-800 mx-4"></div>
+<a class="text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg px-4 py-3 flex items-center gap-3 transition-all hover:translate-x-1 duration-200 text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-error" data-icon="logout">logout</span>
+                    Log Out
+                </a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<section class="flex-1 max-w-4xl">
+<header class="mb-12">
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-4 font-headline">Account Data &amp; Privacy</h1>
+<div class="h-px bg-outline-variant opacity-20 w-full"></div>
+</header>
+<!-- Data Export Section -->
+<div class="mb-20">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+<div class="max-w-xl">
+<h2 class="text-xl font-bold text-on-surface mb-2">Download Your Data</h2>
+<p class="text-on-surface-variant leading-relaxed">Request a copy of all personal data, orders, and activity associated with your account. We will prepare a secure archive and notify you via email when it's ready for download.</p>
+</div>
+<button class="whitespace-nowrap px-6 py-3 bg-white border border-primary text-primary font-semibold rounded-lg hover:bg-primary-fixed transition-colors active:scale-95 text-sm">
+                        Request Data Export
+                    </button>
+</div>
+<div class="h-px bg-outline-variant opacity-10 w-full"></div>
+</div>
+<!-- Account Deletion Section -->
+<div class="space-y-8">
+<div>
+<h2 class="text-xl font-bold text-on-surface mb-6">Delete Account</h2>
+<div class="bg-error-container/30 border border-error/20 rounded-xl p-6 mb-8">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+<p class="text-on-error-container font-medium">
+                                Warning: This action is permanent and cannot be undone. All order history and saved data will be erased.
+                            </p>
+</div>
+</div>
+<div class="max-w-md space-y-6">
+<div class="space-y-2">
+<label class="block text-sm font-bold text-on-surface-variant tracking-wide uppercase">Confirm Identity</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder:text-zinc-500" placeholder="Enter your password to confirm" type="password"/>
+</div>
+<button class="w-full md:w-auto px-8 py-4 bg-error text-white font-bold rounded-lg hover:bg-red-700 transition-all active:scale-95 shadow-lg shadow-error/10">
+                            Delete My Account
+                        </button>
+</div>
+</div>
+</div>
+<!-- Privacy Features Bento Grid -->
+<div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-surface-container-lowest p-8 rounded-xl flex flex-col justify-between group hover:bg-surface-bright transition-colors">
+<div>
+<span class="material-symbols-outlined text-primary mb-4 text-3xl" data-icon="security">security</span>
+<h3 class="text-lg font-bold mb-2">Two-Factor Authentication</h3>
+<p class="text-sm text-on-surface-variant">Add an extra layer of security to your account by requiring a code from your phone.</p>
+</div>
+<a class="mt-6 text-primary font-bold text-sm inline-flex items-center gap-2 group-hover:underline" href="#">
+                        Enable 2FA <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl flex flex-col justify-between group hover:bg-surface-bright transition-colors">
+<div>
+<span class="material-symbols-outlined text-primary mb-4 text-3xl" data-icon="visibility_off">visibility_off</span>
+<h3 class="text-lg font-bold mb-2">Ad Preferences</h3>
+<p class="text-sm text-on-surface-variant">Control how we use your browsing data to show you relevant products and offers.</p>
+</div>
+<a class="mt-6 text-primary font-bold text-sm inline-flex items-center gap-2 group-hover:underline" href="#">
+                        Manage Ads <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-20 pt-16 pb-8 bg-zinc-950 dark:bg-black no-border space-y-12">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8 px-8 max-w-screen-2xl mx-auto">
+<div class="flex flex-col gap-4">
+<h3 class="text-white font-black tracking-tighter text-lg">TradeLink</h3>
+<p class="font-['Inter'] text-zinc-400 text-xs tracking-wide leading-relaxed">
+                    The Digital Atelier. Precision-crafted commerce for the modern era. Designed for those who appreciate the intentionality of every pixel.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-white font-bold text-xs uppercase tracking-widest">Customer Service</h4>
+<nav class="flex flex-col gap-2">
+<a class="font-['Inter'] text-zinc-500 text-xs tracking-wide uppercase hover:text-blue-400 transition-colors" href="#">Help Center</a>
+<a class="font-['Inter'] text-zinc-500 text-xs tracking-wide uppercase hover:text-blue-400 transition-colors" href="#">Shipping Info</a>
+<a class="font-['Inter'] text-zinc-500 text-xs tracking-wide uppercase hover:text-blue-400 transition-colors" href="#">Returns</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-white font-bold text-xs uppercase tracking-widest">Company</h4>
+<nav class="flex flex-col gap-2">
+<a class="font-['Inter'] text-zinc-500 text-xs tracking-wide uppercase hover:text-blue-400 transition-colors" href="#">About Us</a>
+<a class="font-['Inter'] text-zinc-500 text-xs tracking-wide uppercase hover:text-blue-400 transition-colors" href="#">Contact Us</a>
+<a class="font-['Inter'] text-zinc-500 text-xs tracking-wide uppercase hover:text-blue-400 transition-colors" href="#">Careers</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-white font-bold text-xs uppercase tracking-widest">Legal</h4>
+<nav class="flex flex-col gap-2">
+<a class="font-['Inter'] text-zinc-500 text-xs tracking-wide uppercase hover:text-blue-400 transition-colors" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-zinc-500 text-xs tracking-wide uppercase hover:text-blue-400 transition-colors" href="#">Terms of Service</a>
+</nav>
+</div>
+</div>
+<div class="px-8 max-w-screen-2xl mx-auto pt-8 border-t border-zinc-800/50 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-['Inter'] text-zinc-500 text-xs tracking-wide uppercase">© 2024 TradeLink Digital Atelier. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-zinc-500 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined" data-icon="brand_facebook">social_leaderboard</span></a>
+<a class="text-zinc-500 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined" data-icon="brand_twitter">flutter_dash</span></a>
+<a class="text-zinc-500 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined" data-icon="brand_instagram">photo_camera</span></a>
+</div>
+</div>
+</footer>
+</body></html>

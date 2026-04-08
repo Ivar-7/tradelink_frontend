@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeLink | Digital Atelier</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#b6c4ff",
+              "outline": "#737688",
+              "surface-container": "#eeeeee",
+              "tertiary-container": "#c13600",
+              "primary": "#0043c8",
+              "on-primary": "#ffffff",
+              "on-primary-container": "#e5e8ff",
+              "surface": "#f9f9f9",
+              "surface-bright": "#f9f9f9",
+              "tertiary": "#972800",
+              "on-tertiary-container": "#ffe3db",
+              "inverse-surface": "#303030",
+              "primary-container": "#0057ff",
+              "error": "#ba1a1a",
+              "on-secondary-container": "#263e89",
+              "background": "#f9f9f9",
+              "secondary-fixed": "#dce1ff",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed-dim": "#ffb59f",
+              "surface-container-highest": "#e2e2e2",
+              "on-surface": "#1b1b1b",
+              "outline-variant": "#c3c5d9",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed-variant": "#003ab2",
+              "on-background": "#1b1b1b",
+              "secondary-container": "#97adff",
+              "surface-dim": "#dadada",
+              "on-primary-fixed": "#001550",
+              "surface-container-high": "#e8e8e8",
+              "on-tertiary-fixed-variant": "#862300",
+              "error-container": "#ffdad6",
+              "surface-variant": "#e2e2e2",
+              "inverse-primary": "#b6c4ff",
+              "on-tertiary": "#ffffff",
+              "primary-fixed": "#dce1ff",
+              "on-error": "#ffffff",
+              "on-secondary-fixed": "#001550",
+              "on-surface-variant": "#434656",
+              "on-error-container": "#93000a",
+              "inverse-on-surface": "#f1f1f1",
+              "secondary-fixed-dim": "#b6c4ff",
+              "surface-container-low": "#f3f3f3",
+              "secondary": "#445aa6",
+              "surface-tint": "#004ee7",
+              "tertiary-fixed": "#ffdbd1",
+              "on-secondary-fixed-variant": "#2a418d",
+              "on-tertiary-fixed": "#3a0a00"
+            },
+            fontFamily: {
+              "headline": ["Inter", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom loading bar keyframes - minimalist implementation */
+        @keyframes progress-loading {
+            0% { width: 0%; left: 0%; }
+            50% { width: 100%; left: 0%; }
+            100% { width: 0%; left: 100%; }
+        }
+        .animate-progress {
+            animation: progress-loading 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-primary overflow-hidden">
+<!-- Splash Screen Container -->
+<!-- According to "The Destination Rule" and "Automatic Suppression": Navigation shells are excluded for linear/transactional or focused journey screens like a Splash Screen. -->
+<main class="relative h-screen w-screen flex flex-col items-center justify-center bg-gradient-to-br from-primary to-primary-container">
+<!-- Deep Tech/Editorial Background Detail (Subtle Overlay) -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" data-alt="Subtle technical grid pattern overlaying blue gradient" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0); background-size: 48px 48px;">
+</div>
+<!-- Brand Identity: Literal Transcription from JSON/Request Hierarchy -->
+<div class="z-10 flex flex-col items-center">
+<!-- Huge, text-based logo spelling exactly 'TradeLink' -->
+<h1 class="text-on-primary text-6xl md:text-8xl font-black tracking-tighter antialiased mb-12 select-none">
+                TradeLink
+            </h1>
+<!-- Minimalist Progress Container -->
+<div class="w-48 h-[2px] bg-on-primary/10 relative overflow-hidden">
+<!-- Sleek loading indicator -->
+<div class="absolute h-full bg-on-primary animate-progress"></div>
+</div>
+<!-- Sub-brand Tagline: Adhering to Precision Editorial Tactics -->
+<div class="mt-8">
+<p class="text-on-primary/60 font-label text-[10px] tracking-[0.2em] uppercase">
+                    Digital Atelier • v1.0
+                </p>
+</div>
+</div>
+<!-- Bottom Ambient Shadow Detail (Tonal Layering Principle) -->
+<div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+</main>
+<!-- Fallback Imagery/Visual Context if needed for Screen Readers -->
+<div class="sr-only">
+<img data-alt="Abstract deep blue light refraction texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTntWPKCwuNLkjhJ4Q1Cx-jNpatJhbTJlFutNYFV6kn13jymtgzG7vNR3V7cqnvqJ9MQV-1vaZxxaWHb8eydsIQs6d9NXArBolWRKyELRtV9nqFfjewbnR-K0daOOaaveYPb9ialzLJ0wzsW96jDX8sRXHd4lhEzBo0gEuLzgj-ksq4a9jQTMcoEXKIhKQURv94Kbo_4D6EalPNakddZ-0wXfc7am0tM5BPt2hz9TxOM00Q1jNraiJXmCG3mFgByoetyYYdyYsaeI"/>
+</div>
+</body></html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline-variant": "#c3c5d9",
+              "inverse-primary": "#b6c4ff",
+              "on-secondary-container": "#263e89",
+              "tertiary-container": "#c13600",
+              "surface-variant": "#e2e2e2",
+              "surface-container-highest": "#e2e2e2",
+              "primary-fixed-dim": "#b6c4ff",
+              "surface-container-high": "#e8e8e8",
+              "on-tertiary": "#ffffff",
+              "secondary": "#445aa6",
+              "on-secondary-fixed": "#001550",
+              "primary-container": "#0057ff",
+              "outline": "#737688",
+              "on-surface": "#1b1b1b",
+              "surface-tint": "#004ee7",
+              "on-primary-fixed": "#001550",
+              "error-container": "#ffdad6",
+              "error": "#ba1a1a",
+              "surface-container": "#eeeeee",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed-variant": "#003ab2",
+              "background": "#f9f9f9",
+              "surface-dim": "#dadada",
+              "on-background": "#1b1b1b",
+              "surface": "#f9f9f9",
+              "inverse-surface": "#303030",
+              "tertiary": "#972800",
+              "primary-fixed": "#dce1ff",
+              "secondary-container": "#97adff",
+              "on-tertiary-fixed": "#3a0a00",
+              "on-surface-variant": "#434656",
+              "primary": "#0043c8",
+              "on-tertiary-container": "#ffe3db",
+              "tertiary-fixed-dim": "#ffb59f",
+              "secondary-fixed": "#dce1ff",
+              "on-error": "#ffffff",
+              "on-secondary-fixed-variant": "#2a418d",
+              "on-primary": "#ffffff",
+              "on-primary-container": "#e5e8ff",
+              "on-tertiary-fixed-variant": "#862300",
+              "secondary-fixed-dim": "#b6c4ff",
+              "tertiary-fixed": "#ffdbd1",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-low": "#f3f3f3",
+              "inverse-on-surface": "#f1f1f1",
+              "on-error-container": "#93000a",
+              "surface-bright": "#f9f9f9"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-xl font-black text-zinc-900 dark:text-zinc-50 tracking-tighter">Digital Atelier</span>
+<div class="hidden md:flex gap-8">
+<a class="text-zinc-500 dark:text-zinc-400 font-medium hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors" href="#">Collections</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-medium hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors" href="#">Specials</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-medium hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors" href="#">Archive</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-surface-container-high px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 p-0" placeholder="Search design..." type="text"/>
+</div>
+<div class="flex gap-4">
+<button class="hover:opacity-80 transition-opacity"><span class="material-symbols-outlined">shopping_bag</span></button>
+<button class="hover:opacity-80 transition-opacity"><span class="material-symbols-outlined">person</span></button>
+</div>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-20 max-w-screen-2xl mx-auto px-8">
+<!-- Breadcrumb -->
+<nav class="mb-12 flex items-center gap-2 text-sm font-medium tracking-tight text-on-surface-variant">
+<span>Home</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span>Electronics</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span>Audio</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-on-surface">Studio X1 Wireless</span>
+</nav>
+<!-- Product Hero Section -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+<!-- Left Column: Media Gallery -->
+<div class="space-y-6">
+<div class="aspect-[4/5] bg-surface-variant rounded-xl overflow-hidden flex items-center justify-center p-12">
+<img alt="Studio X1 Wireless Headphones Front View" class="w-full h-full object-contain mix-blend-multiply" data-alt="Premium black wireless over-ear headphones centered on light gray background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyGadvW1kNID6-SQGC3ZmD3kAjnn9FMFnt3WjyxN-NkZjiGd5lM3N9qk9zHjIfSRyRQQYlCeZQlUeh8uT44gIw08SsSJZbMjrVQP4tTCw_dAV0lLwaIWET9qj6c3FHkNQ8rfH2p5XLBPehDmZmCDF4QgdeBOFTGk7DG3199cAUOL1FSsNvI5xrQy8rqP3mXAwVsDSyeftFAVz88EnT0n5_CtS7w7XerUZqEbpUev-n8maORZ5LHgXkbyC0tp2yfo2wLvKOqLZMoy4"/>
+</div>
+<div class="grid grid-cols-4 gap-4">
+<div class="aspect-square bg-surface-container-low rounded-lg p-2 cursor-pointer border-2 border-primary">
+<img alt="Thumbnail 1" class="w-full h-full object-contain mix-blend-multiply" data-alt="Close up of headphone ear cups" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDt0fMFW58e9jXav1G3ojyhmChAvSf5W-9WqjLLwP7PquWTs4OkerGOWX2t_KfPR5Aro9u7kgm8sZZ6QVIt_LiSEcfW244A0EkhDYKV7A-tY4G0ai6L4EmBDwYRIrT6cexlbtYqrFWmiNh_JWBN31oJaxdR-GJmMkv5rYX0PgrYXHLF6iI__cPj4wT6FQzuifoyMhz9qGvqGcQH1hn5NwCLWfuTvZNeM_YFxde_tu397lG8XjFL7YnuYB-CiE-pHXpEZvtX5KTVgo"/>
+</div>
+<div class="aspect-square bg-surface-container-low rounded-lg p-2 cursor-pointer hover:bg-surface-variant transition-colors">
+<img alt="Thumbnail 2" class="w-full h-full object-contain mix-blend-multiply" data-alt="Side profile view of wireless headphones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBf40KaqxcCA3UUH7PNSgbnDn6ztRScDxUyCRSBAZxCnfHdJZK9hRIYd38sSHJrQAzPSCBFgkVkNmbjUH3DjbV83s_XHlF7NbNiyNGVo4ynNpDzQsWRhhFBS4pGkecrakKaNNqAKWJ_xveVIqhN5ztCnTgUjmNEXkK0eLFLuUKD82POmWn-UWVvuR298cVTu1yCQS8QRY2LvWHug04LcjX-D9L-uHVq5B_E00dOf3VGMq_sRnJXuHSNvlWhnjD2TRRGVHtohK7TNa8"/>
+</div>
+<div class="aspect-square bg-surface-container-low rounded-lg p-2 cursor-pointer hover:bg-surface-variant transition-colors">
+<img alt="Thumbnail 3" class="w-full h-full object-contain mix-blend-multiply" data-alt="Folded state of high-end headphones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYOjqcTDPCtgZGR_8QLbSi0HfLhcPanLZq4BmyrtUzjgyNkujCUd_tM5Nqss8asmpIPCJC4eAjOhR0q4KRjN3qbMPVNChK-Qi6ZVvvrRKiu9QCjPpvK4NfZnmdUuZrn3ZCe6-4cOtqOhJc0KP3YbaWChVdb58FRZm2-8VSwn7-U01uGEN0t7Bjt-MA0VSurYfEoHEtewJtp0CyMRezzWG_Tp2XpikaY_zV-XMc0uLbeAOdmlu1FK81vAUGRin_0-19v6ytqCw0l_s"/>
+</div>
+<div class="aspect-square bg-surface-container-low rounded-lg p-2 cursor-pointer hover:bg-surface-variant transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">play_circle</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Product Details -->
+<div class="space-y-8 lg:sticky lg:top-32">
+<div class="space-y-2">
+<p class="text-xs font-bold uppercase tracking-widest text-primary">Audio Pro</p>
+<h1 class="text-5xl font-extrabold tracking-tighter text-on-surface leading-tight">Studio X1 Wireless Headphones</h1>
+<div class="flex items-center gap-4 py-2">
+<div class="flex text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0.5;">star_half</span>
+</div>
+<span class="text-sm font-medium text-on-surface-variant">(128 reviews)</span>
+</div>
+</div>
+<div class="flex items-baseline gap-4">
+<span class="text-4xl font-bold text-on-surface">$299.00</span>
+<span class="text-xl text-outline-variant line-through">$350.00</span>
+</div>
+<!-- Variants -->
+<div class="space-y-4">
+<p class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Color Variant</p>
+<div class="flex gap-3">
+<button class="w-10 h-10 rounded-lg bg-zinc-900 border-2 border-primary ring-2 ring-primary/20 ring-offset-2" title="Black"></button>
+<button class="w-10 h-10 rounded-lg bg-zinc-100 border border-outline-variant hover:border-primary transition-all" title="White"></button>
+<button class="w-10 h-10 rounded-lg bg-blue-900 border border-outline-variant hover:border-primary transition-all" title="Navy"></button>
+</div>
+</div>
+<!-- Quantity -->
+<div class="space-y-4">
+<p class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Quantity</p>
+<div class="inline-flex items-center bg-surface-container-high rounded-lg p-1">
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container-highest rounded transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="w-12 text-center font-bold">1</span>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container-highest rounded transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Primary Actions -->
+<div class="space-y-4 pt-4">
+<button class="w-full py-5 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-xl text-lg hover:opacity-90 active:scale-95 transition-all duration-200 shadow-xl shadow-primary/20">
+                        Add to Cart
+                    </button>
+<button class="w-full py-5 bg-surface-container-highest text-on-surface font-bold rounded-xl text-lg hover:bg-surface-bright transition-all">
+                        Buy Now
+                    </button>
+<button class="w-full flex items-center justify-center gap-2 py-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">favorite</span>
+<span class="text-sm font-semibold">Add to Wishlist</span>
+</button>
+</div>
+<!-- Trust Badges -->
+<div class="grid grid-cols-2 gap-4 pt-8">
+<div class="flex items-center gap-3 p-4 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+<span class="text-xs font-bold leading-tight uppercase tracking-wide">Free Global Shipping</span>
+</div>
+<div class="flex items-center gap-3 p-4 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<span class="text-xs font-bold leading-tight uppercase tracking-wide">2 Year Warranty</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Information Tabs -->
+<section class="mt-32">
+<div class="flex border-b border-outline-variant/20 mb-12 overflow-x-auto">
+<button class="px-8 py-4 text-primary font-bold border-b-2 border-primary whitespace-nowrap">Description</button>
+<button class="px-8 py-4 text-on-surface-variant font-medium hover:text-on-surface transition-colors whitespace-nowrap">Specifications</button>
+<button class="px-8 py-4 text-on-surface-variant font-medium hover:text-on-surface transition-colors whitespace-nowrap">Reviews (128)</button>
+<button class="px-8 py-4 text-on-surface-variant font-medium hover:text-on-surface transition-colors whitespace-nowrap">Q&amp;A</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+<div class="space-y-6">
+<h3 class="text-3xl font-extrabold tracking-tight">Sonic Precision. Wire-Free Freedom.</h3>
+<p class="text-lg text-on-surface-variant leading-relaxed">
+                        The Studio X1 Wireless redefines your listening experience with custom-tuned 40mm drivers and industry-leading hybrid active noise cancellation. Crafted for professionals and audiophiles alike, these headphones deliver studio-quality sound with zero latency.
+                    </p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<div>
+<span class="block font-bold">40-Hour Battery Life</span>
+<span class="text-on-surface-variant text-sm">Listen all week on a single charge. Fast charge provides 4 hours in 10 minutes.</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<div>
+<span class="block font-bold">Spatial Audio Engine</span>
+<span class="text-on-surface-variant text-sm">Immersive 3D soundscape that adapts to your head movements.</span>
+</div>
+</li>
+</ul>
+</div>
+<div class="bg-surface-container-low rounded-2xl p-8 aspect-video flex items-center justify-center overflow-hidden">
+<img alt="Studio X1 Tech Feature" class="w-full h-full object-cover" data-alt="Interior driver components shown in technical exploded view style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoEkeogt2CdLjluUsMbYLDShx92Nckx3a4Cq1S2gU_RsIoRZsCOvliI6VrsSUP8-41u99g-zDpONISXtdGJGJxrbcFelYQB5FF8vtqvJmK2n-0o2YtCAOHTMnbO8NpKQXr3uAxMM85H44K2rCHUypy4yIGKzxhmPYdjr3VdmIG9ro62dZRleqsnzzjsML4qYo43HqRVV56bNDyrMGxkhVH-GSmZCvR84dmWR5x-qXFTT0FSAQw8FVTbn-cJxprTcJ5ckKRRoZBcnk"/>
+</div>
+</div>
+</section>
+<!-- Related Products Section -->
+<section class="mt-32">
+<h2 class="text-3xl font-extrabold tracking-tight mb-12">Related Products</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Related Card 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-lowest rounded-xl mb-4 overflow-hidden relative">
+<img alt="Earbuds" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Minimalist white wireless earbuds in charging case" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmHgw7maIF17PS8ya2Xp9qXfnUGkdWWl55ylgleeCCK3K3SSghr-0CMhmRs8Srd3TgRpaNpUUv6u1NVUDRUNiOLbdbWTkncdW2LeubXSLRvZxWPvPU1U1rZBa9utK6sBZrjrH8nKXf7FU76wEQD6hsctjQwzViMrVLcnHTWNbPy_2r4IepB3BOwKJFzkEUUiv5t3HW3qpW3qXbvd_ftVKBrWClhVdwnNPhMTZDNkj9HWTEIEnRaadpMZ-hFCBnl3-krjpeFLNpX9Q"/>
+</div>
+<div class="space-y-1">
+<h4 class="font-bold text-on-surface">Pro Buds Air</h4>
+<p class="text-sm text-on-surface-variant">$149.00</p>
+</div>
+</div>
+<!-- Related Card 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-lowest rounded-xl mb-4 overflow-hidden relative">
+<img alt="Headset" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High-end gaming headset with microphone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk3xOhPLEgcEzrlc49A2Zr3dh0Cxcq0YEHXuIgB_Pd_9AHW9pc-rShH0iVw2OM8EjUY7hf_42koPLIQEGOcrvp-mvjHYskZYI2f5RA5dmTzzhyP2t3RRDrtILN1FvUzhLoJckLUUdGta1czjKjAo5Q7sOOdeyjo18KtOpNrCzZtCAJiGAzPgzLyfRlgsrBicYrYNEOb6vP6s9hN7FIfThD1aw1VSOkgJHATWjC9Y0Y41EayJTYV958rZ_5l1PTz-jDOHJmMx2ZQZc"/>
+</div>
+<div class="space-y-1">
+<h4 class="font-bold text-on-surface">Stream Master Pro</h4>
+<p class="text-sm text-on-surface-variant">$229.00</p>
+</div>
+</div>
+<!-- Related Card 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-lowest rounded-xl mb-4 overflow-hidden relative">
+<img alt="Stand" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Sleek aluminum headphone stand on desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzPrBvL9B7bq_aELaIpfEPnh0pTpMThAtlK6E0DeTlm9aaS-xv0VivQORfwa8umzRQIWEiGfWVCKuP45H4UGCV2Yiuck-iE5-sTTNTyEo76Xzr-UNT2cGwa6kyDca7pYcG6uT3MkTZONVcXh2RIOTf6sLjlr7SeWqKv1eapkmaWVezkuBOEznoBjwHrNQHBivwIMcluRNrNLTNVXauavgNC45Gyo3-QtNVaCWI2ywIdQUqbuC-CC5T6kQ6KwKvl_52e9M6fh7Ua0U"/>
+</div>
+<div class="space-y-1">
+<h4 class="font-bold text-on-surface">Atelier Headphone Stand</h4>
+<p class="text-sm text-on-surface-variant">$89.00</p>
+</div>
+</div>
+<!-- Related Card 4 -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-container-lowest rounded-xl mb-4 overflow-hidden relative">
+<img alt="Speaker" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Minimalist portable bluetooth speaker" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWGDY3nnHUA8wX1tc1iBGFV9HFx1Muve9OvkHBIukrywbePnIfMwyQGql5Aubhnegiy8XhLEtTyJm8VGslTKX4RBrt9d31LQKu-kFiaDrIQdHVX6aglJLFuaWaT_Q2W5qttUws3nBcpPlE0qYd0h-Wem32cDZwhXuQMNOGo8iQmxSHrNYecSS6cXUpscAeaU-amirGE8ZrhEDSGxB6J1WUlrAR8VlaaFQxuOPL-ZBA0v4xbIxv0olbi3vp17Iy03DEYb_skgH_NQs"/>
+</div>
+<div class="space-y-1">
+<h4 class="font-bold text-on-surface">Sonic Cube Portable</h4>
+<p class="text-sm text-on-surface-variant">$199.00</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Section -->
+<footer class="bg-zinc-100 dark:bg-zinc-900 w-full rounded-none">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 max-w-screen-2xl mx-auto font-['Inter'] text-sm leading-relaxed">
+<div class="space-y-6">
+<span class="text-lg font-bold text-zinc-900 dark:text-zinc-50">Digital Atelier</span>
+<p class="text-zinc-500 dark:text-zinc-400 max-w-xs">Elevating digital commerce through precision engineering and intentional design.</p>
+</div>
+<div>
+<h5 class="text-zinc-900 dark:text-zinc-50 font-bold mb-6">Experience</h5>
+<ul class="space-y-4">
+<li><a class="text-zinc-500 dark:text-zinc-400 hover:text-blue-700 dark:hover:text-blue-500 transition-colors" href="#">Collections</a></li>
+<li><a class="text-zinc-500 dark:text-zinc-400 hover:text-blue-700 dark:hover:text-blue-500 transition-colors" href="#">Specials</a></li>
+<li><a class="text-zinc-500 dark:text-zinc-400 hover:text-blue-700 dark:hover:text-blue-500 transition-colors" href="#">Archive</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-zinc-900 dark:text-zinc-50 font-bold mb-6">Support</h5>
+<ul class="space-y-4">
+<li><a class="text-zinc-500 dark:text-zinc-400 hover:text-blue-700 dark:hover:text-blue-500 transition-colors" href="#">Technical Support</a></li>
+<li><a class="text-zinc-500 dark:text-zinc-400 hover:text-blue-700 dark:hover:text-blue-500 transition-colors" href="#">Shipping &amp; Returns</a></li>
+<li><a class="text-zinc-500 dark:text-zinc-400 hover:text-blue-700 dark:hover:text-blue-500 transition-colors" href="#">Sustainability</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-zinc-900 dark:text-zinc-50 font-bold mb-6">Legal</h5>
+<ul class="space-y-4">
+<li><a class="text-zinc-500 dark:text-zinc-400 hover:text-blue-700 dark:hover:text-blue-500 transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-zinc-500 dark:text-zinc-400 hover:text-blue-700 dark:hover:text-blue-500 transition-colors text-blue-600 dark:text-blue-400 underline" href="#">Cookie Settings</a></li>
+</ul>
+</div>
+</div>
+<div class="px-12 py-8 border-t border-zinc-200 dark:border-zinc-800 max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-zinc-500 dark:text-zinc-400">© 2024 Digital Atelier. Precision Engineered.</p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-zinc-400 hover:text-primary cursor-pointer">brand_awareness</span>
+<span class="material-symbols-outlined text-zinc-400 hover:text-primary cursor-pointer">public</span>
+</div>
+</div>
+</footer>
+</body></html>

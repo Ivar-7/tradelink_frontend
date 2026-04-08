@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TradeLink | Notification Preferences</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary": "#445aa6",
+              "inverse-on-surface": "#f1f1f1",
+              "outline-variant": "#c3c5d9",
+              "on-primary-container": "#e5e8ff",
+              "surface-dim": "#dadada",
+              "on-secondary-fixed-variant": "#2a418d",
+              "on-error": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "surface-bright": "#f9f9f9",
+              "inverse-surface": "#303030",
+              "surface-container": "#eeeeee",
+              "inverse-primary": "#b6c4ff",
+              "surface-container-highest": "#e2e2e2",
+              "on-tertiary-fixed-variant": "#862300",
+              "primary-fixed-dim": "#b6c4ff",
+              "on-primary": "#ffffff",
+              "on-tertiary-fixed": "#3a0a00",
+              "on-tertiary-container": "#ffe3db",
+              "error": "#ba1a1a",
+              "surface-container-high": "#e8e8e8",
+              "on-surface": "#1b1b1b",
+              "surface": "#f9f9f9",
+              "primary-container": "#0057ff",
+              "on-primary-fixed": "#001550",
+              "on-background": "#1b1b1b",
+              "tertiary": "#972800",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-container": "#263e89",
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6",
+              "tertiary-container": "#c13600",
+              "tertiary-fixed": "#ffdbd1",
+              "on-secondary-fixed": "#001550",
+              "secondary-fixed": "#dce1ff",
+              "on-error-container": "#93000a",
+              "surface-variant": "#e2e2e2",
+              "surface-tint": "#004ee7",
+              "on-surface-variant": "#434656",
+              "surface-container-low": "#f3f3f3",
+              "secondary-container": "#97adff",
+              "on-primary-fixed-variant": "#003ab2",
+              "background": "#f9f9f9",
+              "primary-fixed": "#dce1ff",
+              "primary": "#0043c8",
+              "outline": "#737688",
+              "tertiary-fixed-dim": "#ffb59f",
+              "secondary-fixed-dim": "#b6c4ff"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl shadow-sm flex justify-between items-center px-8 py-4 max-w-full mx-auto">
+<div class="text-2xl font-black text-slate-900 tracking-tight">TradeLink</div>
+<div class="hidden md:flex items-center gap-8 font-sans tracking-tight">
+<a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Dashboard</a>
+<a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Markets</a>
+<a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">Portfolio</a>
+<a class="text-slate-500 hover:text-slate-900 transition-colors" href="#">History</a>
+<a class="text-blue-700 border-b-2 border-blue-700 pb-1 font-bold" href="#">Account</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-100/50 rounded-lg transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-slate-100/50 rounded-lg transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden">
+<img alt="User profile avatar" data-alt="Close up of professional male user avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYt3mQHVZeFKqFI4EEbLdHuJPtHt7jBpIwfM2j1Yg40W_zny0aynTGCrzSlzSd9bh0-D8dbkoz98n8C0f8qalJ2E5D00J0HTxt7csT45aHpKGh68cNrN1L9nMlQpiWcErXD6FSqMN_avVuZs6U9RmT_6GoN81LPU_4XqCOKEAZzP0ykgORNb_Z6KSnJ5LgQgGK4hg6fA15t-IA9Xzqll_pjY4bXmyM-Eyqg9TslH9mBswap1Ib-FxDaQJNu1oyn14O6AeRjgeKzmo"/>
+</div>
+</div>
+</nav>
+<div class="flex min-h-screen pt-16">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 bg-slate-50 pt-24 pb-8 space-y-1">
+<div class="px-6 mb-8">
+<h2 class="text-lg font-bold text-slate-900">Settings</h2>
+<p class="text-xs text-slate-500">Manage your account preferences</p>
+</div>
+<nav class="flex flex-col space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-sm font-medium">Profile Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<span class="text-sm font-medium">Security</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-blue-600 bg-blue-50/50 rounded-r-full font-bold hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="manage_accounts">manage_accounts</span>
+<span class="text-sm">Account Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="text-sm font-medium">Linked Banks</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-900 hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="key">key</span>
+<span class="text-sm font-medium">API Keys</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 bg-surface px-8 md:px-16 pt-24 pb-16">
+<div class="max-w-4xl">
+<!-- Header -->
+<header class="mb-12">
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">Account Settings</h1>
+<div class="flex gap-8 mt-8 border-b border-outline-variant/10">
+<button class="pb-4 text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors">Profile Information</button>
+<button class="pb-4 text-sm font-bold text-primary border-b-2 border-primary">Notification Preferences</button>
+<button class="pb-4 text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors">Data &amp; Privacy</button>
+</div>
+</header>
+<!-- Preferences Content -->
+<section class="space-y-16">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+<div class="md:col-span-4">
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-1">Communication</h3>
+<p class="text-xs text-on-surface-variant/70 leading-relaxed">Control how TradeLink contacts you regarding your activity and offers.</p>
+</div>
+<div class="md:col-span-8 space-y-6">
+<!-- Preference Item: Order Updates -->
+<div class="bg-surface-container-lowest p-6 flex justify-between items-center transition-all hover:bg-surface-bright group">
+<div>
+<h4 class="text-base font-bold text-on-surface mb-1">Order Updates</h4>
+<p class="text-sm text-on-surface-variant">Shipping and delivery confirmations.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-container-high rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Preference Item: Marketing Emails -->
+<div class="bg-surface-container-lowest p-6 flex justify-between items-center transition-all hover:bg-surface-bright group">
+<div>
+<h4 class="text-base font-bold text-on-surface mb-1">Marketing Emails</h4>
+<p class="text-sm text-on-surface-variant">Exclusive promotions and flash sales.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-container-high rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Preference Item: Price Drop Alerts -->
+<div class="bg-surface-container-lowest p-6 flex justify-between items-center transition-all hover:bg-surface-bright group">
+<div>
+<h4 class="text-base font-bold text-on-surface mb-1">Price Drop Alerts</h4>
+<p class="text-sm text-on-surface-variant">Notifications when items in your wishlist go on sale.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-container-high rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="pt-8 border-t border-outline-variant/10">
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-3 font-bold text-sm hover:opacity-90 transition-opacity">
+                            Save Preferences
+                        </button>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-slate-900 text-slate-400 py-16 px-12 w-full">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
+<div class="space-y-4">
+<div class="text-xl font-bold text-white">TradeLink</div>
+<p class="text-xs uppercase tracking-widest Inter">© 2024 TradeLink Digital Atelier. All rights reserved.</p>
+</div>
+<div class="flex flex-col space-y-4">
+<span class="text-white font-bold text-xs uppercase tracking-widest">Brand</span>
+<a class="hover:text-white transition-opacity" href="#">Philosophy</a>
+<a class="hover:text-white transition-opacity" href="#">Atelier</a>
+</div>
+<div class="flex flex-col space-y-4">
+<span class="text-white font-bold text-xs uppercase tracking-widest">Support</span>
+<a class="hover:text-white transition-opacity" href="#">Help Center</a>
+<a class="hover:text-white transition-opacity" href="#">Contact Us</a>
+</div>
+<div class="flex flex-col space-y-4">
+<span class="text-white font-bold text-xs uppercase tracking-widest">Legal</span>
+<a class="hover:text-white transition-opacity" href="#">Privacy Policy</a>
+<a class="hover:text-white transition-opacity" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</body></html>

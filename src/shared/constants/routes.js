@@ -1,5 +1,6 @@
 export const ROUTES = {
   HOME: '/',
+  SEARCH: '/search',
   PRODUCTS: '/products',
   PRODUCT_DETAIL: '/products/:id',
   CART: '/cart',
@@ -12,6 +13,8 @@ export const ROUTES = {
   AUTH: {
     LOGIN: '/auth/login',
     SIGNUP: '/auth/signup',
+    FORGOT_PASSWORD: '/auth/forgot-password',
+    UNSUBSCRIBE_CONFIRMATION: '/auth/unsubscribe-confirmation',
   },
   VENDOR: {
     DASHBOARD: '/vendor/dashboard',

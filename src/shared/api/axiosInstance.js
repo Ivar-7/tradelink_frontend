@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_BASE_URL } from '../constants/api';
+import { API_BASE_URL, API_ENDPOINTS } from '../constants/api';
 
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
@@ -24,19 +24,25 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    const hadAuthHeader = Boolean(originalRequest?.headers?.Authorization);
+
+    if (error.response?.status === 401 && hadAuthHeader && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
         const refreshToken = localStorage.getItem('refresh_token');
-        const { data } = await axios.post(`${API_BASE_URL}/auth/refresh`, {
-          refresh_token: refreshToken,
+        const { data } = await axios.post(`${API_BASE_URL}${API_ENDPOINTS.AUTH.REFRESH}`, {
+          refresh: refreshToken,
         });
-        localStorage.setItem('access_token', data.access_token);
-        originalRequest.headers.Authorization = `Bearer ${data.access_token}`;
+        const nextAccessToken = data.access || data.access_token;
+        if (nextAccessToken) {
+          localStorage.setItem('access_token', nextAccessToken);
+          originalRequest.headers.Authorization = `Bearer ${nextAccessToken}`;
+        }
         return axiosInstance(originalRequest);
       } catch {
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
+        localStorage.removeItem('user');
         window.location.href = '/auth/login';
       }
     }

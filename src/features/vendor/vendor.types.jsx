@@ -3,7 +3,7 @@ import { ProductSchema } from '../products/products.types';
 
 // ── Vendor Profile ─────────────────────────────────────────────────────────
 export const VendorProfileSchema = z.object({
-  vendor_id: z.string().uuid(),
+  vendor_id: z.string().min(1),
   business_name: z.string().min(1).optional(),
   business_description: z.string().optional(),
   is_verified: z.boolean().default(false),
@@ -19,7 +19,7 @@ export const VendorDashboardSchema = z.object({
   pending_orders: z.number().int().min(0),
   active_products: z.number().int().min(0),
   recent_orders: z.array(z.object({
-    id: z.string().uuid(),
+    id: z.string().min(1),
     order_date: z.string().datetime(),
     order_amount: z.number().positive(),
     status: z.string(),
@@ -31,13 +31,13 @@ export const VendorProductInputSchema = z.object({
   name: z.string().min(1, 'Product name is required'),
   price: z.number().positive('Price must be positive'),
   description: z.string().min(10, 'Description must be at least 10 characters'),
-  category_id: z.string().uuid('Select a valid category'),
+  category_id: z.string().min(1, 'Select a valid category'),
   stock_quantity: z.number().int().min(0),
   image_url: z.string().url('Enter a valid image URL'),
 });
 
 export const VendorProductSchema = ProductSchema.extend({
-  vendor_id: z.string().uuid(),
+  vendor_id: z.string().min(1),
   is_active: z.boolean().default(true),
 });
 

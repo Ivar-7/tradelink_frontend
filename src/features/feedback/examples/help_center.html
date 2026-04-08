@@ -1,0 +1,365 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Help Center | TradeLink</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              outline: '#737688',
+              secondary: '#445aa6',
+              'on-secondary-container': '#263e89',
+              'surface-dim': '#dadada',
+              'surface-container-highest': '#e2e2e2',
+              'surface-container-high': '#e8e8e8',
+              'inverse-on-surface': '#f1f1f1',
+              'on-surface': '#1b1b1b',
+              'on-primary-container': '#e5e8ff',
+              'on-primary-fixed': '#001550',
+              'on-primary-fixed-variant': '#003ab2',
+              'inverse-surface': '#303030',
+              error: '#ba1a1a',
+              'on-tertiary-fixed': '#3a0a00',
+              tertiary: '#972800',
+              'surface-container-lowest': '#ffffff',
+              'on-secondary': '#ffffff',
+              'on-background': '#1b1b1b',
+              surface: '#f9f9f9',
+              'surface-container': '#eeeeee',
+              'primary-container': '#0057ff',
+              'tertiary-fixed': '#ffdbd1',
+              'tertiary-container': '#c13600',
+              'primary-fixed-dim': '#b6c4ff',
+              'on-primary': '#ffffff',
+              'on-error-container': '#93000a',
+              'on-tertiary': '#ffffff',
+              'on-surface-variant': '#434656',
+              'error-container': '#ffdad6',
+              'secondary-fixed': '#dce1ff',
+              'inverse-primary': '#b6c4ff',
+              'surface-tint': '#004ee7',
+              'surface-variant': '#e2e2e2',
+              'surface-bright': '#f9f9f9',
+              'on-secondary-fixed': '#001550',
+              'secondary-fixed-dim': '#b6c4ff',
+              'on-error': '#ffffff',
+              'on-tertiary-container': '#ffe3db',
+              'surface-container-low': '#f3f3f3',
+              'primary-fixed': '#dce1ff',
+              'outline-variant': '#c3c5d9',
+              'on-secondary-fixed-variant': '#2a418d',
+              'secondary-container': '#97adff',
+              primary: '#0043c8',
+              'on-tertiary-fixed-variant': '#862300',
+              'tertiary-fixed-dim': '#ffb59f',
+              background: '#f9f9f9',
+            },
+            fontFamily: {
+              headline: ['Inter'],
+              body: ['Inter'],
+              label: ['Inter'],
+            },
+            borderRadius: { DEFAULT: '0.125rem', lg: '0.25rem', xl: '0.5rem', full: '0.75rem' },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+      }
+    </style>
+  </head>
+  <body class="bg-surface text-on-surface antialiased">
+    <!-- [GLOBAL NAVBAR] -->
+    <nav class="bg-white/80 backdrop-blur-md docked full-width top-0 sticky z-50">
+      <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+        <div class="flex items-center gap-12">
+          <span class="text-2xl font-black tracking-tighter text-slate-900">TradeLink</span>
+          <div class="hidden md:flex gap-8 items-center">
+            <a
+              class="text-slate-500 font-medium text-sm tracking-tight hover:text-blue-600 transition-colors"
+              href="#"
+              >Categories</a
+            >
+            <a
+              class="text-slate-500 font-medium text-sm tracking-tight hover:text-blue-600 transition-colors"
+              href="#"
+              >Wishlist</a
+            >
+            <a
+              class="text-slate-500 font-medium text-sm tracking-tight hover:text-blue-600 transition-colors"
+              href="#"
+              >Account</a
+            >
+            <a
+              class="text-slate-500 font-medium text-sm tracking-tight hover:text-blue-600 transition-colors"
+              href="#"
+              >Cart</a
+            >
+          </div>
+        </div>
+        <div class="flex items-center gap-6 text-slate-900">
+          <button class="scale-95 active:opacity-80 transition-transform">
+            <span class="material-symbols-outlined">search</span>
+          </button>
+          <button class="scale-95 active:opacity-80 transition-transform">
+            <span class="material-symbols-outlined">person</span>
+          </button>
+          <button class="scale-95 active:opacity-80 transition-transform">
+            <span class="material-symbols-outlined">shopping_cart</span>
+          </button>
+        </div>
+      </div>
+      <div class="bg-slate-100 h-[1px] w-full"></div>
+    </nav>
+    <!-- [HERO SECTION] -->
+    <header class="bg-surface-container-low py-24 md:py-32 px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-5xl md:text-6xl font-extrabold text-on-surface tracking-tighter mb-12">
+          How can we help you today?
+        </h1>
+        <div class="relative group">
+          <div class="absolute inset-y-0 left-6 flex items-center pointer-events-none">
+            <span class="material-symbols-outlined text-outline text-2xl">search</span>
+          </div>
+          <input
+            class="w-full pl-16 pr-8 py-6 bg-surface-container-lowest rounded-xl shadow-sm focus:ring-2 focus:ring-primary focus:outline-none transition-all text-lg placeholder:text-outline/60 border-none"
+            placeholder="Search for topics, orders, or return policies..."
+            type="text"
+          />
+        </div>
+      </div>
+    </header>
+    <main class="max-w-7xl mx-auto px-8 py-20">
+      <!-- [HELP CATEGORIES GRID] -->
+      <section class="mb-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Card 1 -->
+          <div
+            class="bg-surface-container-lowest p-8 rounded-xl transition-all hover:bg-surface-bright group cursor-pointer"
+          >
+            <div
+              class="w-12 h-12 bg-primary-fixed flex items-center justify-center rounded-lg mb-6 group-hover:scale-110 transition-transform"
+            >
+              <span class="material-symbols-outlined text-primary" data-icon="package"
+                >package</span
+              >
+            </div>
+            <h3 class="text-xl font-bold tracking-tight mb-2">Orders &amp; Tracking</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">
+              View order status, track shipments, and manage delivery preferences.
+            </p>
+          </div>
+          <!-- Card 2 -->
+          <div
+            class="bg-surface-container-lowest p-8 rounded-xl transition-all hover:bg-surface-bright group cursor-pointer"
+          >
+            <div
+              class="w-12 h-12 bg-primary-fixed flex items-center justify-center rounded-lg mb-6 group-hover:scale-110 transition-transform"
+            >
+              <span class="material-symbols-outlined text-primary" data-icon="sync">sync</span>
+            </div>
+            <h3 class="text-xl font-bold tracking-tight mb-2">Returns &amp; Refunds</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">
+              Start a return, check refund status, and view our policies.
+            </p>
+          </div>
+          <!-- Card 3 -->
+          <div
+            class="bg-surface-container-lowest p-8 rounded-xl transition-all hover:bg-surface-bright group cursor-pointer"
+          >
+            <div
+              class="w-12 h-12 bg-primary-fixed flex items-center justify-center rounded-lg mb-6 group-hover:scale-110 transition-transform"
+            >
+              <span class="material-symbols-outlined text-primary" data-icon="person">person</span>
+            </div>
+            <h3 class="text-xl font-bold tracking-tight mb-2">Account &amp; Payment</h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">
+              Manage your profile, saved cards, and security settings.
+            </p>
+          </div>
+          <!-- Card 4 -->
+          <div
+            class="bg-surface-container-lowest p-8 rounded-xl transition-all hover:bg-surface-bright group cursor-pointer"
+          >
+            <div
+              class="w-12 h-12 bg-primary-fixed flex items-center justify-center rounded-lg mb-6 group-hover:scale-110 transition-transform"
+            >
+              <span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+            </div>
+            <h3 class="text-xl font-bold tracking-tight mb-2">
+              Product Registration &amp; Warranty
+            </h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">
+              Register your new products and claim warranty services.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- [TOP FAQ SECTION] -->
+      <section class="max-w-4xl mb-32">
+        <h2 class="text-3xl font-extrabold tracking-tighter mb-10">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          <!-- Accordion Item 1 -->
+          <div class="bg-surface-container-lowest overflow-hidden">
+            <button
+              class="w-full flex justify-between items-center p-6 text-left hover:bg-surface-container transition-colors"
+            >
+              <span class="font-semibold text-lg">How long does shipping take?</span>
+              <span class="material-symbols-outlined text-primary">add</span>
+            </button>
+          </div>
+          <!-- Accordion Item 2 -->
+          <div class="bg-surface-container-lowest overflow-hidden">
+            <button
+              class="w-full flex justify-between items-center p-6 text-left hover:bg-surface-container transition-colors"
+            >
+              <span class="font-semibold text-lg">What is your return policy?</span>
+              <span class="material-symbols-outlined text-primary">add</span>
+            </button>
+          </div>
+          <!-- Accordion Item 3 -->
+          <div class="bg-surface-container-lowest overflow-hidden">
+            <button
+              class="w-full flex justify-between items-center p-6 text-left hover:bg-surface-container transition-colors"
+            >
+              <span class="font-semibold text-lg">Can I cancel my order after it's placed?</span>
+              <span class="material-symbols-outlined text-primary">add</span>
+            </button>
+          </div>
+          <!-- Accordion Item 4 -->
+          <div class="bg-surface-container-lowest overflow-hidden">
+            <button
+              class="w-full flex justify-between items-center p-6 text-left hover:bg-surface-container transition-colors"
+            >
+              <span class="font-semibold text-lg">How do I use a promotional code?</span>
+              <span class="material-symbols-outlined text-primary">add</span>
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- [CONTACT BANNER] -->
+      <section
+        class="relative bg-surface-container-high rounded-2xl overflow-hidden p-12 md:p-20 text-center"
+      >
+        <div
+          class="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent pointer-events-none"
+        ></div>
+        <div class="relative z-10">
+          <h2 class="text-4xl font-black tracking-tighter mb-6">Still need help?</h2>
+          <p class="text-on-surface-variant max-w-lg mx-auto mb-10 text-lg">
+            Our support team is available 24/7 to assist you with any inquiries or technical issues.
+          </p>
+          <button
+            class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-10 py-4 rounded font-bold text-lg hover:opacity-90 transition-opacity active:scale-95 transform shadow-lg"
+          >
+            Contact Us
+          </button>
+        </div>
+      </section>
+    </main>
+    <!-- [GLOBAL FOOTER] -->
+    <footer class="bg-slate-900 w-full py-20 px-8 mt-20 border-t border-slate-800">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
+        <!-- Col 1 -->
+        <div>
+          <h4 class="text-lg font-bold text-white mb-6">TradeLink</h4>
+          <p class="text-slate-400 text-xs font-normal leading-relaxed tracking-wide mb-6">
+            Precision engineered solutions for the modern marketplace.
+          </p>
+          <div class="flex gap-4">
+            <a
+              class="text-slate-400 hover:text-white transition-colors opacity-80 hover:opacity-100"
+              href="#"
+              >Twitter</a
+            >
+            <a
+              class="text-slate-400 hover:text-white transition-colors opacity-80 hover:opacity-100"
+              href="#"
+              >LinkedIn</a
+            >
+          </div>
+        </div>
+        <!-- Col 2 -->
+        <div>
+          <h4 class="text-white text-sm font-bold uppercase tracking-widest mb-6">
+            Customer Service
+          </h4>
+          <div class="flex flex-col gap-4">
+            <a class="text-slate-400 text-xs hover:text-white transition-colors opacity-80" href="#"
+              >Help Center</a
+            >
+            <a class="text-slate-400 text-xs hover:text-white transition-colors opacity-80" href="#"
+              >Shipping Policy</a
+            >
+            <a class="text-slate-400 text-xs hover:text-white transition-colors opacity-80" href="#"
+              >Returns</a
+            >
+            <a class="text-slate-400 text-xs hover:text-white transition-colors opacity-80" href="#"
+              >Contact Us</a
+            >
+          </div>
+        </div>
+        <!-- Col 3 -->
+        <div>
+          <h4 class="text-white text-sm font-bold uppercase tracking-widest mb-6">Company</h4>
+          <div class="flex flex-col gap-4">
+            <a class="text-slate-400 text-xs hover:text-white transition-colors opacity-80" href="#"
+              >Careers</a
+            >
+            <a class="text-slate-400 text-xs hover:text-white transition-colors opacity-80" href="#"
+              >API Docs</a
+            >
+            <a class="text-slate-400 text-xs hover:text-white transition-colors opacity-80" href="#"
+              >Status</a
+            >
+            <a class="text-slate-400 text-xs hover:text-white transition-colors opacity-80" href="#"
+              >Affiliate</a
+            >
+          </div>
+        </div>
+        <!-- Col 4 -->
+        <div>
+          <h4 class="text-white text-sm font-bold uppercase tracking-widest mb-6">Legal</h4>
+          <div class="flex flex-col gap-4">
+            <a class="text-slate-400 text-xs hover:text-white transition-colors opacity-80" href="#"
+              >Privacy Policy</a
+            >
+            <a class="text-slate-400 text-xs hover:text-white transition-colors opacity-80" href="#"
+              >Terms of Service</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-slate-800 text-center">
+        <p class="text-slate-500 text-xs">© 2024 TradeLink Digital Atelier. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

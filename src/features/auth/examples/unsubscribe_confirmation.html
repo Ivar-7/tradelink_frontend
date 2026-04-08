@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-container": "#e5e8ff",
+              "on-secondary-fixed": "#001550",
+              "tertiary-fixed-dim": "#ffb59f",
+              "surface-bright": "#f9f9f9",
+              "primary": "#0043c8",
+              "on-primary": "#ffffff",
+              "background": "#f9f9f9",
+              "surface-container-low": "#f3f3f3",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#ffdbd1",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed": "#001550",
+              "surface-tint": "#004ee7",
+              "primary-container": "#0057ff",
+              "on-tertiary-fixed": "#3a0a00",
+              "on-secondary-container": "#263e89",
+              "surface-variant": "#e2e2e2",
+              "secondary-fixed": "#dce1ff",
+              "inverse-surface": "#303030",
+              "surface": "#f9f9f9",
+              "primary-fixed-dim": "#b6c4ff",
+              "on-primary-fixed-variant": "#003ab2",
+              "inverse-primary": "#b6c4ff",
+              "inverse-on-surface": "#f1f1f1",
+              "tertiary-container": "#c13600",
+              "on-error-container": "#93000a",
+              "outline-variant": "#c3c5d9",
+              "secondary-container": "#97adff",
+              "secondary": "#445aa6",
+              "primary-fixed": "#dce1ff",
+              "on-tertiary-container": "#ffe3db",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#434656",
+              "surface-container-highest": "#e2e2e2",
+              "surface-dim": "#dadada",
+              "on-secondary-fixed-variant": "#2a418d",
+              "error": "#ba1a1a",
+              "error-container": "#ffdad6",
+              "outline": "#737688",
+              "tertiary": "#972800",
+              "on-surface": "#1b1b1b",
+              "surface-container-high": "#e8e8e8",
+              "on-background": "#1b1b1b",
+              "on-tertiary-fixed-variant": "#862300",
+              "surface-container": "#eeeeee",
+              "secondary-fixed-dim": "#b6c4ff",
+              "on-secondary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Design System Precision Editorial Shadow */
+        .ambient-shadow {
+            shadow: 0 40px 40px -20px rgba(27, 27, 27, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-xl">
+<nav class="flex justify-between items-center px-12 py-6 w-full max-w-screen-2xl mx-auto">
+<!-- Brand Logo -->
+<div class="text-2xl font-black tracking-tighter text-gray-900 dark:text-white">
+                TradeLink
+            </div>
+<!-- Navigation Links -->
+<div class="hidden md:flex items-center gap-12 font-['Inter'] tracking-tight font-medium text-sm">
+<a class="text-gray-500 dark:text-gray-400 hover:text-gray-900 hover:opacity-70 transition-opacity duration-300" href="#">Categories</a>
+<a class="text-gray-500 dark:text-gray-400 hover:text-gray-900 hover:opacity-70 transition-opacity duration-300" href="#">Wishlist</a>
+<a class="text-gray-500 dark:text-gray-400 hover:text-gray-900 hover:opacity-70 transition-opacity duration-300" href="#">Account</a>
+<a class="text-gray-500 dark:text-gray-400 hover:text-gray-900 hover:opacity-70 transition-opacity duration-300" href="#">Cart</a>
+</div>
+<!-- Trailing Icon Actions -->
+<div class="flex items-center gap-6">
+<button class="hover:opacity-70 transition-opacity duration-300 scale-95 active:duration-100">
+<span class="material-symbols-outlined text-on-surface">search</span>
+</button>
+<button class="hover:opacity-70 transition-opacity duration-300 scale-95 active:duration-100">
+<span class="material-symbols-outlined text-on-surface">person</span>
+</button>
+<button class="hover:opacity-70 transition-opacity duration-300 scale-95 active:duration-100">
+<span class="material-symbols-outlined text-on-surface">shopping_bag</span>
+</button>
+</div>
+</nav>
+</header>
+<!-- Main Content Canvas -->
+<main class="min-h-screen flex items-center justify-center pt-24 pb-12">
+<section class="max-w-2xl w-full px-6 text-center">
+<!-- Success Icon -->
+<div class="mb-10 flex justify-center">
+<div class="w-24 h-24 rounded-full bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-500" style="font-size: 48px; font-variation-settings: 'FILL' 1;">
+                        check_circle
+                    </span>
+</div>
+</div>
+<!-- Confirmation Text -->
+<h1 class="text-5xl md:text-6xl font-black tracking-tight text-on-surface mb-6 leading-tight">
+                Successfully Unsubscribed
+            </h1>
+<p class="text-lg text-on-surface-variant font-body leading-relaxed max-w-lg mx-auto mb-16">
+                You have been removed from our marketing email list. You will still receive order updates.
+            </p>
+<!-- Action Row -->
+<div class="flex flex-col items-center gap-8">
+<a class="inline-flex items-center justify-center px-10 py-4 bg-surface-container-highest text-on-surface font-medium text-sm transition-all duration-300 hover:bg-surface-variant active:scale-95" href="/">
+                    Back to Homepage
+                </a>
+<button class="group flex items-center gap-2">
+<span class="text-[#0057FF] font-semibold text-sm tracking-wide">
+                        Wait, resubscribe me
+                    </span>
+<span class="material-symbols-outlined text-[#0057FF] text-lg transition-transform duration-300 group-hover:translate-x-1">
+                        arrow_forward
+                    </span>
+</button>
+</div>
+<!-- Technical Spec Aesthetic (Visual Garnish) -->
+<div class="mt-24 pt-12 border-t border-outline-variant/10 flex justify-center gap-12 opacity-40">
+<div class="text-left">
+<span class="block font-['Inter'] text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Status</span>
+<span class="block font-mono text-xs font-medium">LIST_REMOVED</span>
+</div>
+<div class="text-left">
+<span class="block font-['Inter'] text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Reference</span>
+<span class="block font-mono text-xs font-medium">TRDL-99421-X</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-gray-900 dark:bg-black w-full py-20 px-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-16 w-full max-w-screen-2xl mx-auto">
+<!-- Brand Column -->
+<div class="space-y-6">
+<div class="text-lg font-bold text-white">TradeLink</div>
+<p class="text-gray-400 font-['Inter'] text-xs uppercase tracking-widest leading-loose">
+                    Curating the future of digital commerce through precision and intent.
+                </p>
+</div>
+<!-- Links Column: Support -->
+<div class="flex flex-col gap-4">
+<h4 class="text-white font-bold text-xs uppercase tracking-widest mb-2">Support</h4>
+<a class="text-gray-400 font-['Inter'] text-xs uppercase tracking-widest hover:text-white transition-colors duration-200" href="#">Help Center</a>
+<a class="text-gray-400 font-['Inter'] text-xs uppercase tracking-widest hover:text-white transition-colors duration-200" href="#">Track Order</a>
+<a class="text-gray-400 font-['Inter'] text-xs uppercase tracking-widest hover:text-white transition-colors duration-200" href="#">Returns</a>
+</div>
+<!-- Links Column: Company -->
+<div class="flex flex-col gap-4">
+<h4 class="text-white font-bold text-xs uppercase tracking-widest mb-2">Company</h4>
+<a class="text-gray-400 font-['Inter'] text-xs uppercase tracking-widest hover:text-white transition-colors duration-200" href="#">About Us</a>
+<a class="text-gray-400 font-['Inter'] text-xs uppercase tracking-widest hover:text-white transition-colors duration-200" href="#">Sustainability</a>
+<a class="text-gray-400 font-['Inter'] text-xs uppercase tracking-widest hover:text-white transition-colors duration-200" href="#">Careers</a>
+</div>
+<!-- Links Column: Legal -->
+<div class="flex flex-col gap-4">
+<h4 class="text-white font-bold text-xs uppercase tracking-widest mb-2">Legal</h4>
+<a class="text-gray-400 font-['Inter'] text-xs uppercase tracking-widest hover:text-white transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="text-gray-400 font-['Inter'] text-xs uppercase tracking-widest hover:text-white transition-colors duration-200" href="#">Terms of Service</a>
+<a class="text-gray-400 font-['Inter'] text-xs uppercase tracking-widest hover:text-white transition-colors duration-200" href="#">Newsletter Settings</a>
+</div>
+</div>
+<!-- Bottom Footer -->
+<div class="mt-20 pt-12 border-t border-gray-800 w-full max-w-screen-2xl mx-auto flex justify-between items-center">
+<p class="text-gray-500 font-['Inter'] text-[10px] uppercase tracking-[0.2em]">
+                © 2024 TradeLink Digital Atelier. All rights reserved.
+            </p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-gray-500 hover:text-white cursor-pointer transition-colors">public</span>
+<span class="material-symbols-outlined text-gray-500 hover:text-white cursor-pointer transition-colors">hub</span>
+</div>
+</div>
+</footer>
+</body></html>

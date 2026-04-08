@@ -1,7 +1,7 @@
 import { formatCurrency } from '../../../shared/utils/formatters';
 
 /**
- * @param {{ product: import('../vendor.types').VendorProductInput & { id: string }, onEdit: () => void, onDelete: () => void }} props
+ * @param {{ product: import('../vendor.types').VendorProductInput & { id: string }, onEdit?: () => void, onDelete: () => void }} props
  */
 const VendorProductCard = ({ product, onEdit, onDelete }) => {
   return (
@@ -17,12 +17,14 @@ const VendorProductCard = ({ product, onEdit, onDelete }) => {
         <p className="text-xs text-muted">Stock: {product.stock_quantity}</p>
       </div>
       <div className="flex gap-2">
-        <button
-          onClick={onEdit}
-          className="rounded-lg border border-border px-3 py-1 text-xs font-medium text-foreground hover:bg-border"
-        >
-          Edit
-        </button>
+        {onEdit ? (
+          <button
+            onClick={onEdit}
+            className="rounded-lg border border-border px-3 py-1 text-xs font-medium text-foreground hover:bg-border"
+          >
+            Edit
+          </button>
+        ) : null}
         <button
           onClick={onDelete}
           className="rounded-lg bg-destructive px-3 py-1 text-xs font-medium text-white hover:opacity-80"

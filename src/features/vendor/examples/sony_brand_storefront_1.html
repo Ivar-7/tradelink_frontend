@@ -1,0 +1,841 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'on-tertiary-container': '#ffe3db',
+              'on-primary': '#ffffff',
+              'secondary-container': '#97adff',
+              'on-tertiary-fixed-variant': '#862300',
+              primary: '#0043c8',
+              'inverse-on-surface': '#f1f1f1',
+              'surface-dim': '#dadada',
+              'inverse-surface': '#303030',
+              secondary: '#445aa6',
+              'on-surface': '#1b1b1b',
+              'surface-container': '#eeeeee',
+              'primary-fixed-dim': '#b6c4ff',
+              'tertiary-fixed': '#ffdbd1',
+              'secondary-fixed': '#dce1ff',
+              'error-container': '#ffdad6',
+              'surface-tint': '#004ee7',
+              surface: '#f9f9f9',
+              'on-secondary-fixed': '#001550',
+              'on-secondary-fixed-variant': '#2a418d',
+              'surface-container-lowest': '#ffffff',
+              'on-primary-fixed-variant': '#003ab2',
+              'inverse-primary': '#b6c4ff',
+              'outline-variant': '#c3c5d9',
+              'on-error-container': '#93000a',
+              'primary-fixed': '#dce1ff',
+              tertiary: '#972800',
+              'on-tertiary-fixed': '#3a0a00',
+              'on-tertiary': '#ffffff',
+              'on-secondary': '#ffffff',
+              'tertiary-container': '#c13600',
+              'on-primary-container': '#e5e8ff',
+              'on-primary-fixed': '#001550',
+              'primary-container': '#0057ff',
+              error: '#ba1a1a',
+              'surface-container-high': '#e8e8e8',
+              'on-background': '#1b1b1b',
+              'surface-container-low': '#f3f3f3',
+              'on-surface-variant': '#434656',
+              'on-secondary-container': '#263e89',
+              'surface-variant': '#e2e2e2',
+              background: '#f9f9f9',
+              'tertiary-fixed-dim': '#ffb59f',
+              'secondary-fixed-dim': '#b6c4ff',
+              outline: '#737688',
+              'surface-bright': '#f9f9f9',
+              'surface-container-highest': '#e2e2e2',
+              'on-error': '#ffffff',
+            },
+            fontFamily: {
+              headline: ['Inter'],
+              body: ['Inter'],
+              label: ['Inter'],
+            },
+            borderRadius: { DEFAULT: '0.125rem', lg: '0.25rem', xl: '0.5rem', full: '0.75rem' },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+      }
+      .glass-nav {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+    </style>
+  </head>
+  <body class="bg-surface text-on-surface">
+    <!-- TopNavBar from Shared Components -->
+    <header
+      class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm dark:shadow-none"
+    >
+      <div class="flex justify-between items-center h-20 px-8 max-w-[1920px] mx-auto">
+        <div class="flex items-center gap-12">
+          <a class="text-2xl font-black tracking-tighter text-blue-700 dark:text-blue-500" href="#"
+            >TradeLink</a
+          >
+          <!-- Search Bar (on_left contextually centered for the specific layout request) -->
+          <div class="relative w-96">
+            <span
+              class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant"
+              >search</span
+            >
+            <input
+              class="w-full bg-surface-container-high border-none rounded-full py-2.5 pl-12 pr-4 focus:ring-2 focus:ring-primary text-sm placeholder:text-on-surface-variant"
+              placeholder="Search Sony products..."
+              type="text"
+            />
+          </div>
+        </div>
+        <nav class="hidden md:flex items-center space-x-8">
+          <a
+            class="text-slate-500 dark:text-slate-400 font-medium hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+            href="#"
+            >Laptops</a
+          >
+          <a
+            class="text-slate-500 dark:text-slate-400 font-medium hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+            href="#"
+            >Audio</a
+          >
+          <a
+            class="text-slate-500 dark:text-slate-400 font-medium hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+            href="#"
+            >Displays</a
+          >
+          <a
+            class="text-slate-500 dark:text-slate-400 font-medium hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+            href="#"
+            >Components</a
+          >
+        </nav>
+        <div class="flex items-center gap-6">
+          <button
+            class="text-on-surface-variant hover:text-primary transition-colors flex items-center"
+          >
+            <span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+          </button>
+          <button
+            class="text-on-surface-variant hover:text-primary transition-colors flex items-center"
+          >
+            <span class="material-symbols-outlined" data-icon="person">person</span>
+          </button>
+          <button
+            class="relative text-on-surface-variant hover:text-primary transition-colors flex items-center"
+          >
+            <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+            <span
+              class="absolute -top-2 -right-2 bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold"
+              >2</span
+            >
+          </button>
+        </div>
+      </div>
+      <div class="bg-slate-100 dark:bg-slate-800 h-[1px] w-full"></div>
+    </header>
+    <main class="pt-20">
+      <!-- Brand Hero -->
+      <section class="relative h-[600px] w-full overflow-hidden bg-on-surface">
+        <div class="absolute inset-0 opacity-80">
+          <img
+            class="w-full h-full object-cover"
+            data-alt="Sony premium lifestyle electronics cinematography"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4oN8qaNbFKxgTLhqPa47yN-KsYQVc39-Gj42DSPripk0aMw9_rthzu2cPC6F8n_yLe7yGKwR6tvFbb_uMzyuDK76oOvMN1apFr40Y-tLCyRX3Xd-jqnVhNNJG-l25NzqRtP25b-edwR6IXNH2vqWFsO609I5G4VRzYyasFyXS4Li10KLaZXKmUI0wrOjGaPr6DD-r6zd5b4htKHpOtnkoBPWOVrQILgfTIvg_f7k4aQJ4NqVIIDqEx1AA9W5eRCoq9ve7Ck3Dibk"
+          />
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        <div
+          class="relative h-full flex flex-col items-center justify-center text-white text-center px-4"
+        >
+          <div class="mb-6">
+            <img
+              alt="Sony Logo"
+              class="h-12 brightness-0 invert"
+              data-alt="White Sony minimalist brand logo"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMYiSkaFbPGv6K6NtoH8Hb8QHZYWofXa2H0N5Wsc7DsKz2dV5cRLH89YAx52tK6BzqPpB5sTg0I4cd0ZrFZ5oEhJYpQok52CARZSIVGSuvq4ckRiWiso1YdywRxZIsWlTFXX6bP5zjsjs4umovgzZjWZFW6CFHbDbHxoX2ebALKwGY2RjHrZ-AL5xcFYY-dlYZxOCVEfEDmp-MG7tR_Ai9CZdE6El56M6creDLFpwQSorOWbODGXmkOPtAfecaYosYn0gj4wDZ6ts"
+            />
+          </div>
+          <h1 class="text-5xl md:text-7xl font-light tracking-tight mb-4">
+            Creativity meets technology.
+          </h1>
+          <p class="text-xl font-light tracking-widest opacity-80 uppercase">
+            Experience the Sony Atelier
+          </p>
+        </div>
+      </section>
+      <!-- Main Content Area (25/75 Split) -->
+      <div class="max-w-[1920px] mx-auto px-8 py-20 flex gap-12">
+        <!-- Left Sidebar (25%) -->
+        <aside class="w-1/4 space-y-12">
+          <div class="flex justify-between items-end">
+            <h2 class="text-2xl font-bold tracking-tight text-on-surface">Filters</h2>
+            <button class="text-sm font-medium text-primary hover:underline transition-all">
+              Clear All
+            </button>
+          </div>
+          <!-- Price Range -->
+          <div class="space-y-6">
+            <h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">
+              Price Range
+            </h3>
+            <div class="relative h-1 w-full bg-surface-container-highest rounded-full">
+              <div class="absolute h-full left-[10%] right-[30%] bg-primary rounded-full"></div>
+              <div
+                class="absolute w-5 h-5 bg-white border-2 border-primary rounded-full top-1/2 -translate-y-1/2 left-[10%] cursor-pointer shadow-sm"
+              ></div>
+              <div
+                class="absolute w-5 h-5 bg-white border-2 border-primary rounded-full top-1/2 -translate-y-1/2 right-[30%] cursor-pointer shadow-sm"
+              ></div>
+            </div>
+            <div class="flex justify-between text-sm font-medium text-on-surface-variant">
+              <span>$0</span>
+              <span>$5,000+</span>
+            </div>
+          </div>
+          <!-- Category Checkboxes -->
+          <div class="space-y-4">
+            <h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">
+              Categories
+            </h3>
+            <div class="space-y-3">
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input
+                  checked=""
+                  class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20"
+                  type="checkbox"
+                />
+                <span
+                  class="text-sm font-medium text-on-surface group-hover:text-primary transition-colors"
+                  >Headphones</span
+                >
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input
+                  class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20"
+                  type="checkbox"
+                />
+                <span
+                  class="text-sm font-medium text-on-surface group-hover:text-primary transition-colors"
+                  >Cameras</span
+                >
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input
+                  class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20"
+                  type="checkbox"
+                />
+                <span
+                  class="text-sm font-medium text-on-surface group-hover:text-primary transition-colors"
+                  >TVs &amp; Home Theater</span
+                >
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input
+                  class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20"
+                  type="checkbox"
+                />
+                <span
+                  class="text-sm font-medium text-on-surface group-hover:text-primary transition-colors"
+                  >Gaming</span
+                >
+              </label>
+            </div>
+          </div>
+          <!-- Rating Checkboxes -->
+          <div class="space-y-4">
+            <h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">
+              Customer Rating
+            </h3>
+            <div class="space-y-3">
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input
+                  class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20"
+                  type="checkbox"
+                />
+                <div class="flex text-amber-500">
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                </div>
+                <span class="text-sm font-medium text-on-surface">5.0</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input
+                  class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20"
+                  type="checkbox"
+                />
+                <div class="flex text-amber-500">
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-sm"
+                    style="font-variation-settings: 'FILL' 1"
+                    >star</span
+                  >
+                  <span class="material-symbols-outlined text-sm">star</span>
+                </div>
+                <span class="text-sm font-medium text-on-surface">4.0 &amp; Up</span>
+              </label>
+            </div>
+          </div>
+        </aside>
+        <!-- Right Content (75%) -->
+        <section class="w-3/4">
+          <!-- Toolbar -->
+          <div class="flex items-center justify-between mb-12">
+            <p class="text-on-surface-variant text-sm font-medium">
+              Showing <span class="text-on-surface font-bold">24 Products</span>
+            </p>
+            <div class="flex items-center gap-4">
+              <span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant"
+                >Sort By:</span
+              >
+              <div class="relative group">
+                <button
+                  class="bg-surface-container-low px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 group-hover:bg-surface-container-high transition-colors"
+                >
+                  Newest First
+                  <span class="material-symbols-outlined text-sm">expand_more</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Product Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+            <!-- Product 1 -->
+            <div class="bg-surface-container-lowest group relative transition-all duration-300">
+              <div class="aspect-square bg-surface-variant overflow-hidden mb-6">
+                <img
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  data-alt="Sony WH-1000XM5 Noise Canceling Headphones Silver"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIqDu9yt1oN4L-htwzQ24V9ZrsofJvmYjcgm8evsPjIfkLpNYbJajMaxUo8iUt4aLav14NKGOzpGoqmP8FLkP_dTr4fAb-JxRhxTT7q5x8Q4mQEgCEcHWO4Wi8kQePvXNjQBcGGsXFdSWWOO7iIcUt1pFqmBrghjkax23AGIL5BEa3QXLuMqqaEPa0ItW63q69Vp7p7QvSSeX0u8zo7h-bKzo-a3xh2RY5rQnr71xHVnUGVvfT3FyXbWQMU4FtrAlav912J5uM8Ic"
+                />
+                <button
+                  class="absolute top-4 right-4 p-2 bg-white/50 backdrop-blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <span class="material-symbols-outlined text-on-surface" data-icon="favorite"
+                    >favorite</span
+                  >
+                </button>
+              </div>
+              <div class="p-4 pt-0">
+                <span
+                  class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant"
+                  >Sony</span
+                >
+                <h3 class="text-lg font-bold text-on-surface mt-1 mb-2">
+                  WH-1000XM5 Noise Cancelling Headphones
+                </h3>
+                <div class="flex items-center gap-2 mb-4">
+                  <div class="flex text-amber-500">
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                  </div>
+                  <span class="text-xs text-on-surface-variant">(1,240)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xl font-black text-primary">$399.99</span>
+                  <button
+                    class="bg-primary hover:bg-primary-container text-white px-5 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="bg-surface-container-lowest group relative transition-all duration-300">
+              <div class="aspect-square bg-surface-variant overflow-hidden mb-6">
+                <img
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  data-alt="Sony Alpha A7 IV Mirrorless Camera Body"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPA-R9yjjwrABI4r6QVLuceE6FALZX-p-wCIb-oK_ytOyFBB9GjqebS9biMRnDyuOZIA6lPyUKB6gYSbwJ6jGhg_uTo4SpNNbSZ3Mt26vyx1-MOMbTgxKrOeSOHaoH2Q-dnh0Hb5agCK8eL5Vm2ufOxk3yoMk7OdETg8SqhS3gN_7Ydc6MD0AvbV5K13uRe48QM_WhzHckXMr2MwvnCurruUrEEvbC1IZZFrp9EK5HqSfes0AeTJa3LqeLS7EQNPSeu2DsunlJJ3c"
+                />
+                <button
+                  class="absolute top-4 right-4 p-2 bg-white/50 backdrop-blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <span class="material-symbols-outlined text-on-surface" data-icon="favorite"
+                    >favorite</span
+                  >
+                </button>
+              </div>
+              <div class="p-4 pt-0">
+                <span
+                  class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant"
+                  >Sony</span
+                >
+                <h3 class="text-lg font-bold text-on-surface mt-1 mb-2">
+                  Alpha A7 IV Mirrorless Digital Camera
+                </h3>
+                <div class="flex items-center gap-2 mb-4">
+                  <div class="flex text-amber-500">
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 0.5"
+                      >star_half</span
+                    >
+                  </div>
+                  <span class="text-xs text-on-surface-variant">(890)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xl font-black text-primary">$2,499.00</span>
+                  <button
+                    class="bg-primary hover:bg-primary-container text-white px-5 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="bg-surface-container-lowest group relative transition-all duration-300">
+              <div class="aspect-square bg-surface-variant overflow-hidden mb-6">
+                <img
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  data-alt="PlayStation 5 Console with DualSense controller"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9MVK_DKMZacL7RPYb7LVacwSmaOgR5b40FN4kcpf20PPPGnl-zycTOrggOYhhSRIJ1psr7i65EoGFqWxsQQYWObJfLXSB0bGBhb058yeqQmjvjosQPV4gZeRX9jv45aYeQUcrYMMhIrNLJ2802vbjdKm2qqjWmzHhC-QzbqMfiRGVttxnAu8IB-fCjOS7JWaw2wG1cmJcmb00tpkNV8TFj5imNCFSJmxQBLuirviaFnOv0vrHtgIeUJnCxg4VkIOhhu_J8uW0sno"
+                />
+                <button
+                  class="absolute top-4 right-4 p-2 bg-white/50 backdrop-blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <span class="material-symbols-outlined text-on-surface" data-icon="favorite"
+                    >favorite</span
+                  >
+                </button>
+              </div>
+              <div class="p-4 pt-0">
+                <span
+                  class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant"
+                  >Sony</span
+                >
+                <h3 class="text-lg font-bold text-on-surface mt-1 mb-2">
+                  PlayStation 5 Console - Disk Edition
+                </h3>
+                <div class="flex items-center gap-2 mb-4">
+                  <div class="flex text-amber-500">
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                  </div>
+                  <span class="text-xs text-on-surface-variant">(4,560)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xl font-black text-primary">$499.99</span>
+                  <button
+                    class="bg-primary hover:bg-primary-container text-white px-5 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 4 -->
+            <div class="bg-surface-container-lowest group relative transition-all duration-300">
+              <div class="aspect-square bg-surface-variant overflow-hidden mb-6">
+                <img
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  data-alt="Sony Bravia XR 4K Ultra HD TV"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi8ivLn4YZBOacBscOBqof05f9A347iL9jABq8wfb24-Y8xG7fImw92uADw539ZUuwL5lUqz9AObuT0lwyJPNRLnY4rOTZKkRdEJqJdHUS19Id4WtlGYuWj540YVQfT_dXkNcVRnrywHsU3yn1gudCarIHJfSy6BNBnDRcXkebybDwtG313C882lUn4wTMu8RHx834I8LkgacXqQZSn3pB_JbS5ugR1nkZgaf6ozWjPtrrJCeV8SDvj_9brXMmTjAbxa3Pzvj4naQ"
+                />
+                <button
+                  class="absolute top-4 right-4 p-2 bg-white/50 backdrop-blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <span class="material-symbols-outlined text-on-surface" data-icon="favorite"
+                    >favorite</span
+                  >
+                </button>
+              </div>
+              <div class="p-4 pt-0">
+                <span
+                  class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant"
+                  >Sony</span
+                >
+                <h3 class="text-lg font-bold text-on-surface mt-1 mb-2">
+                  Bravia XR A80K 4K OLED HDR TV
+                </h3>
+                <div class="flex items-center gap-2 mb-4">
+                  <div class="flex text-amber-500">
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 0"
+                      >star</span
+                    >
+                  </div>
+                  <span class="text-xs text-on-surface-variant">(512)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xl font-black text-primary">$1,899.00</span>
+                  <button
+                    class="bg-primary hover:bg-primary-container text-white px-5 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 5 -->
+            <div class="bg-surface-container-lowest group relative transition-all duration-300">
+              <div class="aspect-square bg-surface-variant overflow-hidden mb-6">
+                <img
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  data-alt="Sony Vlog Camera ZV-1"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDucKZ5cPg2eDxAxGSgGt8VtbiJqbpC4rAWmYnblPZFRtOnlQadcuCH5KLNUeaCUXTuBLpWaIJcNd0-4SGcp50X8o5Sz_--8735lkCDSEvoLM_h9Zbb_EXGoUkJhBwDTXjIQMXdgkjQaERSVCTeYo-o1oAZ2ay8EMVJS-n2CUHSMqwpv2Yyzc-__fVf2XuB4V9UKmh_bXV_vlB2b17vj3mLzJJQRk0jQGk6o7TFk60YIbOvIDSvXLWs25kDIioSK5G33QenOJnSo94"
+                />
+                <button
+                  class="absolute top-4 right-4 p-2 bg-white/50 backdrop-blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <span class="material-symbols-outlined text-on-surface" data-icon="favorite"
+                    >favorite</span
+                  >
+                </button>
+              </div>
+              <div class="p-4 pt-0">
+                <span
+                  class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant"
+                  >Sony</span
+                >
+                <h3 class="text-lg font-bold text-on-surface mt-1 mb-2">
+                  Sony ZV-1 Digital Camera for Vloggers
+                </h3>
+                <div class="flex items-center gap-2 mb-4">
+                  <div class="flex text-amber-500">
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 0.5"
+                      >star_half</span
+                    >
+                  </div>
+                  <span class="text-xs text-on-surface-variant">(1,040)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xl font-black text-primary">$749.99</span>
+                  <button
+                    class="bg-primary hover:bg-primary-container text-white px-5 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 6 -->
+            <div class="bg-surface-container-lowest group relative transition-all duration-300">
+              <div class="aspect-square bg-surface-variant overflow-hidden mb-6">
+                <img
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  data-alt="Sony SRS-RA5000 Premium Wireless Speaker"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPTvlJV3T_Tq6VxGjkku4LIQdbuPVb51ek8lK-A2ru7Sn-ML7zdUe8Ffdf3FKBgjkx5EjS3CNYuN7ynjqis7dtNcLbpuxvWdDRJFPFpfu8REL4smDyA8TG7i58GK-89I5hsLrm6gRNJG6oFPvuTlLYKfTp9NqkGe_78WQIqo2Ej8lq1Dk99pDRywuak98BScqbUA8-_ueuo2zPGec9FvcY8EfapjcmDwWuSd_GLdazIgA7p72dl-YQt_6FJfrZwM56W_R34HXTpCg"
+                />
+                <button
+                  class="absolute top-4 right-4 p-2 bg-white/50 backdrop-blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <span class="material-symbols-outlined text-on-surface" data-icon="favorite"
+                    >favorite</span
+                  >
+                </button>
+              </div>
+              <div class="p-4 pt-0">
+                <span
+                  class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant"
+                  >Sony</span
+                >
+                <h3 class="text-lg font-bold text-on-surface mt-1 mb-2">
+                  SRS-RA5000 Premium Ambient Speaker
+                </h3>
+                <div class="flex items-center gap-2 mb-4">
+                  <div class="flex text-amber-500">
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-xs"
+                      style="font-variation-settings: 'FILL' 1"
+                      >star</span
+                    >
+                    <span class="material-symbols-outlined text-xs">star</span>
+                  </div>
+                  <span class="text-xs text-on-surface-variant">(215)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xl font-black text-primary">$699.00</span>
+                  <button
+                    class="bg-primary hover:bg-primary-container text-white px-5 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <!-- Footer from Shared Components -->
+    <footer class="bg-slate-950 dark:bg-black w-full pt-20 pb-10">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 max-w-7xl mx-auto">
+        <div>
+          <a class="text-xl font-bold text-white mb-6 block" href="#">TradeLink</a>
+          <p class="text-sm font-light tracking-wide text-slate-400 mb-6">
+            Redefining precision electronics for the modern era. Join our community of innovators.
+          </p>
+          <div class="flex gap-4">
+            <span
+              class="material-symbols-outlined text-slate-500 hover:text-blue-500 cursor-pointer transition-colors"
+              >public</span
+            >
+            <span
+              class="material-symbols-outlined text-slate-500 hover:text-blue-500 cursor-pointer transition-colors"
+              >share</span
+            >
+            <span
+              class="material-symbols-outlined text-slate-500 hover:text-blue-500 cursor-pointer transition-colors"
+              >smart_display</span
+            >
+          </div>
+        </div>
+        <div class="flex flex-col gap-4">
+          <h4 class="text-white font-medium mb-2">Support</h4>
+          <a class="text-slate-500 hover:text-blue-400 transition-colors text-sm" href="#"
+            >Help Center</a
+          >
+          <a class="text-slate-500 hover:text-blue-400 transition-colors text-sm" href="#"
+            >Warranty</a
+          >
+          <a class="text-slate-500 hover:text-blue-400 transition-colors text-sm" href="#"
+            >Returns</a
+          >
+          <a class="text-slate-500 hover:text-blue-400 transition-colors text-sm" href="#"
+            >Shipping</a
+          >
+        </div>
+        <div class="flex flex-col gap-4">
+          <h4 class="text-white font-medium mb-2">Legal</h4>
+          <a
+            class="text-slate-500 hover:text-blue-400 transition-colors text-sm text-white font-medium"
+            href="#"
+            >Privacy Policy</a
+          >
+          <a class="text-slate-500 hover:text-blue-400 transition-colors text-sm" href="#"
+            >Terms of Service</a
+          >
+          <a class="text-slate-500 hover:text-blue-400 transition-colors text-sm" href="#"
+            >Cookie Settings</a
+          >
+          <a class="text-slate-500 hover:text-blue-400 transition-colors text-sm" href="#"
+            >Accessibility</a
+          >
+        </div>
+        <div>
+          <h4 class="text-white font-medium mb-4">Stay Connected</h4>
+          <p class="text-sm font-light tracking-wide text-slate-400 mb-4">
+            Subscribe for the latest releases.
+          </p>
+          <div class="relative">
+            <input
+              class="w-full bg-slate-900 border border-slate-800 rounded-lg py-3 px-4 text-sm text-white focus:ring-1 focus:ring-blue-500 outline-none"
+              placeholder="Email address"
+              type="email"
+            />
+            <button
+              class="absolute right-2 top-1/2 -translate-y-1/2 bg-blue-600 hover:bg-blue-500 p-1.5 rounded-md transition-all"
+            >
+              <span class="material-symbols-outlined text-white text-lg">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="max-w-7xl mx-auto px-12 mt-20 pt-10 border-t border-slate-800 text-center md:text-left"
+      >
+        <p class="text-sm font-light tracking-wide text-slate-400">
+          © 2024 TradeLink Precision Electronics. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

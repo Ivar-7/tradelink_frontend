@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#e8e8e8",
+              "on-background": "#1b1b1b",
+              "surface-container-low": "#f3f3f3",
+              "on-primary-fixed": "#001550",
+              "primary-container": "#0057ff",
+              "error": "#ba1a1a",
+              "on-secondary": "#ffffff",
+              "tertiary-container": "#c13600",
+              "on-primary-container": "#e5e8ff",
+              "outline-variant": "#c3c5d9",
+              "on-error-container": "#93000a",
+              "primary-fixed": "#dce1ff",
+              "tertiary": "#972800",
+              "on-tertiary-fixed": "#3a0a00",
+              "on-tertiary": "#ffffff",
+              "surface-bright": "#f9f9f9",
+              "surface-container-highest": "#e2e2e2",
+              "on-error": "#ffffff",
+              "surface-variant": "#e2e2e2",
+              "background": "#f9f9f9",
+              "tertiary-fixed-dim": "#ffb59f",
+              "secondary-fixed-dim": "#b6c4ff",
+              "outline": "#737688",
+              "on-secondary-container": "#263e89",
+              "on-surface-variant": "#434656",
+              "surface-dim": "#dadada",
+              "inverse-surface": "#303030",
+              "secondary": "#445aa6",
+              "on-surface": "#1b1b1b",
+              "inverse-on-surface": "#f1f1f1",
+              "on-tertiary-container": "#ffe3db",
+              "on-primary": "#ffffff",
+              "secondary-container": "#97adff",
+              "on-tertiary-fixed-variant": "#862300",
+              "primary": "#0043c8",
+              "on-primary-fixed-variant": "#003ab2",
+              "inverse-primary": "#b6c4ff",
+              "on-secondary-fixed-variant": "#2a418d",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed": "#dce1ff",
+              "error-container": "#ffdad6",
+              "surface-tint": "#004ee7",
+              "surface": "#f9f9f9",
+              "on-secondary-fixed": "#001550",
+              "surface-container": "#eeeeee",
+              "primary-fixed-dim": "#b6c4ff",
+              "tertiary-fixed": "#ffdbd1"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+            color: #1b1b1b;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col overflow-x-hidden">
+<!-- TopNavBar - Rendered from JSON Architecture -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-12 py-4 max-w-[1920px] mx-auto">
+<!-- Brand Logo -->
+<div class="text-xl font-bold text-slate-900 dark:text-slate-50 font-inter tracking-tight">
+                TradeLink
+            </div>
+<!-- Navigation Links -->
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors font-inter tracking-tight" href="#">Market</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors font-inter tracking-tight" href="#">Portfolio</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors font-inter tracking-tight" href="#">Insights</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors font-inter tracking-tight" href="#">Trade</a>
+</div>
+<!-- Actions Cluster -->
+<div class="flex items-center gap-6">
+<!-- Search Bar Placeholder for Right Alignment as per JSON -->
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="bg-slate-100/50 dark:bg-slate-800/50 border-none rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:ring-2 focus:ring-blue-700/20 transition-all" placeholder="Search markets..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-transform scale-95 active:scale-90">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<!-- Wishlist Active State Logic: This is the Wishlist Page -->
+<button class="text-blue-700 dark:text-blue-400 transition-transform scale-95 active:scale-90 relative">
+<span class="material-symbols-outlined" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-blue-700 rounded-full"></span>
+</button>
+<button class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-transform scale-95 active:scale-90">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow pt-32 pb-24 px-12 max-w-[1920px] mx-auto w-full flex flex-col">
+<!-- Header Section -->
+<header class="mb-20">
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface font-headline">My Wishlist</h1>
+</header>
+<!-- Empty State Container: Bento-style centering with deep white space -->
+<div class="flex-grow flex items-center justify-center">
+<div class="max-w-xl w-full text-center flex flex-col items-center">
+<!-- Precision Editorial Graphic -->
+<div class="mb-12 relative">
+<div class="w-48 h-48 bg-surface-container-low rounded-full flex items-center justify-center relative overflow-hidden">
+<!-- Background Pattern for Depth -->
+<div class="absolute inset-0 opacity-10" data-alt="Subtle geometric dot pattern in blue" style="background-image: radial-gradient(#0043c8 1px, transparent 1px); background-size: 16px 16px;"></div>
+<!-- Primary Icon -->
+<span class="material-symbols-outlined text-outline-variant text-7xl font-extralight" data-icon="inventory_2">inventory_2</span>
+</div>
+<!-- Secondary Floating Ornament -->
+<div class="absolute -top-4 -right-4 w-12 h-12 bg-white shadow-xl rounded-full flex items-center justify-center border border-slate-50">
+<span class="material-symbols-outlined text-blue-700 text-xl" data-icon="heart_broken">heart_broken</span>
+</div>
+</div>
+<!-- Messaging -->
+<div class="space-y-4 mb-10">
+<h2 class="text-2xl font-bold text-on-surface tracking-tight font-headline">Your wishlist is empty.</h2>
+<p class="text-on-surface-variant font-body leading-relaxed max-w-sm mx-auto">
+                        Save items you love to your wishlist to keep track of them or buy them later.
+                    </p>
+</div>
+<!-- Action Button -->
+<button class="group relative inline-flex items-center justify-center px-10 py-4 font-semibold text-white transition-all duration-200 bg-gradient-to-br from-primary to-primary-container rounded-md hover:opacity-90 active:scale-95 shadow-lg shadow-blue-700/20">
+<span class="mr-2">Explore Categories</span>
+<span class="material-symbols-outlined transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Curated Suggestions (Subtle Editorial Section) -->
+<div class="mt-32">
+<div class="flex items-end justify-between mb-8">
+<h3 class="text-label-md font-bold tracking-[0.05em] text-on-surface-variant uppercase">Trending Collections</h3>
+<a class="text-primary font-semibold text-sm hover:underline" href="#">View all</a>
+</div>
+<div class="grid grid-cols-4 gap-6">
+<!-- Simplified Editorial Card 1 -->
+<div class="group cursor-pointer bg-surface-container-lowest p-4 transition-all hover:bg-surface-bright">
+<div class="aspect-[4/5] bg-surface-variant mb-4 overflow-hidden relative">
+<img alt="Market Analysis" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Stock market chart showing upward trend" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwZ_ZZOwg3f7ZG00rZV8vDGC9gya_gVqKw2dUTcyDpfg7k4EpH4PmiZfhQuBzBIUXD7UaOolN49saTvrqc5I79lBW90fVSmHLKSUUsw1DPRxTgPSm3ceFRtjrBgm3e_wscbPJJbW1C_ZesBTTSZ758SmALSaFLjrS4Xc5d0ZLAjJgINan59npBB1TLBHx2GYOeS6l-ZYqdP2r-ekJ4Z11DjGQC0S5tUv5DhADTrxSA2Tvv9T6lX8FgvdE8vLrE6WJW9XIuoNJmn_w"/>
+<div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider text-primary">Market Alpha</div>
+</div>
+<h4 class="font-bold text-on-surface group-hover:text-primary transition-colors">Tech Growth Bundle</h4>
+<p class="text-sm text-on-surface-variant">Active Assets</p>
+</div>
+<!-- Simplified Editorial Card 2 -->
+<div class="group cursor-pointer bg-surface-container-lowest p-4 transition-all hover:bg-surface-bright">
+<div class="aspect-[4/5] bg-surface-variant mb-4 overflow-hidden relative">
+<img alt="Blockchain Tech" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Abstract glowing 3D blockchain visual" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVePLdb8780ADQ0qh2ih0uST2YALoyHnr4Y9cQD5Je6Oal69RdgDni9S7l-YV-2FIn3zmbhW6Dd6bSaaj1H1Co81oeu9HR0TkslSPXCuZaLmIW7USrDxe705-5MEjxla8J2dLv_ExuOKsZKI1pUgHOnx47N2ivcSmly968bLLDENOo_nyJcaSeNELJ_zXP96CCJ0Q9QZeglhMtoIKf5Jm_RVG1u2GPQ-6KyPgEMxldv4ggYuTu8Cnkz14ivxSaes4R48N80jAwjVY"/>
+<div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider text-primary">Web3 Focus</div>
+</div>
+<h4 class="font-bold text-on-surface group-hover:text-primary transition-colors">Digital Atelier Index</h4>
+<p class="text-sm text-on-surface-variant">High Yield</p>
+</div>
+<!-- Simplified Editorial Card 3 -->
+<div class="group cursor-pointer bg-surface-container-lowest p-4 transition-all hover:bg-surface-bright">
+<div class="aspect-[4/5] bg-surface-variant mb-4 overflow-hidden relative">
+<img alt="Global Data" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Global data visualization maps and points" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF3GMK7_-ujJ34ps8gW6hZKXLe3s6Ci1T69RfGCLBSDJQiNAtmBR_-9m_W9O2wey8OJvJAoZKr8ieFx7G2zR1YFMNDNyhR9wfRCDzXLcK5RKY3mSauQf7HctRTrASJ78M5fCO9uUV2ON9eCbXeulZc7ZwrrjJctj0qoFVzULjozL3jsxHgFO3dx-lO5RR4I_ZyHjFVZc9QFDwIpOh_LQWCUFeC2jRtRDwPF9abrifVsQLbVSRUsX-9Ad383RqgxKRqQRi4O7jL0Q8"/>
+<div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider text-primary">Global Macro</div>
+</div>
+<h4 class="font-bold text-on-surface group-hover:text-primary transition-colors">Sovereign Bonds Plus</h4>
+<p class="text-sm text-on-surface-variant">Stable Core</p>
+</div>
+<!-- Simplified Editorial Card 4 -->
+<div class="group cursor-pointer bg-surface-container-lowest p-4 transition-all hover:bg-surface-bright">
+<div class="aspect-[4/5] bg-surface-variant mb-4 overflow-hidden relative">
+<img alt="Energy Infrastructure" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Solar panels and green energy grid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPuolIE078-yiXTp0gNwYwJ9z0UAtE_09URjjkUllsBHrxicMONBtfAdtnMLZ0deSS6yXgEgchPNJTu5ISbb5NhTgNijNwADwG2dMIFyiD694eRJuGCoyIH2-8qZjFFyLM-h0tmmT53vd4YBgEXRHo0Frwy7QkHZ1Us0wix7ME7YCXrFpgyAD3q66E2Ola1rH0N2YgaRQPwnHneFLvM1uRT7dFEbCql74Hs9JvgQ4MIrRz9C9qIBn_17wBNmyLAsZjfnWkmZjcmzw"/>
+<div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider text-primary">ESG Prime</div>
+</div>
+<h4 class="font-bold text-on-surface group-hover:text-primary transition-colors">Clean Power Grid</h4>
+<p class="text-sm text-on-surface-variant">Sustainable</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer - Rendered from JSON Architecture -->
+<footer class="bg-slate-900 dark:bg-black w-full mt-auto">
+<div class="grid grid-cols-4 gap-8 px-12 py-16 w-full max-w-[1920px] mx-auto">
+<!-- Col 1: Brand -->
+<div class="space-y-6">
+<div class="text-lg font-bold text-white">TradeLink</div>
+<p class="font-inter text-sm text-slate-400 leading-relaxed max-w-[240px]">
+                    The digital atelier for modern trading. Precision engineered for the discerning investor.
+                </p>
+</div>
+<!-- Col 2: Support -->
+<div class="space-y-6">
+<h5 class="text-white font-semibold text-sm tracking-wider uppercase">Support</h5>
+<ul class="space-y-4">
+<li><a class="font-inter text-sm text-slate-400 hover:text-blue-500 transition-colors" href="#">Help Center</a></li>
+<li><a class="font-inter text-sm text-slate-400 hover:text-blue-500 transition-colors" href="#">Contact Support</a></li>
+<li><a class="font-inter text-sm text-slate-400 hover:text-blue-500 transition-colors" href="#">Platform Status</a></li>
+</ul>
+</div>
+<!-- Col 3: Legal -->
+<div class="space-y-6">
+<h5 class="text-white font-semibold text-sm tracking-wider uppercase">Legal</h5>
+<ul class="space-y-4">
+<li><a class="font-inter text-sm text-slate-400 hover:text-blue-500 transition-colors" href="#">Legal Terms</a></li>
+<li><a class="font-inter text-sm text-slate-400 hover:text-blue-500 transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="font-inter text-sm text-slate-400 hover:text-blue-500 transition-colors" href="#">Cookie Policy</a></li>
+</ul>
+</div>
+<!-- Col 4: Newsletter -->
+<div class="space-y-6">
+<h5 class="text-white font-semibold text-sm tracking-wider uppercase">Newsletter</h5>
+<p class="font-inter text-sm text-slate-400">Subscribe for insights and alpha updates.</p>
+<div class="flex gap-2">
+<input class="bg-slate-800 border-none text-white text-sm rounded px-4 py-2 w-full focus:ring-1 focus:ring-blue-500" placeholder="Email address" type="email"/>
+<button class="bg-blue-600 text-white p-2 rounded hover:bg-blue-500 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="px-12 py-8 border-t border-slate-800/50 flex justify-between items-center max-w-[1920px] mx-auto">
+<span class="font-inter text-sm text-slate-400 opacity-80">© 2024 TradeLink Digital Atelier. All rights reserved.</span>
+<div class="flex gap-6">
+<a class="text-slate-400 hover:text-white transition-opacity opacity-80 hover:opacity-100" href="#"><span class="material-symbols-outlined text-xl" data-icon="public">public</span></a>
+<a class="text-slate-400 hover:text-white transition-opacity opacity-80 hover:opacity-100" href="#"><span class="material-symbols-outlined text-xl" data-icon="share">share</span></a>
+</div>
+</div>
+</footer>
+</body></html>

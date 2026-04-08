@@ -2,23 +2,23 @@ import { z } from 'zod';
 
 // ── Category ───────────────────────────────────────────────────────────────
 export const CategorySchema = z.object({
-  id: z.string().uuid(),
+  id: z.string().min(1),
   name: z.string().min(1),
   description: z.string().optional(),
-  image_url: z.string().url().optional(),
+  image_url: z.string().min(1).optional(),
 });
 
 // ── Product ────────────────────────────────────────────────────────────────
 export const ProductSchema = z.object({
-  id: z.string().uuid(),
+  id: z.string().min(1),
   name: z.string().min(1),
   price: z.number().positive(),
   description: z.string(),
-  category_id: z.string().uuid(),
+  category_id: z.string().min(1).optional(),
   category: CategorySchema.optional(),
   stock_quantity: z.number().int().min(0),
-  image_url: z.string().url(),
-  vendor_id: z.string().uuid().optional(),
+  image_url: z.string().min(1),
+  vendor_id: z.string().min(1).optional(),
   vendor_name: z.string().optional(),
   average_rating: z.number().min(0).max(5).optional(),
   review_count: z.number().int().min(0).optional(),
@@ -35,7 +35,7 @@ export const ProductListResponseSchema = z.object({
 // ── Search / Filter ────────────────────────────────────────────────────────
 export const ProductFilterSchema = z.object({
   search: z.string().optional(),
-  category_id: z.string().uuid().optional(),
+  category_id: z.string().min(1).optional(),
   min_price: z.number().min(0).optional(),
   max_price: z.number().min(0).optional(),
   in_stock: z.boolean().optional(),

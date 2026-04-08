@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0043c8",
+                        "outline": "#737688",
+                        "secondary-fixed": "#dce1ff",
+                        "secondary-container": "#97adff",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e2e2e2",
+                        "outline-variant": "#c3c5d9",
+                        "error": "#ba1a1a",
+                        "on-background": "#1b1b1b",
+                        "background": "#f9f9f9",
+                        "on-secondary-fixed": "#001550",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-container": "#eeeeee",
+                        "inverse-surface": "#303030",
+                        "secondary-fixed-dim": "#b6c4ff",
+                        "on-tertiary-fixed-variant": "#862300",
+                        "on-surface": "#1b1b1b",
+                        "on-primary": "#ffffff",
+                        "secondary": "#445aa6",
+                        "inverse-primary": "#b6c4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#e5e8ff",
+                        "on-tertiary-container": "#ffe3db",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#001550",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#263e89",
+                        "surface": "#f9f9f9",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary-fixed": "#3a0a00",
+                        "inverse-on-surface": "#f1f1f1",
+                        "tertiary-fixed-dim": "#ffb59f",
+                        "surface-container-low": "#f3f3f3",
+                        "primary-container": "#0057ff",
+                        "tertiary": "#972800",
+                        "surface-dim": "#dadada",
+                        "on-secondary-fixed-variant": "#2a418d",
+                        "surface-variant": "#e2e2e2",
+                        "on-surface-variant": "#434656",
+                        "tertiary-fixed": "#ffdbd1",
+                        "primary-fixed": "#dce1ff",
+                        "on-primary-fixed-variant": "#003ab2",
+                        "tertiary-container": "#c13600",
+                        "surface-tint": "#004ee7"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen relative">
+<!-- Blurred Background Content -->
+<div aria-hidden="true" class="blur-md select-none pointer-events-none">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full flex justify-between items-center px-8 py-4 max-w-full bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl font-['Inter'] antialiased tracking-tight shadow-sm dark:shadow-none z-50">
+<div class="text-xl font-bold tracking-tighter text-zinc-900 dark:text-zinc-50">Digital Atelier</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-blue-700 dark:text-blue-400 font-semibold border-b-2 border-blue-700" href="#">Shop</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors" href="#">Collections</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors" href="#">About</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors" href="#">Journal</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-zinc-500">shopping_bag</span>
+<span class="material-symbols-outlined text-zinc-500">person</span>
+</div>
+</nav>
+<!-- Mock Background Grid -->
+<main class="pt-32 px-8 max-w-7xl mx-auto grid grid-cols-4 gap-8">
+<div class="h-96 bg-surface-container-low rounded-lg"></div>
+<div class="h-96 bg-surface-container-low rounded-lg"></div>
+<div class="h-96 bg-surface-container-low rounded-lg"></div>
+<div class="h-96 bg-surface-container-low rounded-lg"></div>
+<div class="h-96 bg-surface-container-low rounded-lg"></div>
+<div class="h-96 bg-surface-container-low rounded-lg"></div>
+<div class="h-96 bg-surface-container-low rounded-lg"></div>
+<div class="h-96 bg-surface-container-low rounded-lg"></div>
+</main>
+<!-- Footer -->
+<footer class="bg-zinc-100 dark:bg-zinc-900 full-width py-12 px-8 mt-20">
+<div class="flex flex-col md:flex-row justify-between items-center w-full max-w-7xl mx-auto gap-4">
+<div class="font-bold text-zinc-900 dark:text-zinc-50">Digital Atelier</div>
+<div class="flex gap-6">
+<a class="text-sm font-['Inter'] text-zinc-500 dark:text-zinc-400 hover:underline" href="#">Privacy Policy</a>
+<a class="text-sm font-['Inter'] text-zinc-500 dark:text-zinc-400 hover:underline" href="#">Terms of Service</a>
+<a class="text-sm font-['Inter'] text-zinc-500 dark:text-zinc-400 hover:underline" href="#">Shipping</a>
+<a class="text-sm font-['Inter'] text-zinc-500 dark:text-zinc-400 hover:underline" href="#">Returns</a>
+</div>
+<p class="text-sm font-['Inter'] text-zinc-500 dark:text-zinc-400">© 2024 Digital Atelier. All rights reserved.</p>
+</div>
+</footer>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 bg-on-background/40 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+<!-- Modal Container -->
+<div class="bg-surface-container-lowest w-full max-w-5xl rounded-xl shadow-[0_40px_80px_-15px_rgba(0,0,0,0.1)] relative overflow-hidden flex flex-col md:flex-row animate-in fade-in zoom-in duration-300">
+<!-- Close Button -->
+<button class="absolute top-6 right-6 p-2 text-outline hover:text-on-surface transition-colors z-10">
+<span class="material-symbols-outlined">close</span>
+</button>
+<!-- LEFT COLUMN: Product Image -->
+<div class="md:w-1/2 bg-surface-variant flex items-center justify-center min-h-[500px] p-12">
+<img alt="Lunar Series 04 Smartwatch" class="w-full h-full object-contain mix-blend-multiply transition-transform hover:scale-105 duration-700" data-alt="Lunar Series 04 Smartwatch minimalist product shot on light background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV1BGhvKS2GjcDcU7Tw1grabRnvy6-mNZrmjzVU03fpLqzlo2WL-11Ak9dh6uDrJBPSKzTGTS249E9yssKzW2abbPjYKhYGBGD2g4QL3m1e1gk5AnLH7XsU7s3x81PQvnHRfEHH0Y1Lolv86_cBoOFIeAal-joAR_dlcszK2IJf6GpRYyuKm7DjV9aElnttNbByZSFvAUoAdQuTroo5aVSHf8lCqNs96yuEapvdGcSFTLX55P_KI4KWmvIBRgMlMemtoTkjhCBuyA"/>
+</div>
+<!-- RIGHT COLUMN: Product Info -->
+<div class="md:w-1/2 p-10 md:p-14 flex flex-col justify-center">
+<!-- Header -->
+<div class="mb-2">
+<span class="text-[10px] uppercase tracking-widest font-semibold text-primary mb-2 block">Premium Wearables</span>
+<h1 class="text-3xl font-bold tracking-tight text-on-surface mb-2">Lunar Series 04 Smartwatch</h1>
+<div class="flex items-center gap-2 mb-6">
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-sm font-medium text-on-surface-variant">(124 reviews)</span>
+</div>
+</div>
+<!-- Price -->
+<div class="mb-8">
+<span class="text-4xl font-extrabold tracking-tighter text-on-surface">$185.00</span>
+</div>
+<!-- Variant Selectors -->
+<div class="mb-8">
+<label class="text-[11px] font-bold uppercase tracking-wider text-outline block mb-3">Color</label>
+<div class="flex gap-3">
+<button class="w-8 h-8 rounded-full bg-[#1b1b1b] ring-2 ring-offset-2 ring-primary transition-all duration-200" title="Midnight"></button>
+<button class="w-8 h-8 rounded-full bg-[#e8e2d2] ring-1 ring-outline-variant hover:ring-2 hover:ring-primary transition-all duration-200" title="Starlight"></button>
+<button class="w-8 h-8 rounded-full bg-[#707070] ring-1 ring-outline-variant hover:ring-2 hover:ring-primary transition-all duration-200" title="Slate"></button>
+</div>
+</div>
+<!-- Quantity & Add to Cart -->
+<div class="flex flex-col gap-4 mb-8">
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-surface-container-high rounded-lg p-1">
+<button class="w-10 h-10 flex items-center justify-center text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<input class="w-12 bg-transparent border-none text-center font-bold text-on-surface focus:ring-0" type="text" value="1"/>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<button class="flex-1 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold py-3.5 px-8 rounded-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all duration-200 text-sm">
+                            ADD TO CART
+                        </button>
+</div>
+</div>
+<!-- Links -->
+<div class="flex items-center gap-6">
+<a class="text-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2 hover:opacity-70 transition-opacity" href="#">
+                        View Full Details
+                        <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+<button class="text-on-surface-variant text-xs font-bold uppercase tracking-widest flex items-center gap-2 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+                        Add to Wishlist
+                    </button>
+</div>
+<!-- Tech Specs Preview (Bento/Editorial style small) -->
+<div class="mt-12 pt-8 border-t border-outline-variant/20 grid grid-cols-2 gap-4">
+<div>
+<p class="text-[10px] font-bold text-outline uppercase tracking-wider mb-1">Battery</p>
+<p class="text-sm font-medium text-on-surface">Up to 48 hours</p>
+</div>
+<div>
+<p class="text-[10px] font-bold text-outline uppercase tracking-wider mb-1">Waterproof</p>
+<p class="text-sm font-medium text-on-surface">50m ATM Rating</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

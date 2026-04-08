@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-surface": "#303030",
+              "secondary-fixed-dim": "#b6c4ff",
+              "secondary": "#445aa6",
+              "surface-bright": "#f9f9f9",
+              "outline": "#737688",
+              "on-background": "#1b1b1b",
+              "surface-tint": "#004ee7",
+              "surface-variant": "#e2e2e2",
+              "inverse-on-surface": "#f1f1f1",
+              "on-secondary-fixed": "#001550",
+              "secondary-fixed": "#dce1ff",
+              "primary": "#0043c8",
+              "surface-container-highest": "#e2e2e2",
+              "primary-container": "#0057ff",
+              "on-primary-fixed-variant": "#003ab2",
+              "on-error": "#ffffff",
+              "on-surface-variant": "#434656",
+              "on-surface": "#1b1b1b",
+              "on-primary-fixed": "#001550",
+              "on-error-container": "#93000a",
+              "on-primary-container": "#e5e8ff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-low": "#f3f3f3",
+              "on-tertiary-fixed": "#3a0a00",
+              "background": "#f9f9f9",
+              "surface-dim": "#dadada",
+              "on-secondary-container": "#263e89",
+              "primary-fixed": "#dce1ff",
+              "tertiary-fixed": "#ffdbd1",
+              "outline-variant": "#c3c5d9",
+              "on-tertiary-container": "#ffe3db",
+              "on-primary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "inverse-primary": "#b6c4ff",
+              "surface-container-high": "#e8e8e8",
+              "surface": "#f9f9f9",
+              "primary-fixed-dim": "#b6c4ff",
+              "surface-container": "#eeeeee",
+              "tertiary-container": "#c13600",
+              "tertiary": "#972800",
+              "on-tertiary-fixed-variant": "#862300",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed-dim": "#ffb59f",
+              "secondary-container": "#97adff",
+              "error-container": "#ffdad6",
+              "on-secondary-fixed-variant": "#2a418d",
+              "error": "#ba1a1a"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased overflow-hidden">
+<!-- Background: Homepage Blur Simulation -->
+<div class="fixed inset-0 z-0 overflow-hidden select-none pointer-events-none">
+<!-- TopNavBar Mockup -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl flex justify-between items-center h-16 px-8 max-w-[1440px] left-1/2 -translate-x-1/2">
+<span class="text-xl font-bold tracking-tighter text-slate-900">TradeLink</span>
+<div class="hidden md:flex gap-8 font-medium text-sm text-slate-500">
+<span class="text-blue-600 border-b-2 border-blue-600 pb-1">Shop</span>
+<span>Collections</span>
+<span>About</span>
+<span>Journal</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-900">shopping_bag</span>
+<span class="material-symbols-outlined text-slate-900">person</span>
+</div>
+</nav>
+<!-- Hero Content Mockup -->
+<main class="pt-32 px-12 grid grid-cols-12 gap-8 opacity-40 grayscale-[0.5] blur-[8px]">
+<div class="col-span-7 pt-20">
+<h1 class="text-8xl font-black tracking-tighter mb-8 leading-[0.9]">CRAFTING THE FUTURE.</h1>
+<p class="text-lg text-on-surface-variant max-w-md mb-12">The Digital Atelier for high-performance trading interfaces and modular design assets.</p>
+<div class="h-64 w-full bg-surface-container-high rounded-xl relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Abstract blue geometric 3D render" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuutAzI1wcwofNkazv2mKarzK6Wkl-pXmKGxn2HU0gfLCi37lgOg47TICTRfDoEiPx1SFOHSSqT3qQkyVkL5svZphqn2CKD-FiKmqwIMs8RDU1crrM-KabtdsZn1PvVhlXMz50lco22vdTyLmQNG1MXOatcHb2vcu8BkLBtTlbKwjxK_asDFi6r9xw6nHg3GuH2LOosVSO_Fh2pUzsMjDcLJ2z21tWTVsJ0vcjU9REaAlmCFtEo7wLbcID9ipJYd3iQ-fDeaWL1Rc"/>
+</div>
+</div>
+<div class="col-span-5 grid grid-cols-2 gap-4">
+<div class="h-80 bg-surface-container-low rounded-xl"></div>
+<div class="h-80 bg-surface-container-low rounded-xl"></div>
+<div class="h-80 bg-surface-container-low rounded-xl col-span-2"></div>
+</div>
+</main>
+</div>
+<!-- Overlay & Modal -->
+<div class="fixed inset-0 z-[100] bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-6">
+<!-- Cookie Modal -->
+<div class="bg-surface-container-lowest w-full max-w-2xl rounded-xl shadow-[0_40px_100px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col">
+<!-- Header -->
+<div class="px-8 pt-8 pb-6 flex justify-between items-start">
+<div class="space-y-1">
+<h2 class="text-2xl font-bold tracking-tight text-on-surface">Cookie Preferences</h2>
+<p class="text-sm text-on-surface-variant max-w-md leading-relaxed">
+                        We use cookies to personalize content, provide social media features, and analyze our traffic to give you a premium experience.
+                    </p>
+</div>
+<button class="p-2 hover:bg-surface-container transition-colors rounded-full">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+</div>
+<!-- Content Area -->
+<div class="px-8 flex flex-col">
+<!-- Row 1: Strictly Necessary -->
+<div class="py-6 flex items-center justify-between border-b border-outline-variant/10">
+<div class="pr-8">
+<h3 class="text-sm font-bold text-on-surface uppercase tracking-wider mb-1">Strictly Necessary</h3>
+<p class="text-sm text-on-surface-variant">Essential for the site to function. These cannot be switched off in our systems.</p>
+</div>
+<div class="flex items-center">
+<div class="w-12 h-6 bg-surface-container-highest rounded-full flex items-center px-1 opacity-50 cursor-not-allowed">
+<div class="w-4 h-4 bg-white rounded-full translate-x-6"></div>
+</div>
+<span class="ml-3 text-[10px] font-bold text-outline uppercase tracking-widest">Locked</span>
+</div>
+</div>
+<!-- Row 2: Analytics -->
+<div class="py-6 flex items-center justify-between border-b border-outline-variant/10 bg-surface-bright/50 -mx-8 px-8">
+<div class="pr-8">
+<h3 class="text-sm font-bold text-on-surface uppercase tracking-wider mb-1">Analytics</h3>
+<p class="text-sm text-on-surface-variant">Allow us to count visits and traffic sources so we can measure and improve performance.</p>
+</div>
+<div class="flex items-center">
+<button class="w-12 h-6 bg-primary rounded-full flex items-center px-1 transition-colors">
+<div class="w-4 h-4 bg-white rounded-full translate-x-6 shadow-sm"></div>
+</button>
+<span class="ml-3 text-[10px] font-bold text-primary uppercase tracking-widest">On</span>
+</div>
+</div>
+<!-- Row 3: Marketing -->
+<div class="py-6 flex items-center justify-between">
+<div class="pr-8">
+<h3 class="text-sm font-bold text-on-surface uppercase tracking-wider mb-1">Marketing</h3>
+<p class="text-sm text-on-surface-variant">Used to track visitors across websites to display ads that are relevant and engaging.</p>
+</div>
+<div class="flex items-center">
+<button class="w-12 h-6 bg-surface-container-highest rounded-full flex items-center px-1 transition-colors">
+<div class="w-4 h-4 bg-white rounded-full shadow-sm"></div>
+</button>
+<span class="ml-3 text-[10px] font-bold text-outline uppercase tracking-widest">Off</span>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="bg-surface-container-low px-8 py-6 flex items-center justify-between">
+<button class="text-xs font-bold text-on-surface-variant uppercase tracking-widest hover:text-on-surface transition-colors underline-offset-4 hover:underline">
+                    Reject All
+                </button>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2.5 bg-surface-container-highest text-on-surface text-xs font-bold uppercase tracking-widest hover:bg-surface-variant transition-all active:scale-[0.98]">
+                        Save Preferences
+                    </button>
+<button class="px-8 py-2.5 bg-gradient-to-br from-primary to-primary-container text-on-primary text-xs font-bold uppercase tracking-widest shadow-lg shadow-primary/20 hover:opacity-90 transition-all active:scale-[0.98]">
+                        Accept All
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Page Footer Mockup (Under Overlay) -->
+<footer class="fixed bottom-0 w-full bg-slate-50 py-20 px-8 grid grid-cols-2 gap-12 max-w-[1440px] left-1/2 -translate-x-1/2 opacity-20 blur-sm pointer-events-none">
+<div>
+<span class="text-lg font-black text-slate-900">TradeLink</span>
+<p class="mt-4 text-xs tracking-widest uppercase text-slate-400">© 2024 TradeLink Digital Atelier. All rights reserved.</p>
+</div>
+<div class="flex gap-12 text-xs tracking-widest uppercase font-bold text-slate-400">
+<span>Privacy Policy</span>
+<span>Terms of Service</span>
+<span>Cookie Settings</span>
+<span>Contact</span>
+</div>
+</footer>
+</body></html>

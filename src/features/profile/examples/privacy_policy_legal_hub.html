@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#445aa6",
+                        "surface": "#f9f9f9",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "outline": "#737688",
+                        "on-tertiary-fixed-variant": "#862300",
+                        "outline-variant": "#c3c5d9",
+                        "on-secondary-container": "#263e89",
+                        "on-surface": "#1b1b1b",
+                        "tertiary": "#972800",
+                        "secondary-fixed-dim": "#b6c4ff",
+                        "inverse-primary": "#b6c4ff",
+                        "tertiary-container": "#c13600",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary-fixed": "#dce1ff",
+                        "primary-container": "#0057ff",
+                        "on-tertiary-fixed": "#3a0a00",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "background": "#f9f9f9",
+                        "surface-variant": "#e2e2e2",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#004ee7",
+                        "primary-fixed": "#dce1ff",
+                        "on-secondary-fixed-variant": "#2a418d",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f1f1f1",
+                        "primary": "#0043c8",
+                        "error-container": "#ffdad6",
+                        "on-background": "#1b1b1b",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#003ab2",
+                        "on-surface-variant": "#434656",
+                        "on-primary-fixed": "#001550",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-bright": "#f9f9f9",
+                        "surface-dim": "#dadada",
+                        "surface-container-low": "#f3f3f3",
+                        "on-secondary-fixed": "#001550",
+                        "tertiary-fixed-dim": "#ffb59f",
+                        "on-tertiary-container": "#ffe3db",
+                        "on-primary-container": "#e5e8ff",
+                        "tertiary-fixed": "#ffdbd1",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#97adff"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<!-- Brand Logo -->
+<div class="text-xl font-bold tracking-tighter text-blue-700 dark:text-blue-500">
+                TradeLink Legal Hub
+            </div>
+<!-- Center Navigation Links -->
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors duration-200 text-sm font-['Inter'] tracking-tight" href="#">Categories</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors duration-200 text-sm font-['Inter'] tracking-tight" href="#">Wishlist</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors duration-200 text-sm font-['Inter'] tracking-tight" href="#">Account</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors duration-200 text-sm font-['Inter'] tracking-tight" href="#">Cart</a>
+</div>
+<!-- Trailing Icons -->
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-slate-900 dark:text-slate-100 scale-95 duration-200 ease-in-out hover:text-blue-700">search</button>
+<button class="material-symbols-outlined text-slate-900 dark:text-slate-100 scale-95 duration-200 ease-in-out hover:text-blue-700">favorite</button>
+<button class="material-symbols-outlined text-slate-900 dark:text-slate-100 scale-95 duration-200 ease-in-out hover:text-blue-700">person</button>
+<button class="material-symbols-outlined text-slate-900 dark:text-slate-100 scale-95 duration-200 ease-in-out hover:text-blue-700">shopping_cart</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-32 pb-20 px-8 max-w-7xl mx-auto min-h-screen">
+<div class="flex flex-col md:flex-row gap-20">
+<!-- Left Column: Navigation Sidebar (25%) -->
+<aside class="w-full md:w-1/4 sticky top-32 h-fit">
+<h2 class="text-xs font-bold tracking-[0.15em] uppercase text-on-surface-variant mb-10">Legal &amp; Policies</h2>
+<nav class="flex flex-col space-y-4">
+<a class="text-blue-700 dark:text-blue-400 font-bold text-lg py-2 border-l-4 border-blue-700 pl-4" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-lg py-2 pl-5 border-l-4 border-transparent" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-lg py-2 pl-5 border-l-4 border-transparent" href="#">Return Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-lg py-2 pl-5 border-l-4 border-transparent" href="#">Shipping &amp; Delivery</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-lg py-2 pl-5 border-l-4 border-transparent" href="#">Accessibility Statement</a>
+</nav>
+<!-- Decorative Element -->
+<div class="mt-20 p-8 bg-surface-container-low rounded-xl">
+<p class="text-xs text-on-surface-variant leading-relaxed">Need help understanding our policies? Contact our compliance team at legal@tradelink.hub</p>
+</div>
+</aside>
+<!-- Right Column: Document Viewer (75%) -->
+<section class="w-full md:w-3/4">
+<header class="mb-16">
+<h1 class="text-6xl md:text-8xl font-black tracking-tighter text-on-surface mb-6">Privacy Policy</h1>
+<div class="flex items-center justify-between py-4 border-b border-outline-variant/20">
+<span class="text-on-surface-variant font-medium tracking-tight">Last Updated: March 2026</span>
+<span class="text-sm font-mono text-outline uppercase tracking-widest">v4.02.1</span>
+</div>
+</header>
+<article class="prose prose-slate max-w-3xl">
+<div class="space-y-20">
+<!-- Section 1 -->
+<section>
+<h3 class="text-2xl font-bold tracking-tight text-on-surface mb-6 flex items-center gap-4">
+<span class="text-primary/20 text-4xl">01</span>
+                                Information We Collect
+                            </h3>
+<div class="text-on-surface-variant leading-loose space-y-4 text-lg">
+<p>We collect information that you provide directly to us when you create an account, make a purchase, or communicate with us through the TradeLink platform. This data is essential for maintaining the high-performance precision of our legal hub services.</p>
+<ul class="list-none space-y-3 pl-0">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span>Personal identification information (Name, email address, physical address).</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span>Transaction records and billing information secured via end-to-end encryption.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span>Professional credentials and corporate affiliation data.</span>
+</li>
+</ul>
+</div>
+</section>
+<!-- Section 2 -->
+<section>
+<h3 class="text-2xl font-bold tracking-tight text-on-surface mb-6 flex items-center gap-4">
+<span class="text-primary/20 text-4xl">02</span>
+                                How We Use Your Data
+                            </h3>
+<div class="text-on-surface-variant leading-loose space-y-4 text-lg">
+<p>Your data is the backbone of the curated TradeLink experience. We process your information under strict digital atelier standards to ensure privacy without compromising performance.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+<div class="p-6 bg-surface-container-low rounded-lg">
+<h4 class="font-bold text-on-surface mb-2">Service Optimization</h4>
+<p class="text-sm">Analyzing interaction patterns to streamline the legal documentation workflow.</p>
+</div>
+<div class="p-6 bg-surface-container-low rounded-lg">
+<h4 class="font-bold text-on-surface mb-2">Security Audits</h4>
+<p class="text-sm">Continuous monitoring of account activity to prevent unauthorized access or fraud.</p>
+</div>
+</div>
+<p class="mt-6 italic">We do not sell, rent, or lease our customer lists to third parties for marketing purposes.</p>
+</div>
+</section>
+<!-- Section 3 -->
+<section>
+<h3 class="text-2xl font-bold tracking-tight text-on-surface mb-6 flex items-center gap-4">
+<span class="text-primary/20 text-4xl">03</span>
+                                Data Retention &amp; Protection
+                            </h3>
+<div class="text-on-surface-variant leading-loose space-y-4 text-lg">
+<p>TradeLink Legal Hub utilizes industry-leading AES-256 encryption. Our physical data centers are located in jurisdictions with the most stringent data protection laws globally.</p>
+<div class="mt-8 relative h-64 w-full rounded-2xl overflow-hidden">
+<div class="absolute inset-0 bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-6xl">security</span>
+</div>
+<img class="w-full h-full object-cover mix-blend-overlay" data-alt="Cybersecurity server room blue lighting abstract" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs3_D4M_XfzjUApfNvFBggG40DRGoKq4FTqi3Y8OZHmiqJTA1NTeZIGKMW58ne-jMbhLLY9dcEL2R8cyDmiytMwbHtUb1oo4_IWHMGJyAoHxWiASkwga_NOLvhonNg_gMGifUVKDTI5ijewIHu-ckUGS53hN_VI5jhx7exDKV84oJ_-M3uqafXzJltmw36v8I4vfDd7IEsFC8J1IbikGl43dmh7VdKnTxAaIOS-NosTA2MAW9UndicKe1lzBzw-5_zzTLyGhKc1IA"/>
+</div>
+</div>
+</section>
+<!-- Section 4 -->
+<section>
+<h3 class="text-2xl font-bold tracking-tight text-on-surface mb-6 flex items-center gap-4">
+<span class="text-primary/20 text-4xl">04</span>
+                                Your Digital Rights
+                            </h3>
+<div class="text-on-surface-variant leading-loose space-y-4 text-lg">
+<p>Under the Global Data Privacy Framework, you maintain full sovereignty over your information. You have the right to request access to, correction of, or deletion of your personal data at any time through your Account Settings panel.</p>
+</div>
+</section>
+</div>
+</article>
+<div class="mt-20 p-12 bg-surface-container rounded-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+<div>
+<h4 class="text-2xl font-bold text-on-surface mb-2">Still have questions?</h4>
+<p class="text-on-surface-variant">Our legal support team is available 24/7 for privacy inquiries.</p>
+</div>
+<button class="px-8 py-4 bg-gradient-to-br from-primary to-primary-container text-white font-bold rounded-md hover:scale-[1.02] transition-transform">
+                        Contact Legal Team
+                    </button>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-950 text-slate-400 w-full pt-20 pb-10">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 px-8 max-w-7xl mx-auto">
+<!-- Brand Info -->
+<div class="space-y-6">
+<div class="text-lg font-bold text-slate-100">TradeLink Legal Hub</div>
+<p class="text-sm leading-relaxed max-w-xs">Precision editorial for modern legal compliance. High-performance documentation for the digital age.</p>
+</div>
+<!-- Customer Service -->
+<div class="space-y-6">
+<div class="text-xs font-bold tracking-widest uppercase text-slate-500">Customer Service</div>
+<ul class="space-y-3 text-sm">
+<li><a class="hover:text-blue-400 transition-colors" href="#">Contact Support</a></li>
+<li><a class="hover:text-blue-400 transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:text-blue-400 transition-colors" href="#">Order Tracking</a></li>
+<li><a class="hover:text-blue-400 transition-colors" href="#">Returns &amp; Refunds</a></li>
+</ul>
+</div>
+<!-- Company -->
+<div class="space-y-6">
+<div class="text-xs font-bold tracking-widest uppercase text-slate-500">Company</div>
+<ul class="space-y-3 text-sm">
+<li><a class="hover:text-blue-400 transition-colors" href="#">About TradeLink</a></li>
+<li><a class="hover:text-blue-400 transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-blue-400 transition-colors" href="#">Sustainability</a></li>
+<li><a class="hover:text-blue-400 transition-colors" href="#">Press Room</a></li>
+</ul>
+</div>
+<!-- Legal Links -->
+<div class="space-y-6">
+<div class="text-xs font-bold tracking-widest uppercase text-slate-500">Legal Links</div>
+<ul class="space-y-3 text-sm">
+<li><a class="text-blue-400 font-semibold" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-blue-400 transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-blue-400 transition-colors" href="#">Cookie Policy</a></li>
+<li><a class="hover:text-blue-400 transition-colors" href="#">GDPR Compliance</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-20 pt-8 border-t border-slate-900 flex justify-between items-center">
+<p class="text-xs text-slate-600">© 2024 TradeLink Legal Hub. Precision Editorial.</p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-slate-700 hover:text-blue-400 cursor-pointer">language</span>
+<span class="material-symbols-outlined text-slate-700 hover:text-blue-400 cursor-pointer">share</span>
+</div>
+</div>
+</footer>
+</body></html>
