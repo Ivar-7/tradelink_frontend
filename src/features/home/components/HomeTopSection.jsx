@@ -1,8 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../../shared/constants/routes';
 
-const HomeTopSection = ({ topCategories, heroFeature, heroPerks }) => {
+const HomeTopSection = ({ topCategories, heroFeature, heroPerks, currentUser }) => {
   const [current, setCurrent] = useState(0);
   const timer = useRef(null);
+  const isLoggedIn = Boolean(currentUser);
+  const displayName =
+    currentUser?.first_name?.trim() || currentUser?.username || currentUser?.email || 'Guest';
+  const welcomeText = isLoggedIn
+    ? `Welcome to TradeLink, ${displayName}`
+    : heroPerks.welcomeText;
 
   // Auto‑slide every 5 seconds
   useEffect(() => {
@@ -152,18 +160,23 @@ const HomeTopSection = ({ topCategories, heroFeature, heroPerks }) => {
               <div className="flex h-full w-full items-center justify-center text-2xl">🛍</div>
             )}
           </div>
-          <p className="mb-5 text-sm font-semibold italic text-foreground">{heroPerks.welcomeText}</p>
-          <div className="grid grid-cols-2 gap-2">
-            <button type="button" className="rounded-lg bg-primary-600 py-2 text-xs font-bold text-white">
-              Join
-            </button>
-            <button
-              type="button"
-              className="rounded-lg bg-slate-100 py-2 text-xs font-bold text-foreground dark:bg-slate-900"
-            >
-              Sign In
-            </button>
-          </div>
+          <p className="mb-5 text-sm font-semibold italic text-foreground">{welcomeText}</p>
+          {!isLoggedIn && (
+            <div className="grid grid-cols-2 gap-2">
+              <Link
+                to={ROUTES.AUTH.SIGNUP}
+                className="rounded-lg bg-primary-600 py-2 text-center text-xs font-bold text-white"
+              >
+                Join
+              </Link>
+              <Link
+                to={ROUTES.AUTH.LOGIN}
+                className="rounded-lg bg-slate-100 py-2 text-center text-xs font-bold text-foreground dark:bg-slate-900"
+              >
+                Sign In
+              </Link>
+            </div>
+          )}
         </div>
 
         <div className="relative flex-1 overflow-hidden rounded-2xl bg-orange-100 p-5 dark:bg-orange-900/30">

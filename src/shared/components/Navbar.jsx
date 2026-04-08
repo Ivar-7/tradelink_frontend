@@ -204,12 +204,6 @@ const Navbar = () => {
             )}
           </button>
 
-          <Link
-            to={ROUTES.AUTH.LOGIN}
-            className="rounded-lg bg-primary-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-700"
-          >
-            Sign In
-          </Link>
         </div>
       </div>
 

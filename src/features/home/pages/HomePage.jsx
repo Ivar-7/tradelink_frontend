@@ -15,8 +15,10 @@ import HomeSpotlightSection from '../components/HomeSpotlightSection';
 import HomeMoreToLoveSection from '../components/HomeMoreToLoveSection';
 import HomeQuickViewModal from '../components/HomeQuickViewModal';
 import { resolveCatalogProductId } from '../utils/homeProductRouting';
+import { useAuthHook } from '../../auth/hooks/useAuthHook';
 
 const HomePage = () => {
+  const { user } = useAuthHook();
   const [quickViewItem, setQuickViewItem] = useState(null);
   const addItem = useCartHook((state) => state.addItem);
 
@@ -61,6 +63,7 @@ const HomePage = () => {
         topCategories={topCategories}
         heroFeature={heroFeature}
         heroPerks={heroPerks}
+        currentUser={user}
       />
 
       <HomeDealsSection

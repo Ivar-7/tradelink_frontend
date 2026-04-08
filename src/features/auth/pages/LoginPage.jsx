@@ -7,7 +7,7 @@ import { authBrandSignals, authTrustPartners } from '../data/authPageData';
 const resolveRoleDestination = (role) => {
   if (role === 'vendor') return ROUTES.VENDOR.DASHBOARD;
   if (role === 'admin') return ROUTES.ADMIN.DASHBOARD;
-  return ROUTES.PRODUCTS;
+  return ROUTES.HOME;
 };
 
 const LoginPage = () => {
