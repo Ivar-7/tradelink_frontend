@@ -20,11 +20,13 @@ const PaymentPage = () => {
   const { error, initiate, loading } = usePaymentsHook();
 
   const handleFormSubmit = async (data) => {
-    setPaymentDetails(prev => ({ ...prev, ...data }));
+    const nextPaymentDetails = { ...paymentDetails, ...data };
+    setPaymentDetails(nextPaymentDetails);
     setStep('waiting');
     try {
       const payload = {
-        order_id: paymentDetails.orderId,
+        order_id: nextPaymentDetails.orderId,
+        amount: nextPaymentDetails.amount,
         payment_provider: 'mpesa',
         phone_number: data.phoneNumber,
       };
@@ -44,7 +46,7 @@ const PaymentPage = () => {
   const handleCancel = () => setStep('form');
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {step === 'form' && (
           <PaymentForm

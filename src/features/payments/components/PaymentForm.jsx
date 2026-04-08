@@ -84,14 +84,7 @@ const PaymentForm = ({
     if (!domain.includes('.') || domain.length < 5) {
       return 'Enter a valid domain (e.g., gmail.com, yahoo.com)';
     }
-    
-    // Check for common Kenyan email providers (optional - can remove if not needed)
-    const validTlds = ['com', 'co.ke', 'ke', 'org', 'net', 'ac.ke', 'go.ke'];
-    const tld = domain.split('.').slice(-2).join('.');
-    
-    // Optional: Suggest common domains for Kenya
-    const commonKenyanDomains = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'icloud.com'];
-    
+
     return '';
   };
 
@@ -99,7 +92,7 @@ const PaymentForm = ({
     if (!phone || phone.trim() === '') {
       return 'Phone number is required';
     }
-    const cleaned = phone.replace(/[\s\-\(\)]/g, '');
+    const cleaned = phone.replace(/[\s\-()]/g, '');
     const kenyanRegex = /^(254|0|\+254)(7|1)\d{8}$/;
     if (!kenyanRegex.test(cleaned)) {
       return 'Enter a valid Kenyan phone number (e.g., 254712345678, 0712345678, or +254712345678)';
@@ -179,7 +172,7 @@ const PaymentForm = ({
       return;
     }
     
-    let formattedPhone = formData.phoneNumber.replace(/[\s\-\(\)]/g, '');
+    let formattedPhone = formData.phoneNumber.replace(/[\s\-()]/g, '');
     if (formattedPhone.startsWith('0')) {
       formattedPhone = '254' + formattedPhone.substring(1);
     } else if (formattedPhone.startsWith('+')) {
@@ -190,7 +183,8 @@ const PaymentForm = ({
       phoneNumber: formattedPhone, 
       customerName: formData.fullName.trim(), 
       email: formData.email.trim().toLowerCase(),
-      pickupLocation: formData.pickupLocation
+      pickupLocation: formData.pickupLocation,
+      amount: total,
     });
   };
 
@@ -214,7 +208,7 @@ const PaymentForm = ({
     { name: 'Lunar Series 04', quantity: 1, price: 25000, variant: 'Titanium / White' }
   ];
   
-  const subtotal = 64900;
+  const subtotal = Number.isFinite(amount) ? amount : 64900;
   const discount = promoApplied ? (promoCode === 'WELCOME10' ? subtotal * 0.1 : subtotal * 0.25) : 0;
   const total = subtotal - discount;
 
@@ -224,14 +218,14 @@ const PaymentForm = ({
         {/* Form Section */}
         <div className="lg:col-span-7">
           <form onSubmit={handleSubmit} noValidate>
-            <div className="bg-white border border-gray-200 rounded-xl p-6 mb-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-6">Secure Checkout</h2>
+            <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900">
+              <h2 className="mb-6 text-xl font-semibold text-gray-900 dark:text-slate-100">Secure Checkout</h2>
               
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Customer Information</h3>
+              <h3 className="mb-4 text-lg font-medium text-gray-900 dark:text-slate-100">Customer Information</h3>
               
               {/* Full Name */}
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-slate-300">
                   Full Name <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -241,12 +235,12 @@ const PaymentForm = ({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="Enter your full name"
-                  className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent text-gray-900 transition ${
+                  className={`w-full rounded-lg border px-4 py-2 text-gray-900 transition focus:border-transparent focus:outline-none focus:ring-2 focus:ring-gray-900 dark:text-slate-100 dark:focus:ring-slate-200 ${
                     touched.fullName && errors.fullName 
-                      ? 'border-red-500 bg-red-50' 
+                      ? 'border-red-500 bg-red-50 dark:bg-red-950/30' 
                       : touched.fullName && !errors.fullName && formData.fullName
-                      ? 'border-green-500 bg-green-50'
-                      : 'border-gray-300'
+                      ? 'border-green-500 bg-green-50 dark:bg-green-950/30'
+                      : 'border-gray-300 dark:border-slate-600 dark:bg-slate-800'
                   }`}
                 />
                 {touched.fullName && errors.fullName && (
@@ -269,7 +263,7 @@ const PaymentForm = ({
               
               {/* Email - Updated with strict validation */}
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-slate-300">
                   Email Address <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -279,12 +273,12 @@ const PaymentForm = ({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="name@gmail.com"
-                  className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent text-gray-900 transition ${
+                  className={`w-full rounded-lg border px-4 py-2 text-gray-900 transition focus:border-transparent focus:outline-none focus:ring-2 focus:ring-gray-900 dark:text-slate-100 dark:focus:ring-slate-200 ${
                     touched.email && errors.email 
-                      ? 'border-red-500 bg-red-50' 
+                      ? 'border-red-500 bg-red-50 dark:bg-red-950/30' 
                       : touched.email && !errors.email && formData.email
-                      ? 'border-green-500 bg-green-50'
-                      : 'border-gray-300'
+                      ? 'border-green-500 bg-green-50 dark:bg-green-950/30'
+                      : 'border-gray-300 dark:border-slate-600 dark:bg-slate-800'
                   }`}
                 />
                 {touched.email && errors.email && (
@@ -307,7 +301,7 @@ const PaymentForm = ({
               
               {/* Phone Number */}
               <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-slate-300">
                   Phone Number <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -317,12 +311,12 @@ const PaymentForm = ({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="254712345678 or 0712345678"
-                  className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent text-gray-900 transition ${
+                  className={`w-full rounded-lg border px-4 py-2 text-gray-900 transition focus:border-transparent focus:outline-none focus:ring-2 focus:ring-gray-900 dark:text-slate-100 dark:focus:ring-slate-200 ${
                     touched.phoneNumber && errors.phoneNumber 
-                      ? 'border-red-500 bg-red-50' 
+                      ? 'border-red-500 bg-red-50 dark:bg-red-950/30' 
                       : touched.phoneNumber && !errors.phoneNumber && formData.phoneNumber
-                      ? 'border-green-500 bg-green-50'
-                      : 'border-gray-300'
+                      ? 'border-green-500 bg-green-50 dark:bg-green-950/30'
+                      : 'border-gray-300 dark:border-slate-600 dark:bg-slate-800'
                   }`}
                 />
                 {touched.phoneNumber && errors.phoneNumber && (
@@ -341,21 +335,21 @@ const PaymentForm = ({
                     Valid Kenyan number
                   </p>
                 )}
-                <p className="mt-1 text-xs text-gray-500">
+                <p className="mt-1 text-xs text-gray-500 dark:text-slate-400">
                   We'll send the M-Pesa STK push to this number
                 </p>
               </div>
 
               {/* Pickup Location Section */}
-              <h3 className="text-lg font-medium text-gray-900 mb-4 mt-6">Pickup Location</h3>
+              <h3 className="mb-4 mt-6 text-lg font-medium text-gray-900 dark:text-slate-100">Pickup Location</h3>
               
-              <div className="mb-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <div className="mb-4 rounded-lg border border-blue-200 bg-blue-50 p-4 dark:border-blue-900 dark:bg-blue-950/30">
                 <div className="flex items-start gap-2 mb-3">
                   <svg className="w-5 h-5 text-blue-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  <p className="text-sm text-blue-800">
+                  <p className="text-sm text-blue-800 dark:text-blue-200">
                     <span className="font-semibold">Pick Up Mtaani</span><br />
                     Select your nearest pickup point. You'll receive an SMS with pickup instructions after payment.
                   </p>
@@ -363,7 +357,7 @@ const PaymentForm = ({
               </div>
               
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-slate-300">
                   Select Pickup Location <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -371,12 +365,12 @@ const PaymentForm = ({
                   value={formData.pickupLocation}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent text-gray-900 transition ${
+                  className={`w-full rounded-lg border px-4 py-2 text-gray-900 transition focus:border-transparent focus:outline-none focus:ring-2 focus:ring-gray-900 dark:text-slate-100 dark:focus:ring-slate-200 ${
                     touched.pickupLocation && errors.pickupLocation 
-                      ? 'border-red-500 bg-red-50' 
+                      ? 'border-red-500 bg-red-50 dark:bg-red-950/30' 
                       : touched.pickupLocation && !errors.pickupLocation && formData.pickupLocation
-                      ? 'border-green-500 bg-green-50'
-                      : 'border-gray-300'
+                      ? 'border-green-500 bg-green-50 dark:bg-green-950/30'
+                      : 'border-gray-300 dark:border-slate-600 dark:bg-slate-800'
                   }`}
                 >
                   <option value="">Choose your nearest Mtaani pickup point</option>
@@ -395,9 +389,9 @@ const PaymentForm = ({
               </div>
 
               {/* Payment Method Info */}
-              <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                <h3 className="font-medium text-gray-900 mb-2">Payment Method: M-Pesa</h3>
-                <p className="text-sm text-gray-600">
+              <div className="mt-6 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-800">
+                <h3 className="mb-2 font-medium text-gray-900 dark:text-slate-100">Payment Method: M-Pesa</h3>
+                <p className="text-sm text-gray-600 dark:text-slate-300">
                   Once you click "Pay with M-Pesa", a secure STK push will be sent to the phone number provided above. 
                   Please enter your M-Pesa PIN on your phone to complete the transaction.
                 </p>
@@ -423,18 +417,18 @@ const PaymentForm = ({
 
         {/* Order Summary */}
         <div className="lg:col-span-5 mt-8 lg:mt-0">
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 sticky top-8">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Order Summary</h2>
+          <div className="sticky top-8 rounded-xl border border-gray-200 bg-gray-50 p-6 dark:border-slate-700 dark:bg-slate-900">
+            <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-slate-100">Order Summary</h2>
             
             <div className="space-y-4">
               {cartItems.map((item, idx) => (
-                <div key={idx} className="flex justify-between items-start py-2 border-b border-gray-200">
+                <div key={idx} className="flex items-start justify-between border-b border-gray-200 py-2 dark:border-slate-700">
                   <div>
-                    <p className="font-medium text-gray-900">{item.name}</p>
-                    <p className="text-sm text-gray-500">{item.variant}</p>
-                    <p className="text-xs text-gray-400">Quantity: {item.quantity}</p>
+                    <p className="font-medium text-gray-900 dark:text-slate-100">{item.name}</p>
+                    <p className="text-sm text-gray-500 dark:text-slate-400">{item.variant}</p>
+                    <p className="text-xs text-gray-400 dark:text-slate-500">Quantity: {item.quantity}</p>
                   </div>
-                  <p className="font-medium text-gray-900">KES {item.price.toLocaleString()}</p>
+                  <p className="font-medium text-gray-900 dark:text-slate-100">KES {item.price.toLocaleString()}</p>
                 </div>
               ))}
               
@@ -446,14 +440,14 @@ const PaymentForm = ({
                     value={promoCode}
                     onChange={(e) => setPromoCode(e.target.value.toUpperCase())}
                     placeholder="Add promo code (WELCOME10 or MTAANI25)"
-                    className={`flex-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm ${
-                      promoError ? 'border-red-500' : 'border-gray-300'
+                    className={`flex-1 rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-900 dark:bg-slate-800 dark:text-slate-100 dark:focus:ring-slate-200 ${
+                      promoError ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
                     }`}
                   />
                   <button
                     type="button"
                     onClick={handlePromoApply}
-                    className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition text-sm font-medium"
+                    className="rounded-lg bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-300 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600"
                   >
                     Apply
                   </button>
@@ -468,8 +462,8 @@ const PaymentForm = ({
               
               <div className="pt-4 space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Subtotal</span>
-                  <span className="text-gray-900">KES {subtotal.toLocaleString()}</span>
+                  <span className="text-gray-600 dark:text-slate-400">Subtotal</span>
+                  <span className="text-gray-900 dark:text-slate-100">KES {subtotal.toLocaleString()}</span>
                 </div>
                 {promoApplied && (
                   <div className="flex justify-between text-sm text-green-600">
@@ -478,21 +472,21 @@ const PaymentForm = ({
                   </div>
                 )}
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Pickup Fee</span>
+                  <span className="text-gray-600 dark:text-slate-400">Pickup Fee</span>
                   <span className="text-green-600 font-medium">FREE</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Taxes</span>
-                  <span className="text-gray-900">KES 0.00</span>
+                  <span className="text-gray-600 dark:text-slate-400">Taxes</span>
+                  <span className="text-gray-900 dark:text-slate-100">KES 0.00</span>
                 </div>
-                <div className="flex justify-between text-xl font-bold pt-4 border-t border-gray-200">
-                  <span className="text-gray-900">TOTAL TO PAY</span>
-                  <span className="text-gray-900">KES {total.toLocaleString()}</span>
+                <div className="flex justify-between border-t border-gray-200 pt-4 text-xl font-bold dark:border-slate-700">
+                  <span className="text-gray-900 dark:text-slate-100">TOTAL TO PAY</span>
+                  <span className="text-gray-900 dark:text-slate-100">KES {total.toLocaleString()}</span>
                 </div>
               </div>
 
-              <div className="mt-4 pt-4 border-t border-gray-200">
-                <div className="flex items-center gap-2 text-xs text-gray-500">
+              <div className="mt-4 border-t border-gray-200 pt-4 dark:border-slate-700">
+                <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-400">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                   </svg>
