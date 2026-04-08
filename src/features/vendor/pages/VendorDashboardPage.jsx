@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { z } from 'zod';
 import { useVendorDashboardHook, useVendorProductsHook } from '../hooks/useVendorHook';
 import SkeletonLoader from '../../../shared/components/SkeletonLoader';
 import { formatCurrency } from '../../../shared/utils/formatters';

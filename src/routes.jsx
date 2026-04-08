@@ -16,6 +16,7 @@ const withSuspense = (Component) => (
 
 // ── Home ──────────────────────────────────────────────────
 const HomePage = lazy(() => import('./features/home/pages/HomePage'));
+const SearchPage = lazy(() => import('./features/home/pages/SearchPage'));
 
 // ── Auth ──────────────────────────────────────────────────
 const LoginPage = lazy(() => import('./features/auth/pages/LoginPage'));
@@ -63,6 +64,7 @@ const router = createBrowserRouter([
       { path: ROUTES.AUTH.FORGOT_PASSWORD, element: withSuspense(ForgotPasswordPage) },
       { path: ROUTES.AUTH.UNSUBSCRIBE_CONFIRMATION, element: withSuspense(UnsubscribeConfirmationPage) },
       { path: ROUTES.HOME, element: withSuspense(HomePage) },
+      { path: ROUTES.SEARCH, element: withSuspense(SearchPage) },
       { path: ROUTES.PRODUCTS, element: withSuspense(ProductsPage) },
       { path: ROUTES.PRODUCT_DETAIL, element: withSuspense(ProductDetailPage) },
       { path: ROUTES.CART, element: withSuspense(CartPage) },

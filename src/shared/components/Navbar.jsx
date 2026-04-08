@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
 import { APP_NAME } from '../constants/app';
 import { useTheme } from '../hooks/useThemeHook';
@@ -18,10 +18,12 @@ const PAGES_LINKS = [
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
   const navigate = useNavigate();
   const cart = useCartHook((state) => state.cart);
   const fetchCart = useCartHook((state) => state.fetchCart);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
   const dropdownRef = useRef(null);
   const cartCount = cart?.products?.reduce((sum, item) => sum + item.quantity, 0) ?? 0;
 
@@ -41,6 +43,32 @@ const Navbar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    if (location.pathname !== ROUTES.SEARCH) {
+      return;
+    }
+
+    const params = new URLSearchParams(location.search);
+    setSearchValue(params.get('q') ?? '');
+  }, [location.pathname, location.search]);
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+
+    const normalizedValue = searchValue.trim();
+    const searchParams = new URLSearchParams();
+
+    if (normalizedValue) {
+      searchParams.set('q', normalizedValue);
+    }
+
+    const targetPath = searchParams.size
+      ? `${ROUTES.SEARCH}?${searchParams.toString()}`
+      : ROUTES.SEARCH;
+
+    navigate(targetPath);
+  };
+
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/85 shadow-sm backdrop-blur-xl dark:bg-slate-950/80 dark:shadow-none">
       <div className="mx-auto flex w-full max-w-screen-2xl flex-wrap items-center justify-between gap-4 px-4 py-3 lg:px-6">
@@ -52,23 +80,31 @@ const Navbar = () => {
             {APP_NAME}
           </Link>
 
-          <div className="relative hidden max-w-xl flex-1 md:block">
+          <form onSubmit={handleSearchSubmit} className="relative hidden max-w-xl flex-1 md:block">
             <input
               type="text"
               placeholder="Search"
+              value={searchValue}
+              onChange={(event) => setSearchValue(event.target.value)}
               className="w-full rounded-xl border border-border bg-slate-100 px-4 py-2.5 pr-10 text-sm text-foreground placeholder:text-muted focus:border-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-200 dark:bg-slate-900 dark:focus:ring-primary-900"
             />
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted"
-              aria-hidden="true"
+            <button
+              type="submit"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted transition-colors hover:text-foreground"
+              aria-label="Search products"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" />
-            </svg>
-          </div>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                className="h-4 w-4"
+                aria-hidden="true"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" />
+              </svg>
+            </button>
+          </form>
         </div>
 
         <nav className="hidden items-center gap-6 md:flex">

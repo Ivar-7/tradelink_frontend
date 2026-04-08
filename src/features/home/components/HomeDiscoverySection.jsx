@@ -157,16 +157,20 @@ const HomeDiscoverySection = ({
                 Try checking your spelling or searching for a different term.
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-2">
-                {emptyStateSuggestions.map((item) => (
-                  <button
-                    key={item}
-                    type="button"
-                    onClick={() => onSearchChange(item)}
-                    className="rounded-full bg-primary-100 px-4 py-2 text-xs font-semibold text-primary-700 dark:bg-primary-900/40 dark:text-primary-300"
-                  >
-                    {item}
-                  </button>
-                ))}
+                {emptyStateSuggestions.map((item) => {
+                  const suggestionLabel = typeof item === 'string' ? item : item.label;
+
+                  return (
+                    <button
+                      key={suggestionLabel}
+                      type="button"
+                      onClick={() => onSearchChange(suggestionLabel)}
+                      className="rounded-full bg-primary-100 px-4 py-2 text-xs font-semibold text-primary-700 dark:bg-primary-900/40 dark:text-primary-300"
+                    >
+                      {suggestionLabel}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           ) : (
