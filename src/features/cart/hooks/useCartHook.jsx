@@ -36,10 +36,10 @@ const useCartHook = create(
         }
       },
 
-      updateItem: async (itemId, quantity) => {
+      updateItem: async (itemId, productId, quantity) => {
         set({ loading: true, error: null });
         try {
-          const cart = await updateCartItem(itemId, quantity);
+          const cart = await updateCartItem(itemId, productId, quantity);
           set({ cart });
         } catch (err) {
           set({ error: mapError(err) });
@@ -63,8 +63,7 @@ const useCartHook = create(
       clear: async () => {
         set({ loading: true, error: null });
         try {
-          await clearCart();
-          const cart = await getCart();
+          const cart = await clearCart();
           set({ cart });
         } catch (err) {
           set({ error: mapError(err) });

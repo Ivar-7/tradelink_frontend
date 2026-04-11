@@ -1,5 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
-import { getProducts, getProductById } from '../api/productsApi';
+import {
+  getCategories,
+  getCategoriesTree,
+  getProducts,
+  getProductById,
+} from '../api/productsApi';
 import { mapError } from '../../../shared/utils/errorHandler';
 
 export const useProductsHook = (filters = {}) => {
@@ -22,10 +27,12 @@ export const useProductsHook = (filters = {}) => {
     }
   }, []);
 
+  const serializedFilters = JSON.stringify(filters ?? {});
+
   useEffect(() => {
-    fetchProducts(filters);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const nextFilters = serializedFilters ? JSON.parse(serializedFilters) : {};
+    fetchProducts(nextFilters);
+  }, [fetchProducts, serializedFilters]);
 
   return { products, total, loading, error, refetch: fetchProducts };
 };
@@ -46,6 +53,31 @@ export const useProductDetailHook = (id) => {
   }, [id]);
 
   return { product, loading, error };
+};
+
+export const useCategoriesHook = ({ tree = false } = {}) => {
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const fetchCategories = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const result = tree ? await getCategoriesTree() : await getCategories();
+      setCategories(result);
+    } catch (err) {
+      setError(mapError(err));
+    } finally {
+      setLoading(false);
+    }
+  }, [tree]);
+
+  useEffect(() => {
+    fetchCategories();
+  }, [fetchCategories]);
+
+  return { categories, loading, error, refetch: fetchCategories };
 };
 
 export default useProductsHook;

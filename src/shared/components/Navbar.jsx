@@ -188,6 +188,18 @@ const Navbar = () => {
         </nav>
 
         <div className="flex items-center gap-2">
+          <Link
+            to={ROUTES.AUTH.LOGIN}
+            aria-label="Go to login"
+            className="rounded-lg p-2 text-muted transition-colors hover:bg-slate-100 hover:text-foreground dark:hover:bg-slate-900"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 3h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-2" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M10 17l5-5-5-5" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 12H3" />
+            </svg>
+          </Link>
+
           <button
             onClick={toggleTheme}
             aria-label="Toggle theme"

@@ -8,6 +8,7 @@ export const CartItemSchema = z.object({
   quantity: z.number().int().positive(),
   unit_price: z.number().positive(),
   subtotal: z.number().positive(),
+  cart_item_id: z.string().min(1),
 });
 
 // ── Cart ───────────────────────────────────────────────────────────────────

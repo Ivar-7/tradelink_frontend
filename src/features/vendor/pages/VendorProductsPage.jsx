@@ -4,11 +4,12 @@ import { useVendorProductsHook } from '../hooks/useVendorHook';
 import useCartHook from '../../cart/hooks/useCartHook';
 import SkeletonLoader from '../../../shared/components/SkeletonLoader';
 import { formatCurrency } from '../../../shared/utils/formatters';
-import { vendorStoreFilters } from '../data/vendorStoreData';
 import { ROUTES } from '../../../shared/constants/routes';
+import { useCategoriesHook } from '../../products/hooks/useProductsHook';
 
 const VendorProductsPage = () => {
   const { products, loading, error } = useVendorProductsHook();
+  const { categories } = useCategoriesHook();
   const addItem = useCartHook((state) => state.addItem);
   const [search, setSearch] = useState('');
   const [sortBy, setSortBy] = useState('featured');
@@ -27,8 +28,8 @@ const VendorProductsPage = () => {
 
     const byCategory = selectedCategories.length
       ? bySearch.filter((item) => {
-          const categoryName = item.category_id.toLowerCase();
-          return selectedCategories.some((selected) => categoryName.includes(selected.toLowerCase()));
+          if (!item.category_id) return false;
+          return selectedCategories.includes(item.category_id);
         })
       : bySearch;
 
@@ -47,11 +48,11 @@ const VendorProductsPage = () => {
     return [...byCategory].sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)));
   }, [products, search, selectedCategories, sortBy]);
 
-  const toggleCategory = (category) => {
+  const toggleCategory = (categoryId) => {
     setSelectedCategories((prev) =>
-      prev.includes(category)
-        ? prev.filter((item) => item !== category)
-        : [...prev, category]
+      prev.includes(categoryId)
+        ? prev.filter((item) => item !== categoryId)
+        : [...prev, categoryId]
     );
   };
 
@@ -93,15 +94,15 @@ const VendorProductsPage = () => {
 
           <div className="space-y-3">
             <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted">Categories</p>
-            {vendorStoreFilters.categories.map((category) => (
-              <label key={category} className="flex items-center gap-3 text-sm text-foreground">
+            {categories.map((category) => (
+              <label key={category.id} className="flex items-center gap-3 text-sm text-foreground">
                 <input
                   type="checkbox"
-                  checked={selectedCategories.includes(category)}
-                  onChange={() => toggleCategory(category)}
+                  checked={selectedCategories.includes(category.id)}
+                  onChange={() => toggleCategory(category.id)}
                   className="h-4 w-4 rounded border-border text-primary-600"
                 />
-                <span>{category}</span>
+                <span>{category.name}</span>
               </label>
             ))}
           </div>

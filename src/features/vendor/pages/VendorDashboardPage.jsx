@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useVendorDashboardHook, useVendorProductsHook } from '../hooks/useVendorHook';
 import SkeletonLoader from '../../../shared/components/SkeletonLoader';
 import { formatCurrency } from '../../../shared/utils/formatters';
@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 import { ROUTES } from '../../../shared/constants/routes';
 import { VendorProductInputSchema } from '../vendor.types';
 import { mapZodError } from '../../../shared/utils/errorHandler';
-import { vendorStoreFilters } from '../data/vendorStoreData';
 import VendorProductCard from '../components/VendorProductCard';
 import { useToast } from '../../../shared/hooks/useToastHook';
+import { useCategoriesHook } from '../../products/hooks/useProductsHook';
 
 const StatCard = ({ label, value }) => (
   <div className="rounded-xl border border-border bg-surface p-5">
@@ -17,16 +17,8 @@ const StatCard = ({ label, value }) => (
   </div>
 );
 
-const initialForm = {
-  name: '',
-  price: '',
-  description: '',
-  category_id: vendorStoreFilters.categories[0]?.toLowerCase() ?? 'headphones',
-  stock_quantity: '',
-  image_url: '',
-};
-
 const VendorDashboardPage = () => {
+  const { categories } = useCategoriesHook();
   const { dashboard, loading, error, refetch: refetchDashboard } = useVendorDashboardHook();
   const {
     products,
@@ -36,9 +28,22 @@ const VendorDashboardPage = () => {
     remove,
   } = useVendorProductsHook();
   const { addToast } = useToast();
-  const [formData, setFormData] = useState(initialForm);
+  const [formData, setFormData] = useState({
+    name: '',
+    price: '',
+    description: '',
+    category_id: '',
+    stock_quantity: '',
+    image_url: '',
+  });
   const [formErrors, setFormErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (!formData.category_id && categories.length) {
+      setFormData((prev) => ({ ...prev, category_id: categories[0].id }));
+    }
+  }, [categories, formData.category_id]);
 
   const onFieldChange = (event) => {
     const { name, value } = event.target;
@@ -74,7 +79,14 @@ const VendorDashboardPage = () => {
 
     try {
       await create(parsed.data);
-      setFormData(initialForm);
+      setFormData((prev) => ({
+        name: '',
+        price: '',
+        description: '',
+        category_id: prev.category_id,
+        stock_quantity: '',
+        image_url: '',
+      }));
       await refetchDashboard();
       addToast({ message: 'Product added to your storefront.', type: 'success' });
     } catch (err) {
@@ -193,8 +205,8 @@ const VendorDashboardPage = () => {
                     onChange={onFieldChange}
                     className="w-full rounded-lg border border-border bg-slate-50 px-3 py-2 text-sm text-foreground dark:bg-slate-900"
                   >
-                    {vendorStoreFilters.categories.map((category) => (
-                      <option key={category} value={category.toLowerCase()}>{category}</option>
+                    {categories.map((category) => (
+                      <option key={category.id} value={category.id}>{category.name}</option>
                     ))}
                   </select>
                   {formErrors.category_id ? <p className="mt-1 text-xs text-destructive">{formErrors.category_id}</p> : null}

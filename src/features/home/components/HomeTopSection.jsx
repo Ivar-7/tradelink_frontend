@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../../shared/constants/routes';
 
-const HomeTopSection = ({ topCategories, heroFeature, heroPerks, currentUser }) => {
+const HomeTopSection = ({ topCategories, categoriesLoading, heroFeature, heroPerks, currentUser }) => {
   const [current, setCurrent] = useState(0);
   const timer = useRef(null);
   const isLoggedIn = Boolean(currentUser);
@@ -43,7 +43,15 @@ const HomeTopSection = ({ topCategories, heroFeature, heroPerks, currentUser }) 
       <aside className="rounded-2xl border border-border bg-surface p-4 shadow-sm lg:col-span-2">
         <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-muted">Categories</h3>
         <ul className="space-y-1">
-          {topCategories.map((category) => (
+          {categoriesLoading ? (
+            <li className="rounded-lg p-2 text-sm text-muted">Loading categories...</li>
+          ) : null}
+
+          {!categoriesLoading && !topCategories.length ? (
+            <li className="rounded-lg p-2 text-sm text-muted">No categories available yet.</li>
+          ) : null}
+
+          {!categoriesLoading && topCategories.map((category) => (
             <li
               key={category.label}
               className="group flex cursor-pointer items-center gap-3 rounded-lg p-2 transition-colors hover:bg-slate-100 dark:hover:bg-slate-900"

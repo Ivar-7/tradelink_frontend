@@ -20,6 +20,11 @@ export const API_ENDPOINTS = {
     DELETE: (id) => `/products/${id}/`,
     SEARCH: '/products/search/',
   },
+  CATEGORIES: {
+    LIST: '/categories/',
+    TREE: '/categories/tree/',
+    DETAIL: (id) => `/categories/${id}/`,
+  },
   CART: {
     GET: '/cart/',
     ADD: '/cart/items/',
