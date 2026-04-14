@@ -4,6 +4,7 @@ import { ROUTES } from '../constants/routes';
 import { APP_NAME } from '../constants/app';
 import { useTheme } from '../hooks/useThemeHook';
 import useCartHook from '../../features/cart/hooks/useCartHook';
+import { useAuthHook } from '../../features/auth/hooks/useAuthHook';
 
 const PAGES_LINKS = [
   { label: 'Products',  to: ROUTES.PRODUCTS },
@@ -18,14 +19,17 @@ const PAGES_LINKS = [
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
+  const { user, logout } = useAuthHook();
   const location = useLocation();
   const navigate = useNavigate();
   const cart = useCartHook((state) => state.cart);
   const fetchCart = useCartHook((state) => state.fetchCart);
+  const setCart = useCartHook((state) => state.setCart);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const dropdownRef = useRef(null);
   const cartCount = cart?.products?.reduce((sum, item) => sum + item.quantity, 0) ?? 0;
+  const displayName = user?.username || user?.first_name || 'Account';
 
   useEffect(() => {
     if (!cart) {
@@ -67,6 +71,12 @@ const Navbar = () => {
       : ROUTES.SEARCH;
 
     navigate(targetPath);
+  };
+
+  const handleLogout = async () => {
+    await logout();
+    setCart(null);
+    navigate(ROUTES.AUTH.LOGIN);
   };
 
   return (
@@ -188,17 +198,35 @@ const Navbar = () => {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link
-            to={ROUTES.AUTH.LOGIN}
-            aria-label="Go to login"
-            className="rounded-lg p-2 text-muted transition-colors hover:bg-slate-100 hover:text-foreground dark:hover:bg-slate-900"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 3h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-2" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="M10 17l5-5-5-5" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 12H3" />
-            </svg>
-          </Link>
+          {user ? (
+            <>
+              <Link
+                to={ROUTES.PROFILE}
+                className="rounded-lg border border-border bg-slate-100 px-3 py-1.5 text-xs font-bold tracking-wide text-foreground transition-colors hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800"
+              >
+                {displayName}
+              </Link>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="rounded-lg border border-border px-3 py-1.5 text-xs font-bold tracking-wide text-destructive transition-colors hover:bg-red-50 dark:hover:bg-red-950/30"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link
+              to={ROUTES.AUTH.LOGIN}
+              aria-label="Go to login"
+              className="rounded-lg p-2 text-muted transition-colors hover:bg-slate-100 hover:text-foreground dark:hover:bg-slate-900"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 3h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-2" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10 17l5-5-5-5" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 12H3" />
+              </svg>
+            </Link>
+          )}
 
           <button
             onClick={toggleTheme}

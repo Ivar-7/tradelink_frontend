@@ -18,7 +18,7 @@ export const AdminUserSummarySchema = z.object({
   username: z.string(),
   user_email: z.string().email(),
   user_role: z.enum(['buyer', 'vendor', 'admin']),
-  created_at: z.string().datetime().optional(),
+  created_at: z.string().datetime({ offset: true }).optional(),
   is_active: z.boolean().default(true),
 });
 

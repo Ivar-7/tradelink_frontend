@@ -1,14 +1,19 @@
 import { useMemo, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import useCartHook from '../../cart/hooks/useCartHook';
 import { buildRoute, formatCurrency } from '../../../shared/utils/formatters';
 import { ROUTES } from '../../../shared/constants/routes';
 import { useProductDetailHook, useProductsHook } from '../hooks/useProductsHook';
 import PageLoader from '../../../shared/components/PageLoader';
+import { useAuthHook } from '../../auth/hooks/useAuthHook';
+import { useToast } from '../../../shared/hooks/useToastHook';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const addItem = useCartHook((state) => state.addItem);
+  const { user } = useAuthHook();
+  const { addToast } = useToast();
   const [quantity, setQuantity] = useState(1);
   const { product, loading, error } = useProductDetailHook(id);
   const { products: relatedPool, loading: relatedLoading } = useProductsHook({ limit: 8 });
@@ -17,6 +22,22 @@ const ProductDetailPage = () => {
     () => relatedPool.filter((item) => item.id !== id).slice(0, 4),
     [id, relatedPool]
   );
+
+  const handleAddToCart = async () => {
+    if (!user) {
+      addToast({ message: 'Please sign in to add products to cart.', type: 'warning' });
+      navigate(ROUTES.AUTH.LOGIN);
+      return;
+    }
+
+    const result = await addItem({ product_id: product.id, quantity });
+    if (result?.ok) {
+      addToast({ message: 'Product added to cart.', type: 'success' });
+      return;
+    }
+
+    addToast({ message: result?.error || 'Could not add product to cart.', type: 'error' });
+  };
 
   if (loading) {
     return <PageLoader />;
@@ -82,7 +103,7 @@ const ProductDetailPage = () => {
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <button
               type="button"
-              onClick={() => addItem({ product_id: product.id, quantity })}
+              onClick={handleAddToCart}
               className="rounded-xl bg-primary-600 px-4 py-3 text-sm font-bold uppercase tracking-[0.15em] text-white transition-colors hover:bg-primary-700"
             >
               Add to cart

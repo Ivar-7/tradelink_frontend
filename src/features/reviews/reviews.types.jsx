@@ -10,7 +10,7 @@ export const ReviewSchema = z.object({
   comment: z.string().optional(),
   verified_purchase: z.boolean().optional(),
   helpful_count: z.number().int().min(0).optional(),
-  date: z.string().datetime(),
+  date: z.string().datetime({ offset: true }),
 });
 
 export const ReviewListResponseSchema = z.object({

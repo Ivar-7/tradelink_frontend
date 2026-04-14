@@ -1,0 +1,128 @@
+# Carts App
+
+Cart API for authenticated users. Base path: `/api/v1`.
+
+## Quickstart
+1. Activate environment:
+   - Windows: `tradeenv\Scripts\Activate.ps1`
+2. Run server:
+   - `python manage.py runserver`
+3. Open API docs:
+   - `/api/docs/`
+
+## Seed Command
+- No dedicated cart seed command exists yet.
+- Cart rows are created automatically on first cart action by an authenticated user.
+
+## Test Command
+- `python manage.py test carts`
+
+## Authentication
+All cart endpoints require:
+- `Authorization: Bearer <access_token>`
+
+## Endpoints
+
+### 1. Get Cart
+- Method: `GET`
+- URL: `/api/v1/cart/`
+- Purpose: Returns current user's cart. If no cart exists, one is created automatically.
+
+Success response (`200`):
+```json
+{
+  "id": "f56cde04-61e3-4ed0-8c95-f9ca6f7f3d0d",
+  "user_id": "62e7228a-0f2e-415e-aace-6cd5ef31ed66",
+  "date_created": "2026-04-14T13:20:12.001+00:00",
+  "total_price": 3000.0,
+  "products": [
+    {
+      "product_id": "7eac184e-2af6-4bc3-836d-cd1aed222f02",
+      "product_name": "Sample Product",
+      "product_image": "https://example.com/img.jpg",
+      "quantity": 2,
+      "unit_price": 1500.0,
+      "subtotal": 3000.0,
+      "cart_item_id": "e4e8ac06-b2f0-470d-8e4f-1f31d8ed4ca2"
+    }
+  ]
+}
+```
+
+### 2. Add Product To Cart
+- Method: `POST`
+- URL: `/api/v1/cart/items/`
+- Purpose: Adds a new product to the cart, or increments quantity if product already exists in cart.
+
+Request body:
+```json
+{
+  "product_id": "7eac184e-2af6-4bc3-836d-cd1aed222f02",
+  "quantity": 1
+}
+```
+
+Expected validation:
+- `product_id`: required string, must reference an existing product
+- `quantity`: required integer, minimum `1`
+
+Success response (`200`):
+- Returns full normalized cart payload (same structure as `GET /api/v1/cart/`).
+
+Error responses:
+- `400`: serializer validation errors (missing fields, invalid quantity, invalid product)
+- `404`: product not found
+- `401`: not authenticated
+
+### 3. Update Cart Item Quantity
+- Method: `PATCH`
+- URL: `/api/v1/cart/items/{item_id}/`
+- Purpose: Updates an existing cart item's quantity.
+
+Request body:
+```json
+{
+  "product_id": "7eac184e-2af6-4bc3-836d-cd1aed222f02",
+  "quantity": 3
+}
+```
+
+Note:
+- `product_id` is currently required by serializer validation for PATCH in this implementation.
+
+Success response (`200`):
+- Returns full normalized cart payload.
+
+Error responses:
+- `404`: cart item not found
+- `400`: validation errors
+- `401`: not authenticated
+
+### 4. Delete Cart Item
+- Method: `DELETE`
+- URL: `/api/v1/cart/items/{item_id}/delete/`
+- Purpose: Removes an item from cart.
+
+Success response (`200`):
+- Returns full normalized cart payload.
+
+Error responses:
+- `404`: cart item not found
+- `401`: not authenticated
+
+### 5. Clear Cart
+- Method: `POST`
+- URL: `/api/v1/cart/clear/`
+- Purpose: Deletes all cart items for current user.
+
+Success response (`200`):
+- Returns full normalized cart payload with empty `products`.
+
+Error responses:
+- `401`: not authenticated
+
+## Important Implementation Notes
+- Cart and cart items are stored in Supabase tables.
+- Cart creation enforces `cart.user_id` foreign key against Supabase `user` table.
+- On first cart access, service now resolves or creates Supabase user mapping using Django authenticated user data to prevent FK violation errors.
+- Cart totals are recalculated from current cart items and product prices each response cycle.

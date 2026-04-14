@@ -1,0 +1,116 @@
+{
+  "info": {
+    "name": "Tradelink - Carts",
+    "_postman_id": "tradelink-carts-v1",
+    "description": "Cart endpoints for add/update/remove/list/clear cart operations.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:8000/api/v1", "type": "string" },
+    { "key": "access_token", "value": "", "type": "string" },
+    { "key": "product_id", "value": "", "type": "string" },
+    { "key": "cart_item_id", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Cart",
+      "item": [
+        {
+          "name": "Get Cart",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{access_token}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/cart/",
+              "host": ["{{base_url}}"],
+              "path": ["cart", ""]
+            }
+          }
+        },
+        {
+          "name": "Add Product To Cart",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{access_token}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/cart/items/",
+              "host": ["{{base_url}}"],
+              "path": ["cart", "items", ""]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product_id\": \"{{product_id}}\",\n  \"quantity\": 1\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  var json = pm.response.json();",
+                  "  if (json.products && json.products.length > 0) {",
+                  "    pm.collectionVariables.set('cart_item_id', json.products[0].cart_item_id);",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Update Cart Item Quantity",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{access_token}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/cart/items/{{cart_item_id}}/",
+              "host": ["{{base_url}}"],
+              "path": ["cart", "items", "{{cart_item_id}}", ""]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product_id\": \"{{product_id}}\",\n  \"quantity\": 2\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Cart Item",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{access_token}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/cart/items/{{cart_item_id}}/delete/",
+              "host": ["{{base_url}}"],
+              "path": ["cart", "items", "{{cart_item_id}}", "delete", ""]
+            }
+          }
+        },
+        {
+          "name": "Clear Cart",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{access_token}}" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/cart/clear/",
+              "host": ["{{base_url}}"],
+              "path": ["cart", "clear", ""]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

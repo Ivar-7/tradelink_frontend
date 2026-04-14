@@ -14,7 +14,7 @@ export const UserFeedbackSchema = z.object({
   user_id: z.string().min(1),
   type: FeedbackTypeSchema,
   message: z.string().min(10).max(1000),
-  created_at: z.string().datetime().optional(),
+  created_at: z.string().datetime({ offset: true }).optional(),
 });
 
 // ── Create Feedback Input ──────────────────────────────────────────────────

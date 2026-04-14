@@ -20,7 +20,7 @@ export const VendorDashboardSchema = z.object({
   active_products: z.number().int().min(0),
   recent_orders: z.array(z.object({
     id: z.string().min(1),
-    order_date: z.string().datetime(),
+    order_date: z.string().datetime({ offset: true }),
     order_amount: z.number().positive(),
     status: z.string(),
   })),

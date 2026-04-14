@@ -40,7 +40,7 @@ export const PaymentSchema = z.object({
   payment_provider: PaymentProviderSchema,
   status: PaymentStatusSchema,
   transaction_type: TransactionTypeSchema,
-  created_at: z.string().datetime().optional(),
+  created_at: z.string().datetime({ offset: true }).optional(),
   phone_number: z.string().optional(),
   payment_method_id: z.string().min(1).optional(),
 });

@@ -4,18 +4,36 @@ export const UserRoleSchema = z.enum(['buyer', 'vendor', 'admin']);
 
 export const UserGenderSchema = z.enum(['M', 'F', 'O', 'male', 'female', 'other']);
 
+const normalizeGender = (value) => {
+  if (value == null || value === '') {
+    return undefined;
+  }
+
+  if (typeof value !== 'string') {
+    return value;
+  }
+
+  const normalized = value.trim().toLowerCase();
+
+  if (normalized === 'm' || normalized === 'male') return 'M';
+  if (normalized === 'f' || normalized === 'female') return 'F';
+  if (normalized === 'o' || normalized === 'other') return 'O';
+
+  return value;
+};
+
 export const UserSchema = z.object({
-  id: z.string().min(1),
+  id: z.coerce.string().min(1),
   email: z.string().email(),
-  username: z.string().min(1),
-  first_name: z.string().min(1),
-  last_name: z.string().min(1),
-  full_name: z.string().min(1).optional(),
-  phone_number: z.string().min(1).optional(),
-  gender: UserGenderSchema.optional(),
-  date_of_birth: z.string().nullable().optional(),
-  role: UserRoleSchema,
-  date_joined: z.string().datetime().optional(),
+  username: z.coerce.string().min(1),
+  first_name: z.string().nullish().default(''),
+  last_name: z.string().nullish().default(''),
+  full_name: z.string().nullish(),
+  phone_number: z.string().nullish(),
+  gender: z.preprocess(normalizeGender, UserGenderSchema.nullish()).catch(undefined),
+  date_of_birth: z.string().nullish(),
+  role: UserRoleSchema.catch('buyer'),
+  date_joined: z.string().datetime({ offset: true }).nullish(),
 });
 
 export const LoginInputSchema = z.object({

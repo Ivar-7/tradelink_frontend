@@ -19,6 +19,15 @@ const CartPage = () => {
   }, [fetchCart]);
 
   const cartItems = useMemo(() => cart?.products ?? [], [cart]);
+  const authRequired = useMemo(() => {
+    if (!error) return false;
+    const normalized = error.toLowerCase();
+    return (
+      normalized.includes('authentication credentials were not provided') ||
+      normalized.includes('please log in') ||
+      normalized.includes('session has expired')
+    );
+  }, [error]);
 
   const summary = useMemo(() => {
     const subtotal = cartItems.reduce((sum, item) => sum + item.subtotal, 0);
@@ -30,7 +39,7 @@ const CartPage = () => {
     <div className="mx-auto w-full max-w-[1280px] px-4 py-10 lg:px-6">
       <header className="mb-8 flex flex-wrap items-end justify-between gap-4 border-b border-border pb-6">
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-primary-600">Cart</p>
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-primary-600">Cart Page</p>
           <h1 className="mt-2 text-4xl font-black tracking-tight text-foreground">Shopping Cart</h1>
           <p className="mt-2 text-sm text-muted">Review your items from your live cart data.</p>
         </div>
@@ -52,6 +61,22 @@ const CartPage = () => {
           </div>
           <div className="h-64 animate-pulse rounded-2xl bg-slate-100 dark:bg-slate-900" />
         </div>
+      ) : authRequired ? (
+        <section className="rounded-2xl border border-border bg-surface p-8 text-center md:p-12">
+          <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-slate-100 text-5xl dark:bg-slate-900">
+            🔐
+          </div>
+          <h2 className="mt-6 text-3xl font-black tracking-tight text-foreground">Sign in to view your cart</h2>
+          <p className="mx-auto mt-3 max-w-xl text-sm text-muted">
+            Your cart is loaded from backend data and requires an authenticated session.
+          </p>
+          <Link
+            to={ROUTES.AUTH.LOGIN}
+            className="mt-8 inline-flex rounded-xl bg-primary-600 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-700"
+          >
+            Sign In
+          </Link>
+        </section>
       ) : cartItems.length === 0 ? (
         <section className="rounded-2xl border border-border bg-surface p-8 text-center md:p-12">
           <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-slate-100 text-5xl dark:bg-slate-900">
@@ -88,7 +113,10 @@ const CartPage = () => {
                   <CartItem
                     key={item.cart_item_id}
                     item={item}
-                    onUpdate={(nextQty) => updateItem(item.cart_item_id, item.product_id, nextQty)}
+                    onUpdate={(nextQty) => {
+                      const resolvedProductId = item.product_id ?? item.stock_id;
+                      updateItem(item.cart_item_id, resolvedProductId, nextQty);
+                    }}
                     onRemove={() => removeItem(item.cart_item_id)}
                   />
                 ))}
@@ -127,7 +155,20 @@ const CartPage = () => {
         </div>
       )}
 
-      {error ? <p className="mt-6 text-sm font-medium text-destructive">{error}</p> : null}
+      {error ? (
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <p className="text-sm font-medium text-destructive">{error}</p>
+          {!authRequired ? (
+            <button
+              type="button"
+              onClick={fetchCart}
+              className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:bg-slate-100 dark:hover:bg-slate-900"
+            >
+              Retry cart
+            </button>
+          ) : null}
+        </div>
+      ) : null}
     </div>
   );
 };

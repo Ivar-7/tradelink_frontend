@@ -29,34 +29,34 @@ export const OrderItemSchema = z.object({
 export const OrderSchema = z.object({
   id: z.string().min(1),
   user_id: z.string().min(1),
-  order_date: z.string().datetime(),
+  order_date: z.string().datetime({ offset: true }),
   order_amount: z.number().positive(),
   products: z.array(OrderItemSchema),
   status: OrderStatusSchema,
   shipping_method: ShippingMethodSchema,
   tracking_number: z.string().nullable().optional(),
-  delivered_at: z.string().datetime().optional(),
-  cancelled_at: z.string().datetime().optional(),
+  delivered_at: z.string().datetime({ offset: true }).optional(),
+  cancelled_at: z.string().datetime({ offset: true }).optional(),
   cancellation_reason: z.string().optional(),
   issue_report: z
     .object({
       type: z.string(),
       details: z.string(),
-      reported_at: z.string().datetime(),
+      reported_at: z.string().datetime({ offset: true }),
     })
     .optional(),
   return_request: z
     .object({
       id: z.string().min(1),
-      created_at: z.string().datetime(),
+      created_at: z.string().datetime({ offset: true }),
       status: z.enum(['requested', 'approved', 'shipped_back', 'refunded']),
       reason: z.string(),
       notes: z.string(),
       timeline: z.object({
-        requested_at: z.string().datetime().nullable(),
-        approved_at: z.string().datetime().nullable(),
-        shipped_back_at: z.string().datetime().nullable(),
-        refunded_at: z.string().datetime().nullable(),
+        requested_at: z.string().datetime({ offset: true }).nullable(),
+        approved_at: z.string().datetime({ offset: true }).nullable(),
+        shipped_back_at: z.string().datetime({ offset: true }).nullable(),
+        refunded_at: z.string().datetime({ offset: true }).nullable(),
       }),
     })
     .optional(),

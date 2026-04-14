@@ -1,15 +1,20 @@
 import { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useVendorProductsHook } from '../hooks/useVendorHook';
 import useCartHook from '../../cart/hooks/useCartHook';
 import SkeletonLoader from '../../../shared/components/SkeletonLoader';
 import { formatCurrency } from '../../../shared/utils/formatters';
 import { ROUTES } from '../../../shared/constants/routes';
 import { useCategoriesHook } from '../../products/hooks/useProductsHook';
+import { useAuthHook } from '../../auth/hooks/useAuthHook';
+import { useToast } from '../../../shared/hooks/useToastHook';
 
 const VendorProductsPage = () => {
   const { products, loading, error } = useVendorProductsHook();
   const { categories } = useCategoriesHook();
+  const navigate = useNavigate();
+  const { user } = useAuthHook();
+  const { addToast } = useToast();
   const addItem = useCartHook((state) => state.addItem);
   const [search, setSearch] = useState('');
   const [sortBy, setSortBy] = useState('featured');
@@ -54,6 +59,22 @@ const VendorProductsPage = () => {
         ? prev.filter((item) => item !== categoryId)
         : [...prev, categoryId]
     );
+  };
+
+  const handleAddToCart = async (productId) => {
+    if (!user) {
+      addToast({ message: 'Please sign in to add products to cart.', type: 'warning' });
+      navigate(ROUTES.AUTH.LOGIN);
+      return;
+    }
+
+    const result = await addItem({ product_id: productId, quantity: 1 });
+    if (result?.ok) {
+      addToast({ message: 'Product added to cart.', type: 'success' });
+      return;
+    }
+
+    addToast({ message: result?.error || 'Could not add product to cart.', type: 'error' });
   };
 
   if (loading) {
@@ -165,7 +186,7 @@ const VendorProductsPage = () => {
                       <p className="text-lg font-black text-foreground">{formatCurrency(product.price)}</p>
                       <button
                         type="button"
-                        onClick={() => addItem({ product_id: product.id, quantity: 1 })}
+                        onClick={() => handleAddToCart(product.id)}
                         className="rounded-lg bg-primary-600 px-3 py-2 text-xs font-bold uppercase tracking-[0.15em] text-white hover:bg-primary-700"
                       >
                         Add to Cart

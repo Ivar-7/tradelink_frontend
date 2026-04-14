@@ -3,6 +3,7 @@ import { API_ENDPOINTS } from '../../../shared/constants/api';
 import {
   CategorySchema,
   CategoryTreeNodeSchema,
+  ProductFilterSchema,
   ProductListResponseSchema,
   ProductSchema,
 } from '../products.types';
@@ -31,7 +32,8 @@ const extractCollection = (payload) => {
  * @param {import('../products.types').ProductFilter} [params]
  */
 export const getProducts = async (params) => {
-  const { data } = await axiosInstance.get(API_ENDPOINTS.PRODUCTS.LIST, { params });
+  const parsedParams = params ? ProductFilterSchema.partial().parse(params) : undefined;
+  const { data } = await axiosInstance.get(API_ENDPOINTS.PRODUCTS.LIST, { params: parsedParams });
   return ProductListResponseSchema.parse(data);
 };
 

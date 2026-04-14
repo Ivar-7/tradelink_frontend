@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react';
 import {
   heroFeature,
   heroPerks,
-  spotlightProduct,
   quickViewProduct,
 } from '../data/homePageData';
 import useCartHook from '../../cart/hooks/useCartHook';
@@ -14,6 +13,9 @@ import HomeQuickViewModal from '../components/HomeQuickViewModal';
 import { resolveCatalogProductId } from '../utils/homeProductRouting';
 import { useAuthHook } from '../../auth/hooks/useAuthHook';
 import { useCategoriesHook, useProductsHook } from '../../products/hooks/useProductsHook';
+import { useToast } from '../../../shared/hooks/useToastHook';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '../../../shared/constants/routes';
 
 const CATEGORY_ICON_MAP = {
   electronics: '💻',
@@ -26,6 +28,8 @@ const CATEGORY_ICON_MAP = {
 
 const HomePage = () => {
   const { user } = useAuthHook();
+  const { addToast } = useToast();
+  const navigate = useNavigate();
   const [quickViewItem, setQuickViewItem] = useState(null);
   const addItem = useCartHook((state) => state.addItem);
   const { products, loading: productsLoading, error: productsError } = useProductsHook({ limit: 20 });
@@ -104,20 +108,33 @@ const HomePage = () => {
     });
   };
 
-  const handleAddFromHome = (itemOrId) => {
+  const handleAddFromHome = async (itemOrId) => {
+    if (!user) {
+      addToast({ message: 'Please sign in to add products to cart.', type: 'warning' });
+      navigate(ROUTES.AUTH.LOGIN);
+      return;
+    }
+
     const catalogProductId =
       typeof itemOrId === 'string' ? itemOrId : resolveCatalogProductId(itemOrId);
 
     if (!catalogProductId) {
+      addToast({ message: 'Unable to identify this product.', type: 'error' });
       return;
     }
 
-    addItem({ product_id: catalogProductId, quantity: 1 });
+    const result = await addItem({ product_id: catalogProductId, quantity: 1 });
+    if (result?.ok) {
+      addToast({ message: 'Product added to cart.', type: 'success' });
+      return;
+    }
+
+    addToast({ message: result?.error || 'Could not add product to cart.', type: 'error' });
   };
 
   const spotlightItem = useMemo(
-    () => ({ ...spotlightProduct, id: 'prod-014', catalogProductId: 'prod-014' }),
-    []
+    () => mappedHomeProducts[0] ?? null,
+    [mappedHomeProducts]
   );
 
   return (

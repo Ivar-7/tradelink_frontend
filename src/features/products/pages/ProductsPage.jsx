@@ -6,9 +6,13 @@ import ProductCatalogCard from '../components/ProductCatalogCard';
 import { useCategoriesHook, useProductsHook } from '../hooks/useProductsHook';
 import SkeletonLoader from '../../../shared/components/SkeletonLoader';
 import EmptyState from '../../../shared/components/EmptyState';
+import { useAuthHook } from '../../auth/hooks/useAuthHook';
+import { useToast } from '../../../shared/hooks/useToastHook';
 
 const ProductsPage = () => {
   const addItem = useCartHook((state) => state.addItem);
+  const { user } = useAuthHook();
+  const { addToast } = useToast();
   const navigate = useNavigate();
   const [selectedCategoryId, setSelectedCategoryId] = useState('');
   const filters = useMemo(
@@ -19,7 +23,19 @@ const ProductsPage = () => {
   const { categories, loading: categoriesLoading } = useCategoriesHook();
 
   const handleAddToCart = async (productId) => {
-    await addItem({ product_id: productId, quantity: 1 });
+    if (!user) {
+      addToast({ message: 'Please sign in to add products to cart.', type: 'warning' });
+      navigate(ROUTES.AUTH.LOGIN);
+      return;
+    }
+
+    const result = await addItem({ product_id: productId, quantity: 1 });
+    if (result?.ok) {
+      addToast({ message: 'Product added to cart.', type: 'success' });
+      return;
+    }
+
+    addToast({ message: result?.error || 'Could not add product to cart.', type: 'error' });
   };
 
   return (

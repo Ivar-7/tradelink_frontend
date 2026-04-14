@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
   productDiscoveryItems,
   quickViewProduct,
@@ -11,8 +11,12 @@ import HomeDiscoverySection from '../components/HomeDiscoverySection';
 import HomeFilterModal from '../components/HomeFilterModal';
 import HomeQuickViewModal from '../components/HomeQuickViewModal';
 import { resolveCatalogProductId } from '../utils/homeProductRouting';
+import { useAuthHook } from '../../auth/hooks/useAuthHook';
+import { useToast } from '../../../shared/hooks/useToastHook';
+import { ROUTES } from '../../../shared/constants/routes';
 
 const SearchPage = () => {
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState(searchParams.get('q') ?? '');
   const [minPrice, setMinPrice] = useState(searchDefaults.minPrice);
@@ -24,6 +28,8 @@ const SearchPage = () => {
   const [showFilterModal, setShowFilterModal] = useState(false);
   const [quickViewItem, setQuickViewItem] = useState(null);
   const addItem = useCartHook((state) => state.addItem);
+  const { user } = useAuthHook();
+  const { addToast } = useToast();
 
   useEffect(() => {
     setSearchTerm(searchParams.get('q') ?? '');
@@ -102,15 +108,28 @@ const SearchPage = () => {
     });
   };
 
-  const handleAddToCart = (itemOrId) => {
+  const handleAddToCart = async (itemOrId) => {
+    if (!user) {
+      addToast({ message: 'Please sign in to add products to cart.', type: 'warning' });
+      navigate(ROUTES.AUTH.LOGIN);
+      return;
+    }
+
     const catalogProductId =
       typeof itemOrId === 'string' ? itemOrId : resolveCatalogProductId(itemOrId);
 
     if (!catalogProductId) {
+      addToast({ message: 'Unable to identify this product.', type: 'error' });
       return;
     }
 
-    addItem({ product_id: catalogProductId, quantity: 1 });
+    const result = await addItem({ product_id: catalogProductId, quantity: 1 });
+    if (result?.ok) {
+      addToast({ message: 'Product added to cart.', type: 'success' });
+      return;
+    }
+
+    addToast({ message: result?.error || 'Could not add product to cart.', type: 'error' });
   };
 
   const handleSearchChange = (value) => {
