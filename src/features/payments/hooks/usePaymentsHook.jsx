@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import {
   createPayment,
+  verifyPayment,
   getPaymentMethods,
   addPaymentMethod,
   setDefaultPaymentMethod,
@@ -97,12 +98,29 @@ const usePaymentsHook = () => {
     }
   }, []);
 
+  const verify = useCallback(async (paymentId) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const result = await verifyPayment(paymentId);
+      setPayment(result);
+      return result;
+    } catch (err) {
+      const message = mapError(err);
+      setError(message);
+      throw new Error(message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
   return {
     payment,
     methods,
     loading,
     error,
     initiate,
+    verify,
     fetchMethods,
     addMethod,
     setDefaultMethod,

@@ -6,6 +6,8 @@ const PaymentForm = ({
   initialName = '', 
   initialEmail = '', 
   amount, 
+  cartItems = [],
+  loadingCart = false,
   onSubmit, 
   loading 
 }) => {
@@ -202,13 +204,7 @@ const PaymentForm = ({
     }
   };
 
-  // Sample cart items - replace with your actual cart data
-  const cartItems = [
-    { name: 'Studio X1 Wireless', quantity: 1, price: 39900, variant: 'Midnight Black' },
-    { name: 'Lunar Series 04', quantity: 1, price: 25000, variant: 'Titanium / White' }
-  ];
-  
-  const subtotal = Number.isFinite(amount) ? amount : 64900;
+  const subtotal = Number.isFinite(amount) ? amount : cartItems.reduce((sum, item) => sum + (item.lineTotal ?? 0), 0);
   const discount = promoApplied ? (promoCode === 'WELCOME10' ? subtotal * 0.1 : subtotal * 0.25) : 0;
   const total = subtotal - discount;
 
@@ -421,14 +417,21 @@ const PaymentForm = ({
             <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-slate-100">Order Summary</h2>
             
             <div className="space-y-4">
-              {cartItems.map((item, idx) => (
-                <div key={idx} className="flex items-start justify-between border-b border-gray-200 py-2 dark:border-slate-700">
+              {loadingCart ? (
+                <p className="text-sm text-gray-500 dark:text-slate-400">Loading checkout items...</p>
+              ) : null}
+
+              {!loadingCart && cartItems.length === 0 ? (
+                <p className="text-sm text-gray-500 dark:text-slate-400">Your cart is empty.</p>
+              ) : null}
+
+              {cartItems.map((item) => (
+                <div key={item.id ?? item.name} className="flex items-start justify-between border-b border-gray-200 py-2 dark:border-slate-700">
                   <div>
                     <p className="font-medium text-gray-900 dark:text-slate-100">{item.name}</p>
-                    <p className="text-sm text-gray-500 dark:text-slate-400">{item.variant}</p>
                     <p className="text-xs text-gray-400 dark:text-slate-500">Quantity: {item.quantity}</p>
                   </div>
-                  <p className="font-medium text-gray-900 dark:text-slate-100">KES {item.price.toLocaleString()}</p>
+                  <p className="font-medium text-gray-900 dark:text-slate-100">KES {(item.lineTotal ?? 0).toLocaleString()}</p>
                 </div>
               ))}
               

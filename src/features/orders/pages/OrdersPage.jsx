@@ -8,6 +8,7 @@ import { useAuthHook } from '../../auth/hooks/useAuthHook';
 
 const statusStyles = {
   pending: 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300',
+  processing: 'bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300',
   confirmed: 'bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300',
   shipped: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-300',
   delivered: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300',
@@ -16,6 +17,7 @@ const statusStyles = {
 
 const readableStatus = {
   pending: 'Pending',
+  processing: 'Processing',
   confirmed: 'Processing',
   shipped: 'Shipped',
   delivered: 'Delivered',
@@ -31,7 +33,7 @@ const statusDescription = (order) => {
   }
 
   if (order.status === 'pending') return 'Waiting for payment confirmation or fulfillment.';
-  if (order.status === 'confirmed') return 'Your items are being prepared for shipment.';
+  if (order.status === 'confirmed' || order.status === 'processing') return 'Your items are being prepared for shipment.';
   if (order.status === 'shipped') return `In transit${order.tracking_number ? ` • Tracking ${order.tracking_number}` : ''}.`;
   if (order.status === 'delivered') return 'Delivered successfully.';
   if (order.status === 'cancelled') {

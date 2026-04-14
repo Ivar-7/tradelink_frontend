@@ -2,18 +2,14 @@
 const PaymentConfirm = ({ 
   transactionId, 
   amount, 
+  cartItems = [],
   phoneNumber, 
   customerName, 
   customerEmail,
   pickupLocation 
 }) => {
   const orderReference = '#TRD-' + Math.floor(Math.random() * 10000000);
-  
-  const cartItems = [
-    { name: 'Studio X1 Wireless', quantity: 1, price: 39900, variant: 'Midnight Black' },
-    { name: 'Lunar Series 04', quantity: 1, price: 25000, variant: 'Titanium / White' }
-  ];
-  const subtotal = amount ?? 64900;
+  const subtotal = amount ?? cartItems.reduce((sum, item) => sum + (item.lineTotal ?? 0), 0);
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -49,14 +45,13 @@ const PaymentConfirm = ({
             <div>
               <h3 className="mb-4 font-semibold text-gray-900 dark:text-slate-100">Order Summary</h3>
               <div className="space-y-3">
-                {cartItems.map((item, idx) => (
-                  <div key={idx} className="flex justify-between border-b border-gray-100 py-2 dark:border-slate-700">
+                {cartItems.map((item) => (
+                  <div key={item.id ?? item.name} className="flex justify-between border-b border-gray-100 py-2 dark:border-slate-700">
                     <div>
                       <p className="font-medium text-gray-900 dark:text-slate-100">{item.name}</p>
-                      <p className="text-sm text-gray-500 dark:text-slate-400">{item.variant}</p>
                       <p className="text-xs text-gray-400 dark:text-slate-500">Quantity: {item.quantity}</p>
                     </div>
-                    <p className="text-gray-900 dark:text-slate-100">KES {item.price.toLocaleString()}</p>
+                    <p className="text-gray-900 dark:text-slate-100">KES {(item.lineTotal ?? 0).toLocaleString()}</p>
                   </div>
                 ))}
                 

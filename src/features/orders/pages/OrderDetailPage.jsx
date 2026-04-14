@@ -7,6 +7,7 @@ import { ROUTES } from '../../../shared/constants/routes';
 
 const statusLabel = {
   pending: 'Pending',
+  processing: 'Processing',
   confirmed: 'Processing',
   shipped: 'Shipped',
   delivered: 'Delivered',
@@ -15,6 +16,7 @@ const statusLabel = {
 
 const statusStyles = {
   pending: 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300',
+  processing: 'bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300',
   confirmed: 'bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300',
   shipped: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-300',
   delivered: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300',
@@ -54,7 +56,7 @@ const OrderDetailPage = () => {
     );
   }
 
-  const canCancel = order.status === 'pending' || order.status === 'confirmed';
+  const canCancel = order.status === 'pending' || order.status === 'confirmed' || order.status === 'processing';
   const canConfirmDelivery = order.status === 'shipped';
   const canReportIssue = order.status === 'delivered' || order.status === 'cancelled';
   const canInitiateReturn = order.status === 'delivered' && !order.return_request;
