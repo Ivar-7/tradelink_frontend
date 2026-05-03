@@ -24,7 +24,7 @@ const useCartHook = create((set, get) => ({
       const cart = await getCart();
       set({ cart });
     } catch (err) {
-      set({ cart: null, error: mapError(err) });
+      set({ error: mapError(err) });
     } finally {
       set({ loading: false });
     }

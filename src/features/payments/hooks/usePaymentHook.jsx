@@ -1,14 +1,14 @@
 import { useState, useCallback, useRef } from 'react';
 import * as paymentApi from '../api/paymentApi';
 import { PAYMENT_STATUS, PAYMENT_PROVIDERS } from '../../../shared/constants/app';
-import { useToastHook } from '../../../shared/hooks/useToastHook';
+import { useToast } from '../../../shared/hooks/useToastHook';
 
 /**
  * Payment hook for handling STK push payment flow
  * Per payment.md: Exactly one STK initiation, status polling, then fulfillment
  */
 export const usePaymentHook = () => {
-  const toast = useToastHook();
+  const { addToast } = useToast();
   
   // Payment state
   const [payment, setPayment] = useState(null);
@@ -65,18 +65,21 @@ export const usePaymentHook = () => {
       });
 
       setPaymentStatus('pending');
-      toast?.success?.('Payment request sent. Please check your phone.');
+      addToast({ message: 'Payment request sent. Please check your phone.', type: 'success' });
 
       return { success: true, providerReference: providerRef };
     } catch (err) {
-      const errorMsg = err.response?.data?.detail || err.message || 'Payment initiation failed';
+      const errorMsg = 
+        err.message || 
+        'Payment initiation failed';
+      
       setError(errorMsg);
-      toast?.error?.(errorMsg);
+      addToast({ message: errorMsg, type: 'error' });
       return { success: false, error: errorMsg };
     } finally {
       setLoading(false);
     }
-  }, [toast]);
+  }, [addToast]);
 
   /**
    * Poll payment status
@@ -195,17 +198,17 @@ export const usePaymentHook = () => {
         fulfillmentComplete: true,
       }));
 
-      toast?.success?.('Order created successfully!');
+      addToast({ message: 'Order created successfully!', type: 'success' });
       return { success: true, order: createdOrder, payment: paymentRecord };
     } catch (err) {
       const errorMsg = err.response?.data?.detail || err.message || 'Order creation failed';
       setError(errorMsg);
-      toast?.error?.(errorMsg);
+      addToast({ message: errorMsg, type: 'error' });
       return { success: false, error: errorMsg };
     } finally {
       setLoading(false);
     }
-  }, [payment, toast]);
+  }, [addToast, payment]);
 
   /**
    * Reset payment state for retry

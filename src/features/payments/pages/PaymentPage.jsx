@@ -7,13 +7,13 @@ import PaymentStatus from '../components/PaymentStatus';
 import OrderSummary from '../components/OrderSummary';
 import { useAuthHook } from '../../auth/hooks/useAuthHook';
 import { ROUTES } from '../../../shared/constants/routes';
-import { useToastHook } from '../../../shared/hooks/useToastHook';
+import { useToast } from '../../../shared/hooks/useToastHook';
 import * as cartApi from '../../cart/api/cartApi';
 
 const PaymentPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const toast = useToastHook();
+  const { addToast } = useToast();
   const { user } = useAuthHook();
 
   // Cart state
@@ -52,14 +52,14 @@ const PaymentPage = () => {
   // Redirect to login if not authenticated
   useEffect(() => {
     if (!user) {
-      toast?.info?.('Please log in to proceed with checkout');
+      addToast({ message: 'Please log in to proceed with checkout', type: 'info' });
       navigate(ROUTES.AUTH.LOGIN, { state: { from: location.pathname } });
     }
-  }, [user, navigate, location, toast]);
+  }, [addToast, location, navigate, user]);
 
   const handleCheckoutSubmit = async (formData) => {
     if (!cart || cart.products.length === 0) {
-      toast?.error?.('Your cart is empty');
+      addToast({ message: 'Your cart is empty', type: 'error' });
       return;
     }
 
@@ -109,12 +109,12 @@ const PaymentPage = () => {
             // Redirect to order detail page
             setTimeout(() => {
               navigate(ROUTES.ORDERS.DETAIL(fulfillResult.order.id));
-              toast?.success?.('Order placed successfully!');
+              addToast({ message: 'Order placed successfully!', type: 'success' });
             }, 2000);
           }
         } catch (err) {
           console.error('Fulfillment error:', err);
-          toast?.error?.('Order creation failed. Please contact support.');
+          addToast({ message: 'Order creation failed. Please contact support.', type: 'error' });
         }
       } else if (status === 'failed') {
         setCurrentStep('error');

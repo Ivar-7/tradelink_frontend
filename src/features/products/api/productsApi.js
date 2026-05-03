@@ -1,5 +1,6 @@
 import axiosInstance from '../../../shared/api/axiosInstance';
 import { API_ENDPOINTS } from '../../../shared/constants/api';
+import fallbackProductImage from '../../../assets/images/photo.jpg';
 import {
   CategorySchema,
   CategoryTreeNodeSchema,
@@ -7,6 +8,54 @@ import {
   ProductListResponseSchema,
   ProductSchema,
 } from '../products.types';
+
+const normalizeImageUrl = (value) => {
+  if (typeof value !== 'string') return fallbackProductImage;
+  const trimmed = value.trim();
+  return trimmed.length > 0 ? trimmed : fallbackProductImage;
+};
+
+const normalizeCategoryMedia = (category) => {
+  if (!category || typeof category !== 'object') return category;
+
+  return {
+    ...category,
+    image_url: normalizeImageUrl(category.image_url),
+  };
+};
+
+const normalizeCategoryTreeMedia = (category) => {
+  const normalizedCategory = normalizeCategoryMedia(category);
+
+  if (!normalizedCategory || typeof normalizedCategory !== 'object') {
+    return normalizedCategory;
+  }
+
+  return {
+    ...normalizedCategory,
+    children: Array.isArray(normalizedCategory.children)
+      ? normalizedCategory.children.map(normalizeCategoryTreeMedia)
+      : normalizedCategory.children,
+  };
+};
+
+const normalizeProductMedia = (product) => {
+  if (!product || typeof product !== 'object') return product;
+
+  const normalizedImages = Array.isArray(product.images)
+    ? product.images.map((image) => ({
+      ...image,
+      image_url: normalizeImageUrl(image?.image_url),
+    }))
+    : [];
+
+  return {
+    ...product,
+    image_url: normalizeImageUrl(product.image_url),
+    category: normalizeCategoryMedia(product.category),
+    images: normalizedImages,
+  };
+};
 
 const extractCollection = (payload) => {
   if (Array.isArray(payload)) {
@@ -34,7 +83,14 @@ const extractCollection = (payload) => {
 export const getProducts = async (params) => {
   const parsedParams = params ? ProductFilterSchema.partial().parse(params) : undefined;
   const { data } = await axiosInstance.get(API_ENDPOINTS.PRODUCTS.LIST, { params: parsedParams });
-  return ProductListResponseSchema.parse(data);
+  const normalizedProducts = Array.isArray(data?.products)
+    ? data.products.map(normalizeProductMedia)
+    : [];
+
+  return ProductListResponseSchema.parse({
+    ...data,
+    products: normalizedProducts,
+  });
 };
 
 /**
@@ -43,15 +99,17 @@ export const getProducts = async (params) => {
  */
 export const getProductById = async (id) => {
   const { data } = await axiosInstance.get(API_ENDPOINTS.PRODUCTS.DETAIL(id));
-  return ProductSchema.parse(data);
+  return ProductSchema.parse(normalizeProductMedia(data));
 };
 
 export const getCategories = async () => {
   const { data } = await axiosInstance.get(API_ENDPOINTS.CATEGORIES.LIST);
-  return CategorySchema.array().parse(extractCollection(data));
+  const normalizedCategories = extractCollection(data).map(normalizeCategoryMedia);
+  return CategorySchema.array().parse(normalizedCategories);
 };
 
 export const getCategoriesTree = async () => {
   const { data } = await axiosInstance.get(API_ENDPOINTS.CATEGORIES.TREE);
-  return CategoryTreeNodeSchema.array().parse(extractCollection(data));
+  const normalizedCategoryTree = extractCollection(data).map(normalizeCategoryTreeMedia);
+  return CategoryTreeNodeSchema.array().parse(normalizedCategoryTree);
 };

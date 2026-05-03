@@ -1,33 +1,55 @@
 import axiosInstance from '../../../shared/api/axiosInstance';
 import { API_ENDPOINTS } from '../../../shared/constants/api';
 
+const PAYHERO_BASE_URL =
+  import.meta.env.VITE_PAYHERO_BASE_URL ||
+  'https://hammerhead-app-wfzus.ondigitalocean.app';
+
 /**
  * Initiate STK push payment for M-Pesa
  * Per payment.md: Exactly one STK initiation POST per payment attempt
  * @param {Object} payload
- * @param {string} payload.phone_number - Customer phone number (07XXXXXXXX)
+ * @param {string} payload.phone_number - Customer phone number
  * @param {number} payload.amount - Amount in KES
- * @param {string} payload.provider - Payment provider (m-pesa)
  * @param {string} payload.external_reference - Unique order reference
  * @returns {Promise<Object>} Response with provider reference
  */
 export const initiateSTKPush = async (payload) => {
-  const response = await axiosInstance.post('/payhero/payments/initiate', payload);
+  const url = `${PAYHERO_BASE_URL}/api/v1/payhero/payments/initiate/`;
   
-  // Validate response contains a provider reference per payment.md requirement
-  const providerRef = 
-    response.data.reference ||
-    response.data.providerPaymentId ||
-    response.data.checkoutRequestId ||
-    response.data.checkout_request_id ||
-    response.data.merchantRequestId ||
-    response.data.merchant_request_id;
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      phone_number: payload.phone_number,
+      amount: Math.ceil(payload.amount),
+      provider: 'm-pesa',
+      external_reference: payload.external_reference,
+    }),
+  });
 
-  if (!providerRef) {
-    throw new Error('Payment initiation failed: No provider reference in response');
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data?.detail || `Payment initiation failed (HTTP ${response.status})`);
   }
 
-  return response.data;
+  // Validate response contains a provider reference per payment.md requirement
+  const providerRef = 
+    data.reference ||
+    data.providerPaymentId ||
+    data.checkoutRequestId ||
+    data.checkout_request_id ||
+    data.merchantRequestId ||
+    data.merchant_request_id;
+
+  if (!providerRef) {
+    throw new Error('No provider reference in payment response');
+  }
+
+  return data;
 };
 
 /**
@@ -37,8 +59,22 @@ export const initiateSTKPush = async (payload) => {
  * @returns {Promise<Object>} Payment status
  */
 export const checkPaymentStatus = async (reference) => {
-  const response = await axiosInstance.get(`/payhero/payments/status?reference=${reference}`);
-  return response.data;
+  const url = `${PAYHERO_BASE_URL}/api/v1/payhero/payments/status/?reference=${reference}`;
+  
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+    },
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data?.detail || `Status check failed (HTTP ${response.status})`);
+  }
+
+  return data;
 };
 
 /**

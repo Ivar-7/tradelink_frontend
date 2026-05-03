@@ -1,0 +1,138 @@
+[
+  {
+    "id": "prod-001",
+    "name": "Studio X1 Wireless",
+    "brand": "Sony",
+    "description": "Premium wireless headphones with adaptive noise cancellation.",
+    "price": 189.99,
+    "imageFile": "headphone.jpg"
+  },
+  {
+    "id": "prod-002",
+    "name": "Aero Sound Mini",
+    "brand": "JBL",
+    "description": "Portable speaker with deep bass and long battery life.",
+    "price": 124.99,
+    "imageFile": "speaker.jpg"
+  },
+  {
+    "id": "prod-003",
+    "name": "PulseBuds Neo",
+    "brand": "Samsung",
+    "description": "Compact true wireless earbuds with clear voice pickup.",
+    "price": 62.5,
+    "imageFile": "headphoneee.jpg"
+  },
+  {
+    "id": "prod-004",
+    "name": "Vision Pro Tablet",
+    "brand": "Lenovo",
+    "description": "Large-screen tablet built for productivity and media.",
+    "price": 329,
+    "imageFile": "tablet.jpg"
+  },
+  {
+    "id": "prod-005",
+    "name": "iPhone Classic 12",
+    "brand": "Apple",
+    "description": "Reliable smartphone with excellent camera and performance.",
+    "price": 699,
+    "imageFile": "iphone12.jpg"
+  },
+  {
+    "id": "prod-006",
+    "name": "Zen Smartwatch 4",
+    "brand": "Huawei",
+    "description": "Fitness smartwatch with health metrics and GPS.",
+    "price": 135.25,
+    "imageFile": "smartwatch.jpg"
+  },
+  {
+    "id": "prod-007",
+    "name": "Sony Compact Camera",
+    "brand": "Sony",
+    "description": "Compact camera designed for travel and content creation.",
+    "price": 315,
+    "imageFile": "camera.jpg"
+  },
+  {
+    "id": "prod-008",
+    "name": "Pro Capture DSLR",
+    "brand": "Canon",
+    "description": "High-resolution DSLR camera for professional shoots.",
+    "price": 910,
+    "imageFile": "camera2.jpg"
+  },
+  {
+    "id": "prod-009",
+    "name": "SecureView CCTV Kit",
+    "brand": "Hikvision",
+    "description": "Multi-camera home surveillance kit with night vision.",
+    "price": 265,
+    "imageFile": "cctv.jpg"
+  },
+  {
+    "id": "prod-010",
+    "name": "Macbook Airflow",
+    "brand": "Apple",
+    "description": "Lightweight laptop for developers and creators.",
+    "price": 1249,
+    "imageFile": "macbook .jpg"
+  },
+  {
+    "id": "prod-011",
+    "name": "CreatorBook Pro",
+    "brand": "Dell",
+    "description": "Performance laptop with color-accurate display.",
+    "price": 1099,
+    "imageFile": "laptop pro.jpg"
+  },
+  {
+    "id": "prod-012",
+    "name": "Sony Atmos Headset",
+    "brand": "Sony",
+    "description": "Immersive headset with spatial audio support.",
+    "price": 220,
+    "imageFile": "headphone.jpg"
+  },
+  {
+    "id": "prod-013",
+    "name": "NeoPhone Lite",
+    "brand": "Xiaomi",
+    "description": "Affordable smartphone with all-day battery.",
+    "price": 199,
+    "imageFile": "iphone.jpg"
+  },
+  {
+    "id": "prod-014",
+    "name": "Lunar Headphones",
+    "brand": "Sony",
+    "description": "Over-ear headphones tuned for studio clarity.",
+    "price": 62.5,
+    "imageFile": "headphoneee.jpg"
+  },
+  {
+    "id": "prod-015",
+    "name": "Sony Action Camera",
+    "brand": "Sony",
+    "description": "Rugged action camera with stabilization and 4K mode.",
+    "price": 209,
+    "imageFile": "cameraa.jpg"
+  },
+  {
+    "id": "prod-016",
+    "name": "Vision VR Headset",
+    "brand": "Meta",
+    "description": "Standalone VR headset for gaming and training.",
+    "price": 324.5,
+    "imageFile": "VR headset.jpg"
+  },
+  {
+    "id": "prod-017",
+    "name": "Prime Portable Speaker",
+    "brand": "Sony",
+    "description": "Compact speaker with punchy sound and USB-C charging.",
+    "price": 62.5,
+    "imageFile": "speaker.jpg"
+  }
+]

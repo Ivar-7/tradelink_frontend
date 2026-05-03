@@ -78,6 +78,10 @@ export const mapError = (error) => {
   }
 
   // Axios error
+  if (error?.code === 'ECONNABORTED' || (typeof error?.message === 'string' && error.message.toLowerCase().includes('timeout'))) {
+    return 'The server is taking too long to respond. Please try again.';
+  }
+
   if (error.response) {
     const status = error.response.status;
     const responseData = error.response.data;
